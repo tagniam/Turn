@@ -11,7 +11,6 @@ class Player {
     public:
         void SaveGame();
 
-        std::string ReturnName();
         void SetPlayerData();
         int Attack();
         void TakeDamage(int);
@@ -45,13 +44,14 @@ class Player {
 
         int Flee();
 
-
         virtual int ReturnDamage() = 0;
         virtual int ReturnRiskAttackDamage() = 0;
         virtual int ReturnHealAmount() = 0;
 
         std::string name;
         HANDLE hConsole;
+
+		int player_type;
         int level;
 		int experience;
         int health;
