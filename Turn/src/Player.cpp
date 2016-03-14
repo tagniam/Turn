@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <Windows.h>
 
 #include "..\include\Common.h"
@@ -33,10 +34,10 @@ void Player::SaveGame(){
 
 string Player::ReturnName(){
     ClearScreen();
-    cout << " What is your name?"
+    cout << "What is your name?"
          << endl << endl
-         << " > ";
-    cin >> name;
+         << "> ";
+	getline(cin, name);
     return name;
 }
 void Player::SetPlayerData(){
@@ -133,7 +134,7 @@ int Player::Attack(){
          << "7) Use Whetstone" << endl
          << "0) Get me out of here!" << endl << endl
          << "> ";
-    //cin >> choice;
+    
     choice = input();
     cout << endl;
 
