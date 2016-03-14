@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <Windows.h>
 
 #include "..\include\Common.h"
@@ -34,11 +33,12 @@ void Player::SaveGame(){
 
 string Player::ReturnName(){
     ClearScreen();
-    cout << "What is your name?"
-         << endl << endl
-         << "> ";
-	getline(cin, name);
-    return name;
+	cout << "What is your name?"
+		<< endl << endl
+		<< "> ";
+	
+	cin >> name; // Change to full name
+	return name;
 }
 void Player::SetPlayerData(){
     // Primarily initializes default values at the beginning of the game.
