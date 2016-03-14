@@ -18,7 +18,8 @@ using namespace Common;
 void Player::SaveGame(){
     ofstream WriteData;
     WriteData.open("data.txt");
-    WriteData << name << endl
+    WriteData << player_type << endl 
+			  << name << endl
               << level << endl
               << experience << endl
               << health << endl
@@ -31,57 +32,16 @@ void Player::SaveGame(){
     WriteData.close();
 }
 
-string Player::ReturnName(){
-    ClearScreen();
-	cout << "What is your name?"
-		<< endl << endl
-		<< "> ";
-	
-	cin >> name; // Change to full name
-	return name;
-}
+
 
 void Player::SetPlayerData(){
     // Primarily initializes default values at the beginning of the game.
 
-    /* Data initialized in order of:
-	 * name 
-	 * level
-	 * experience 
-     * health 
-     * arrows 
-     * bombs 
-     * potions 
-     * whetstones 
-     * weaponstrength 
-     * queens;
-	 CLASS???
-	 */
+	ifstream ReadData;
+	ReadData.clear();
+	ReadData.open("data.txt");
 
-    ifstream ReadData;
-    ReadData.open("data.txt");
-
-    if (!ReadData){
-        ReadData.close();
-        ofstream WriteData;
-        WriteData.open("data.txt");
-        WriteData << ReturnName() << endl
-                  << 1 << endl
-                  << 0 << endl
-                  << 100 << endl
-                  << 10 << endl
-                  << 1 << endl
-                  << 1 << endl
-                  << 1 << endl
-                  << 100 << endl
-                  << 0;
-        WriteData.close();
-        ReadData.open("data.txt");
-    }
-    else
-        ReadData.clear();
-
-
+	ReadData >> player_type;
     ReadData >> name;
     ReadData >> level;
     ReadData >> experience;

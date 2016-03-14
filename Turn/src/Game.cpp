@@ -33,50 +33,113 @@ void Game::MainMenu(){
     }
 }
 
-/// Reset this function to work with save files for different users.
-void Game::SetPlayerData(){
-    // Sets the player's class. Uses user input to determine their class.
-    // The abstract class Player is morphed with one of its child classes.
+string Game::InitializePlayerName() {
+	ClearScreen();
+	string name;
+	cout << "What is your name?"
+		<< endl << endl
+		<< "> ";
 
-    int choice = 0;
-    cout << endl
-         << "Which class do you want to play as?" << endl
-         << "1) Warrior (high damage, low healing capabilities)" << endl
-         << "2) Rogue (moderate damage, moderate healing capabilities)" << endl
-         << "3) Healer (low damage, high healing capabilities)" << endl
-         << "4) Debugger (INFINITE DAMAGE!!!!)" << endl
-         << "5) Saitama (self-explanatory)" << endl
-         << endl << endl
-         << "> ";
-    cin >> choice;
-    switch(choice){
-        case 1:
-            // Player's class is a warrior.
-            _Player = new Warrior;
-            break;
-        case 2:
-            // Player's class is a rogue.
-            _Player = new Rogue;
-            break;
-        case 3:
-            // Player's class is a healer.
-            _Player = new Healer;
-            break;
-        case 4:
-            // Player's class is a debugger.
-            // Used to easily defeat enemies. Only for development purposes.
-            _Player = new Debugger;
-            break;
-        case 5:
-            // You are Saitama.
-            // Do I have to explain??
-            _Player = new Saitama;
-            break;
-        default:
-            // If input does not equal any of the cases, the default class is a warrior.
-            _Player = new Warrior;
-            break;
-    }
+	cin >> name; // Change to full name
+	return name;
+}
+
+
+int Game::InitializePlayerClass() {
+	// Initializes the player's class through user choice.
+	ClearScreen();
+	int player_class = 0;
+	cout << endl
+		<< "Which class do you want to play as?" << endl
+		<< "1) Warrior (high damage, low healing capabilities)" << endl
+		<< "2) Rogue (moderate damage, moderate healing capabilities)" << endl
+		<< "3) Healer (low damage, high healing capabilities)" << endl
+		<< "4) Debugger (INFINITE DAMAGE!!!!)" << endl
+		<< "5) Saitama (self-explanatory)" << endl
+		<< endl << endl
+		<< "> ";
+	cin >> player_class;
+	SetPlayerClass(player_class);
+	return player_class;
+}
+
+void Game::SetPlayerClass(int player_class) {
+	// Sets the Player class according to player code given.
+	switch (player_class) {
+	case 1:
+		// Player's class is a warrior.
+		_Player = new Warrior;
+		break;
+	case 2:
+		// Player's class is a rogue.
+		_Player = new Rogue;
+		break;
+	case 3:
+		// Player's class is a healer.
+		_Player = new Healer;
+		break;
+	case 4:
+		// Player's class is a debugger.
+		// Used to easily defeat enemies. Only for development purposes.
+		_Player = new Debugger;
+		break;
+	case 5:
+		// You are Saitama.
+		// Do I have to explain??
+		_Player = new Saitama;
+		break;
+	default:
+		// If input does not equal any of the cases, the default class is a warrior.
+		_Player = new Warrior;
+		break;
+	}
+}
+
+void Game::SetPlayerData(){
+	/* Data initialized in order of:
+	* class code
+	* name
+	* level
+	* experience
+	* health
+	* arrows
+	* bombs
+	* potions
+	* whetstones
+	* weaponstrength
+	* queens
+	*/
+
+	ifstream ReadData;
+	ReadData.open("data.txt");
+
+	// Runs if user has never played the game before or data is not found.
+	if (!ReadData) {
+		ReadData.close();
+		ofstream WriteData;
+		WriteData.open("data.txt");
+		
+		WriteData << InitializePlayerClass() << endl
+			<< InitializePlayerName() << endl
+			<< 1 << endl
+			<< 0 << endl
+			<< 100 << endl
+			<< 10 << endl
+			<< 1 << endl
+			<< 1 << endl
+			<< 1 << endl
+			<< 100 << endl
+			<< 0;
+		WriteData.close();
+	}
+
+	else {
+		// Initializes player type from class code given in data.txt
+		int player_class;
+		ReadData >> player_class;
+		SetPlayerClass(player_class);
+		ReadData.close();
+	}
 }
 
 void Game::SetEnemy(){
@@ -171,14 +234,14 @@ void Game::StartGame(){
     srand(time(NULL));
     IsPlaying=true;
 
-    // SetPlayerData() makes the player choose their class.
+    // SetPlayerData() initializes the variables in this end.
     ClearScreen();
     SetPlayerData();
 
-    // _Player->SetName() sets the name of the player.
+	// This initializes the variables on the Player end.
     ClearScreen();
     _Player->SetPlayerData();
-    //_Player->SetName();
+    
 
     // Loops while the game is still playing.
     // Alternates between battles and intermission (gambling, store, et)

@@ -13,6 +13,9 @@ class Game {
     private:
         /// Reset this function to work with save files for different users.
         void SetPlayerData();
+		int InitializePlayerClass();
+		void SetPlayerClass(int);
+		std::string InitializePlayerName();
 
         void SetEnemy();
         bool PlayAgain();
