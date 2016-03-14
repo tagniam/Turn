@@ -180,7 +180,7 @@ bool Game::PlayAgain(){
     // Returns a bool value to determine if the player wants to play again.
 
     char choice;
-    cout << "Keep going? (y/n)" << endl << endl << "> ";
+    cout << "Keep going? (y/n)" << endl << endl;
     choice = (char)input();
     // Returns true if the player says yes (Y, y, 1).
     if (choice == 'y' || choice == 'Y' || choice == '1') return true;
