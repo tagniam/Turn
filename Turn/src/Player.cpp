@@ -40,39 +40,23 @@ string Player::ReturnName(){
 	cin >> name; // Change to full name
 	return name;
 }
+
 void Player::SetPlayerData(){
     // Primarily initializes default values at the beginning of the game.
 
-    /*
-    // Sets health to maximum.
-    health=100;
-
-    // Sets level to 1, lowest level.
-    level = 1;
-
-    // Sets experience points to 0.
-    experience = 0;
-
-    // Gives player 10 arrows.
-    arrows = 10;
-
-    // Gives player 1 bomb.
-    bombs = 1;
-
-    // Sets weapon strength to maximum.
-    weaponstrength=100;
-
-    // Gives player 1 whetstone.
-    whetstones=1;
-
-    //Gives player 1 potion.
-    potions=1;
-
-    // Initializes player name to Player, in case player does not initialize a name.
-    name = "Player";*/
-
-    // Handle for SetConsoleTextAttribute()'s first argument.
-    /// To be honest, don't know what this does.
+    /* Data initialized in order of:
+	 * name 
+	 * level
+	 * experience 
+     * health 
+     * arrows 
+     * bombs 
+     * potions 
+     * whetstones 
+     * weaponstrength 
+     * queens;
+	 CLASS???
+	 */
 
     ifstream ReadData;
     ReadData.open("data.txt");
