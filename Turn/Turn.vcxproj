@@ -110,7 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\asdf.cpp" />
+    <ClCompile Include="src\Turn.cpp" />
     <ClCompile Include="src\Common.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\EnemyTypes\Crab.cpp" />

@@ -209,4 +209,7 @@ FakesAssemblies/
 # LightSwitch generated files
 GeneratedArtifacts/
 _Pvt_Extensions/
-ModelManifest.xml
+ModelManifest.xm
+
+# Glitching Visual Studio
+*.VC.opendb
