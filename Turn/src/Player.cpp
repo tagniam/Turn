@@ -17,7 +17,7 @@ using namespace Common;
 
 void Player::SaveGame(){
     ofstream WriteData;
-    WriteData.open("data.dat");
+    WriteData.open("data.txt");
     WriteData << name << endl
               << level << endl
               << experience << endl
@@ -74,12 +74,12 @@ void Player::SetPlayerData(){
     /// To be honest, don't know what this does.
 
     ifstream ReadData;
-    ReadData.open("data.dat");
+    ReadData.open("data.txt");
 
     if (!ReadData){
         ReadData.close();
         ofstream WriteData;
-        WriteData.open("data.dat");
+        WriteData.open("data.txt");
         WriteData << ReturnName() << endl
                   << 1 << endl
                   << 0 << endl
@@ -91,7 +91,7 @@ void Player::SetPlayerData(){
                   << 100 << endl
                   << 0;
         WriteData.close();
-        ReadData.open("data.dat");
+        ReadData.open("data.txt");
     }
     else
         ReadData.clear();
