@@ -193,8 +193,6 @@ void Game::StartGame(){
 
 void Game::Battle(){
     ClearScreen();
-    // Adds 30 to player's health.
-    _Player->ReplenishHealth();
     // Uses random integers to determine class of the enemy.
     SetEnemy();
 
@@ -225,7 +223,10 @@ void Game::Battle(){
             // Adds drops to player's inventory from defeated enemy.
             /// Not very efficient with its arguments, must fix that later.
             _Player->AddToInventory(_Enemy->GetDrops('a'), _Enemy->GetDrops('w'), _Enemy->GetDrops('p'), _Enemy->GetDrops('b'), _Enemy->GetDrops('q'));
-            // If player wants to battle again, it breaks the loop and uses tail recursion to play again.
+			// Replenishes player's health for the next round.
+			_Player->ReplenishHealth();
+			
+			// If player wants to battle again, it breaks the loop and uses tail recursion to play again.
             if (PlayAgain()) break;
             // Returns to StartGame()'s loop, and executes Intermission().
             return;
@@ -239,7 +240,10 @@ void Game::Battle(){
         if (_Player->IsDead()){
             // Player loses the amount of experience points gained when you defeat the enemy.
             _Player->LoseExperience(_Enemy->ReturnExperience());
-            if (PlayAgain()) break;
+			// Replenishes player's health for the next round.
+			_Player->ReplenishHealth();
+			
+			if (PlayAgain()) break;
             return;
         }
     }

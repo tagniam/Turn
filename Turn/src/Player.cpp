@@ -251,9 +251,13 @@ void Player::DisplayHealthBar(Enemy *_Enemy){
 }
 
 void Player::ReplenishHealth(){
-    // Adds 30 health points after player has defeated an enemy.
-    health+=30;
-    if (health>100) health=100;
+    // Adds health points after player has defeated an enemy.
+	if (health <= 0)
+		health = 100;
+	else {
+		health += 30;
+		if (health > 100) health = 100;
+	}
 }
 
 bool Player::IsDead(){
