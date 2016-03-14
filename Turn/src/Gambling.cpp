@@ -61,8 +61,8 @@ void Gambling::Gamble(Player *_Player){
 
         cout << "1) Reveal Die" << endl;
         cout << "2) Shake Die" << endl;
-        cout << "3) Pass" << endl << "\n > ";
-        //cin >> choice;
+        cout << "3) Pass" << endl << "\n";
+        
         choice = input();
         switch (choice){
         case 1:

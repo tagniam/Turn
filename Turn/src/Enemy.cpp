@@ -83,13 +83,13 @@ void Enemy::DisplayHealthBar(){
     SetConsoleTextAttribute(hConsole, GREY);
 
     cout << "\t";
-    string healthBar = "    " + std::to_string(health);
+    string healthBar = "        " + std::to_string(health);
 
-    for (int i = healthBar.length(); i < 10; i++)
+    for (int i = healthBar.length(); i < 20; i++)
         healthBar += " ";
 
     for (int i = 0; i < healthBar.length(); i++){
-        if ((i+1)*10 <= health){
+        if ((i+1)*10 <= health*2){
             SetConsoleTextAttribute(hConsole, RED_BACKGROUND);
             cout << healthBar.at(i);
         }

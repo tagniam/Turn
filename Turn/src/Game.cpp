@@ -139,7 +139,7 @@ void Game::Intermission(){
         cout << "1) Start battle" << endl;
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
-        cout << "4) Quit" << endl << endl << " > ";
+        cout << "4) Quit" << endl << endl;
 
         choice = input();
 

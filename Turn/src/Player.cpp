@@ -124,16 +124,15 @@ int Player::Attack(){
     DisplayInventory();
 
     // Gives player a list of moves to choose from.
-    cout << "Choose your move:" << endl
-         << "1) Attack" << endl
-         << "2) Risk Attack" << endl
-         << "3) Bow and Arrow" << endl
-         << "4) Heal" << endl << endl
-         << "5) Use Bomb" << endl
-         << "6) Use Potion" << endl
-         << "7) Use Whetstone" << endl
-         << "0) Get me out of here!" << endl << endl
-         << "> ";
+	cout << "Choose your move:" << endl
+		<< "1) Attack" << endl
+		<< "2) Risk Attack" << endl
+		<< "3) Bow and Arrow" << endl
+		<< "4) Heal" << endl << endl
+		<< "5) Use Bomb" << endl
+		<< "6) Use Potion" << endl
+		<< "7) Use Whetstone" << endl
+		<< "0) Get me out of here!" << endl << endl;
     
     choice = input();
     cout << endl;
@@ -217,10 +216,10 @@ void Player::DisplayHealthBar(Enemy *_Enemy){
     DisplayName();
     // Tabs to make room for enemy's name.
     if (name.length() > 5){
-        cout << "\t";
+        cout << "\t\t\t";
     }
     else {
-        cout <<" \t\t";
+        cout <<" \t\t\t";
     }
     // Prints enemy name.
     _Enemy->DisplayName();
@@ -231,14 +230,14 @@ void Player::DisplayHealthBar(Enemy *_Enemy){
     /// SetConsoleTextAttribute() is used, why it evaluates the health, why it prints blank spaces, etc.
     /// Intuition will be enough to understand what is going on in the following lines.
 
-    string healthBar = "    " + std::to_string(health);
+    string healthBar = "        " + std::to_string(health);
 
-    for (int i = healthBar.length(); i < 10; i++)
+    for (int i = healthBar.length(); i < 20; i++)
         healthBar += " ";
 
     cout << endl;
     for (int i = 0; i < healthBar.length(); i++){
-        if ((i+1)*10 <= health){
+        if ((i+1)*10 <= health*2){
             SetConsoleTextAttribute(hConsole, RED_BACKGROUND);
             cout << healthBar.at(i);
         }
