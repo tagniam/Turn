@@ -29,6 +29,8 @@ int Common::input(){
 
 bool Common::IsPlaying;
 
+const int Common::SLEEP_MS = 600;
+
 const int Common::GREY = 7;
 const int Common::DARK_GREY = 8;
 const int Common::RED = 12;
