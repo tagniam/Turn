@@ -3,7 +3,7 @@
 GiantCrab::GiantCrab(){
     name = "Giant Crab";
     ExperienceAmount = 100;
-    QueensDrop = rand()%100;
+    CoinsDrop = rand()%100;
 }
 
 int GiantCrab::ReturnDamage(){

@@ -19,8 +19,8 @@ class Player : public Entity {
         void AddExperience(int);
         void LoseExperience(int);
 
-        void AddQueens(int q);
-        void LoseQueens(int);
+        void AddCoins(int);
+        void LoseCoins(int);
 
         void DisplayInventory();
 
@@ -46,7 +46,7 @@ class Player : public Entity {
         int potions;
         int bombs;
         int weaponstrength;
-        int queens;
+        int coins;
 };
 
 #endif // PLAYER_H

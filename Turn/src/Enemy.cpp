@@ -112,8 +112,8 @@ int Enemy::ReturnItemDrop(char selector){
             return 3;
         else
             return 5;
-    case 'q':
-        return QueensDrop;
+    case 'c':
+        return CoinsDrop;
     case 'w':
         if (WhetstoneSelector==1)
             return 1;

@@ -15,7 +15,7 @@ void Gambling::Gamble(Player *_Player){
     // A gambling arena, in which the die you roll must be equal or higher than requirement
     // Uses the Player object passed in to give won items to player.
 
-    /// Maybe check Queens? If too low then can't gamble.
+    /// Maybe check Coins? If too low then can't gamble.
 
 
     // Generates random values for the local variables declared in the class.
@@ -56,8 +56,8 @@ void Gambling::Gamble(Player *_Player){
             break;
         }
 
-        // Prints Queens deduction if you lose the gamble.
-        cout << "PENALTY: [" << QueensDeduction << "] Queens" << endl << endl;
+        // Prints Coins deduction if you lose the gamble.
+        cout << "PENALTY: [" << CoinsDeduction << "] coins" << endl << endl;
 
         cout << "1) Reveal Die" << endl;
         cout << "2) Shake Die" << endl;
@@ -103,7 +103,7 @@ void Gambling::GenerateValues(){
     // The amount of items won if the player win the gamble.
     ItemNumber=1+rand()%4;
     // The amount of experience lost if the player loses the gamble.
-    QueensDeduction=100;
+    CoinsDeduction=100;
     // Initializes Item equal to a random char to indicate the item won.
     Item=ReturnItem();
 }
@@ -175,9 +175,9 @@ void Gambling::LoseGamble(Player *_Player){
     // Executes the events when gamble is lost.
     // Uses the Player object passed in to deduct experience.
 
-    cout << "You lost the bet! You lose " << QueensDeduction << " Queens!" << endl;
+    cout << "You lost the bet! You lose " << CoinsDeduction << " coins!" << endl;
 
     // Deducts the player's experience.
-    _Player->LoseQueens(QueensDeduction);
+    _Player->LoseCoins(CoinsDeduction);
     system("PAUSE");
 }

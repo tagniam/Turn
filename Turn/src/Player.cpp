@@ -26,7 +26,7 @@ void Player::SaveGame(){
               << potions << endl
               << whetstones << endl
               << weaponstrength << endl
-              << queens;
+              << coins;
     WriteData.close();
 }
 
@@ -49,7 +49,7 @@ void Player::SetPlayerData(){
     ReadData >> potions;
     ReadData >> whetstones;
     ReadData >> weaponstrength;
-    ReadData >> queens;
+    ReadData >> coins;
 
     ReadData.close();
     
@@ -126,7 +126,7 @@ int Player::Attack(){
     return 0;
 }
 
-void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bombs, int _queens){
+void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bombs, int _coins){
     // Adds items to inventory and prints out what the player received.
 
     // Adds items received to total items.
@@ -134,7 +134,7 @@ void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bom
     whetstones+=_whetstones;
     potions+=_potions;
     bombs += _bombs;
-    queens += _queens;
+    coins += _coins;
 
     // Prints number of items received.
     cout << "You have gained: " << endl
@@ -142,7 +142,7 @@ void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bom
          << "[" << _bombs << "] bombs + " << endl
          << "[" << _potions << "] potions +" << endl
          << "[" << _whetstones << "] whetstones" << endl
-         << "[" << _queens << "] Queens" << endl << endl;
+         << "[" << _coins << "] coins" << endl << endl;
 }
 
 void Player::DisplayHUD(Enemy *_Enemy){
@@ -226,13 +226,13 @@ void Player::LoseExperience(int xp){
     }
 }
 
-void Player::AddQueens(int q){
-    queens += q;
+void Player::AddCoins(int c){
+    coins += c;
 }
 
-void Player::LoseQueens(int q){
-    queens -= q;
-    if (queens < 0) queens = 0;
+void Player::LoseCoins(int c){
+    coins -= c;
+    if (coins < 0) coins = 0;
 }
 
 void Player::DisplayInventory(){
@@ -249,7 +249,7 @@ void Player::DisplayInventory(){
     cout << "| Bombs: [" << bombs << "]" << endl;
     cout << "| Whetstones: [" << whetstones << "]" << endl;
     cout << "| Weapon strength: [" << weaponstrength << "%]" << endl;
-    cout << "| Wealth: [" << queens << "] Queens" << endl;
+    cout << "| Wealth: [" << coins << "] coins" << endl;
     cout << "--------------------------- " << endl << endl;
 }
 

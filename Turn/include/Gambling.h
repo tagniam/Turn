@@ -19,8 +19,8 @@ class Gambling {
 
         // The die number required to win the gamble. Player's die must be equal or greater than requirement to win.
         int DieRequirement;
-        // Amount of Queens deducted if gamble is lost.
-        int QueensDeduction;
+        // Amount of coins deducted if gamble is lost.
+        int CoinsDeduction;
         // Amount of items won, if gamble is won.
         int ItemNumber;
         // Character identifying the item won.

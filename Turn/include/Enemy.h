@@ -21,7 +21,7 @@ class Enemy : public Entity {
         int ReturnItemDrop(char);
         
         int ExperienceAmount;
-        int QueensDrop;
+        int CoinsDrop;
 };
 
 #endif // ENEMY_H

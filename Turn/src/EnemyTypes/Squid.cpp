@@ -3,7 +3,7 @@
 Squid::Squid(){
     name = "Squid";
     ExperienceAmount = 20;
-    QueensDrop = rand()%50;
+    CoinsDrop = rand()%50;
 }
 
 int Squid::ReturnDamage(){

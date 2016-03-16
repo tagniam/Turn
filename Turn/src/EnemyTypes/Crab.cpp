@@ -3,7 +3,7 @@
 Crab::Crab(){
     name = "Crab";
     ExperienceAmount = 20;
-    QueensDrop = rand()%50;
+    CoinsDrop = rand()%50;
 }
 
 int Crab::ReturnDamage(){

@@ -107,7 +107,7 @@ void Game::SetPlayerData(){
 	* potions
 	* whetstones
 	* weaponstrength
-	* queens
+	* coins
 	*/
 
 	ifstream ReadData;
@@ -285,7 +285,7 @@ void Game::Battle(){
             _Player->AddExperience(_Enemy->ReturnExperience());
             // Adds drops to player's inventory from defeated enemy.
             /// Not very efficient with its arguments, must fix that later.
-            _Player->AddToInventory(_Enemy->GetDrops('a'), _Enemy->GetDrops('w'), _Enemy->GetDrops('p'), _Enemy->GetDrops('b'), _Enemy->GetDrops('q'));
+            _Player->AddToInventory(_Enemy->GetDrops('a'), _Enemy->GetDrops('w'), _Enemy->GetDrops('p'), _Enemy->GetDrops('b'), _Enemy->GetDrops('c'));
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
 			

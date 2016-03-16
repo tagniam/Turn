@@ -4,7 +4,7 @@
 GiantSquid::GiantSquid(){
     name = "Giant Squid";
     ExperienceAmount = 50;
-    QueensDrop = rand()%1000;
+    CoinsDrop = rand()%1000;
 }
 
 int GiantSquid::ReturnDamage(){
