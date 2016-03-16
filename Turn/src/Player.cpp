@@ -133,12 +133,19 @@ void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bom
     coins += _coins;
 
     // Prints number of items received.
-    cout << "You have gained: " << endl
-         << "[" << _arrows << "] arrows + " << endl
-         << "[" << _bombs << "] bombs + " << endl
-         << "[" << _potions << "] potions +" << endl
-         << "[" << _whetstones << "] whetstones" << endl
-         << "[" << _coins << "] coins" << endl << endl;
+	cout << "You have gained: " << endl;
+	if (_arrows > 0)
+		cout << "[" << _arrows << "] arrows" << endl;
+	if (_bombs > 0)
+		cout << "[" << _bombs << "] bombs" << endl;
+	if (_potions > 0)
+		cout << "[" << _potions << "] potions" << endl;
+	if (_whetstones > 0)
+		cout << "[" << _whetstones << "] whetstones" << endl;
+	if (_coins > 0)
+         cout << "[" << _coins << "] coins" << endl;
+
+	cout << endl;
 }
 
 void Player::DisplayHUD(Enemy *_Enemy){
