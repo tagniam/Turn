@@ -1,10 +1,8 @@
 #include <fstream>
 #include <iostream>
-#include <Windows.h>
 
 #include "..\include\Common.h"
 #include "..\include\Player.h"
-#include "..\include\Enemy.h"
 
 using namespace std;
 using namespace Common;
@@ -54,7 +52,7 @@ void Player::SetPlayerData(){
     ReadData >> queens;
 
     ReadData.close();
-    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    
 }
 
 int Player::Attack(){
@@ -128,11 +126,6 @@ int Player::Attack(){
     return 0;
 }
 
-void Player::TakeDamage(int damage){
-    // Simply deducts damage points from total health.
-    health -= damage;
-}
-
 void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bombs, int _queens){
     // Adds items to inventory and prints out what the player received.
 
@@ -152,7 +145,7 @@ void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bom
          << "[" << _queens << "] Queens" << endl << endl;
 }
 
-void Player::DisplayHealthBar(Enemy *_Enemy){
+void Player::DisplayHUD(Enemy *_Enemy){
     // Displays player's name and health bar. Enemy object is used to print name on the same line as player name for aesthetics.
 
     // Prints player's name.
@@ -167,31 +160,8 @@ void Player::DisplayHealthBar(Enemy *_Enemy){
     }
     // Prints enemy name.
     _Enemy->DisplayName();
-
-
-    /// The following lines contain the code for the health bar.
-    /// Being difficult to explain, no comments will explain why
-    /// SetConsoleTextAttribute() is used, why it evaluates the health, why it prints blank spaces, etc.
-    /// Intuition will be enough to understand what is going on in the following lines.
-
-    string healthBar = "        " + std::to_string(health);
-
-    for (int i = healthBar.length(); i < 20; i++)
-        healthBar += " ";
-
-    cout << endl;
-    for (int i = 0; i < healthBar.length(); i++){
-        if ((i+1)*10 <= health*2){
-            SetConsoleTextAttribute(hConsole, RED_BACKGROUND);
-            cout << healthBar.at(i);
-        }
-        else {
-            SetConsoleTextAttribute(hConsole, GREY_BACKGROUND);
-            cout << healthBar.at(i);
-        }
-    }
-
-    SetConsoleTextAttribute(hConsole, GREY);
+	cout << endl;
+	DisplayHealthBar();
 }
 
 void Player::ReplenishHealth(){
@@ -202,29 +172,6 @@ void Player::ReplenishHealth(){
 		health += 30;
 		if (health > 100) health = 100;
 	}
-}
-
-bool Player::IsDead(){
-    // Returns a bool value, if the player's health is equal or below 0.
-    if (health <= 0) {
-        cout << "You're dead!" << endl << endl;
-        Sleep(SLEEP_MS);
-        return true;
-    }
-    return false;
-}
-
-void Player::DisplayName(){
-    // Prints the player's name is dark gray for aesthetic purposes.
-
-    // Sets text to dark grey.
-    SetConsoleTextAttribute(hConsole, DARK_GREY);
-
-    // Prints the player's name.
-    cout << name;
-
-    // Sets text back to normal gray.
-    SetConsoleTextAttribute(hConsole, GREY);
 }
 
 void Player::AddExperience(int xp){
@@ -392,23 +339,8 @@ int Player::ReturnBowDamage(){
     return 10+rand()%6; // 10 - 15
 }
 
-void Player::Heal(){
-    int heal = ReturnHealAmount();
-    health += heal;
-    if (health > 100) health = 100;
-    DisplayName();
-    cout << " gains ";
-    SetConsoleTextAttribute(hConsole, 10);
-    cout << heal;
-    SetConsoleTextAttribute(hConsole, GREY);
-    cout << " HP! ";
-    DisplayName();
-    cout << " now has " << health << "HP!" << endl;
-}
-
 int Player::Flee(){
     DisplayName();
     cout << " chooses to flee!" << endl;
     return -1;
 }
-

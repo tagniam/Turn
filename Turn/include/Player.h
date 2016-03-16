@@ -1,26 +1,20 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <string>
-#include <Windows.h>
-
+#include "Entity.h"
 #include "Enemy.h"
 
-class Player {
+class Player : public Entity {
     // Contains the functions needed to construct the player's character.
     public:
         void SaveGame();
 
         void SetPlayerData();
         int Attack();
-        void TakeDamage(int);
         void AddToInventory(int, int, int, int, int);
-
-        void DisplayHealthBar(Enemy*);
+		
+        void DisplayHUD(Enemy*);
         void ReplenishHealth();
-        bool IsDead();
-
-        void DisplayName();
 
         void AddExperience(int);
         void LoseExperience(int);
@@ -40,21 +34,13 @@ class Player {
         int UseBomb();
         void DeductDamage(int&);
         int ReturnBowDamage();
-        void Heal();
 
         int Flee();
-
-        virtual int ReturnDamage() = 0;
-        virtual int ReturnRiskAttackDamage() = 0;
-        virtual int ReturnHealAmount() = 0;
-
-        std::string name;
-        HANDLE hConsole;
+        
 
 		int player_type;
         int level;
 		int experience;
-        int health;
         int whetstones;
         int arrows;
         int potions;

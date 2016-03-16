@@ -9,7 +9,7 @@ class GiantSquid : public Squid {
         GiantSquid();
     private:
         int ReturnDamage();
-        int ReturnRiskDamage();
+        int ReturnRiskAttackDamage();
         int ReturnHealAmount();
 };
 

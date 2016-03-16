@@ -3,17 +3,6 @@
 
 #include "..\include\Common.h"
 
-/*struct Common::Colours {
-    const int GREY = 7
-                   , DARK_GREY = 8
-                   , RED = 12
-                   , RED_BACKGROUND = 207
-                   , GREY_BACKGROUND = 127;
-};
-
-Common::Colours _Colours;
-*/
-
 void Common::ClearScreen(){
         // Clears the screen using system() function.
         /// Not very efficient, but does the job.

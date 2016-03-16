@@ -10,7 +10,7 @@ int GiantCrab::ReturnDamage(){
     return 7+rand()%8; // 7 - 15
 }
 
-int GiantCrab::ReturnRiskDamage(){
+int GiantCrab::ReturnRiskAttackDamage(){
     int selector = rand()%6;
     switch(selector){
         case 0: case 1: case 2: case 3:

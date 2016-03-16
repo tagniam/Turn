@@ -110,6 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Turn.cpp" />
     <ClCompile Include="src\Common.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="include\EnemyTypes\GiantCrab.h" />
     <ClInclude Include="include\EnemyTypes\GiantSquid.h" />
     <ClInclude Include="include\EnemyTypes\Squid.h" />
+    <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Gambling.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Player.h" />

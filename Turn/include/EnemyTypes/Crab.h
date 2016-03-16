@@ -9,7 +9,7 @@ class Crab : public Enemy {
         Crab();
     private:
         int ReturnDamage();
-        int ReturnRiskDamage();
+        int ReturnRiskAttackDamage();
         int ReturnHealAmount();
 };
 

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <Windows.h>
 
 #include "..\include\Common.h"
 #include "..\include\Enemy.h"
@@ -23,9 +22,6 @@ Enemy::Enemy(){
 
     // Sets experience amount to 0, just an initialization for the child classes to modify.
     ExperienceAmount = 0;
-
-    // For aesthetic purposes of changing colors in the console.
-    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 int Enemy::Attack(){
@@ -53,63 +49,14 @@ int Enemy::Attack(){
     }
 }
 
-void Enemy::TakeDamage(int damage){
-    // Doesn't subtract damage points if player chooses to quit.
-    if (damage == -1){
-        IsPlaying = false;
-        return;
-    }
-
-    // Simply subtracts the damage player deals to the enemy.
-    health -= damage;
-}
-
-bool Enemy::IsDead(){
-    // Checks if the enemy's health is less than or equal to 0.
-
-    if (health <= 0){
-        // Prints that the enemy is defeated.
-        DisplayName();
-        cout << " is defeated!" << endl << endl;
-        Sleep(SLEEP_MS);
-        return true;
-    }
-    return false;
-}
-
-void Enemy::DisplayHealthBar(){
+void Enemy::DisplayHUD(){
     // Displays the enemy's health bar.
-
-    SetConsoleTextAttribute(hConsole, GREY);
-
-    cout << "\t";
-    string healthBar = "        " + std::to_string(health);
-
-    for (int i = healthBar.length(); i < 20; i++)
-        healthBar += " ";
-
-    for (int i = 0; i < healthBar.length(); i++){
-        if ((i+1)*10 <= health*2){
-            SetConsoleTextAttribute(hConsole, RED_BACKGROUND);
-            cout << healthBar.at(i);
-        }
-        else {
-            SetConsoleTextAttribute(hConsole, GREY_BACKGROUND);
-            cout << healthBar.at(i);
-        }
-    }
-
-    SetConsoleTextAttribute(hConsole, GREY);
+	cout << "\t";
+	DisplayHealthBar();
     cout << endl << endl;
 }
 
-void Enemy::DisplayName(){
-    // Prints the enemy's name in dark gray.
 
-    SetConsoleTextAttribute(hConsole, DARK_GREY);
-    cout << name;
-    SetConsoleTextAttribute(hConsole, GREY);
-}
 
 int Enemy::GetDrops(char selector){
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
@@ -141,7 +88,7 @@ int Enemy::GenericAttack(){
 int Enemy::RiskAttack(){
     // Returns a risk attack, having a chance of dealing either very low points or high points.
 
-    int damage = ReturnRiskDamage();
+    int damage = ReturnRiskAttackDamage();
 
     // Prints how much damage the enemy deals to the player.
     DisplayName();
@@ -151,20 +98,6 @@ int Enemy::RiskAttack(){
     SetConsoleTextAttribute(hConsole, GREY);
     cout << " damage!" << endl << endl;
     return damage;
-}
-
-void Enemy::Heal(){
-    int heal = ReturnHealAmount();
-    health += heal;
-    if (health > 100) health = 100;
-    DisplayName();
-    cout << " gains ";
-    SetConsoleTextAttribute(hConsole, 10);
-    cout << heal;
-    SetConsoleTextAttribute(hConsole, GREY);
-    cout << " HP! ";
-    DisplayName();
-    cout << " now has " << health << "HP!" << endl << endl;
 }
 
 int Enemy::ReturnItemDrop(char selector){

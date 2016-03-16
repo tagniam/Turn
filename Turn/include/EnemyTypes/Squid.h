@@ -9,7 +9,7 @@ class Squid : public Enemy {
         Squid();
     private:
         int ReturnDamage();
-        int ReturnRiskDamage();
+        int ReturnRiskAttackDamage();
         int ReturnHealAmount();
 };
 

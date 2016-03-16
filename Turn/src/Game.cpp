@@ -231,7 +231,7 @@ void Game::StartGame(){
     // Starts the game by initializing values for a new game.
 
     // Seeds the random number generator for pseudo-random numbers.
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     IsPlaying=true;
 
     // SetPlayerData() initializes the variables in this end.
@@ -265,8 +265,8 @@ void Game::Battle(){
         // Displays the name and health bar of the player and enemy.
         // The Enemy* argument is to display the enemy's
         // name. Explained more in _Player->DisplayHealthBar().
-        _Player->DisplayHealthBar(_Enemy);
-        _Enemy->DisplayHealthBar();
+        _Player->DisplayHUD(_Enemy);
+        _Enemy->DisplayHUD();
 
         // Player's turn to attack Enemy.
         _Enemy->TakeDamage(_Player->Attack());

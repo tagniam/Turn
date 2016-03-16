@@ -9,7 +9,7 @@ class GiantCrab : public Crab {
         GiantCrab();
     private:
         int ReturnDamage();
-        int ReturnRiskDamage();
+        int ReturnRiskAttackDamage();
         int ReturnHealAmount();
 };
 

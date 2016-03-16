@@ -10,7 +10,7 @@ int Squid::ReturnDamage(){
     return 1+rand()%10;
 }
 
-int Squid::ReturnRiskDamage(){
+int Squid::ReturnRiskAttackDamage(){
     int selector= rand()%6;
     switch(selector){
         case 0: case 1: case 2: case 3:
