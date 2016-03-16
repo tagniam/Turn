@@ -8,6 +8,7 @@
 // - add advanced AI (when taking a risk attack and miss, heal)
 // - store and sell (buy with coins, sell arrows/bombs/etc for money or experience)
 // - use items in between matches (whetstone, potion)
+// - save data in file
 
 /// Continue commenting code at Player.GenericAttack().
 
