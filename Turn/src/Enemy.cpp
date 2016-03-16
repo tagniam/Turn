@@ -7,12 +7,6 @@
 using namespace std;
 using namespace Common;
 
-#define GREY 7
-#define DARK_GREY 8
-#define RED 12
-#define RED_BACKGROUND 207
-#define GREY_BACKGROUND 127
-
 
 Enemy::Enemy(){
     // Sets up the default variables for the enemy.

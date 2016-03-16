@@ -12,6 +12,13 @@ namespace Common {
     // Indicates if the game is still going.
     extern bool IsPlaying;
     const int SLEEP_MS = 600;
+
+	// Colours for the game
+	extern const int GREY;
+	extern const int DARK_GREY;
+	extern const int RED;
+	extern const int RED_BACKGROUND;
+	extern const int GREY_BACKGROUND;
 }
 
 
