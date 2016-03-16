@@ -69,55 +69,57 @@ int Player::Attack(){
 		<< "6) Use Potion" << endl
 		<< "7) Use Whetstone" << endl
 		<< "0) Get me out of here!" << endl << endl;
-    
-    choice = input();
-    cout << endl;
+	
+	while (true) {
+		choice = input();
 
-    // Evaluates player's choice.
-    switch(choice){
-        case 0:
-            return Flee();
-        case 1:
-            // Player generically attacks.
-            return GenericAttack();
-        case 2:
-            // Player takes a risk and attacks.
-            return RiskAttack();
-        case 3:
-            // Player shoots their bow.
-            if (arrows > 0) return BowAndArrow();
-            else cout << "None in inventory!" << endl;
-            break;
-        case 4:
-            // Player heals, no damage is done to enemy.
-            Heal();
-            break;
-        case 5:
-            // Player throws a bomb.
-            // Does not execute if there are no bombs in the inventory.
-            if (bombs>0) return UseBomb();
-            else cout << "None in inventory!" << endl;
-            break;
-        case 6:
-            // Player drinks a potion.
-            // Does not execute if there are no potions in the inventory.
-            // No damage is done to the enemy.
-            if (potions>0) UsePotion();
-            else cout << "None in inventory!" << endl;
-            break;
-        case 7:
-            // Player sharpens their weapon with a whetstone.
-            // Does not execute if there are no whetstones in inventory.
-            // No damage is done to the enemy.
-            if (whetstones>0) UseWhetstone();
-            else cout << "None in inventory!" << endl;
-            break;
-        default:
-            // Generically attacks by default if player's choice does not equal above cases.
-            return GenericAttack();
-    }
-    // No damage is done. This line is called when the player heals, uses a potion, or uses a whetstone.
-    return 0;
+		// Evaluates player's choice.
+		switch (choice) {
+		case 0:
+			return Flee();
+		case 1:
+			// Player generically attacks.
+			return GenericAttack();
+		case 2:
+			// Player takes a risk and attacks.
+			return RiskAttack();
+		case 3:
+			// Player shoots their bow.
+			if (arrows > 0)
+				return BowAndArrow();
+			break;
+		case 4:
+			// Player heals, no damage is done to enemy.
+			Heal();
+			return 0;
+		case 5:
+			// Player throws a bomb.
+			// Does not execute if there are no bombs in the inventory.
+			if (bombs > 0) 
+				return UseBomb();
+			break;
+		case 6:
+			// Player drinks a potion.
+			// Does not execute if there are no potions in the inventory.
+			if (potions > 0) {
+				UsePotion();
+				return 0;
+			}
+			break;
+		case 7:
+			// Player sharpens their weapon with a whetstone.
+			// Does not execute if there are no whetstones in inventory.
+			// No damage is done to the enemy.
+			if (whetstones > 0) {
+				UseWhetstone();
+				return 0;
+			}
+			break;
+		default:
+			// Generically attacks by default if player's choice does not equal above cases.
+			return GenericAttack();
+		}
+	}
 }
 
 void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bombs, int _coins){
