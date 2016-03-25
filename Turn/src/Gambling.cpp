@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <vector>
 #include <Windows.h>
 
 #include "..\include\Common.h"
@@ -38,18 +39,18 @@ void Gambling::Gamble(Player *_Player){
         cout << "PRIZE: [" << ItemNumber << "] ";
         // Prints the item name according to the char Item.
         switch(Item){
-        case 'b':
+		case 0:
+			cout << "arrows" << endl;
+			break;
+		case 1:
             cout << "bombs" << endl;
             break;
-        case 'p':
+        case 2:
             cout << "potions" << endl;
             break;
-        case 'w':
+        case 3:
             cout << "whetstones" << endl;
-            break;
-        case 'a':
-            cout << "arrows" << endl;
-            break;
+			break;
         default:
             // No default, since ReturnItem(), which GenerateValue() calls, already has one.
             // Technically impossible for char Item to be other than b, p, w, a.
@@ -119,19 +120,19 @@ char Gambling::ReturnItem(){
     switch(selector){
     case 0:
         // Arrows are the item.
-        return 'a';
+        return 0;
     case 1:
         // Bombs are the item.
-        return 'b';
+        return 1;
     case 2:
         // Potions are the item.
-        return 'p';
+        return 2;
     case 3:
         // Whetstones are the item.
-        return 'w';
+        return 3;
     default:
         // By default, arrows are the item if the random integer does not equal any of the above cases.
-        return 'a';
+        return 0;
     }
 }
 
@@ -141,31 +142,17 @@ void Gambling::WinGamble(Player *_Player){
 
     cout << "You win the bet!" << endl;
 
+	vector<int> drops;
+	for (int i = 0; i < NUM_ITEMS; i++) {
+		drops.push_back((Item == i) ? ItemNumber : 0);
+	}
+	
+
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.
     // The place of ItemNumber in the arguments is to specify which item was won.
     // More clarification and information in the _Player->AddToInventory(int, int, int ,int) function.
-    switch(Item){
-    case 'a':
-        // Arrows were won.
-        _Player->AddToInventory(ItemNumber, 0, 0, 0, 0);
-        break;
-    case 'b':
-        // Bombs were won.
-        _Player->AddToInventory(0, 0, 0, ItemNumber, 0);
-        break;
-    case 'p':
-        // Potions were won.
-        _Player->AddToInventory(0, 0, ItemNumber, 0, 0);
-        break;
-    case 'w':
-        // Whetstones were won.
-        _Player->AddToInventory(0, ItemNumber, 0, 0, 0);
-        break;
-    default:
-        // Technically impossible for Item not equaling above cases.
-        break;
-    }
+	_Player->AddToInventory(drops);
     // Used to pause the console to let the player see what they won.
     /// Must use something more efficient.
     system("PAUSE");

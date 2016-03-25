@@ -24,11 +24,11 @@ class Gambling {
         // Amount of items won, if gamble is won.
         int ItemNumber;
         // Character identifying the item won.
-        //      'a' -> Arrows
-        //      'b' -> Bombs
-        //      'p' -> Potions
-        //      'W' -> Whetstones
-        char Item;
+        //      0 -> Arrows
+        //      1 -> Bombs
+        //      2 -> Potions
+        //      3 -> Whetstones
+        int Item;
 };
 
 #endif // GAMBLING_H

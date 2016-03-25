@@ -36,3 +36,5 @@ const int Common::DARK_GREY = 8;
 const int Common::RED = 12;
 const int Common::RED_BACKGROUND = 207;
 const int Common::GREY_BACKGROUND = 127;
+
+const int Common::NUM_ITEMS = 5;

@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 #include "..\include\Common.h"
 #include "..\include\Enemy.h"
 
@@ -52,10 +52,15 @@ void Enemy::DisplayHUD(){
 
 
 
-int Enemy::GetDrops(char selector){
+vector<int> Enemy::GetDrops(){
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
+	vector<int> drops;
 
-    return ReturnItemDrop(selector);
+	for (int i = 0; i < NUM_ITEMS; i++) {
+		drops.push_back(ReturnItemDrop(i));
+	}
+
+    return drops;
 }
 
 int Enemy::ReturnExperience(){
@@ -94,32 +99,43 @@ int Enemy::RiskAttack(){
     return damage;
 }
 
-int Enemy::ReturnItemDrop(char selector){
+int Enemy::ReturnItemDrop(int item){
     int ArrowSelector = rand()%6;
     int WhetstoneSelector = rand()%2;
     int PotionSelector = rand()%10;
-    switch(selector){
-    case 'a':
+
+	/* 
+	0	Arrows
+	1	Bombs
+	2	Potions
+	3	Whetstones
+	4	Coins
+	*/
+
+    switch(item){
+    case 0:	// Arrows
         if (ArrowSelector<=1)
             return 0;
         else if (ArrowSelector==2||ArrowSelector==3)
             return 3;
         else
             return 5;
-    case 'c':
-        return CoinsDrop;
-    case 'w':
+	case 1: case 2:
+		if (PotionSelector == 0)
+			return 1;
+		else if (PotionSelector == 1)
+			return 2;
+		else
+			return 0;
+	
+    case 3:
         if (WhetstoneSelector==1)
             return 1;
         else
             return 0;
-    case 'p': case 'b':
-        if (PotionSelector==0)
-            return 1;
-        else if (PotionSelector==1)
-            return 2;
-        else
-            return 0;
+	case 4:
+		return CoinsDrop;
+
     default:
         return 0;
         break;

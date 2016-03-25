@@ -3,9 +3,6 @@
 
 // Common functions and data to share across all files.
 namespace Common {
-    // Sorry, I'm Canadian.
-    /*extern struct Colours;
-    extern Colours _Colours;*/
     void ClearScreen();
     int input();
 
@@ -19,6 +16,9 @@ namespace Common {
 	extern const int RED;
 	extern const int RED_BACKGROUND;
 	extern const int GREY_BACKGROUND;
+
+	// Number of items held in inventory.
+	extern const int NUM_ITEMS;
 }
 
 

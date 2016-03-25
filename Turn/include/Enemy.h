@@ -1,6 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include <vector>
 #include "Entity.h"
 
 
@@ -11,14 +12,14 @@ class Enemy : public Entity {
         int Attack();
         void DisplayHUD();
 
-        int GetDrops(char);
+		std::vector<int> GetDrops();
         int ReturnExperience();
 
     protected:
         int GenericAttack();
         int RiskAttack();
 
-        int ReturnItemDrop(char);
+        int ReturnItemDrop(int);
         
         int ExperienceAmount;
         int CoinsDrop;

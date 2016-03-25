@@ -284,8 +284,7 @@ void Game::Battle(){
             // Adds points to player's experience.
             _Player->AddExperience(_Enemy->ReturnExperience());
             // Adds drops to player's inventory from defeated enemy.
-            /// Not very efficient with its arguments, must fix that later.
-            _Player->AddToInventory(_Enemy->GetDrops('a'), _Enemy->GetDrops('w'), _Enemy->GetDrops('p'), _Enemy->GetDrops('b'), _Enemy->GetDrops('c'));
+            _Player->AddToInventory(_Enemy->GetDrops());
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
 			

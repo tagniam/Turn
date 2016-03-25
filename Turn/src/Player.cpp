@@ -122,28 +122,29 @@ int Player::Attack(){
 	}
 }
 
-void Player::AddToInventory(int _arrows, int _whetstones, int _potions, int _bombs, int _coins){
+void Player::AddToInventory(vector<int> drops){
     // Adds items to inventory and prints out what the player received.
-
+	
     // Adds items received to total items.
-    arrows+=_arrows;
-    whetstones+=_whetstones;
-    potions+=_potions;
-    bombs += _bombs;
-    coins += _coins;
-
+    arrows += drops.at(0);
+	bombs += drops.at(1);
+	potions += drops.at(2);
+	whetstones += drops.at(3);
+    coins += drops.at(4);
+	
+	
     // Prints number of items received.
 	cout << "You have gained: " << endl;
-	if (_arrows > 0)
-		cout << "[" << _arrows << "] arrows" << endl;
-	if (_bombs > 0)
-		cout << "[" << _bombs << "] bombs" << endl;
-	if (_potions > 0)
-		cout << "[" << _potions << "] potions" << endl;
-	if (_whetstones > 0)
-		cout << "[" << _whetstones << "] whetstones" << endl;
-	if (_coins > 0)
-         cout << "[" << _coins << "] coins" << endl;
+	if (drops[0] > 0)
+		cout << "[" << drops.at(0) << "] arrows" << endl;
+	if (drops[1] > 0)
+		cout << "[" << drops.at(1) << "] bombs" << endl;
+	if (drops[2] > 0)
+		cout << "[" << drops.at(2) << "] potions" << endl;
+	if (drops[3] > 0)
+		cout << "[" << drops.at(3) << "] whetstones" << endl;
+	if (drops[4] > 0)
+         cout << "[" << drops.at(4) << "] coins" << endl;
 
 	cout << endl;
 }
