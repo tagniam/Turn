@@ -7,7 +7,7 @@
 class Entity {
 public:
 	Entity();
-	void DisplayName();
+	std::string GetName();
 	virtual int Attack() = 0;
 	void TakeDamage(int);
 	bool IsDead();

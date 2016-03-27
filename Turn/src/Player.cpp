@@ -154,7 +154,7 @@ void Player::DisplayHUD(Enemy *_Enemy){
 
     // Prints player's name.
     cout << endl;
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     // Tabs to make room for enemy's name.
     if (name.length() > 5){
         cout << "\t\t\t";
@@ -163,7 +163,7 @@ void Player::DisplayHUD(Enemy *_Enemy){
         cout <<" \t\t\t";
     }
     // Prints enemy name.
-    _Enemy->DisplayName();
+	ColourPrint(_Enemy->GetName(), DARK_GREY);
 	cout << endl;
 	DisplayHealthBar();
 }
@@ -246,25 +246,23 @@ void Player::DisplayInventory(){
     }
     // Simply prints the player's inventory.
 
-    cout << "*------- INVENTORY -------* " << endl;
-    cout << "Level " << level << "\t\t" << experience << "/100 xp" << endl;
+    cout << "*----------- INVENTORY -----------* " << endl;
+    cout << "Level " << level << "\t\t\t" << experience << "/100 xp" << endl;
     cout << "| Arrows: [" << arrows << "]" << endl;
     cout << "| Potions: [" << potions << "]" << endl;
     cout << "| Bombs: [" << bombs << "]" << endl;
     cout << "| Whetstones: [" << whetstones << "]" << endl;
     cout << "| Weapon strength: [" << weaponstrength << "%]" << endl;
     cout << "| Wealth: [" << coins << "] coins" << endl;
-    cout << "--------------------------- " << endl << endl;
+    cout << "*---------------------------------*" << endl << endl;
 }
 
 int Player::GenericAttack(){
     int damage = ReturnDamage();
     DeductDamage(damage);
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " attacks! He deals ";
-    SetConsoleTextAttribute(hConsole, RED);
-    cout << damage;
-    SetConsoleTextAttribute(hConsole, GREY);
+	ColourPrint(to_string(damage), RED);
     cout << " damage points!" << endl;
     if (damage>0) weaponstrength-= 2+rand()%5;
     return damage;
@@ -273,19 +271,18 @@ int Player::GenericAttack(){
 int Player::RiskAttack(){
     int damage = ReturnRiskAttackDamage();
     DeductDamage(damage);
-    DisplayName();
-    cout << " takes a risk and attack! He deals ";
-    SetConsoleTextAttribute(hConsole, RED);
-    cout << damage;
-    SetConsoleTextAttribute(hConsole, GREY);
+	ColourPrint(name, DARK_GREY);
+    cout << " takes a risk and attack! It deals ";
+	ColourPrint(to_string(damage), RED);
     cout << " damage points!" << endl;
+
     if (damage>0) weaponstrength-= 4+rand()%5;
     return damage;
 }
 
 int Player::BowAndArrow(){
     int damage = ReturnBowDamage();
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " shoots his bow! He deals ";
     SetConsoleTextAttribute(hConsole, RED);
     cout << damage;
@@ -296,28 +293,25 @@ int Player::BowAndArrow(){
 
 void Player::UseWhetstone(){
     weaponstrength=100;
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " sharpened his weapon!" << endl;
     whetstones--;
 }
 
 void Player::UsePotion(){
     health=100;
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " drank a healing potion!" << endl;
     potions--;
 }
 
 int Player::UseBomb(){
-    DisplayName();
-    cout << " hurls a bomb! ";
-    DisplayName();
-    cout << " deals ";
-    SetConsoleTextAttribute(hConsole, RED);
-    cout << "50";
-    SetConsoleTextAttribute(hConsole, GREY);
-    cout << " damage points!" << endl;
-    bombs--;
+	ColourPrint(name, DARK_GREY);
+    cout << " hurls a bomb! It deals ";
+	ColourPrint("50", RED);
+	cout << " damage points!" << endl;
+    
+	bombs--;
     return 50;
 }
 
@@ -344,7 +338,7 @@ int Player::ReturnBowDamage(){
 }
 
 int Player::Flee(){
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " chooses to flee!" << endl;
     return -1;
 }

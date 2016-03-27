@@ -171,7 +171,7 @@ void Game::SetEnemy(){
             break;
     }
     // Simply prints that the enemy's class was encountered.
-    _Enemy->DisplayName();
+	ColourPrint(_Enemy->GetName(), DARK_GREY);
     cout << " encountered!" << endl << endl;
     Sleep(SLEEP_MS);
 }
@@ -197,8 +197,8 @@ void Game::Intermission(){
     // Loops until the player starts another battle or they quit (IsPlaying=false).
     for (int choice=0; IsPlaying;){
         ClearScreen();
-        cout << "*----- Intermission -----* " << endl << endl;
-        _Player->DisplayInventory();
+        cout << "*--------- Intermission ----------* " << endl << endl;
+		_Player->DisplayInventory();
         cout << "1) Start battle" << endl;
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
@@ -246,8 +246,10 @@ void Game::StartGame(){
     // Loops while the game is still playing.
     // Alternates between battles and intermission (gambling, store, et)
     while(IsPlaying){
-        Battle();
-        Intermission();
+		Intermission();
+		if (!IsPlaying)
+			break;
+		Battle();
     }
 
     // Saves the player's data to an external file before quitting.

@@ -9,18 +9,16 @@ Entity::Entity() {
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
-void Entity::DisplayName() {
-	// Prints the enemy's name in dark gray.
+string Entity::GetName() {
+	// Returns the enemy's name.
 
-	SetConsoleTextAttribute(hConsole, DARK_GREY);
-	cout << name;
-	SetConsoleTextAttribute(hConsole, GREY);
+	return name;
 }
 
 bool Entity::IsDead() {
 	// Returns a bool value, if the player's health is equal or below 0.
 	if (health <= 0) {
-		DisplayName();
+		ColourPrint(name, DARK_GREY);
 		cout << " is dead!" << endl << endl;
 		Sleep(SLEEP_MS);
 		return true;
@@ -40,34 +38,31 @@ void Entity::TakeDamage(int damage) {
 }
 
 void Entity::DisplayHealthBar(){
-	SetConsoleTextAttribute(hConsole, GREY);
-	string healthBar = "        " + std::to_string(health);
+	string healthBar = "        " + to_string(health);
 
 	for (int i = healthBar.length(); i < 20; i++)
 		healthBar += " ";
 
 	for (size_t i = 0; i < healthBar.length(); i++) {
+		string currentChar = ""; 
+		currentChar += healthBar.at(i);
 		if ((i + 1) * 10 <= (size_t)health * 2) {
-			SetConsoleTextAttribute(hConsole, RED_BACKGROUND);
-			cout << healthBar.at(i);
+			ColourPrint(currentChar, RED_BACKGROUND);
 		}
 		else {
-			SetConsoleTextAttribute(hConsole, GREY_BACKGROUND);
-			cout << healthBar.at(i);
+			ColourPrint(currentChar, GREY_BACKGROUND);
 		}
 	}
-
-	SetConsoleTextAttribute(hConsole, GREY);
 }
 
 void Entity::Heal() {
 	int heal = ReturnHealAmount();
 	health += heal;
 	if (health > 100) health = 100;
-	DisplayName();
+	
+	ColourPrint(name, DARK_GREY);
 	cout << " gains ";
-	SetConsoleTextAttribute(hConsole, 10);
-	cout << heal;
-	SetConsoleTextAttribute(hConsole, GREY);
-	cout << " HP! " << endl;
+	ColourPrint(to_string(heal), GREEN);
+	cout << " HP!" << endl;
+
 }

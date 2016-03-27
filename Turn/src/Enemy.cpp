@@ -75,11 +75,9 @@ int Enemy::GenericAttack(){
     int damage = ReturnDamage();
 
     // Prints how much damage the enemy deals to the player.
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " attacks! It deals ";
-    SetConsoleTextAttribute(hConsole, RED);
-    cout << damage;
-    SetConsoleTextAttribute(hConsole, GREY);
+	ColourPrint(to_string(damage), RED);
     cout << " damage!" << endl << endl;
     return damage;
 }
@@ -90,11 +88,9 @@ int Enemy::RiskAttack(){
     int damage = ReturnRiskAttackDamage();
 
     // Prints how much damage the enemy deals to the player.
-    DisplayName();
+	ColourPrint(name, DARK_GREY);
     cout << " takes a risk and attacks! It deals ";
-    SetConsoleTextAttribute(hConsole, RED);
-    cout << damage;
-    SetConsoleTextAttribute(hConsole, GREY);
+	ColourPrint(to_string(damage), RED);
     cout << " damage!" << endl << endl;
     return damage;
 }
