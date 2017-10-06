@@ -1,2 +1,8 @@
 # Turn
-C++ Turn-based RPG game
+Turn is a basic turn-based RPG game written in C++ for Windows.
+
+## Screenshots
+
+## Getting Started
+
+### Prerequisites
