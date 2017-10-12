@@ -21,12 +21,26 @@ void Game::MainMenu(){
     for (int choice=0; choice!=2;){
         ClearScreen();
         cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
-             << "1) Start Game" << endl
-             << "2) Quit" << endl << endl << "> ";
+             << "1) Start Game" <<
+	      << "2) How to Play" << endl
+             << "3) Quit" << endl << endl << "> ";
         cin >> choice;
         switch(choice){
         case 1:
             StartGame();
+	     break;
+        case 2:
+	    ClearScreen();
+            cout << "========== HOW TO PLAY ==========" << endl << endl;
+            << "In this game you can play as many different classes, and each one of them have different capabilities," << endl
+            << "you can gamble, go on stores, and of course battle against enemies." << endl
+            << "And, as you can tell, this is a game made to play on the command prompt so every action that you do involves" endl
+            << "typing. GOOD LUCK AND HAVE FUN! Press 1 to Start the Game and 2 to Quit"
+            cin >> choice;
+	    switch(choice){
+	    case 1:
+                StartGame();   
+	    }
         // There's no 'case 2' because it breaks
         // the loop already.
         }
