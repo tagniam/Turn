@@ -22,6 +22,7 @@ class Game {
 
         void StartGame();
         void Battle();
+		void HowToPlay();
 
         // Pointers needed to call functions from respective classes.
         // They are pointers because they have child classes (they polymorph).
