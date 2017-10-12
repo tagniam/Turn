@@ -1,5 +1,10 @@
 # Turn
-Turn is a basic turn-based RPG game written in C++ for Windows.
+Turn is a basic turn-based RPG game written in C++ for Windows. 
+
+## History
+I wrote this game almost 5 years ago, and uploading it to GitHub was my first experience with open source. Now, I want to give back to the community for [Hacktoberfest 2017](https://hacktoberfest.digitalocean.com/) and encourage everyone, regardless of programming skills or knowledge, to contribute! :)  
+
+Please feel free to email me at [jrmaingat@gmail.com](mailto:jrmaingat@gmail.com) if you have any questions about contributing to Turn or open source in general!
 
 ## Screenshots
 
