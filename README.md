@@ -20,7 +20,5 @@ Turn is a basic turn-based RPG game written in C++ for Windows.
 * **Potion**: Replenishes your HP to 100
 * **Whetstone**: Restores your weapon's sharpness.
 
-
 ## Getting Started
-
 ### Prerequisites
