@@ -22,3 +22,4 @@ Turn is a basic turn-based RPG game written in C++ for Windows.
 
 ## Getting Started
 ### Prerequisites
+* Note: Turn only supports Windows at the moment  
