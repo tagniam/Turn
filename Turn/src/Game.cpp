@@ -22,16 +22,16 @@ void Game::MainMenu(){
         ClearScreen();
         cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
              << "1) Start Game" << endl
-			 << "2) How to play" << endl
+	     << "2) How to play" << endl
              << "3) Quit" << endl << endl << "> ";
         cin >> choice;
         switch(choice){
         case 1:
-            StartGame();
-			break;
-		case 2:
-			HowToPlay();
-			break;
+           	StartGame();
+		break;
+	case 2:
+		HowToPlay();
+		break;
         // There's no 'case 3' because it breaks
         // the loop already.
         }
@@ -207,7 +207,8 @@ void Game::Intermission(){
         cout << "1) Start battle" << endl;
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
-        cout << "4) Quit" << endl << endl;
+	cout << "4) Use Item" << endl;
+        cout << "5) Quit" << endl << endl;
 
         choice = input();
 
@@ -225,9 +226,14 @@ void Game::Intermission(){
             // _Player is passed in to add items won to the player inventory.
             _Gambling.Gamble(_Player);
             break;
-        case 4:
+	case 4:
+	    _Player->UseItem();
+	    _Player->SaveGame();
+	    break;
+        case 5:
             // Breaks the loop in StartGame(), going back to MainMenu().
             IsPlaying=false;
+	    break;
         }
     }
 }
