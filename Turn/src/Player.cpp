@@ -150,6 +150,9 @@ void Player::UseItem() {
 			if (potions > 0) {
 				UsePotion();
 				Sleep(SLEEP_MS);
+			} else {
+				cout << "No potions in the inventory!" << endl;
+				Sleep(SLEEP_MS);
 			}
 
 			break;
@@ -159,6 +162,9 @@ void Player::UseItem() {
 			// No damage is done to the enemy.
 			if (whetstones > 0) {
 				UseWhetstone();
+				Sleep(SLEEP_MS);
+			} else {
+				cout << "No whetstones in the inventory!" << endl;
 				Sleep(SLEEP_MS);
 			}
 
