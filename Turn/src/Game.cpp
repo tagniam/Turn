@@ -353,7 +353,7 @@ void Game::HowToPlay() {
 
 int Game::GetChoice()
 {
-	int choice = -1;cin >> choice;
+	int choice = -1;
 	while (!(cin >> choice)) {
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
