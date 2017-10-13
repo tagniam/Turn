@@ -47,6 +47,7 @@ string Game::InitializePlayerName() {
 		<< endl
 		<< "> ";
 
+	cin.ignore();
 	getline(cin, name); // Accepts full name
 	return name;
 }
