@@ -11,6 +11,7 @@ class Player : public Entity {
 
         void SetPlayerData();
         int Attack();
+		void UseItem();
         void AddToInventory(std::vector<int>);
 		
         void DisplayHUD(Enemy*);

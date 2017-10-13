@@ -122,6 +122,53 @@ int Player::Attack(){
 	}
 }
 
+void Player::UseItem() {
+	// Use item from inventory
+	int choice = 0;
+
+	while (true) {
+		ClearScreen();
+
+		// Displays the inventory.
+		DisplayInventory();
+
+		// Gives player a list of moves to choose from.
+		cout << "Choose which item use:" << endl
+			<< "1) Use Potion" << endl
+			<< "2) Use Whetstone" << endl
+			<< "0) Quit" << endl << endl;
+
+		choice = input();
+
+		// Evaluates player's choice.
+		switch (choice) {
+		case 0:
+			return;
+		case 1:
+			// Player drinks a potion.
+			// Does not execute if there are no potions in the inventory.
+			if (potions > 0) {
+				UsePotion();
+				Sleep(SLEEP_MS);
+			}
+
+			break;
+		case 2:
+			// Player sharpens their weapon with a whetstone.
+			// Does not execute if there are no whetstones in inventory.
+			// No damage is done to the enemy.
+			if (whetstones > 0) {
+				UseWhetstone();
+				Sleep(SLEEP_MS);
+			}
+
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 void Player::AddToInventory(vector<int> drops){
     // Adds items to inventory and prints out what the player received.
 	
