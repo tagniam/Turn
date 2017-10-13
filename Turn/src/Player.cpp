@@ -257,6 +257,10 @@ void Player::DisplayInventory(){
     cout << "*---------------------------------*" << endl << endl;
 }
 
+int Player::GetLevel() {
+    return level;
+}
+
 int Player::GenericAttack(){
     int damage = ReturnDamage();
     DeductDamage(damage);

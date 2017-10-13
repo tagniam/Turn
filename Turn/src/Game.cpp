@@ -203,7 +203,14 @@ void Game::Intermission(){
     for (int choice=0; IsPlaying;){
         ClearScreen();
         cout << "*--------- Intermission ----------* " << endl << endl;
-		_Player->DisplayInventory();
+		
+	int tempLevel = _Player->GetLevel();
+	if (_Level != tempLevel) {
+		_Level = tempLevel;
+		cout << "Congratulation on leveling up!" << endl;
+	}
+
+	_Player->DisplayInventory();
         cout << "1) Start battle" << endl;
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
@@ -246,6 +253,7 @@ void Game::StartGame(){
 	// This initializes the variables on the Player end.
     ClearScreen();
     _Player->SetPlayerData();
+    _Level = _Player->GetLevel();
     
 
     // Loops while the game is still playing.

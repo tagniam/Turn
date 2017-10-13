@@ -24,6 +24,8 @@ class Player : public Entity {
 
         void DisplayInventory();
 
+        int GetLevel();
+
     private:
         int GenericAttack();
         int RiskAttack();
