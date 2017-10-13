@@ -13,7 +13,10 @@
 using namespace std;
 using namespace Common;
 
-
+// To avoid conflict with numeric_limits<streamsize>::max used in Game::GetChoice()
+#ifdef max
+#undef max
+#endif
 
 void Game::MainMenu(){
     // Main menu. Loops until you start
@@ -24,7 +27,7 @@ void Game::MainMenu(){
              << "1) Start Game" << endl
 			 << "2) How to play" << endl
              << "3) Quit" << endl << endl << "> ";
-        cin >> choice;
+        choice = GetChoice();
         switch(choice){
         case 1:
             StartGame();
@@ -63,7 +66,7 @@ int Game::InitializePlayerClass() {
 		<< "5) Saitama (self-explanatory)" << endl
 		<< endl << endl
 		<< "> ";
-	cin >> player_class;
+	player_class = GetChoice();
 	SetPlayerClass(player_class);
 	return player_class;
 }
@@ -340,10 +343,21 @@ void Game::HowToPlay() {
 			<< "Whetstone: Restores your weapon's sharpness." << endl << endl
 			<< "Good luck and have fun!" << endl << endl
 			<< "1) Quit" << endl << endl << "> ";
-		cin >> choice;
+		choice = GetChoice();
 		switch (choice) {
 		case 1:
 			MainMenu();
 		}
 	}
+}
+
+int Game::GetChoice()
+{
+	int choice = -1;cin >> choice;
+	while (!(cin >> choice)) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input.  Please try again: ";
+	}
+	return choice;
 }
