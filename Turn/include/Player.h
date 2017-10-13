@@ -11,7 +11,7 @@ class Player : public Entity {
 
         void SetPlayerData();
         int Attack();
-		void UseItem();
+	void UseItem();
         void AddToInventory(std::vector<int>);
 		
         void DisplayHUD(Enemy*);
@@ -39,9 +39,9 @@ class Player : public Entity {
         int Flee();
         
 
-		int player_type;
+	int player_type;
         int level;
-		int experience;
+	int experience;
         int whetstones;
         int arrows;
         int potions;
