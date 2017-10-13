@@ -28,3 +28,6 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 ## Getting Started
 ### Prerequisites
 * Note: Turn only supports Windows at the moment  
+
+## Contributing
+* Before working on an issue, make sure you comment on it to claim it. This prevents two people working on the same issue at the same time.
