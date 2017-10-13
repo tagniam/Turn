@@ -11,6 +11,8 @@ I wrote this game almost 5 years ago, and uploading it to GitHub was my first ex
 
 ## How To Play
 
+Turn is a turn-based RPG game. Create your character and start playing. For playing you have to choose what to do by typing the corresponding number. You can perform actions and use items.
+
 ### Actions
 * **Attack**: Regular attack
 * **Risk Attack**: Attack deals more damage, but with a chance of missing
