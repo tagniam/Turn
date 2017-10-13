@@ -11,6 +11,13 @@ class Game {
         void MainMenu();
 
     private:
+
+		enum MenuType {
+			eMain = 0,
+			ePlayerClass,
+			eHowToPlay
+		};
+
         void SetPlayerData();
 		int InitializePlayerClass();
 		void SetPlayerClass(int);
@@ -24,7 +31,8 @@ class Game {
         void Battle();
 		void HowToPlay();
 
-		int GetChoice();
+		int GetChoice(MenuType menuType);
+		void DisplayMenu(MenuType menuType);
 
         // Pointers needed to call functions from respective classes.
         // They are pointers because they have child classes (they polymorph).
