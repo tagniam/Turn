@@ -203,12 +203,6 @@ void Game::Intermission(){
     for (int choice=0; IsPlaying;){
         ClearScreen();
         cout << "*--------- Intermission ----------* " << endl << endl;
-		
-	int tempLevel = _Player->GetLevel();
-	if (_Level != tempLevel) {
-		_Level = tempLevel;
-		cout << "Congratulation on leveling up!" << endl;
-	}
 
 	_Player->DisplayInventory();
         cout << "1) Start battle" << endl;
@@ -253,7 +247,6 @@ void Game::StartGame(){
 	// This initializes the variables on the Player end.
     ClearScreen();
     _Player->SetPlayerData();
-    _Level = _Player->GetLevel();
     
 
     // Loops while the game is still playing.
@@ -296,10 +289,10 @@ void Game::Battle(){
 
         // Executes when the enemy's health is 0 or below.
         if (_Enemy->IsDead()){
-            // Adds points to player's experience.
-            _Player->AddExperience(_Enemy->ReturnExperience());
             // Adds drops to player's inventory from defeated enemy.
             _Player->AddToInventory(_Enemy->GetDrops());
+            // Adds points to player's experience.
+            _Player->AddExperience(_Enemy->ReturnExperience());
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
 			
