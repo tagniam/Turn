@@ -18,16 +18,21 @@ using namespace Common;
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
-    for (int choice=0; choice!=2;){
+    for (int choice=0; choice!=3;){
         ClearScreen();
         cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
              << "1) Start Game" << endl
-             << "2) Quit" << endl << endl << "> ";
+			 << "2) How to play" << endl
+             << "3) Quit" << endl << endl << "> ";
         cin >> choice;
         switch(choice){
         case 1:
             StartGame();
-        // There's no 'case 2' because it breaks
+			break;
+		case 2:
+			HowToPlay();
+			break;
+        // There's no 'case 3' because it breaks
         // the loop already.
         }
     }
@@ -312,4 +317,33 @@ void Game::Battle(){
         }
     }
     Battle();
+}
+
+void Game::HowToPlay() {
+	for (int choice = 0; choice != 1;) {
+		ClearScreen();
+		cout << "============== HOW TO PLAY ==============" << endl << endl
+			<< "Turn is a turn-based RPG game." << endl
+			<< "Create your character and start playing." << endl
+			<< "For playing you have to choose what to do by typing" << endl 
+			<< "the corresponding number." << endl
+			<< "You can perform actions and use items." << endl << endl
+			<< "-- Actions --" << endl
+			<< "Attack: Regular attack" << endl
+			<< "Risk Attack: Attack deals more damage, but with a chance of missing" << endl
+			<< "Heal: Restore an amount of your HP" << endl
+			<< "Flee: Run away from battle" << endl << endl
+			<< "-- Items --" << endl
+			<< "Bombs: Deals 50HP to your opponent with no chance of missing" << endl
+			<< "Arrows: Deals 10-15HP to your opponent with no chance of missing" << endl
+			<< "Potion: Replenishes your HP to 100" << endl
+			<< "Whetstone: Restores your weapon's sharpness." << endl << endl
+			<< "Good luck and have fun!" << endl << endl
+			<< "1) Quit" << endl << endl << "> ";
+		cin >> choice;
+		switch (choice) {
+		case 1:
+			MainMenu();
+		}
+	}
 }
