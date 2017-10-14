@@ -1,0 +1,4 @@
+use
+scanf("%[^\n]s", str);
+or
+getline(cin,str);
