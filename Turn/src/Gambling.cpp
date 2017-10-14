@@ -26,9 +26,7 @@ void Gambling::Gamble(Player *_Player){
     if (_Player->GetCoins() < CoinsDeduction) { 
         // the player does not have enough money 
         cout << "You need at least " << CoinsDeduction << " coins to gamble." << endl << "0 - 9) Understood" << endl;
-
-        // wait for user input to exit
-        input();
+	Sleep(SLEEP_MS);
         return; 
     } 
 
