@@ -24,6 +24,7 @@ class Player : public Entity {
         void LoseCoins(int);
 
         void DisplayInventory();
+        int GetCoins();
 
     private:
         int GenericAttack();

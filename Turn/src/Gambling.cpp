@@ -21,6 +21,15 @@ void Gambling::Gamble(Player *_Player){
 
     // Generates random values for the local variables declared in the class.
     GenerateValues();
+
+    // check if the player has enough money to play 
+    if (_Player->GetCoins() < CoinsDeduction) { 
+        // the player does not have enough money 
+        cout << "You need at least " << CoinsDeduction << " coins to gamble." << endl;
+	Sleep(SLEEP_MS);
+        return; 
+    } 
+
     // Player's die. Equal to a random number between 1 and 9.
     int Die=ReturnShakenDie();
     // Initialized to analyze user input.
