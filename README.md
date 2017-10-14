@@ -32,5 +32,6 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 ## Contributing
 * Before working on an issue, make sure you comment on it to claim it. This prevents two people working on the same issue at the same time.
 
-# Add Some Texts Here
+# License
+* This project is licensed under the MIT License - see the LICENSE.md file for details.
 
