@@ -40,7 +40,7 @@ class Player : public Entity {
         int Flee();
 
         void printInventoryItem(std::string, int, std::string);
-        void printXPBar(string, int, std::string, std::string, int, std::string);
+        void printXPBar(std::string, int, std::string, std::string, int, std::string);
         void printDivider(char, char, std::string);
 
 
