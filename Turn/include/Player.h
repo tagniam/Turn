@@ -39,9 +39,9 @@ class Player : public Entity {
 
         int Flee();
 
-        void printInventoryItem(std::string, int, std::string);
-        void printXPBar(std::string, int, std::string, std::string, int, std::string);
-        void printDivider(char, char, std::string);
+        void PrintInventoryItem(std::string, int, std::string);
+        void PrintXPBar(std::string, int, std::string, std::string, int, std::string);
+        void PrintDivider(char, char, std::string);
 
 
 	int player_type;
