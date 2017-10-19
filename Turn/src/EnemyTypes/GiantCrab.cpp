@@ -7,7 +7,7 @@ GiantCrab::GiantCrab(){
 }
 
 int GiantCrab::ReturnDamage(){
-    return 7+rand()%8; // 7 - 15
+    return 7+rand()%8; // 7 - 14
 }
 
 int GiantCrab::ReturnRiskAttackDamage(){
@@ -26,5 +26,5 @@ int GiantCrab::ReturnRiskAttackDamage(){
 }
 
 int GiantCrab::ReturnHealAmount(){
-    return 5+rand()%7; // 5 -12
+    return 5+rand()%7; // 5 -11
 }
