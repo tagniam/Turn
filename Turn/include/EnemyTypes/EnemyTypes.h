@@ -7,5 +7,6 @@
 #include "GiantCrab.h"
 #include "Squid.h"
 #include "GiantSquid.h"
+#include "Lich.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

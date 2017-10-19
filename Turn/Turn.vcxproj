@@ -110,43 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Turn.cpp" />
-    <ClCompile Include="src\Common.cpp" />
-    <ClCompile Include="src\Enemy.cpp" />
-    <ClCompile Include="src\EnemyTypes\Crab.cpp" />
-    <ClCompile Include="src\EnemyTypes\GiantCrab.cpp" />
-    <ClCompile Include="src\EnemyTypes\GiantSquid.cpp" />
-    <ClCompile Include="src\EnemyTypes\Squid.cpp" />
-    <ClCompile Include="src\Gambling.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\PlayerTypes\Debugger.cpp" />
-    <ClCompile Include="src\PlayerTypes\Healer.cpp" />
-    <ClCompile Include="src\PlayerTypes\Rogue.cpp" />
-    <ClCompile Include="src\PlayerTypes\Saitama.cpp" />
-    <ClCompile Include="src\PlayerTypes\Warrior.cpp" />
-    <ClCompile Include="src\Store.cpp" />
+    <ClCompile Include="src\EnemyTypes\*.cpp" />
+    <ClCompile Include="src\*.cpp" />
+    <ClCompile Include="src\PlayerTypes\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Common.h" />
-    <ClInclude Include="include\Enemy.h" />
-    <ClInclude Include="include\EnemyTypes\Crab.h" />
-    <ClInclude Include="include\EnemyTypes\EnemyTypes.h" />
-    <ClInclude Include="include\EnemyTypes\GiantCrab.h" />
-    <ClInclude Include="include\EnemyTypes\GiantSquid.h" />
-    <ClInclude Include="include\EnemyTypes\Squid.h" />
-    <ClInclude Include="include\Entity.h" />
-    <ClInclude Include="include\Gambling.h" />
-    <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\Player.h" />
-    <ClInclude Include="include\PlayerTypes\Debugger.h" />
-    <ClInclude Include="include\PlayerTypes\Healer.h" />
-    <ClInclude Include="include\PlayerTypes\PlayerTypes.h" />
-    <ClInclude Include="include\PlayerTypes\Rogue.h" />
-    <ClInclude Include="include\PlayerTypes\Saitama.h" />
-    <ClInclude Include="include\PlayerTypes\Warrior.h" />
-    <ClInclude Include="include\Store.h" />
+    <ClInclude Include="include\*.h" />
+    <ClInclude Include="include\EnemyTypes\*.h" />
+    <ClInclude Include="include\PlayerTypes\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
