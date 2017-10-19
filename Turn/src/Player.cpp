@@ -10,7 +10,7 @@ using namespace Common;
 void Player::SaveGame(){
 	ofstream WriteData;
 	WriteData.open("data.txt");
-	if (ReadData.is_open()) {
+	if (WriteData.is_open()) {
         	WriteData << player_type << endl 
 			<< name << endl
 			<< level << endl
@@ -24,7 +24,7 @@ void Player::SaveGame(){
 			<< coins;
     		WriteData.close();
 	} else {
-		cout << "Error opening savegame data (data.txt)." << endl
+		cout << "Error opening savegame data (data.txt)." << endl;
 	}
 }
 
@@ -50,7 +50,7 @@ void Player::SetPlayerData(){
 		ReadData >> coins;
 		ReadData.close();
  	} else {
-		cout << "Error opening savegame data (data.txt)." << endl
+		cout << "Error opening savegame data (data.txt)." << endl;
 	}
 
 }
