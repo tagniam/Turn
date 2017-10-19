@@ -34,6 +34,15 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 | Debugger |      100      |         100        |       100      |
 | Saitama  |    9999999    |       9999999      |     9999999    |
 
+### Enemy Types
+| Name        | Attack Damage | Risk Attack Damage | Healing Amount | Experience Amount | Coins Drop |
+|-------------|---------------|--------------------|----------------|-------------------|------------|
+| Crab        |      1-10     |        2-15        |      1-11      |         20        |    0-49    |
+| Giant Crab  |      7-14     |        0-20        |      5-11      |        100        |    0-99    |
+| Squid       |      1-10     |        2-15        |      1-11      |         20        |    0-49    |
+| Giant Squid |      7-14     |        0-20        |      5-11      |         50        |    0-99    |
+| Lich        |      5-24     |        2-30        |      5-29      |        100        |   50-149   |
+
 ## Getting Started
 ### Prerequisites
 * Note: Turn only supports Windows at the moment  
