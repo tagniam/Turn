@@ -25,6 +25,15 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 * **Potion**: Replenishes your HP to 100
 * **Whetstone**: Restores your weapon's sharpness.
 
+### Player Classes
+| Name     | Attack Damage | Risk Attack Damage | Healing Amount |
+|----------|---------------|--------------------|----------------|
+| Warrior  |      0-20     |        0-20        |      1-10      |
+| Rogue    |      7-12     |        1-10        |      6-12      |
+| Healer   |      5-10     |        5-10        |      7-15      |
+| Debugger |      100      |         100        |       100      |
+| Saitama  |    9999999    |       9999999      |     9999999    |
+
 ## Getting Started
 ### Prerequisites
 * Note: Turn only supports Windows at the moment  
