@@ -13,18 +13,16 @@
 using namespace std;
 using namespace Common;
 
-
+// To avoid conflict with numeric_limits<streamsize>::max used in Game::GetChoice()
+#ifdef max
+#undef max
+#endif
 
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
     for (int choice=0; choice!=3;){
-        ClearScreen();
-        cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
-             << "1) Start Game" << endl
-	     << "2) How to play" << endl
-             << "3) Quit" << endl << endl << "> ";
-        cin >> choice;
+        choice = GetChoice(MenuType::eMain);
         switch(choice){
         case 1:
            	StartGame();
@@ -52,18 +50,8 @@ string Game::InitializePlayerName() {
 
 int Game::InitializePlayerClass() {
 	// Initializes the player's class through user choice.
-	ClearScreen();
 	int player_class = 0;
-	cout << endl
-		<< "Which class do you want to play as?" << endl
-		<< "1) Warrior (high damage, low healing capabilities)" << endl
-		<< "2) Rogue (moderate damage, moderate healing capabilities)" << endl
-		<< "3) Healer (low damage, high healing capabilities)" << endl
-		<< "4) Debugger (INFINITE DAMAGE!!!!)" << endl
-		<< "5) Saitama (self-explanatory)" << endl
-		<< endl << endl
-		<< "> ";
-	cin >> player_class;
+	player_class = GetChoice(MenuType::ePlayerClass);
 	SetPlayerClass(player_class);
 	return player_class;
 }
@@ -332,11 +320,55 @@ void Game::Battle(){
 
 void Game::HowToPlay() {
 	for (int choice = 0; choice != 1;) {
-		ClearScreen();
+		choice = GetChoice(MenuType::eHowToPlay);
+		switch (choice) {
+		case 1:
+			MainMenu();
+		}
+	}
+}
+
+int Game::GetChoice(MenuType menuType)
+{
+	DisplayMenu(menuType);
+	int choice = -1;
+	while (!(cin >> choice)) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input.  Please try again.";
+		Sleep(SLEEP_MS);
+		DisplayMenu(menuType);
+	}
+	return choice;
+}
+
+void Game::DisplayMenu(MenuType menuType)
+{
+	ClearScreen();
+	switch (menuType)
+	{
+	case Game::eMain:
+		cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
+			<< "1) Start Game" << endl
+			<< "2) How to play" << endl
+			<< "3) Quit" << endl << endl << "> ";
+		break;
+	case Game::ePlayerClass:
+		cout << endl
+			<< "Which class do you want to play as?" << endl
+			<< "1) Warrior (high damage, low healing capabilities)" << endl
+			<< "2) Rogue (moderate damage, moderate healing capabilities)" << endl
+			<< "3) Healer (low damage, high healing capabilities)" << endl
+			<< "4) Debugger (INFINITE DAMAGE!!!!)" << endl
+			<< "5) Saitama (self-explanatory)" << endl
+			<< endl << endl
+			<< "> ";
+		break;
+	case Game::eHowToPlay:
 		cout << "============== HOW TO PLAY ==============" << endl << endl
 			<< "Turn is a turn-based RPG game." << endl
 			<< "Create your character and start playing." << endl
-			<< "For playing you have to choose what to do by typing" << endl 
+			<< "For playing you have to choose what to do by typing" << endl
 			<< "the corresponding number." << endl
 			<< "You can perform actions and use items." << endl << endl
 			<< "-- Actions --" << endl
@@ -351,10 +383,8 @@ void Game::HowToPlay() {
 			<< "Whetstone: Restores your weapon's sharpness." << endl << endl
 			<< "Good luck and have fun!" << endl << endl
 			<< "1) Quit" << endl << endl << "> ";
-		cin >> choice;
-		switch (choice) {
-		case 1:
-			MainMenu();
-		}
+		break;
+	default:
+		break;
 	}
 }
