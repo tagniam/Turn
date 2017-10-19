@@ -2,6 +2,7 @@
 #include <ctime>
 #include <fstream>
 #include <Windows.h>
+#include <string>
 
 #include "..\include\Game.h"
 #include "..\include\Common.h"
@@ -40,10 +41,12 @@ string Game::InitializePlayerName() {
 	ClearScreen();
 	string name;
 	cout << "What is your name?"
-		<< endl << endl
+		<< endl
+		<< endl
 		<< "> ";
 
-	cin >> name; // Change to full name
+	cin.ignore();
+	getline(cin, name); // Accepts full name
 	return name;
 }
 
