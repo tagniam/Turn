@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AEEE6A59-0778-4707-B5F6-126F3EE6FE98}</ProjectGuid>
     <RootNamespace>Turn</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -110,45 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\EnemyTypes\Lich.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Turn.cpp" />
-    <ClCompile Include="src\Common.cpp" />
-    <ClCompile Include="src\Enemy.cpp" />
-    <ClCompile Include="src\EnemyTypes\Crab.cpp" />
-    <ClCompile Include="src\EnemyTypes\GiantCrab.cpp" />
-    <ClCompile Include="src\EnemyTypes\GiantSquid.cpp" />
-    <ClCompile Include="src\EnemyTypes\Squid.cpp" />
-    <ClCompile Include="src\Gambling.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\PlayerTypes\Debugger.cpp" />
-    <ClCompile Include="src\PlayerTypes\Healer.cpp" />
-    <ClCompile Include="src\PlayerTypes\Rogue.cpp" />
-    <ClCompile Include="src\PlayerTypes\Saitama.cpp" />
-    <ClCompile Include="src\PlayerTypes\Warrior.cpp" />
-    <ClCompile Include="src\Store.cpp" />
+    <ClCompile Include="src\EnemyTypes\*.cpp" />
+    <ClCompile Include="src\*.cpp" />
+    <ClCompile Include="src\PlayerTypes\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Common.h" />
-    <ClInclude Include="include\Enemy.h" />
-    <ClInclude Include="include\EnemyTypes\Crab.h" />
-    <ClInclude Include="include\EnemyTypes\EnemyTypes.h" />
-    <ClInclude Include="include\EnemyTypes\GiantCrab.h" />
-    <ClInclude Include="include\EnemyTypes\GiantSquid.h" />
-    <ClInclude Include="include\EnemyTypes\Lich.h" />
-    <ClInclude Include="include\EnemyTypes\Squid.h" />
-    <ClInclude Include="include\Entity.h" />
-    <ClInclude Include="include\Gambling.h" />
-    <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\Player.h" />
-    <ClInclude Include="include\PlayerTypes\Debugger.h" />
-    <ClInclude Include="include\PlayerTypes\Healer.h" />
-    <ClInclude Include="include\PlayerTypes\PlayerTypes.h" />
-    <ClInclude Include="include\PlayerTypes\Rogue.h" />
-    <ClInclude Include="include\PlayerTypes\Saitama.h" />
-    <ClInclude Include="include\PlayerTypes\Warrior.h" />
-    <ClInclude Include="include\Store.h" />
+    <ClInclude Include="include\*.h" />
+    <ClInclude Include="include\EnemyTypes\*.h" />
+    <ClInclude Include="include\PlayerTypes\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
