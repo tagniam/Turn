@@ -8,20 +8,24 @@ using namespace std;
 using namespace Common;
 
 void Player::SaveGame(){
-    ofstream WriteData;
-    WriteData.open("data.txt");
-    WriteData << player_type << endl 
-			  << name << endl
-              << level << endl
-              << experience << endl
-              << health << endl
-              << arrows << endl
-              << bombs << endl
-              << potions << endl
-              << whetstones << endl
-              << weaponstrength << endl
-              << coins;
-    WriteData.close();
+	ofstream WriteData;
+	WriteData.open("data.txt");
+	if (WriteData.is_open()) {
+        	WriteData << player_type << endl 
+			<< name << endl
+			<< level << endl
+			<< experience << endl
+			<< health << endl
+			<< arrows << endl
+			<< bombs << endl
+			<< potions << endl
+			<< whetstones << endl
+			<< weaponstrength << endl
+			<< coins;
+    		WriteData.close();
+	} else {
+		cout << "Error opening savegame data (data.txt)." << endl;
+	}
 }
 
 
@@ -32,21 +36,23 @@ void Player::SetPlayerData(){
 	ifstream ReadData;
 	ReadData.clear();
 	ReadData.open("data.txt");
+	if (ReadData.is_open())	{
+		ReadData >> player_type;
+    		ReadData >> name;
+    		ReadData >> level;
+    		ReadData >> experience;
+		ReadData >> health;
+		ReadData >> arrows;
+		ReadData >> bombs;
+		ReadData >> potions;
+		ReadData >> whetstones;
+		ReadData >> weaponstrength;
+		ReadData >> coins;
+		ReadData.close();
+ 	} else {
+		cout << "Error opening savegame data (data.txt)." << endl;
+	}
 
-	ReadData >> player_type;
-    ReadData >> name;
-    ReadData >> level;
-    ReadData >> experience;
-    ReadData >> health;
-    ReadData >> arrows;
-    ReadData >> bombs;
-    ReadData >> potions;
-    ReadData >> whetstones;
-    ReadData >> weaponstrength;
-    ReadData >> coins;
-
-    ReadData.close();
-    
 }
 
 int Player::Attack(){
@@ -118,6 +124,59 @@ int Player::Attack(){
 		default:
 			// Generically attacks by default if player's choice does not equal above cases.
 			return GenericAttack();
+		}
+	}
+}
+
+void Player::UseItem() {
+	// Use item from inventory
+	int choice = 0;
+
+	while (true) {
+		ClearScreen();
+
+		// Displays the inventory.
+		DisplayInventory();
+
+		// Gives player a list of moves to choose from.
+		cout << "Choose which item use:" << endl
+			<< "1) Use Potion" << endl
+			<< "2) Use Whetstone" << endl
+			<< "0) Quit" << endl << endl;
+
+		choice = input();
+
+		// Evaluates player's choice.
+		switch (choice) {
+		case 0:
+			return;
+		case 1:
+			// Player drinks a potion.
+			// Does not execute if there are no potions in the inventory.
+			if (potions > 0) {
+				UsePotion();
+				Sleep(SLEEP_MS);
+			} else {
+				cout << "No potions in the inventory!" << endl;
+				Sleep(SLEEP_MS);
+			}
+
+			break;
+		case 2:
+			// Player sharpens their weapon with a whetstone.
+			// Does not execute if there are no whetstones in inventory.
+			// No damage is done to the enemy.
+			if (whetstones > 0) {
+				UseWhetstone();
+				Sleep(SLEEP_MS);
+			} else {
+				cout << "No whetstones in the inventory!" << endl;
+				Sleep(SLEEP_MS);
+			}
+
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -256,6 +315,10 @@ void Player::DisplayInventory(){
     cout << "| Wealth: [" << coins << "] coins" << endl;
     cout << "*---------------------------------*" << endl << endl;
 }
+
+int Player::GetCoins() { 
+    return coins; 
+} 
 
 int Player::GenericAttack(){
     int damage = ReturnDamage();

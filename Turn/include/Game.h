@@ -41,6 +41,8 @@ class Game {
         // This object is not a pointer because it does not have a child class.
         Gambling _Gambling;
         Store _Store;
+        // the current level the player is at it this is different than what is in the _player object the player leveled up
+        int _Level;
 
 };
 

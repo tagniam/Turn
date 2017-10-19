@@ -25,11 +25,11 @@ void Game::MainMenu(){
         choice = GetChoice(MenuType::eMain);
         switch(choice){
         case 1:
-            StartGame();
-			break;
-		case 2:
-			HowToPlay();
-			break;
+           	StartGame();
+		break;
+	case 2:
+		HowToPlay();
+		break;
         // There's no 'case 3' because it breaks
         // the loop already.
         }
@@ -139,7 +139,7 @@ void Game::SetEnemy(){
     // Generates a random integer to determine class of the enemy.
     // The abstract class Enemy is morphed with one of its child classes.
 
-    int selector = rand()%4;
+    int selector = rand()%5;
     switch(selector){
         case 0:
             // Enemy is a crab.
@@ -157,6 +157,10 @@ void Game::SetEnemy(){
             // Enemy is a giant squid.
             _Enemy = new GiantSquid;
             break;
+		case 4:
+			// Enemy is a Lich
+			_Enemy = new Lich;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
@@ -191,11 +195,13 @@ void Game::Intermission(){
     for (int choice=0; IsPlaying;){
         ClearScreen();
         cout << "*--------- Intermission ----------* " << endl << endl;
-		_Player->DisplayInventory();
+
+	_Player->DisplayInventory();
         cout << "1) Start battle" << endl;
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
-        cout << "4) Quit" << endl << endl;
+	cout << "4) Use Item" << endl;
+        cout << "5) Quit" << endl << endl;
 
         choice = input();
 
@@ -213,9 +219,14 @@ void Game::Intermission(){
             // _Player is passed in to add items won to the player inventory.
             _Gambling.Gamble(_Player);
             break;
-        case 4:
+	case 4:
+	    _Player->UseItem();
+	    _Player->SaveGame();
+	    break;
+        case 5:
             // Breaks the loop in StartGame(), going back to MainMenu().
             IsPlaying=false;
+	    break;
         }
     }
 }
@@ -276,10 +287,10 @@ void Game::Battle(){
 
         // Executes when the enemy's health is 0 or below.
         if (_Enemy->IsDead()){
-            // Adds points to player's experience.
-            _Player->AddExperience(_Enemy->ReturnExperience());
             // Adds drops to player's inventory from defeated enemy.
             _Player->AddToInventory(_Enemy->GetDrops());
+            // Adds points to player's experience.
+            _Player->AddExperience(_Enemy->ReturnExperience());
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
 			
