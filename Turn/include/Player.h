@@ -13,7 +13,7 @@ class Player : public Entity {
         int Attack();
 	void UseItem();
         void AddToInventory(std::vector<int>);
-		
+
         void DisplayHUD(Enemy*);
         void ReplenishHealth();
 
@@ -38,7 +38,11 @@ class Player : public Entity {
         int ReturnBowDamage();
 
         int Flee();
-        
+
+        void PrintInventoryItem(std::string, int, std::string);
+        void PrintXPBar(std::string, int, std::string, std::string, int, std::string);
+        void PrintDivider(char, char, std::string);
+
 
 	int player_type;
         int level;

@@ -8,7 +8,7 @@ GiantSquid::GiantSquid(){
 }
 
 int GiantSquid::ReturnDamage(){
-    return 7+rand()%8; // 7 - 15
+    return 7+rand()%8; // 7 - 14
 }
 
 int GiantSquid::ReturnRiskAttackDamage(){
@@ -27,5 +27,5 @@ int GiantSquid::ReturnRiskAttackDamage(){
 }
 
 int GiantSquid::ReturnHealAmount(){
-    return 5+rand()%7; // 5 -12
+    return 5+rand()%7; // 5 -11
 }
