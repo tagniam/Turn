@@ -1,5 +1,7 @@
 #include <fstream>
 #include <iostream>
+#include <cmath>
+#include <string>
 
 #include "..\include\Common.h"
 #include "..\include\Player.h"
@@ -8,6 +10,7 @@ using namespace std;
 using namespace Common;
 
 void Player::SaveGame(){
+
 	ofstream WriteData;
 	WriteData.open("data.txt");
 	if (WriteData.is_open()) {
@@ -52,7 +55,6 @@ void Player::SetPlayerData(){
  	} else {
 		cout << "Error opening savegame data (data.txt)." << endl;
 	}
-
 }
 
 int Player::Attack(){
@@ -75,7 +77,7 @@ int Player::Attack(){
 		<< "6) Use Potion" << endl
 		<< "7) Use Whetstone" << endl
 		<< "0) Get me out of here!" << endl << endl;
-	
+
 	while (true) {
 		choice = input();
 
@@ -101,7 +103,7 @@ int Player::Attack(){
 		case 5:
 			// Player throws a bomb.
 			// Does not execute if there are no bombs in the inventory.
-			if (bombs > 0) 
+			if (bombs > 0)
 				return UseBomb();
 			break;
 		case 6:
@@ -183,15 +185,15 @@ void Player::UseItem() {
 
 void Player::AddToInventory(vector<int> drops){
     // Adds items to inventory and prints out what the player received.
-	
+
     // Adds items received to total items.
     arrows += drops.at(0);
 	bombs += drops.at(1);
 	potions += drops.at(2);
 	whetstones += drops.at(3);
     coins += drops.at(4);
-	
-	
+
+
     // Prints number of items received.
 	cout << "You have gained: " << endl;
 	if (drops[0] > 0)
@@ -305,20 +307,21 @@ void Player::DisplayInventory(){
     }
     // Simply prints the player's inventory.
 
-    cout << "*----------- INVENTORY -----------* " << endl;
-    cout << "Level " << level << "\t\t\t" << experience << "/100 xp" << endl;
-    cout << "| Arrows: [" << arrows << "]" << endl;
-    cout << "| Potions: [" << potions << "]" << endl;
-    cout << "| Bombs: [" << bombs << "]" << endl;
-    cout << "| Whetstones: [" << whetstones << "]" << endl;
-    cout << "| Weapon strength: [" << weaponstrength << "%]" << endl;
-    cout << "| Wealth: [" << coins << "] coins" << endl;
-    cout << "*---------------------------------*" << endl << endl;
+    PrintDivider('*', '-', " INVENTORY ");
+    PrintXPBar("Level ", level, "", "", experience, "/100 xp");
+    PrintDivider('+', '-', "");
+    PrintInventoryItem("Arrows: [", arrows, "]");
+    PrintInventoryItem("Potions: [", potions, "]");
+    PrintInventoryItem("Bombs: [", bombs, "]");
+    PrintInventoryItem("Whetstones: [", whetstones, "]");
+    PrintInventoryItem("Weapon strength: [", weaponstrength, "%]");
+    PrintInventoryItem("Wealth: [", coins, "] coins");
+    PrintDivider('*', '-', "");
 }
 
-int Player::GetCoins() { 
-    return coins; 
-} 
+int Player::GetCoins() {
+    return coins;
+}
 
 int Player::GenericAttack(){
     int damage = ReturnDamage();
@@ -373,7 +376,7 @@ int Player::UseBomb(){
     cout << " hurls a bomb! It deals ";
 	ColourPrint("50", RED);
 	cout << " damage points!" << endl;
-    
+
 	bombs--;
     return 50;
 }
@@ -404,4 +407,63 @@ int Player::Flee(){
 	ColourPrint(name, DARK_GREY);
     cout << " chooses to flee!" << endl;
     return -1;
+}
+
+void Player::PrintInventoryItem(string preText, int itemCount, string postText)
+{
+	int countLength = 0, countCopy = itemCount;
+	// Calculate length of itemCount
+	do {
+		countLength++;
+		countCopy /= 10;
+	} while (countCopy);
+
+	// Subtract space used in line (4 spaces for front and back dash/space combos, length of start and end text, length of itemCount) from the total available width
+	int freeSpace = 35 - 4 - preText.length() - postText.length() - countLength;
+
+	// Create a string with the appropriate number of spaces to make the line meet required width
+	string spaces(freeSpace, ' ');
+
+	// Print the line
+	cout << "| " << preText << itemCount << postText << spaces << " |" << endl;
+}
+
+void Player::PrintXPBar(string preText1, int level, string postText1, string preText2, int experience, string postText2)
+{
+	int countLength = 0, levelCopy = level, experienceCopy = experience;
+	// Calculate length of level and experience
+	do {
+		countLength++;
+		levelCopy /= 10;
+	} while (levelCopy);
+	do {
+		countLength++;
+		experienceCopy /= 10;
+	} while (experienceCopy);
+
+	// Subtract space used in line (4 spaces for front and back dash/space combos, length of start and end text, length of level and experience) from the total available width
+	int freeSpace = 35 - 4 - preText1.length() - postText1.length() - preText2.length() - postText2.length()- countLength;
+
+	// Create a string with the appropriate number of spaces to make the line meet required width
+	string spaces(freeSpace, ' ');
+
+	// Print the line
+	cout << "| " << preText1 << level << postText1 << spaces << preText2 << experience << postText2 << " |" << endl;
+}
+
+void Player::PrintDivider(char edge, char filler, string centerText)
+{
+	int countLength = 0;
+
+	// Subtract space used in line (2 spaces for edge symbols, length of centerText) from the total available width
+	int freeSpace = 35 - 2 - centerText.length();
+	int frontSpace = freeSpace/2;
+	int rearSpace = freeSpace - frontSpace;
+
+	// Create a the front and rear filler string
+	string frontFiller(frontSpace, filler);
+	string rearFiller(rearSpace, filler);
+
+	// Print the line
+	cout << edge << frontFiller << centerText << rearFiller << edge << endl;
 }
