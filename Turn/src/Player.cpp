@@ -305,15 +305,16 @@ void Player::DisplayInventory(){
     }
     // Simply prints the player's inventory.
 
-    cout << "*----------- INVENTORY -----------* " << endl;
-    cout << "Level " << level << "\t\t\t" << experience << "/100 xp" << endl;
-    cout << "| Arrows: [" << arrows << "]" << endl;
-    cout << "| Potions: [" << potions << "]" << endl;
-    cout << "| Bombs: [" << bombs << "]" << endl;
-    cout << "| Whetstones: [" << whetstones << "]" << endl;
-    cout << "| Weapon strength: [" << weaponstrength << "%]" << endl;
-    cout << "| Wealth: [" << coins << "] coins" << endl;
-    cout << "*---------------------------------*" << endl << endl;
+    cout << "*----------- INVENTORY ----------------------------------* " << endl;
+    cout << "| Level " << level << "\t\t\t" << experience << "/100 xp |" << endl<<endl;
+    cout << "+--------------------------------------------------------+"<<endl;
+    cout << "| Arrows: [" << arrows << "]                             |" << endl;
+    cout << "| Potions: [" << potions << "]                           |" << endl;
+    cout << "| Bombs: [" << bombs << "]                               |" << endl;
+    cout << "| Whetstones: [" << whetstones << "]                     |" << endl;
+    cout << "| Weapon strength: [" << weaponstrength << "%]           |" << endl;
+    cout << "| Wealth: [" << coins << "] coins                        |" << endl;
+    cout << "*--------------------------------------------------------*" << endl << endl;
 }
 
 int Player::GetCoins() { 
