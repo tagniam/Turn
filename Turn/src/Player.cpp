@@ -307,16 +307,16 @@ void Player::DisplayInventory(){
     }
     // Simply prints the player's inventory.
 
-    printDivider('*', '-', " INVENTORY ");
-	printXPBar("Level ", level, "", "", experience, "/100 xp");
-    printDivider('+', '-', "");
-    printInventoryItem("Arrows: [", arrows, "]");
-    printInventoryItem("Potions: [", potions, "]");
-    printInventoryItem("Bombs: [", bombs, "]");
-    printInventoryItem("Whetstones: [", whetstones, "]");
-    printInventoryItem("Weapon strength: [", weaponstrength, "%]");
-    printInventoryItem("Wealth: [", coins, "] coins");
-    printDivider('*', '-', "");
+    PrintDivider('*', '-', " INVENTORY ");
+    PrintXPBar("Level ", level, "", "", experience, "/100 xp");
+    PrintDivider('+', '-', "");
+    PrintInventoryItem("Arrows: [", arrows, "]");
+    PrintInventoryItem("Potions: [", potions, "]");
+    PrintInventoryItem("Bombs: [", bombs, "]");
+    PrintInventoryItem("Whetstones: [", whetstones, "]");
+    PrintInventoryItem("Weapon strength: [", weaponstrength, "%]");
+    PrintInventoryItem("Wealth: [", coins, "] coins");
+    PrintDivider('*', '-', "");
 }
 
 int Player::GetCoins() {
@@ -409,7 +409,7 @@ int Player::Flee(){
     return -1;
 }
 
-void Player::printInventoryItem(string preText, int itemCount, string postText)
+void Player::PrintInventoryItem(string preText, int itemCount, string postText)
 {
 	int countLength = 0, countCopy = itemCount;
 	// Calculate length of itemCount
@@ -428,7 +428,7 @@ void Player::printInventoryItem(string preText, int itemCount, string postText)
 	cout << "| " << preText << itemCount << postText << spaces << " |" << endl;
 }
 
-void Player::printXPBar(string preText1, int level, string postText1, string preText2, int experience, string postText2)
+void Player::PrintXPBar(string preText1, int level, string postText1, string preText2, int experience, string postText2)
 {
 	int countLength = 0, levelCopy = level, experienceCopy = experience;
 	// Calculate length of level and experience
@@ -451,7 +451,7 @@ void Player::printXPBar(string preText1, int level, string postText1, string pre
 	cout << "| " << preText1 << level << postText1 << spaces << preText2 << experience << postText2 << " |" << endl;
 }
 
-void Player::printDivider(char edge, char filler, string centerText)
+void Player::PrintDivider(char edge, char filler, string centerText)
 {
 	int countLength = 0;
 
