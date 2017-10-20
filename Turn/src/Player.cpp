@@ -41,9 +41,10 @@ void Player::SetPlayerData(){
 	ReadData.open("data.txt");
 	if (ReadData.is_open())	{
 		ReadData >> player_type;
-    		ReadData >> name;
-    		ReadData >> level;
-    		ReadData >> experience;
+    ReadData.ignore();       // Ignore rest of line ready for getline
+    getline(ReadData, name);
+    ReadData >> level;
+    ReadData >> experience;
 		ReadData >> health;
 		ReadData >> arrows;
 		ReadData >> bombs;
