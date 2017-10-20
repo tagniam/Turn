@@ -178,6 +178,8 @@ void Player::UseItem() {
 
 			break;
 		default:
+				cout<<"Item not present in the inventory!"<<endl;
+ 				Sleep(SLEEP_MS);
 			break;
 		}
 	}
