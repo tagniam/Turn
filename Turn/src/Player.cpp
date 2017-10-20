@@ -95,25 +95,37 @@ int Player::Attack(){
 			// Player shoots their bow.
 			if (arrows > 0)
 				return BowAndArrow();
-			break;
+			else
+				cout << "No arrows in the inventory!" << endl;
+				Sleep(SLEEP_MS);
+				return -2;
 		case 4:
 			// Player heals, no damage is done to enemy.
-			Heal();
+			if (potions > 0)
+				Heal();
+			else {
+				cout << "No potions in the inventory!" << endl;
+				return -2;
+			}
 			return 0;
 		case 5:
 			// Player throws a bomb.
 			// Does not execute if there are no bombs in the inventory.
 			if (bombs > 0)
 				return UseBomb();
-			break;
+			else 
+				cout << "No bombs in the inventory!" << endl;
+				return -2;
 		case 6:
 			// Player drinks a potion.
 			// Does not execute if there are no potions in the inventory.
 			if (potions > 0) {
 				UsePotion();
 				return 0;
+			}else {
+				cout << "No potions in the inventory!" << endl;
+				return -2;
 			}
-			break;
 		case 7:
 			// Player sharpens their weapon with a whetstone.
 			// Does not execute if there are no whetstones in inventory.
@@ -121,8 +133,10 @@ int Player::Attack(){
 			if (whetstones > 0) {
 				UseWhetstone();
 				return 0;
+			} else {
+				cout << "No whetsones in the inventory!" << endl;
+				return -2;
 			}
-			break;
 		default:
 			// Generically attacks by default if player's choice does not equal above cases.
 			return GenericAttack();
@@ -161,8 +175,8 @@ void Player::UseItem() {
 			} else {
 				cout << "No potions in the inventory!" << endl;
 				Sleep(SLEEP_MS);
-			}
 
+			}
 			break;
 		case 2:
 			// Player sharpens their weapon with a whetstone.

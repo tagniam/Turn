@@ -274,8 +274,10 @@ void Game::Battle(){
         _Player->DisplayHUD(_Enemy);
         _Enemy->DisplayHUD();
 
+		int damagePlayer = _Player->Attack();
         // Player's turn to attack Enemy.
-        _Enemy->TakeDamage(_Player->Attack());
+
+		_Enemy->TakeDamage(damagePlayer);
         // Pauses console and ignores user input for SLEEP_MS milliseconds.
         Sleep(SLEEP_MS);
 
@@ -301,7 +303,8 @@ void Game::Battle(){
         }
 
         // Enemy's turn to attack player.
-        _Player->TakeDamage(_Enemy->Attack());
+		if (damagePlayer != -2)
+			_Player->TakeDamage(_Enemy->Attack());
         Sleep(SLEEP_MS);
 
         // Executes when player's health is 0 or below.
