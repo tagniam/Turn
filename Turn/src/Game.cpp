@@ -33,6 +33,11 @@ void Game::MainMenu(){
 		break;
         // There's no 'case 3' because it breaks
         // the loop already.
+    case 3:
+        exit(1);
+        break;
+        //There is case 3 anymore because it asks
+        //twice for quit. :)
         }
     }
 }
