@@ -4,6 +4,20 @@
 #include <vector>
 #include "Entity.h"
 
+enum EnemyType
+{
+    etCrab,
+    etGiantCrab,
+    etSquid,
+    etGiantSquid,
+    etLich,
+    etVampire,
+    etWerewolf,
+    etGoblin,
+    etGargoyle,
+    etNumEnemyTypes
+};
+
 
 class Enemy : public Entity {
     public:
@@ -14,6 +28,8 @@ class Enemy : public Entity {
 
 		std::vector<int> GetDrops();
         int ReturnExperience();
+
+        virtual EnemyType GetType() = 0;
 
     protected:
         int GenericAttack();

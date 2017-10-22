@@ -6,6 +6,10 @@ Goblin::Goblin() {
 	CoinsDrop = 50 + rand() % 100;
 }
 
+EnemyType Goblin::GetType() {
+    return etGoblin;
+}
+
 int Goblin::ReturnDamage() {
 	return 5 + rand() % 20;
 }

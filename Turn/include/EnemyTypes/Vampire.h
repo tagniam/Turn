@@ -9,6 +9,7 @@ class Vampire : public Enemy
 public:
 	Vampire();
 
+    EnemyType GetType() override;
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();

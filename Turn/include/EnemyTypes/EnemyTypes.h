@@ -13,18 +13,4 @@
 #include "Goblin.h"
 #include "Gargoyle.h"
 
-enum EnemyType
-{
-    etCrab,
-    etGiantCrab,
-    etSquid,
-    etGiantSquid,
-    etLich,
-    etVampire,
-    etWerewolf,
-    etGoblin,
-    etGargoyle,
-    etNumEnemyTypes
-};
-
 #endif // ENEMYTYPES_H_INCLUDED

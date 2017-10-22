@@ -9,6 +9,7 @@ class Gargoyle : public Enemy
 public:
 	Gargoyle();
 
+    EnemyType GetType() override;
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();

@@ -9,6 +9,7 @@ class Werewolf : public Enemy
 public:
 	Werewolf();
 
+    EnemyType GetType() override;
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();

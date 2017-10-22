@@ -5,12 +5,14 @@
 
 
 class GiantCrab : public Crab {
-    public:
-        GiantCrab();
-    private:
-        int ReturnDamage();
-        int ReturnRiskAttackDamage();
-        int ReturnHealAmount();
+public:
+    GiantCrab();
+
+    EnemyType GetType() override;
+private:
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // GIANTCRAB_H

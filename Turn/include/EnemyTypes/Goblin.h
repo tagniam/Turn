@@ -9,6 +9,7 @@ class Goblin : public Enemy
 public:
 	Goblin();
 
+    EnemyType GetType() override;
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();

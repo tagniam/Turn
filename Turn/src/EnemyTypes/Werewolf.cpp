@@ -6,6 +6,10 @@ Werewolf::Werewolf() {
 	CoinsDrop = 50 + rand() % 100;
 }
 
+EnemyType Werewolf::GetType() {
+    return etWerewolf;
+}
+
 int Werewolf::ReturnDamage() {
 	return 5 + rand() % 20;
 }

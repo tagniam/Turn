@@ -6,6 +6,10 @@ Vampire::Vampire() {
 	CoinsDrop = 50 + rand() % 100;
 }
 
+EnemyType Vampire::GetType() {
+    return etVampire;
+}
+
 int Vampire::ReturnDamage() {
 	return 5 + rand() % 20;
 }

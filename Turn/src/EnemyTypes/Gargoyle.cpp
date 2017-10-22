@@ -6,6 +6,10 @@ Gargoyle::Gargoyle() {
 	CoinsDrop = 50 + rand() % 100;
 }
 
+EnemyType Gargoyle::GetType() {
+    return etGargoyle;
+}
+
 int Gargoyle::ReturnDamage() {
 	return 5 + rand() % 20;
 }
