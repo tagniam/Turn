@@ -1,4 +1,4 @@
-#include "..\..\include\PlayerTypes\Warrior.h"
+#include "../../include/PlayerTypes/Warrior.h"
 
 int Warrior::ReturnDamage(){
     return rand()%21;

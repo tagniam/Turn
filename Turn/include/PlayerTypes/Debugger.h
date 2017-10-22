@@ -1,7 +1,7 @@
 #ifndef DEBUGGER_H
 #define DEBUGGER_H
 
-#include "..\Player.h"
+#include "../Player.h"
 
 
 class Debugger : public Player {

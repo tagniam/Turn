@@ -1,4 +1,4 @@
-#include "..\..\include\PlayerTypes\Rogue.h"
+#include "../../include/PlayerTypes/Rogue.h"
 
 
 int Rogue::ReturnDamage(){
