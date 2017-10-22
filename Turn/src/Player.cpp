@@ -88,17 +88,23 @@ int Player::Attack(){
 			return Flee();
 		case 1:
 			// Player generically attacks.
+			PlayPrimaryAttack();
 			return GenericAttack();
 		case 2:
 			// Player takes a risk and attacks.
+			PlayPrimaryAttack();
 			return RiskAttack();
 		case 3:
 			// Player shoots their bow.
 			if (arrows > 0)
+			{
+				PlaySecondaryAttack();
 				return BowAndArrow();
+			}
 			break;
 		case 4:
 			// Player heals, no damage is done to enemy.
+			PlayHeal();
 			Heal();
 			return 0;
 		case 5:
