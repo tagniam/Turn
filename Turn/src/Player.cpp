@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <Windows.h>
+#include <MmStream.h>
+#include <mciapi.h>
 
 #include "..\include\Common.h"
 #include "..\include\Player.h"
@@ -353,6 +356,7 @@ int Player::BowAndArrow(){
     int damage = ReturnBowDamage();
 	ColourPrint(name, DARK_GREY);
     cout << " shoots his bow! He deals ";
+    PlaySound("Arrow.wav", NULL, SND_FILENAME | SND_ASYNC);
     SetConsoleTextAttribute(hConsole, RED);
     cout << damage;
     SetConsoleTextAttribute(hConsole, GREY);
@@ -364,6 +368,7 @@ void Player::UseWhetstone(){
     weaponstrength=100;
 	ColourPrint(name, DARK_GREY);
     cout << " sharpened his weapon!" << endl;
+    PlaySound("Sharpening.wav", NULL, SND_FILENAME | SND_ASYNC);
     whetstones--;
 }
 
@@ -371,12 +376,14 @@ void Player::UsePotion(){
     health=100;
 	ColourPrint(name, DARK_GREY);
     cout << " drank a healing potion!" << endl;
+    PlaySound("Drinking.wav", NULL, SND_FILENAME | SND_ASYNC);
     potions--;
 }
 
 int Player::UseBomb(){
 	ColourPrint(name, DARK_GREY);
     cout << " hurls a bomb! It deals ";
+    PlaySound("Bomb+1.wav", NULL, SND_FILENAME | SND_ASYNC);
 	ColourPrint("50", RED);
 	cout << " damage points!" << endl;
 
