@@ -22,17 +22,17 @@ using namespace Common;
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
-    for (int choice=0; choice!=3;){
+	    for (int choice=0; choice!=3;){
         choice = GetChoice(MenuType::eMain);
         switch(choice){
-        case 1:
-           	StartGame();
-		break;
-	case 2:
-		HowToPlay();
-		break;
-        // There's no 'case 3' because it breaks
-        // the loop already.
+			case 1:
+           		StartGame();
+				break;
+			case 2:
+				HowToPlay();
+				break;
+			case 3:
+				break;
         }
     }
 }
@@ -321,13 +321,8 @@ void Game::Battle(){
 }
 
 void Game::HowToPlay() {
-	for (int choice = 0; choice != 1;) {
-		choice = GetChoice(MenuType::eHowToPlay);
-		switch (choice) {
-		case 1:
-			MainMenu();
-		}
-	}
+
+	GetChoice(MenuType::eHowToPlay);
 }
 
 int Game::GetChoice(MenuType menuType)
@@ -353,7 +348,7 @@ void Game::DisplayMenu(MenuType menuType)
 		cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
 			<< "1) Start Game" << endl
 			<< "2) How to play" << endl
-			<< "3) Quit" << endl << endl << "> ";
+			<< "3) Exit" << endl << endl << "> ";
 		break;
 	case Game::ePlayerClass:
 		cout << endl
