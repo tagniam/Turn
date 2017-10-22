@@ -21,7 +21,7 @@ int Goblin::ReturnRiskAttackDamage() {
 		return 2;
 		break;
 	case 4: case 5:
-		return 30;
+		return 20;
 		break;
 	default:
 		return 0;
@@ -30,5 +30,5 @@ int Goblin::ReturnRiskAttackDamage() {
 }
 
 int Goblin::ReturnHealAmount() {
-	return 5 + rand() % 25;
+	return 3 + rand() % 10;
 }

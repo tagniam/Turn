@@ -21,7 +21,7 @@ int Gargoyle::ReturnRiskAttackDamage() {
 		return 2;
 		break;
 	case 4: case 5:
-		return 30;
+		return 25;
 		break;
 	default:
 		return 0;
@@ -30,5 +30,5 @@ int Gargoyle::ReturnRiskAttackDamage() {
 }
 
 int Gargoyle::ReturnHealAmount() {
-	return 5 + rand() % 25;
+	return 6 + rand() % 15;
 }

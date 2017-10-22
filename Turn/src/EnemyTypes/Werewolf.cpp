@@ -21,7 +21,7 @@ int Werewolf::ReturnRiskAttackDamage() {
 		return 2;
 		break;
 	case 4: case 5:
-		return 30;
+		return 20;
 		break;
 	default:
 		return 0;
@@ -30,5 +30,5 @@ int Werewolf::ReturnRiskAttackDamage() {
 }
 
 int Werewolf::ReturnHealAmount() {
-	return 5 + rand() % 25;
+	return 4 + rand() % 15;
 }
