@@ -15,8 +15,8 @@ const unsigned short potionCost = 150;
 const unsigned short whetstoneCost = 20;
 
 //Messages
-string lowCoinsMessage = " Insufficient Coins !";
-string invalidChoice = " Invalid Choice Entered !";
+const string lowCoinsMessage = " Insufficient Coins !";
+const string invalidChoice = " Invalid Choice !";
 
 void Store::StoreFront(Player* _Player) {
 
@@ -27,17 +27,18 @@ void Store::StoreFront(Player* _Player) {
 	{
 		ClearScreen();
 		coins = _Player->GetCoins();
-		cout << endl << " Jeremy's Tools Store\tPlayer: ";
-		cout << coins << " Coins" << endl << endl;
-		cout << " ----ITEM----------------COST---------------- " << endl << endl;
+		cout << endl << endl;
+		_Player->DisplayInventory();
+		cout << endl << " Jeremy's Tools Store" << endl << endl;
+		cout << " ----ITEM----------------COST------ " << endl << endl;
 		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
 		cout << " 2) Bomb\t\t " << bombCost << endl;
 		cout << " 3) Potion\t\t " << potionCost << endl;
 		cout << " 4) Whetstone\t\t " << whetstoneCost << endl << endl;
 		cout << " 0) Exit" << endl << endl;
-		cout << " -------------------------------------------- " << endl << endl;
+		cout << " ---------------------------------- " << endl << endl;
 		cout << " What do you want to buy today?" << endl << endl << " ";
-		cin >> choice;
+		choice = input();
 		cout << endl;
 		switch (choice)
 		{
@@ -52,7 +53,7 @@ void Store::StoreFront(Player* _Player) {
 				_Player->AddStoreItemToInventory(ITEMTYPE::ARROWS);
 				_Player->LoseCoins(arrowsCost);
 			}
-			Sleep(1000);
+			Sleep(SLEEP_MS);
 			break;
 		case ITEMTYPE::BOMB:
 			if (coins < bombCost)
@@ -65,7 +66,7 @@ void Store::StoreFront(Player* _Player) {
 				_Player->AddStoreItemToInventory(ITEMTYPE::BOMB);
 				_Player->LoseCoins(bombCost);
 			}
-			Sleep(1000);
+			Sleep(SLEEP_MS);
 			break;
 		case ITEMTYPE::POTION:
 			if (coins < potionCost)
@@ -78,7 +79,7 @@ void Store::StoreFront(Player* _Player) {
 				_Player->AddStoreItemToInventory(ITEMTYPE::POTION);
 				_Player->LoseCoins(potionCost);
 			}
-			Sleep(1000);
+			Sleep(SLEEP_MS);
 			break;
 		case ITEMTYPE::WHETSTONE:
 			if (coins < whetstoneCost)
@@ -91,13 +92,13 @@ void Store::StoreFront(Player* _Player) {
 				_Player->AddStoreItemToInventory(ITEMTYPE::WHETSTONE);
 				_Player->LoseCoins(whetstoneCost);
 			}
-			Sleep(1000);
+			Sleep(SLEEP_MS);
 			break;
 		case 0://Exit Store
 			break;
 		default:
 			cout << invalidChoice << endl;
-			Sleep(1000);
+			Sleep(SLEEP_MS);
 		}
 	} while (choice);
 }
