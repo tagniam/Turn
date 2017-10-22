@@ -141,7 +141,7 @@ void Game::SetEnemy(){
     // Generates a random integer to determine class of the enemy.
     // The abstract class Enemy is morphed with one of its child classes.
 
-    EnemyType selector = rand()%etNumEnemyTypes;
+    EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
     switch(selector){
         case etCrab:
             // Enemy is a crab.
