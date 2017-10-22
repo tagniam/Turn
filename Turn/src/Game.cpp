@@ -165,7 +165,7 @@ void Game::SetEnemy(){
 		break;
 	case 5:
 		// Enemy is a Zombie
-		_Enemy = new Zomibe;
+		_Enemy = new Zombie;
 		break;
         default:
             // If the above cases do not match the selector for any reason,
