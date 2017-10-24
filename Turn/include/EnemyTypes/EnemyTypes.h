@@ -9,5 +9,6 @@
 #include "GiantSquid.h"
 #include "Lich.h"
 #include "Putnafer.h"
+#include "Zombie.h"
 
 #endif // ENEMYTYPES_H_INCLUDED
