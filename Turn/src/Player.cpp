@@ -5,6 +5,7 @@
 
 #include "..\include\Common.h"
 #include "..\include\Player.h"
+#include "..\include\ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -211,6 +212,25 @@ void Player::AddToInventory(vector<int> drops){
          cout << "[" << drops.at(4) << "] coins" << endl;
 
 	cout << endl;
+}
+
+void Player::AddStoreItemToInventory(int type) {
+	// Adds items bought to total items.
+	switch (type)
+	{
+	case ITEMTYPE::ARROWS:
+		arrows += 5;
+		break;
+	case ITEMTYPE::BOMB:
+		++bombs;
+		break;
+	case ITEMTYPE::POTION:
+		++potions;
+		break;
+	case ITEMTYPE::WHETSTONE:
+		++whetstones;
+		break;
+	}
 }
 
 void Player::DisplayHUD(Enemy *_Enemy){
