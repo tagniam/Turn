@@ -3,10 +3,12 @@
 
 #include "Entity.h"
 #include "Enemy.h"
+#include "Sound.h"
 
-class Player : public Entity {
+class Player : public Entity, public SoundMaker {
     // Contains the functions needed to construct the player's character.
     public:
+		Player(void);
         void SaveGame();
 
         void SetPlayerData();
