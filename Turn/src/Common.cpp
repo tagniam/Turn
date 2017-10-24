@@ -40,6 +40,6 @@ void Common::Sleep(int ms){
 
 bool Common::IsPlaying;
 
-const int Common::SLEEP_MS = 600;
+const int Common::SLEEP_MS = 800;
 
 const int Common::NUM_ITEMS = 5;

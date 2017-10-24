@@ -1,6 +1,13 @@
 #include "../../include/PlayerTypes/Rogue.h"
 
 
+Rogue::Rogue(void)
+{
+	SoundInfo info;
+	info.attackRange = std::make_pair(1, 11);
+	SetSoundInfo(info);
+}
+
 int Rogue::ReturnDamage(){
     return 7+rand()%6; // 7 - 12
 }

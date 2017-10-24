@@ -7,12 +7,13 @@
 class Lich : public Enemy 
 {
 public:
-	Lich();
+    Lich();
 
+    EnemyType GetType() override;
 private:
-	int ReturnDamage();
-	int ReturnRiskAttackDamage();
-	int ReturnHealAmount();
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // LICH_H

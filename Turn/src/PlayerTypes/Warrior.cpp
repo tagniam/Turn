@@ -1,5 +1,12 @@
 #include "../../include/PlayerTypes/Warrior.h"
 
+Warrior::Warrior(void)
+{
+	SoundInfo info;
+	info.attackRange = std::make_pair(1, 16);
+	SetSoundInfo(info);
+}
+
 int Warrior::ReturnDamage(){
     return rand()%21;
 }

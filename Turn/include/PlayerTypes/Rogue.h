@@ -5,6 +5,8 @@
 
 
 class Rogue : public Player {
+	public:
+		Rogue(void);
     private:
         int ReturnDamage();
         int ReturnRiskAttackDamage();

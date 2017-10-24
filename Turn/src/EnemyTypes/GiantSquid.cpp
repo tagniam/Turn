@@ -1,17 +1,21 @@
 #include "../../include/EnemyTypes/GiantSquid.h"
 
 
-GiantSquid::GiantSquid(){
+GiantSquid::GiantSquid() {
     name = "Giant Squid";
     ExperienceAmount = 50;
     CoinsDrop = rand()%100;
 }
 
-int GiantSquid::ReturnDamage(){
+EnemyType GiantSquid::GetType() {
+    return etGiantSquid;
+}
+
+int GiantSquid::ReturnDamage() {
     return 7+rand()%8; // 7 - 14
 }
 
-int GiantSquid::ReturnRiskAttackDamage(){
+int GiantSquid::ReturnRiskAttackDamage() {
     int selector = rand()%6;
     switch(selector){
         case 0: case 1: case 2: case 3:
@@ -26,6 +30,6 @@ int GiantSquid::ReturnRiskAttackDamage(){
     }
 }
 
-int GiantSquid::ReturnHealAmount(){
+int GiantSquid::ReturnHealAmount() {
     return 5+rand()%7; // 5 -11
 }
