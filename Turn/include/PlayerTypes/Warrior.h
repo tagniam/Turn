@@ -5,6 +5,8 @@
 
 
 class Warrior : public Player {
+	public:
+		Warrior(void);
     private:
         int ReturnDamage();
         int ReturnRiskAttackDamage();

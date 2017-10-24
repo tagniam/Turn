@@ -6,6 +6,10 @@ Lich::Lich() {
 	CoinsDrop = 50 + rand() % 100;
 }
 
+EnemyType Lich::GetType() {
+    return etLich;
+}
+
 int Lich::ReturnDamage() {
 	return 5 + rand() % 20;
 }

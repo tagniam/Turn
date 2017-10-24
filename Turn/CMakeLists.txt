@@ -14,3 +14,8 @@ include_directories(
 	)
 	
 add_executable(Turn ${SOURCES} ${HEADERS})
+
+# Link WinMM required for PlaySound
+if (WIN32)
+	target_link_libraries(Turn winmm.lib)
+endif (WIN32)

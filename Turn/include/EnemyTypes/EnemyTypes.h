@@ -8,5 +8,11 @@
 #include "Squid.h"
 #include "GiantSquid.h"
 #include "Lich.h"
+#include "Vampire.h"
+#include "Werewolf.h"
+#include "Goblin.h"
+#include "Gargoyle.h"
+#include "Putnafer.h"
+#include "Zombie.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

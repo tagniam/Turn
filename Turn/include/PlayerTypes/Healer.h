@@ -5,6 +5,8 @@
 
 
 class Healer : public Player {
+	public:
+		Healer(void);
     private:
         int ReturnDamage();
         int ReturnRiskAttackDamage();
