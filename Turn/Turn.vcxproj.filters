@@ -69,6 +69,9 @@
     <ClCompile Include="src\EnemyTypes\Lich.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\EnemyTypes\Putnafer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\EnemyTypes\Rat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -131,8 +134,11 @@
     <ClInclude Include="include\EnemyTypes\Lich.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\EnemyTypes\Putnafer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\EnemyTypes\Rat.h">
       <Filter>Header Files</Filter>
-    <ClInclude>
+    </ClInclude>
   </ItemGroup>
 </Project>
