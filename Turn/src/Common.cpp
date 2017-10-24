@@ -39,7 +39,7 @@ void Common::ColourPrint(string text, const int COLOUR){
 
 bool Common::IsPlaying;
 
-const int Common::SLEEP_MS = 600;
+const int Common::SLEEP_MS = 800;
 
 const int Common::GREY = 7;
 const int Common::DARK_GREY = 8;

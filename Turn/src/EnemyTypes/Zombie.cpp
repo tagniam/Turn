@@ -6,6 +6,10 @@ Zombie::Zombie() {
 	CoinsDrop = 40 + rand() % 25;
 }
 
+EnemyType Zombie::GetType() {
+    return etZombie;
+}
+
 int Zombie::ReturnDamage() {
 	return 20 + rand() % 10;
 }

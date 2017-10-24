@@ -1,13 +1,13 @@
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#ifndef WEREWOLF_H
+#define WEREWOLF_H
 
 #include "..\Enemy.h"
 
 
-class Zombie : public Enemy 
+class Werewolf : public Enemy 
 {
 public:
-	Zombie();
+	Werewolf();
 
     EnemyType GetType() override;
 private:
@@ -16,4 +16,4 @@ private:
 	int ReturnHealAmount();
 };
 
-#endif // ZOMBIE_H
+#endif // WEREWOLF_H

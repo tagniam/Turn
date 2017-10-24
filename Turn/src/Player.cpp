@@ -10,6 +10,16 @@
 using namespace std;
 using namespace Common;
 
+Player::Player(void) 
+{
+	// Initialize default sounds, attackRange should be 
+	// the result range of the ReturnDamage method in the child class
+	// Child constructor should call SetSoundInfo with appropriate stuff
+	SoundInfo info;
+	info.attackRange = std::make_pair(1, 1);
+	SetSoundInfo(info);
+}
+
 void Player::SaveGame(){
 
 	ofstream WriteData;
@@ -82,24 +92,32 @@ int Player::Attack(){
 
 	while (true) {
 		choice = input();
-
+		int damage = 0;
 		// Evaluates player's choice.
 		switch (choice) {
 		case 0:
 			return Flee();
 		case 1:
 			// Player generically attacks.
-			return GenericAttack();
+			damage = GenericAttack();
+			PlayPrimaryAttack(damage);
+			return damage;
 		case 2:
 			// Player takes a risk and attacks.
-			return RiskAttack();
+			damage = RiskAttack();
+			PlayPrimaryAttack(damage);
+			return damage;
 		case 3:
 			// Player shoots their bow.
 			if (arrows > 0)
+			{
+				PlaySecondaryAttack();
 				return BowAndArrow();
+			}
 			break;
 		case 4:
 			// Player heals, no damage is done to enemy.
+			PlayHeal();
 			Heal();
 			return 0;
 		case 5:
