@@ -141,39 +141,51 @@ void Game::SetEnemy(){
     // Generates a random integer to determine class of the enemy.
     // The abstract class Enemy is morphed with one of its child classes.
 
-    int selector = rand()%8;
+    EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
     switch(selector){
-        case 0:
+        case etCrab:
             // Enemy is a crab.
             _Enemy = new Crab;
             break;
-        case 1:
+        case etGiantCrab:
             // Enemy is a giant crab.
             _Enemy = new GiantCrab;
             break;
-        case 2:
+        case etSquid:
             // Enemy is a squid.
             _Enemy = new Squid;
             break;
-        case 3:
+        case etGiantSquid:
             // Enemy is a giant squid.
             _Enemy = new GiantSquid;
             break;
-		case 4:
+		case etLich:
 			// Enemy is a Lich
 			_Enemy = new Lich;
 			break;
-		case 5:
+		case etPutnafer:
 			// Enemy is a Putnafer
 			_Enemy = new Putnafer;
 			break;    
-		case 6:
-			// Enemy is a Zombie
-			_Enemy = new Zombie;
+        case etZombie:
+            // Enemy is a Zombie
+            _Enemy = new Zombie;
+            break;
+		case etVampire:
+			// Enemy is a Vampire
+			_Enemy = new Vampire;
 			break;
-		case 7:
-			// Enemy is a Rat.
-			_Enemy = new Rat;
+		case etWerewolf:
+			// Enemy is a Werewolf
+			_Enemy = new Werewolf;
+			break;
+		case etGoblin:
+			// Enemy is a Goblin
+			_Enemy = new Goblin;
+			break;
+		case etGargoyle:
+			// Enemy is a Goblin
+			_Enemy = new Gargoyle;
 			break;
         default:
             // If the above cases do not match the selector for any reason,

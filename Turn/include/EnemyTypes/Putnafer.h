@@ -9,6 +9,7 @@ class Putnafer : public Enemy
 public:
 	Putnafer();
 
+    EnemyType GetType() override;
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();

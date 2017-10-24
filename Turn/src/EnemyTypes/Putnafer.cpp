@@ -6,6 +6,10 @@ Putnafer::Putnafer() {
 	CoinsDrop = 90 + rand() % 20;
 }
 
+EnemyType Putnafer::GetType() {
+    return etPutnafer;
+}
+
 int Putnafer::ReturnDamage() {
 	return 10 + rand() % 22;
 }
