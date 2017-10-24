@@ -5,12 +5,14 @@
 
 
 class GiantSquid : public Squid {
-    public:
-        GiantSquid();
-    private:
-        int ReturnDamage();
-        int ReturnRiskAttackDamage();
-        int ReturnHealAmount();
+public:
+    GiantSquid();
+
+    EnemyType GetType() override;
+private:
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // GIANTSQUID_H
