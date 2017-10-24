@@ -5,6 +5,7 @@
 
 #include "..\include\Common.h"
 #include "..\include\Player.h"
+#include "..\include\ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -41,9 +42,10 @@ void Player::SetPlayerData(){
 	ReadData.open("data.txt");
 	if (ReadData.is_open())	{
 		ReadData >> player_type;
-    		ReadData >> name;
-    		ReadData >> level;
-    		ReadData >> experience;
+    ReadData.ignore();       // Ignore rest of line ready for getline
+    getline(ReadData, name);
+    ReadData >> level;
+    ReadData >> experience;
 		ReadData >> health;
 		ReadData >> arrows;
 		ReadData >> bombs;
@@ -178,6 +180,8 @@ void Player::UseItem() {
 
 			break;
 		default:
+				cout<<"Item not present in the inventory!"<<endl;
+ 				Sleep(SLEEP_MS);
 			break;
 		}
 	}
@@ -208,6 +212,25 @@ void Player::AddToInventory(vector<int> drops){
          cout << "[" << drops.at(4) << "] coins" << endl;
 
 	cout << endl;
+}
+
+void Player::AddStoreItemToInventory(int type) {
+	// Adds items bought to total items.
+	switch (type)
+	{
+	case ITEMTYPE::ARROWS:
+		arrows += 5;
+		break;
+	case ITEMTYPE::BOMB:
+		++bombs;
+		break;
+	case ITEMTYPE::POTION:
+		++potions;
+		break;
+	case ITEMTYPE::WHETSTONE:
+		++whetstones;
+		break;
+	}
 }
 
 void Player::DisplayHUD(Enemy *_Enemy){
