@@ -164,6 +164,7 @@ void Game::SetEnemy(){
 			_Enemy = new Lich;
 			break;
 		case 5:
+			// Enemy is a Rat.
 			_Enemy = new Rat;
 			break;
         default:
