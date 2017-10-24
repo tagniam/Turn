@@ -52,7 +52,12 @@ void PlatformSoundHelper::PlaySoundFile(std::string const& filename) {
 			Mix_Chunk* waveSound = Mix_LoadWAV(filename.c_str());
 			if (waveSound)
 			{
-				Mix_PlayChannel(-1, waveSound, 0);
+				int channel = Mix_PlayChannel(-1, waveSound, 0);
+				while (Mix_Playing(channel))
+				{
+					// Sleep for a tiny amount of time to avoid maxing out the CPU in an idle loop
+					std::this_thread::sleep_for(std::chrono::milliseconds(1));
+				}
 				Mix_FreeChunk(waveSound);
 			}
 			m_resourceMutex.unlock();
