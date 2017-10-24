@@ -11,7 +11,7 @@
 //  https://freesound.org/people/JohnBuhr/sounds/326868/ attack1
 //  https://freesound.org/people/loudernoises/sounds/334169/ attack2
 //  https://freesound.org/people/Ali_6868/sounds/384915/ arrow
-//  https://freesound.org/people/TreyHolton/sounds/238307/ heal
+//  https://opengameart.org/content/spell-sounds-starter-pack heal
 
 
 SoundMaker::SoundMaker():mInfo(),
