@@ -170,6 +170,7 @@ void Game::SetEnemy(){
 	case 6:
 		// Enemy is a Zombie
 		_Enemy = new Zombie;
+		break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
