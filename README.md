@@ -50,6 +50,7 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 editor of your choice (e.g. a different version of Visual Studio, a different platform, etc.)
 ** To build project files with CMake, simply open the run CMake on the root CMakeLists.txt. If you're using Windows, cmake-gui is recommended
 for an easy way to select project options.
+** For audio on Linux SDL_mixer is used. Simply install the SDL2 mixer dev packages on your distro of choice before building (for example on Ubuntu run `sudo apt-get install libsdl2-dev libsdl2-mixer-dev`)
 
 ## Contributing
 * Before working on an issue, make sure you comment on it to claim it. This prevents two people working on the same issue at the same time.
