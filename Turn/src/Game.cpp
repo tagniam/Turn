@@ -163,6 +163,14 @@ void Game::SetEnemy(){
 			// Enemy is a Lich
 			_Enemy = new Lich;
 			break;
+		case etPutnafer:
+			// Enemy is a Putnafer
+			_Enemy = new Putnafer;
+			break;    
+        case etZombie:
+            // Enemy is a Zombie
+            _Enemy = new Zombie;
+            break;
 		case etVampire:
 			// Enemy is a Vampire
 			_Enemy = new Vampire;

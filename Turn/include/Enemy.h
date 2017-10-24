@@ -11,6 +11,8 @@ enum EnemyType
     etSquid,
     etGiantSquid,
     etLich,
+    etZombie,
+    etPutnafer,
     etVampire,
     etWerewolf,
     etGoblin,

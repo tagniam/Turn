@@ -1,0 +1,13 @@
+
+#ifndef ITEMTYPES_H_INCLUDED
+#define ITEMTYPES_H_INCLUDED
+
+enum ITEMTYPE
+{
+	ARROWS = 1,
+	BOMB,
+	POTION,
+	WHETSTONE
+};
+
+#endif

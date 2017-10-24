@@ -13,6 +13,7 @@ class Player : public Entity {
         int Attack();
 	void UseItem();
         void AddToInventory(std::vector<int>);
+	void AddStoreItemToInventory(int);
 
         void DisplayHUD(Enemy*);
         void ReplenishHealth();
