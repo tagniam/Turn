@@ -1,4 +1,3 @@
-
 #include <string>
 #include <vector>
 #include <utility>
@@ -19,6 +18,7 @@
 //#define ALTFILENAME3		"alt2.wav"
 //#define ALTFILENAMECRIT     "alt_crit.wav"
 
+
 typedef struct sSoundInfo
 {
 	std::pair<int, int> attackRange;
@@ -29,13 +29,24 @@ typedef struct sSoundInfo
 class SoundMaker {
 public:
 	SoundMaker();
+
 	void PlayPrimaryAttack(int damageDealt);
 	void PlaySecondaryAttack(void); // int damageDealt);
 	void PlayHeal(void);
+	void PlayBomb(void);
+	void PlayWhetstone(void);
+	void PlayPotion(void);
+	void PlayLevelUp(void);
+
 	void SetSoundInfo(SoundInfo &info) { mInfo = info; }
+
 private:
 	SoundInfo  mInfo;
 	std::vector<std::string> attackFileNames;
 	std::string altAttackFileName;
 	std::string healFileName;
+	std::string bombFileName;
+	std::string whetstoneFileName;
+	std::string potionFileName;
+	std::string levelUpFileName;
 };

@@ -124,12 +124,17 @@ int Player::Attack(){
 			// Player throws a bomb.
 			// Does not execute if there are no bombs in the inventory.
 			if (bombs > 0)
+			{
+				PlayBomb();
 				return UseBomb();
+			}
 			break;
 		case 6:
 			// Player drinks a potion.
 			// Does not execute if there are no potions in the inventory.
-			if (potions > 0) {
+			if (potions > 0) 
+			{
+				PlayPotion();
 				UsePotion();
 				return 0;
 			}
@@ -138,7 +143,9 @@ int Player::Attack(){
 			// Player sharpens their weapon with a whetstone.
 			// Does not execute if there are no whetstones in inventory.
 			// No damage is done to the enemy.
-			if (whetstones > 0) {
+			if (whetstones > 0) 
+			{
+				PlayWhetstone();
 				UseWhetstone();
 				return 0;
 			}
@@ -298,7 +305,11 @@ void Player::AddExperience(int xp){
         if (level >= 50) level = 50;
 
         // Alerts player that they have leveled up.
-        cout << "You leveled up! Now you are level " << level << "!" << endl;
+        cout << "You leveled up! You are now level " << level << "!" << endl;
+
+		// Plays level up sound effect
+		PlayLevelUp();
+
         Sleep(SLEEP_MS);
     }
 }
