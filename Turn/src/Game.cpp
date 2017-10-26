@@ -277,7 +277,9 @@ void Game::Battle(){
 		int damagePlayer = _Player->Attack();
         // Player's turn to attack Enemy.
 
-		_Enemy->TakeDamage(damagePlayer);
+		if (damagePlayer != -2) {
+			_Enemy->TakeDamage(damagePlayer);
+		}
         // Pauses console and ignores user input for SLEEP_MS milliseconds.
         Sleep(SLEEP_MS);
 
