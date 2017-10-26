@@ -187,6 +187,10 @@ void Game::SetEnemy(){
 			// Enemy is a Goblin
 			_Enemy = new Gargoyle;
 			break;
+		case etRat:
+			// Enemy is a Rat
+			_Enemy = new Rat;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
