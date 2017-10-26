@@ -1,4 +1,4 @@
-#include "..\..\include\EnemyTypes\Crab.h"
+#include "../../include/EnemyTypes/Crab.h"
 
 Crab::Crab() {
     name = "Crab";

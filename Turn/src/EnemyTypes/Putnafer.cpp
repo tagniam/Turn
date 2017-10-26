@@ -1,4 +1,4 @@
-#include "..\..\include\EnemyTypes\Putnafer.h"
+#include "../../include/EnemyTypes/Putnafer.h"
 
 Putnafer::Putnafer() {
 	name = "Putnafer";

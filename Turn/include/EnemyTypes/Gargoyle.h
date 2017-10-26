@@ -1,7 +1,7 @@
 #ifndef GARGOYLE_H
 #define GARGOYLE_H
 
-#include "..\Enemy.h"
+#include "../Enemy.h"
 
 
 class Gargoyle : public Enemy 

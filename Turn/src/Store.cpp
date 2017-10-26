@@ -1,9 +1,8 @@
 #include <iostream>
-#include <Windows.h>
 
-#include "..\include\Common.h"
-#include "..\include\Store.h"
-#include "..\include\ItemTypes.h"
+#include "../include/Common.h"
+#include "../include/Store.h"
+#include "../include/ItemTypes.h"
 
 
 using namespace std;

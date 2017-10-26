@@ -1,7 +1,7 @@
 #ifndef WARRIOR_H
 #define WARRIOR_H
 
-#include "..\Player.h"
+#include "../Player.h"
 
 
 class Warrior : public Player {

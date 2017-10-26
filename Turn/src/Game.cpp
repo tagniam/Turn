@@ -1,14 +1,15 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
-#include <Windows.h>
 #include <string>
+#include <limits>
 
-#include "..\include\Game.h"
-#include "..\include\Common.h"
+#include "../include/Game.h"
+#include "../include/Common.h"
+#include "../include/Console.h"
 
-#include "..\include\PlayerTypes\PlayerTypes.h"
-#include "..\include\EnemyTypes\EnemyTypes.h"
+#include "../include/PlayerTypes/PlayerTypes.h"
+#include "../include/EnemyTypes/EnemyTypes.h"
 
 
 using namespace std;
@@ -194,7 +195,7 @@ void Game::SetEnemy(){
             break;
     }
     // Simply prints that the enemy's class was encountered.
-	ColourPrint(_Enemy->GetName(), DARK_GREY);
+	ColourPrint(_Enemy->GetName(), Console::DarkGrey);
     cout << " encountered!" << endl << endl;
     Sleep(SLEEP_MS);
 }

@@ -1,4 +1,4 @@
-#include "..\..\include\PlayerTypes\Warrior.h"
+#include "../../include/PlayerTypes/Warrior.h"
 
 Warrior::Warrior(void)
 {

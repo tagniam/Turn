@@ -1,7 +1,7 @@
 #ifndef LICH_H
 #define LICH_H
 
-#include "..\Enemy.h"
+#include "../Enemy.h"
 
 
 class Lich : public Enemy 

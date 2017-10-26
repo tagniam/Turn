@@ -1,7 +1,7 @@
 #ifndef SAITAMA_H
 #define SAITAMA_H
 
-#include "..\Player.h"
+#include "../Player.h"
 
 
 class Saitama : public Player

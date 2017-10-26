@@ -1,11 +1,10 @@
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 #include <vector>
-#include <Windows.h>
 
-#include "..\include\Common.h"
-#include "..\include\Gambling.h"
-#include "..\include\Player.h"
+#include "../include/Common.h"
+#include "../include/Gambling.h"
+#include "../include/Player.h"
 
 using namespace std;
 using namespace Common;

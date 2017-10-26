@@ -1,7 +1,7 @@
 #ifndef WEREWOLF_H
 #define WEREWOLF_H
 
-#include "..\Enemy.h"
+#include "../Enemy.h"
 
 
 class Werewolf : public Enemy 

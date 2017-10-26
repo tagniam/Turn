@@ -1,7 +1,7 @@
 #ifndef SQUID_H
 #define SQUID_H
 
-#include "..\Enemy.h"
+#include "../Enemy.h"
 
 
 class Squid : public Enemy {

@@ -1,8 +1,9 @@
 #include "../include/Sound.h"
 
+#ifdef _WINDOWS
 #include <Windows.h>
 #include <MMSystem.h>
-
+#endif
 
 // Sounds found online at:
 //  https://freesound.org/people/XxChr0nosxX/sounds/268227/ attack miss
@@ -13,6 +14,15 @@
 //  https://freesound.org/people/Ali_6868/sounds/384915/ arrow
 //  https://opengameart.org/content/spell-sounds-starter-pack heal
 
+namespace
+{
+	void PlaySoundFile(std::string const& sound)
+	{
+#ifdef _WINDOWS
+		PlaySound(sound.c_str(), NULL, SND_ASYNC);
+#endif
+	}
+}
 
 SoundMaker::SoundMaker():mInfo(),
 						altAttackFileName("sounds/arrow.wav"),
@@ -47,12 +57,12 @@ void SoundMaker::PlayPrimaryAttack(int damageDealt)
 	{
 		index = 4;
 	}
-	PlaySound(attackFileNames[index].c_str(), NULL, SND_ASYNC);
+	PlaySoundFile(attackFileNames[index]);
 }
 void SoundMaker::PlaySecondaryAttack(void)
 {
-	PlaySound(altAttackFileName.c_str(), NULL, SND_ASYNC);
+	PlaySoundFile(altAttackFileName.c_str());
 }
 void SoundMaker::PlayHeal(void) {
-	PlaySound(healFileName.c_str(), NULL, SND_ASYNC);
+	PlaySoundFile(healFileName.c_str());
 }

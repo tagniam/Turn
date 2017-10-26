@@ -3,9 +3,10 @@
 #include <cmath>
 #include <string>
 
-#include "..\include\Common.h"
-#include "..\include\Player.h"
-#include "..\include\ItemTypes.h"
+#include "../include/Common.h"
+#include "../include/Player.h"
+#include "../include/Console.h"
+#include "../include/ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -256,7 +257,7 @@ void Player::DisplayHUD(Enemy *_Enemy){
 
     // Prints player's name.
     cout << endl;
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     // Tabs to make room for enemy's name.
     if (name.length() > 5){
         cout << "\t\t\t";
@@ -265,7 +266,7 @@ void Player::DisplayHUD(Enemy *_Enemy){
         cout <<" \t\t\t";
     }
     // Prints enemy name.
-	ColourPrint(_Enemy->GetName(), DARK_GREY);
+	ColourPrint(_Enemy->GetName(), Console::DarkGrey);
 	cout << endl;
 	DisplayHealthBar();
 }
@@ -367,9 +368,9 @@ int Player::GetCoins() {
 int Player::GenericAttack(){
     int damage = ReturnDamage();
     DeductDamage(damage);
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " attacks! He deals ";
-	ColourPrint(to_string(damage), RED);
+	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
     if (damage>0) weaponstrength-= 2+rand()%5;
     return damage;
@@ -378,9 +379,9 @@ int Player::GenericAttack(){
 int Player::RiskAttack(){
     int damage = ReturnRiskAttackDamage();
     DeductDamage(damage);
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " takes a risk and attack! It deals ";
-	ColourPrint(to_string(damage), RED);
+	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
 
     if (damage>0) weaponstrength-= 4+rand()%5;
@@ -389,33 +390,33 @@ int Player::RiskAttack(){
 
 int Player::BowAndArrow(){
     int damage = ReturnBowDamage();
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " shoots his bow! He deals ";
-    SetConsoleTextAttribute(hConsole, RED);
+	Console::GetInstance().SetColour(Console::EColour::Red);
     cout << damage;
-    SetConsoleTextAttribute(hConsole, GREY);
+	Console::GetInstance().SetColour(Console::EColour::Default);
     cout << " damage points!" << endl;
     return damage;
 }
 
 void Player::UseWhetstone(){
     weaponstrength=100;
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " sharpened his weapon!" << endl;
     whetstones--;
 }
 
 void Player::UsePotion(){
     health=100;
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " drank a healing potion!" << endl;
     potions--;
 }
 
 int Player::UseBomb(){
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " hurls a bomb! It deals ";
-	ColourPrint("50", RED);
+	ColourPrint("50", Console::Red);
 	cout << " damage points!" << endl;
 
 	bombs--;
@@ -445,7 +446,7 @@ int Player::ReturnBowDamage(){
 }
 
 int Player::Flee(){
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
     cout << " chooses to flee!" << endl;
     return -1;
 }

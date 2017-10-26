@@ -1,7 +1,7 @@
 #ifndef PUTNAFER_H
 #define PUTNAFER_H
 
-#include "..\Enemy.h"
+#include "../Enemy.h"
 
 
 class Putnafer : public Enemy 
