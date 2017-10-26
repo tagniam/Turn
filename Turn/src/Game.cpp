@@ -114,7 +114,7 @@ void Game::SetPlayerData(){
 		ReadData.close();
 		ofstream WriteData;
 		WriteData.open("data.txt");
-		
+
 		WriteData << InitializePlayerClass() << endl
 			<< InitializePlayerName() << endl
 			<< 1 << endl
@@ -167,7 +167,7 @@ void Game::SetEnemy(){
 		case etPutnafer:
 			// Enemy is a Putnafer
 			_Enemy = new Putnafer;
-			break;    
+			break;
         case etZombie:
             // Enemy is a Zombie
             _Enemy = new Zombie;
@@ -228,7 +228,7 @@ void Game::Intermission(){
         cout << "2) Store" << endl;
         cout << "3) Gamble" << endl;
 	cout << "4) Use Item" << endl;
-        cout << "5) Quit" << endl << endl;
+        cout << "0) Quit" << endl << endl;
 
         choice = input();
 
@@ -272,7 +272,7 @@ void Game::StartGame(){
 	// This initializes the variables on the Player end.
     ClearScreen();
     _Player->SetPlayerData();
-    
+
 
     // Loops while the game is still playing.
     // Alternates between battles and intermission (gambling, store, et)
@@ -320,7 +320,7 @@ void Game::Battle(){
             _Player->AddExperience(_Enemy->ReturnExperience());
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
-			
+
 			// If player wants to battle again, it breaks the loop and uses tail recursion to play again.
             if (PlayAgain()) break;
             // Returns to StartGame()'s loop, and executes Intermission().
@@ -337,7 +337,7 @@ void Game::Battle(){
             _Player->LoseExperience(_Enemy->ReturnExperience());
 			// Replenishes player's health for the next round.
 			_Player->ReplenishHealth();
-			
+
 			if (PlayAgain()) break;
             return;
         }
@@ -373,7 +373,7 @@ void Game::DisplayMenu(MenuType menuType)
 		cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
 			<< "1) Start Game" << endl
 			<< "2) How to play" << endl
-			<< "3) Exit" << endl << endl << "> ";
+			<< "0) Exit" << endl << endl << "> ";
 		break;
 	case Game::ePlayerClass:
 		cout << endl
