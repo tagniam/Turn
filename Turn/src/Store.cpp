@@ -29,6 +29,33 @@ void Store::StoreFront(Player* _Player) {
 		cout << endl << endl;
 		_Player->DisplayInventory();
 		cout << endl << " Jeremy's Tools Store" << endl << endl;
+		switch((rand() % 7))
+    {
+    case 0:
+        {
+            cout << "Welcome to my shop, stranger!";
+        }
+    case 1:
+        {
+            cout << "Ain't no better place to get your gear.";
+        }
+    case 2:
+        {
+            cout << "Well I'll be, a fresh face!";
+        }
+    case 3:
+        {
+            cout << "I'd heard there was an adventurer in town!";
+        }
+    case 5:
+        {
+            cout << "You never know when you'll need to be prepared!";
+        }
+    case 6:
+        {
+            cout << "You look like someone who could use some of these!";
+        }
+    }
 		cout << " ----ITEM----------------COST------ " << endl << endl;
 		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
 		cout << " 2) Bomb\t\t " << bombCost << endl;
