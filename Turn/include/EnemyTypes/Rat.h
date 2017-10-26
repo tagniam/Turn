@@ -6,6 +6,8 @@
 class Rat : public enemy {
     public: 
         Rat();
+
+        EnemyType GetType() override;
     private:
         int ReturnDamage();
         int ReturnRiskAttackDamage();

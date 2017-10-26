@@ -17,6 +17,7 @@ enum EnemyType
     etWerewolf,
     etGoblin,
     etGargoyle,
+    etRat,
     etNumEnemyTypes
 };
 
