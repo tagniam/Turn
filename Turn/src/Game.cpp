@@ -189,7 +189,7 @@ void Game::SetEnemy(){
 			break;
 		case etRat:
 			// Enemy is a Rat
-			_Enemy = new Ratl
+			_Enemy = new Rat;
 			break;
         default:
             // If the above cases do not match the selector for any reason,
