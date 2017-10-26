@@ -1,13 +1,15 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
-#include <Windows.h>
+#include <string>
+#include <limits>
 
-#include "..\include\Game.h"
-#include "..\include\Common.h"
+#include "../include/Game.h"
+#include "../include/Common.h"
+#include "../include/Console.h"
 
-#include "..\include\PlayerTypes\PlayerTypes.h"
-#include "..\include\EnemyTypes\EnemyTypes.h"
+#include "../include/PlayerTypes/PlayerTypes.h"
+#include "../include/EnemyTypes/EnemyTypes.h"
 
 
 using namespace std;
@@ -21,17 +23,17 @@ using namespace Common;
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
-    for (int choice=0; choice!=3;){
+	    for (int choice=0; choice!=3;){
         choice = GetChoice(MenuType::eMain);
         switch(choice){
-        case 1:
-           	StartGame();
-		break;
-	case 2:
-		HowToPlay();
-		break;
-        // There's no 'case 3' because it breaks
-        // the loop already.
+			case 1:
+           		StartGame();
+				break;
+			case 2:
+				HowToPlay();
+				break;
+			case 3:
+				break;
         }
     }
 }
@@ -43,7 +45,8 @@ string Game::InitializePlayerName() {
 		<< endl << endl
 		<< "> ";
 
-	cin >> name; // Change to full name
+  cin.ignore();
+	getline(cin,name); // Change to full name
 	return name;
 }
 
@@ -139,27 +142,51 @@ void Game::SetEnemy(){
     // Generates a random integer to determine class of the enemy.
     // The abstract class Enemy is morphed with one of its child classes.
 
-    int selector = rand()%5;
+    EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
     switch(selector){
-        case 0:
+        case etCrab:
             // Enemy is a crab.
             _Enemy = new Crab;
             break;
-        case 1:
+        case etGiantCrab:
             // Enemy is a giant crab.
             _Enemy = new GiantCrab;
             break;
-        case 2:
+        case etSquid:
             // Enemy is a squid.
             _Enemy = new Squid;
             break;
-        case 3:
+        case etGiantSquid:
             // Enemy is a giant squid.
             _Enemy = new GiantSquid;
             break;
-		case 4:
+		case etLich:
 			// Enemy is a Lich
 			_Enemy = new Lich;
+			break;
+		case etPutnafer:
+			// Enemy is a Putnafer
+			_Enemy = new Putnafer;
+			break;    
+        case etZombie:
+            // Enemy is a Zombie
+            _Enemy = new Zombie;
+            break;
+		case etVampire:
+			// Enemy is a Vampire
+			_Enemy = new Vampire;
+			break;
+		case etWerewolf:
+			// Enemy is a Werewolf
+			_Enemy = new Werewolf;
+			break;
+		case etGoblin:
+			// Enemy is a Goblin
+			_Enemy = new Goblin;
+			break;
+		case etGargoyle:
+			// Enemy is a Goblin
+			_Enemy = new Gargoyle;
 			break;
         default:
             // If the above cases do not match the selector for any reason,
@@ -168,7 +195,7 @@ void Game::SetEnemy(){
             break;
     }
     // Simply prints that the enemy's class was encountered.
-	ColourPrint(_Enemy->GetName(), DARK_GREY);
+	ColourPrint(_Enemy->GetName(), Console::DarkGrey);
     cout << " encountered!" << endl << endl;
     Sleep(SLEEP_MS);
 }
@@ -324,13 +351,8 @@ void Game::Battle(){
 }
 
 void Game::HowToPlay() {
-	for (int choice = 0; choice != 1;) {
-		choice = GetChoice(MenuType::eHowToPlay);
-		switch (choice) {
-		case 1:
-			MainMenu();
-		}
-	}
+
+	GetChoice(MenuType::eHowToPlay);
 }
 
 int Game::GetChoice(MenuType menuType)
@@ -356,7 +378,7 @@ void Game::DisplayMenu(MenuType menuType)
 		cout << "========== TURN-BASED FIGHTING GAME ==========" << endl << endl
 			<< "1) Start Game" << endl
 			<< "2) How to play" << endl
-			<< "3) Quit" << endl << endl << "> ";
+			<< "3) Exit" << endl << endl << "> ";
 		break;
 	case Game::ePlayerClass:
 		cout << endl

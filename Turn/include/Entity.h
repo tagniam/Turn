@@ -2,7 +2,6 @@
 #define ENTITY_H
 
 #include <string>
-#include <Windows.h>
 
 class Entity {
 public:
@@ -25,7 +24,6 @@ protected:
 
 	std::string name;
 	int health;
-	HANDLE hConsole;
 };
 
 #endif // ENTITY_H
