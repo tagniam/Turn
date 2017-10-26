@@ -33,7 +33,7 @@ void Store::StoreFront(Player* _Player) {
     {
     case 0:
         {
-            cout << "Welcome to my shop, stranger!";
+            cout << "It might not look it, but I have the best gear in town!";
         }
     case 1:
         {
