@@ -1,9 +1,13 @@
-#include "..\..\include\EnemyTypes\Lich.h"
+#include "../../include/EnemyTypes/Lich.h"
 
 Lich::Lich() {
 	name = "Lich";
 	ExperienceAmount = 100;
 	CoinsDrop = 50 + rand() % 100;
+}
+
+EnemyType Lich::GetType() {
+    return etLich;
 }
 
 int Lich::ReturnDamage() {

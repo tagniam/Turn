@@ -1,12 +1,13 @@
 #include <iostream>
 
-#include "..\include\Entity.h"
-#include "..\include\Common.h"
+#include "../include/Entity.h"
+#include "../include/Common.h"
+#include "../include/Console.h"
+
 using namespace std;
 using namespace Common;
 
 Entity::Entity() {
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 string Entity::GetName() {
@@ -18,7 +19,7 @@ string Entity::GetName() {
 bool Entity::IsDead() {
 	// Returns a bool value, if the player's health is equal or below 0.
 	if (health <= 0) {
-		ColourPrint(name, DARK_GREY);
+		ColourPrint(name, Console::DarkGrey);
 		cout << " is dead!" << endl << endl;
 		Sleep(SLEEP_MS);
 		return true;
@@ -47,10 +48,10 @@ void Entity::DisplayHealthBar(){
 		string currentChar = ""; 
 		currentChar += healthBar.at(i);
 		if ((i + 1) * 10 <= (size_t)health * 2) {
-			ColourPrint(currentChar, RED_BACKGROUND);
+			ColourPrint(currentChar, Console::Background_Red);
 		}
 		else {
-			ColourPrint(currentChar, GREY_BACKGROUND);
+			ColourPrint(currentChar, Console::Background_Grey);
 		}
 	}
 }
@@ -60,9 +61,9 @@ void Entity::Heal() {
 	health += heal;
 	if (health > 100) health = 100;
 	
-	ColourPrint(name, DARK_GREY);
+	ColourPrint(name, Console::DarkGrey);
 	cout << " gains ";
-	ColourPrint(to_string(heal), GREEN);
+	ColourPrint(to_string(heal), Console::Green);
 	cout << " HP!" << endl;
 
 }

@@ -42,10 +42,14 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 | Squid       |      1-10     |        2-15        |      1-11      |         20        |    0-49    |
 | Giant Squid |      7-14     |        0-20        |      5-11      |         50        |    0-99    |
 | Lich        |      5-24     |        2-30        |      5-29      |        100        |   50-149   |
+| Putnafer    |      10-31    |        1-25        |      2-11      |        150        |   90-119   |
 
 ## Getting Started
 ### Prerequisites
-* Note: Turn only supports Windows at the moment  
+* Default solution files are provided for Visual Studio 2015, however you can also use CMake to generate project files for any supported
+editor of your choice (e.g. a different version of Visual Studio, a different platform, etc.)
+** To build project files with CMake, simply open the run CMake on the root CMakeLists.txt. If you're using Windows, cmake-gui is recommended
+for an easy way to select project options.
 
 ## Contributing
 * Before working on an issue, make sure you comment on it to claim it. This prevents two people working on the same issue at the same time.

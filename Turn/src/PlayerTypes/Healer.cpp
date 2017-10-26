@@ -1,5 +1,11 @@
-#include "..\..\include\PlayerTypes\Healer.h"
+#include "../../include/PlayerTypes/Healer.h"
 
+Healer::Healer(void) 
+{
+	SoundInfo info;
+	info.attackRange = std::make_pair(1, 9);
+	SetSoundInfo(info);
+}
 
 int Healer::ReturnDamage(){
     return 5+rand()%6; // 5 - 10
