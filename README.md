@@ -1,4 +1,4 @@
-# Turn
+# Turn [![Build Status](https://travis-ci.org/tagniam/Turn.svg?branch=master)](https://travis-ci.org/tagniam/Turn)
 Turn is a basic turn-based RPG game written in C++. 
 
 ## History
