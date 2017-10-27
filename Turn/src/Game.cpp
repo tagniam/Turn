@@ -20,6 +20,8 @@ using namespace Common;
 #undef max
 #endif
 
+#define SKIP_TURN -2
+
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
@@ -304,7 +306,7 @@ void Game::Battle(){
 		int damagePlayer = _Player->Attack();
         // Player's turn to attack Enemy.
 
-		if (damagePlayer != -2) {
+		if (damagePlayer != SKIP_TURN{
 			_Enemy->TakeDamage(damagePlayer);
 		}
         // Pauses console and ignores user input for SLEEP_MS milliseconds.
@@ -332,7 +334,7 @@ void Game::Battle(){
         }
 
         // Enemy's turn to attack player.
-		if (damagePlayer != -2)
+		if (damagePlayer != SKIP_TURN)
 			_Player->TakeDamage(_Enemy->Attack());
         Sleep(SLEEP_MS);
 
