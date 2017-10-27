@@ -1,6 +1,8 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
+#include <string>
+
 #include "../include/Console.h"
 
 // Common functions and data to share across all files.
