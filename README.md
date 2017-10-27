@@ -43,6 +43,9 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 | Giant Squid |      7-14     |        0-20        |      5-11      |         50        |    0-99    |
 | Lich        |      5-24     |        2-30        |      5-29      |        100        |   50-149   |
 | Putnafer    |      10-31    |        1-25        |      2-11      |        150        |   90-119   |
+| Small Rat   |       2-6     |        0-25        |      3-17      |         15        |    3-30    |
+| Rat         |       3-7     |        0-20        |      1-15      |         25        |    3-50    |
+| Cerberus    |      15-25    |        2-30        |      5-10      |        120        |   40-60    |
 
 ## Getting Started
 ### Prerequisites
