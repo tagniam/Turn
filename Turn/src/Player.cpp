@@ -30,6 +30,7 @@ void Player::SaveGame(){
 	if (WriteData.is_open()) {
         	WriteData << player_type << endl 
 			<< name << endl
+            << gender << endl
 			<< level << endl
 			<< experience << endl
 			<< health << endl
@@ -57,6 +58,7 @@ void Player::SetPlayerData(){
 		ReadData >> player_type;
     ReadData.ignore();       // Ignore rest of line ready for getline
     getline(ReadData, name);
+    ReadData >> gender;
     ReadData >> level;
     ReadData >> experience;
 		ReadData >> health;
@@ -382,7 +384,10 @@ int Player::GenericAttack(){
     int damage = ReturnDamage();
     DeductDamage(damage);
 	ColourPrint(name, Console::DarkGrey);
-    cout << " attacks! He deals ";
+    if (gender == 'M')
+        cout << " attacks! He deals ";
+    else
+        cout << " attacks! She deals ";
 	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
     if (damage>0) weaponstrength-= 2+rand()%5;
@@ -404,7 +409,10 @@ int Player::RiskAttack(){
 int Player::BowAndArrow(){
     int damage = ReturnBowDamage();
 	ColourPrint(name, Console::DarkGrey);
-    cout << " shoots his bow! He deals ";
+    if (gender == 'M')
+        cout << " shoots his bow! He deals ";
+    else
+        cout << " shoots her bow! She deals ";
 	Console::GetInstance().SetColour(Console::EColour::Red);
     cout << damage;
 	Console::GetInstance().SetColour(Console::EColour::Default);
@@ -415,7 +423,10 @@ int Player::BowAndArrow(){
 void Player::UseWhetstone(){
     weaponstrength=100;
 	ColourPrint(name, Console::DarkGrey);
-    cout << " sharpened his weapon!" << endl;
+    if (gender == 'M')
+        cout << " sharpened his weapon!" << endl;
+    else
+        cout << " sharpened her weapon!" << endl;
     whetstones--;
 }
 

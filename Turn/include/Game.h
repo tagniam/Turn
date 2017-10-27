@@ -22,6 +22,7 @@ class Game {
 		int InitializePlayerClass();
 		void SetPlayerClass(int);
 		std::string InitializePlayerName();
+        char InitializePlayerGender();
 
         void SetEnemy();
         bool PlayAgain();
