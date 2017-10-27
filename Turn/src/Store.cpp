@@ -30,7 +30,7 @@ void Store::StoreFront(Player* _Player) {
 		cout << endl << endl;
 		_Player->DisplayInventory();
 		cout << endl << " Jeremy's Tools Store" << endl;
-		cout << '"' << random_greeting() << '"' << endl << endl;
+		cout << " \"" << random_greeting() << "\"" << endl << endl;
 		cout << " ----ITEM----------------COST------ " << endl << endl;
 		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
 		cout << " 2) Bomb\t\t " << bombCost << endl;
