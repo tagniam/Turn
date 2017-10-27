@@ -11,6 +11,8 @@
 using namespace std;
 using namespace Common;
 
+#define SKIP_TURN -2
+
 Player::Player(void) 
 {
 	// Initialize default sounds, attackRange should be 
@@ -115,7 +117,11 @@ int Player::Attack(){
 				PlaySecondaryAttack();
 				return BowAndArrow();
 			}
-			break;
+			else {
+				cout << "No arrows in the inventory!" << endl;
+				Sleep(SLEEP_MS);
+				return SKIP_TURN;
+			}
 		case 4:
 			// Player heals, no damage is done to enemy.
 			PlayHeal();
@@ -126,15 +132,20 @@ int Player::Attack(){
 			// Does not execute if there are no bombs in the inventory.
 			if (bombs > 0)
 				return UseBomb();
-			break;
+			else {
+				cout << "No bombs in the inventory!" << endl;
+				return SKIP_TURN;
+			}
 		case 6:
 			// Player drinks a potion.
 			// Does not execute if there are no potions in the inventory.
 			if (potions > 0) {
 				UsePotion();
 				return 0;
+			}else {
+				cout << "No potions in the inventory!" << endl;
+				return SKIP_TURN;
 			}
-			break;
 		case 7:
 			// Player sharpens their weapon with a whetstone.
 			// Does not execute if there are no whetstones in inventory.
@@ -142,8 +153,10 @@ int Player::Attack(){
 			if (whetstones > 0) {
 				UseWhetstone();
 				return 0;
+			} else {
+				cout << "No whetstones in the inventory!" << endl;
+				return SKIP_TURN;
 			}
-			break;
 		default:
 			// Generically attacks by default if player's choice does not equal above cases.
 			return GenericAttack();
@@ -182,8 +195,8 @@ void Player::UseItem() {
 			} else {
 				cout << "No potions in the inventory!" << endl;
 				Sleep(SLEEP_MS);
-			}
 
+			}
 			break;
 		case 2:
 			// Player sharpens their weapon with a whetstone.
