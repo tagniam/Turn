@@ -6,17 +6,20 @@
 
 enum EnemyType
 {
-    etCrab,
-    etGiantCrab,
-    etSquid,
-    etGiantSquid,
-    etLich,
-    etZombie,
-    etPutnafer,
-    etVampire,
-    etWerewolf,
-    etGoblin,
-    etGargoyle,
+	etCrab,
+	etGiantCrab,
+	etSquid,
+	etGiantSquid,
+	etLich,
+	etZombie,
+	etPutnafer,
+	etVampire,
+	etWerewolf,
+	etGoblin,
+	etGargoyle,
+	etCerberus,
+	etRat,
+	etSmallRat,
     etNumEnemyTypes
 };
 
