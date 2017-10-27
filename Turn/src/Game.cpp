@@ -308,9 +308,10 @@ void Game::Battle(){
 
 		if (damagePlayer != SKIP_TURN){
 			_Enemy->TakeDamage(damagePlayer);
+			// Pauses console and ignores user input for SLEEP_MS milliseconds.
+        		Sleep(SLEEP_MS);
 		}
-        // Pauses console and ignores user input for SLEEP_MS milliseconds.
-        Sleep(SLEEP_MS);
+
 
         // Leaves battle if player chooses to.
         if (!IsPlaying){
