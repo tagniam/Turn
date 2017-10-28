@@ -52,6 +52,21 @@ string Game::InitializePlayerName() {
 	return name;
 }
 
+char Game::InitializePlayerGender() {
+    char gender;
+    do {
+        ClearScreen();
+        cout << "What is your gender (M or F)?"
+            << endl << endl
+            << "> ";
+
+        cin >> gender;
+        gender = toupper(gender);
+    } while (gender != 'M' && gender != 'F');
+
+    return gender;
+}
+
 
 int Game::InitializePlayerClass() {
 	// Initializes the player's class through user choice.
@@ -119,6 +134,7 @@ void Game::SetPlayerData(){
 		
 		WriteData << InitializePlayerClass() << endl
 			<< InitializePlayerName() << endl
+            << InitializePlayerGender() << endl
 			<< 1 << endl
 			<< 0 << endl
 			<< 100 << endl

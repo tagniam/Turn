@@ -49,6 +49,7 @@ class Player : public Entity, public SoundMaker {
 
 	int player_type;
         int level;
+        char gender;
 	int experience;
         int whetstones;
         int arrows;
