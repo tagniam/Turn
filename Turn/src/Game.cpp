@@ -53,9 +53,9 @@ string Game::InitializePlayerName() {
 }
 
 char Game::InitializePlayerGender() {
-    ClearScreen();
     char gender;
     do {
+        ClearScreen();
         cout << "What is your gender (M or F)?"
             << endl << endl
             << "> ";
