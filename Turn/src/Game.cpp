@@ -61,6 +61,7 @@ char Game::InitializePlayerGender() {
             << "> ";
 
         cin >> gender;
+        gender = toupper(gender);
     } while (gender != 'M' && gender != 'F');
 
     return gender;
