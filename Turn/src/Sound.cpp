@@ -3,6 +3,10 @@
 #ifdef _WINDOWS
 #include <Windows.h>
 #include <MMSystem.h>
+#else
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+#include <thread>
 #endif
 
 // Sounds found online at:
@@ -14,14 +18,52 @@
 //  https://freesound.org/people/Ali_6868/sounds/384915/ arrow
 //  https://opengameart.org/content/spell-sounds-starter-pack heal
 
-namespace
-{
-	void PlaySoundFile(std::string const& sound)
-	{
-#ifdef _WINDOWS
-		PlaySound(sound.c_str(), NULL, SND_ASYNC);
+PlatformSoundHelper SoundMaker::ms_SoundHelper;
+
+PlatformSoundHelper::PlatformSoundHelper() {
+#ifndef _WINDOWS
+	m_resourceMutex.lock();
+	SDL_Init(SDL_INIT_AUDIO);
+	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024);
+	m_resourceMutex.unlock();
 #endif
-	}
+}
+
+PlatformSoundHelper::~PlatformSoundHelper() {
+#ifndef _WINDOWS
+	m_resourceMutex.lock();
+	Mix_CloseAudio();
+	SDL_Quit();
+	m_resourceMutex.unlock();
+#endif
+}
+
+void PlatformSoundHelper::PlaySoundFile(std::string const& filename) {
+#ifdef _WINDOWS
+	PlaySound(filename.c_str(), NULL, SND_ASYNC);
+#else
+	// It would be possible to pre-cache the sounds for SDL_mixer, however instead
+	// this simply loads plays and unloads them. This closer emulates how PlaySound
+	// works on Windows and should be fine for this scenario. If, however, it happens
+	// to give poor results, it should be changed to cache the sounds and take care of
+	// unloading them properly
+	std::thread t([=]() {
+			m_resourceMutex.lock();
+			Mix_Chunk* waveSound = Mix_LoadWAV(filename.c_str());
+			if (waveSound)
+			{
+				int channel = Mix_PlayChannel(-1, waveSound, 0);
+				while (Mix_Playing(channel))
+				{
+					// Sleep for a tiny amount of time to avoid maxing out the CPU in an idle loop
+					std::this_thread::sleep_for(std::chrono::milliseconds(1));
+				}
+				Mix_FreeChunk(waveSound);
+			}
+			m_resourceMutex.unlock();
+		});
+	t.detach();
+#endif
 }
 
 SoundMaker::SoundMaker():mInfo(),
@@ -65,4 +107,8 @@ void SoundMaker::PlaySecondaryAttack(void)
 }
 void SoundMaker::PlayHeal(void) {
 	PlaySoundFile(healFileName.c_str());
+}
+
+void SoundMaker::PlaySoundFile(std::string const& filename){
+	ms_SoundHelper.PlaySoundFile(filename);
 }
