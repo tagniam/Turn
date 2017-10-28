@@ -43,6 +43,11 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 | Giant Squid |      7-14     |        0-20        |      5-11      |         50        |    0-99    |
 | Lich        |      5-24     |        2-30        |      5-29      |        100        |   50-149   |
 | Putnafer    |      10-31    |        1-25        |      2-11      |        150        |   90-119   |
+| Gargoyle    |      5-25     |        2-25        |      6-21      |        100        |   50-150   |
+| Goblin      |      5-25     |        2-20        |      3-13      |        100        |   50-150   |
+| Vampire     |      5-25     |        2-25        |      8-23      |        100        |   50-150   |
+| Werewolf    |      5-25     |        2-20        |      4-19      |        100        |   50-150   |
+| Zombie      |      20-30    |        2-30        |      2-40      |        90         |   40-65    |
 
 ## Getting Started
 ### Prerequisites
