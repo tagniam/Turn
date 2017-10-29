@@ -23,7 +23,7 @@ using namespace Common;
 void Game::MainMenu(){
     // Main menu. Loops until you start
     // a game or quit.
-	    for (int choice=0; choice!=3;){
+	    for (int choice=-1; choice!=0;){
         choice = GetChoice(MenuType::eMain);
         switch(choice){
 			case 1:
@@ -32,7 +32,7 @@ void Game::MainMenu(){
 			case 2:
 				HowToPlay();
 				break;
-			case 3:
+			case 0:
 				break;
         }
     }
@@ -250,7 +250,7 @@ void Game::Intermission(){
 	    _Player->UseItem();
 	    _Player->SaveGame();
 	    break;
-        case 5:
+        case 0:
             // Breaks the loop in StartGame(), going back to MainMenu().
             IsPlaying=false;
 	    break;
@@ -404,7 +404,7 @@ void Game::DisplayMenu(MenuType menuType)
 			<< "Potion: Replenishes your HP to 100" << endl
 			<< "Whetstone: Restores your weapon's sharpness." << endl << endl
 			<< "Good luck and have fun!" << endl << endl
-			<< "1) Quit" << endl << endl << "> ";
+			<< "0) Quit" << endl << endl << "> ";
 		break;
 	default:
 		break;
