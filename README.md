@@ -56,7 +56,7 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 
 ### Building
 #### Windows
-* To build project files with CMake, simply open the run CMake on the root CMakeLists.txt. CMake-gui is recommended for an easy way to select project options.
+* To build project files with CMake, simply run CMake on the root CMakeLists.txt. CMake-gui is recommended for an easy way to select project options.
 
 #### Linux
 ```shell
