@@ -168,7 +168,7 @@ void Game::SetEnemy(){
 			break;
 		case etMurloc:
 			//Enemy is a Murloc
-			_Enemy = new Murloc
+			_Enemy = new Murloc;
 			break;
 		case etPutnafer:
 			// Enemy is a Putnafer
