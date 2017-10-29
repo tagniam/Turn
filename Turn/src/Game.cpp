@@ -182,6 +182,10 @@ void Game::SetEnemy(){
 			// Enemy is a Lich
 			_Enemy = new Lich;
 			break;
+		case etMurloc:
+			//Enemy is a Murloc
+			_Enemy = new Murloc;
+			break;
 		case etPutnafer:
 			// Enemy is a Putnafer
 			_Enemy = new Putnafer;
