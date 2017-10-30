@@ -15,5 +15,8 @@
 #include "Gargoyle.h"
 #include "Putnafer.h"
 #include "Zombie.h"
+#include "Cerberus.h"
+#include "Skeleton.h"
+#include "SmallRat.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

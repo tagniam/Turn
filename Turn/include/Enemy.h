@@ -11,13 +11,16 @@ enum EnemyType
     etSquid,
     etGiantSquid,
     etLich,
-    etMurloc,
     etZombie,
     etPutnafer,
     etVampire,
     etWerewolf,
     etGoblin,
     etGargoyle,
+    etCerberus,
+    etSkeleton,
+    etSmallRat,
+    etMurloc,
     etNumEnemyTypes
 };
 
