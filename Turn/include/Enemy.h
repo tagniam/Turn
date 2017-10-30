@@ -36,6 +36,7 @@ class Enemy : public Entity {
         int ReturnExperience();
 
         virtual EnemyType GetType() = 0;
+		virtual std::string GetIntro();
 
     protected:
         int GenericAttack();
