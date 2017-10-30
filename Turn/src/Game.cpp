@@ -192,9 +192,9 @@ void Game::SetEnemy(){
 			// Enemy is a Cerberus
 			_Enemy = new Cerberus;
 			break;
-		case etRat:
+		case etSkeleton:
 			// Enemy is a Rat
-			_Enemy = new Rat;
+			_Enemy = new Skeleton;
 			break;
 		case etSmallRat:
 			// Enemy is a Small Rat

@@ -18,7 +18,7 @@ enum EnemyType
 	etGoblin,
 	etGargoyle,
 	etCerberus,
-	etRat,
+	etSkeleton,
 	etSmallRat,
     etNumEnemyTypes
 };

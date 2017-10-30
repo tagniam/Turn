@@ -1,12 +1,12 @@
-#ifndef RAT_H
-#define RAT_H
+#ifndef SKELETON_H
+#define SKELETON_H
 
 #include "../Enemy.h"
 
 
-class Rat : public Enemy {
+class Skeleton : public Enemy {
 public:
-	Rat();
+	Skeleton();
 
 	EnemyType GetType() override;
 private:
@@ -15,4 +15,4 @@ private:
 	int ReturnHealAmount();
 };
 
-#endif // RAT_H
+#endif // SKELETON_H

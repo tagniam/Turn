@@ -1,20 +1,20 @@
-#include "../../include/EnemyTypes/Rat.h"
+#include "../../include/EnemyTypes/Skeleton.h"
 
-Rat::Rat() {
-	name = "Rat";
+Skeleton::Skeleton() {
+	name = "Skeleton";
 	ExperienceAmount = 25;
 	CoinsDrop = 3 + rand() % 48;
 }
 
-EnemyType Rat::GetType() {
-	return etRat;
+EnemyType Skeleton::GetType() {
+	return etSkeleton;
 }
 
-int Rat::ReturnDamage() {
+int Skeleton::ReturnDamage() {
 	return 3 + rand() % 5;
 }
 
-int Rat::ReturnRiskAttackDamage() {
+int Skeleton::ReturnRiskAttackDamage() {
 	int selector = rand() % 10;
 	switch (selector){
 	case 0: 
@@ -38,6 +38,6 @@ int Rat::ReturnRiskAttackDamage() {
 	}
 }
 
-int Rat::ReturnHealAmount() {
+int Skeleton::ReturnHealAmount() {
 	return 1 + rand() % 15;
 }
