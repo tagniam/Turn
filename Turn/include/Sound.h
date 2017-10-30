@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 #include <utility>
+#ifndef _WINDOWS
+#include <mutex>
+#endif
+
 //
 // SoundMaker: A class that ecapsulates
 // FileNaming convention: "rouge_attack_miss.wav"
@@ -26,6 +30,18 @@ typedef struct sSoundInfo
 	std::string fileNamePrefix;
 } SoundInfo;
 
+class PlatformSoundHelper {
+public:
+	PlatformSoundHelper();
+	~PlatformSoundHelper();
+
+	void PlaySoundFile(std::string const& filename);
+private:
+#ifndef _WINDOWS
+	std::mutex m_resourceMutex;
+#endif
+};
+
 class SoundMaker {
 public:
 	SoundMaker();
@@ -34,8 +50,13 @@ public:
 	void PlayHeal(void);
 	void SetSoundInfo(SoundInfo &info) { mInfo = info; }
 private:
+
+	void PlaySoundFile(std::string const& filename);
+
 	SoundInfo  mInfo;
 	std::vector<std::string> attackFileNames;
 	std::string altAttackFileName;
 	std::string healFileName;
+
+	static PlatformSoundHelper ms_SoundHelper;
 };

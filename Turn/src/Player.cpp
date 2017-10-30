@@ -11,6 +11,8 @@
 using namespace std;
 using namespace Common;
 
+#define SKIP_TURN -2
+
 Player::Player(void) 
 {
 	// Initialize default sounds, attackRange should be 
@@ -28,6 +30,7 @@ void Player::SaveGame(){
 	if (WriteData.is_open()) {
         	WriteData << player_type << endl 
 			<< name << endl
+            << gender << endl
 			<< level << endl
 			<< experience << endl
 			<< health << endl
@@ -55,6 +58,7 @@ void Player::SetPlayerData(){
 		ReadData >> player_type;
     ReadData.ignore();       // Ignore rest of line ready for getline
     getline(ReadData, name);
+    ReadData >> gender;
     ReadData >> level;
     ReadData >> experience;
 		ReadData >> health;
@@ -115,7 +119,11 @@ int Player::Attack(){
 				PlaySecondaryAttack();
 				return BowAndArrow();
 			}
-			break;
+			else {
+				cout << "No arrows in the inventory!" << endl;
+				Sleep(SLEEP_MS);
+				return SKIP_TURN;
+			}
 		case 4:
 			// Player heals, no damage is done to enemy.
 			PlayHeal();
@@ -126,15 +134,20 @@ int Player::Attack(){
 			// Does not execute if there are no bombs in the inventory.
 			if (bombs > 0)
 				return UseBomb();
-			break;
+			else {
+				cout << "No bombs in the inventory!" << endl;
+				return SKIP_TURN;
+			}
 		case 6:
 			// Player drinks a potion.
 			// Does not execute if there are no potions in the inventory.
 			if (potions > 0) {
 				UsePotion();
 				return 0;
+			}else {
+				cout << "No potions in the inventory!" << endl;
+				return SKIP_TURN;
 			}
-			break;
 		case 7:
 			// Player sharpens their weapon with a whetstone.
 			// Does not execute if there are no whetstones in inventory.
@@ -142,8 +155,10 @@ int Player::Attack(){
 			if (whetstones > 0) {
 				UseWhetstone();
 				return 0;
+			} else {
+				cout << "No whetstones in the inventory!" << endl;
+				return SKIP_TURN;
 			}
-			break;
 		default:
 			// Generically attacks by default if player's choice does not equal above cases.
 			return GenericAttack();
@@ -182,8 +197,8 @@ void Player::UseItem() {
 			} else {
 				cout << "No potions in the inventory!" << endl;
 				Sleep(SLEEP_MS);
-			}
 
+			}
 			break;
 		case 2:
 			// Player sharpens their weapon with a whetstone.
@@ -369,7 +384,10 @@ int Player::GenericAttack(){
     int damage = ReturnDamage();
     DeductDamage(damage);
 	ColourPrint(name, Console::DarkGrey);
-    cout << " attacks! He deals ";
+    if (gender == 'M')
+        cout << " attacks! He deals ";
+    else
+        cout << " attacks! She deals ";
 	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
     if (damage>0) weaponstrength-= 2+rand()%5;
@@ -391,7 +409,10 @@ int Player::RiskAttack(){
 int Player::BowAndArrow(){
     int damage = ReturnBowDamage();
 	ColourPrint(name, Console::DarkGrey);
-    cout << " shoots his bow! He deals ";
+    if (gender == 'M')
+        cout << " shoots his bow! He deals ";
+    else
+        cout << " shoots her bow! She deals ";
 	Console::GetInstance().SetColour(Console::EColour::Red);
     cout << damage;
 	Console::GetInstance().SetColour(Console::EColour::Default);
@@ -402,7 +423,10 @@ int Player::BowAndArrow(){
 void Player::UseWhetstone(){
     weaponstrength=100;
 	ColourPrint(name, Console::DarkGrey);
-    cout << " sharpened his weapon!" << endl;
+    if (gender == 'M')
+        cout << " sharpened his weapon!" << endl;
+    else
+        cout << " sharpened her weapon!" << endl;
     whetstones--;
 }
 

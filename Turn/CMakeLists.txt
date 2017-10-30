@@ -19,3 +19,7 @@ add_executable(Turn ${SOURCES} ${HEADERS})
 if (WIN32)
 	target_link_libraries(Turn winmm.lib)
 endif (WIN32)
+
+if (UNIX)
+	target_link_libraries(Turn SDL2 SDL2_mixer pthread)
+endif (UNIX)

@@ -8,6 +8,7 @@
 #include "Squid.h"
 #include "GiantSquid.h"
 #include "Lich.h"
+#include "Murloc.h"
 #include "Vampire.h"
 #include "Werewolf.h"
 #include "Goblin.h"
