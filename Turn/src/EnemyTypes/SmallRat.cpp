@@ -7,7 +7,7 @@ SmallRat::SmallRat() {
 }
 
 EnemyType SmallRat::GetType() {
-	return etRat;
+	return etSmallRat;
 }
 
 int SmallRat::ReturnDamage() {
