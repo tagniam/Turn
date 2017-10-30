@@ -38,3 +38,9 @@ int SmallRat::ReturnRiskAttackDamage() {
 int SmallRat::ReturnHealAmount() {
 	return 3 + rand() % 15;
 }
+
+std::string SmallRat::GetIntro()
+{
+	std::string IntroText = "Little feet tripping over the floor...";
+	return IntroText;
+}
