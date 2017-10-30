@@ -35,3 +35,9 @@ int Putnafer::ReturnRiskAttackDamage() {
 int Putnafer::ReturnHealAmount() {
 	return 2 + rand() % 12;
 }
+
+std::string Putnafer::GetIntro()
+{
+	std::string IntroText = "Terrifying doesn't describe this...";
+	return IntroText;
+}
