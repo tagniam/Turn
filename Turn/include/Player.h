@@ -12,7 +12,7 @@ class Player : public Entity, public SoundMaker {
         void SaveGame();
 
         void SetPlayerData();
-        int Attack();
+        int Action();
 	void UseItem();
         void AddToInventory(std::vector<int>);
 	void AddStoreItemToInventory(int);

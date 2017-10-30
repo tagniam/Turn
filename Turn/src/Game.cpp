@@ -335,8 +335,8 @@ void Game::Battle(){
         _Player->DisplayHUD(_Enemy);
         _Enemy->DisplayHUD();
 
-		int damagePlayer = _Player->Attack();
-        // Player's turn to attack Enemy.
+		int damagePlayer = _Player->Action();
+        // Player's turn to attack Enemy or choose other action.
 
 		if (damagePlayer != SKIP_TURN){
 			_Enemy->TakeDamage(damagePlayer);
@@ -368,7 +368,7 @@ void Game::Battle(){
 
         // Enemy's turn to attack player.
 		if (damagePlayer != SKIP_TURN)
-			_Player->TakeDamage(_Enemy->Attack());
+			_Player->TakeDamage(_Enemy->Action());
         Sleep(SLEEP_MS);
 
         // Executes when player's health is 0 or below.
