@@ -38,6 +38,5 @@ int Putnafer::ReturnHealAmount() {
 
 std::string Putnafer::GetIntro()
 {
-	std::string IntroText = "Terrifying doesn't describe this...";
-	return IntroText;
+	return "Terrifying doesn't describe this...";
 }

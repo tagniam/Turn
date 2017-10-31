@@ -35,6 +35,5 @@ int Zombie::ReturnHealAmount() {
 
 std::string Zombie::GetIntro()
 {
-	std::string IntroText = "\"Brains,\" it moans...";
-	return IntroText;
+	return "\"Brains,\" it moans...";
 }

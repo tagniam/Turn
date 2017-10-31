@@ -142,6 +142,5 @@ int Enemy::ReturnItemDrop(int item){
 
 std::string Enemy::GetIntro()
 {
-	std::string IntroText = "A distant noise coming closer...";
-	return IntroText;
+	return "A distant noise coming closer...";
 }

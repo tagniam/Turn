@@ -41,6 +41,5 @@ int SmallRat::ReturnHealAmount() {
 
 std::string SmallRat::GetIntro()
 {
-	std::string IntroText = "Little feet tripping over the floor...";
-	return IntroText;
+	return "Little feet tripping over the floor...";
 }

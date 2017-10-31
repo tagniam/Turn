@@ -39,6 +39,5 @@ int Cerberus::ReturnHealAmount() {
 
 std::string Cerberus::GetIntro()
 {
-	std::string IntroText = "Something is growling behind you...";
-	return IntroText;
+	return "Something is growling behind you...";
 }

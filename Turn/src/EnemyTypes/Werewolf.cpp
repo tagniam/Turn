@@ -35,6 +35,5 @@ int Werewolf::ReturnHealAmount() {
 
 std::string Werewolf::GetIntro()
 {
-	std::string IntroText = "Smells like wet dog.";
-	return IntroText;
+	return "Smells like wet dog.";
 }

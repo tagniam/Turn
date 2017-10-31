@@ -44,6 +44,5 @@ int Skeleton::ReturnHealAmount() {
 
 std::string Skeleton::GetIntro()
 {
-	std::string IntroText = "Clack, clack, clack...";
-	return IntroText;
+	return "Clack, clack, clack...";	
 }

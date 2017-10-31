@@ -35,6 +35,5 @@ int Squid::ReturnHealAmount() {
 
 std::string Squid::GetIntro()
 {
-	std::string IntroText = "Because two arms attacking you just wasn't enough.";
-	return IntroText;
+	return "Because two arms attacking you just wasn't enough.";
 }

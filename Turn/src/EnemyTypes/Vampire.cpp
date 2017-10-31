@@ -35,6 +35,5 @@ int Vampire::ReturnHealAmount() {
 
 std::string Vampire::GetIntro()
 {
-	std::string IntroText = "A dark presence...";
-	return IntroText;
+	return "A dark presence...";
 }
