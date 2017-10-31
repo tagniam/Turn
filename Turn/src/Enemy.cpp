@@ -139,3 +139,8 @@ int Enemy::ReturnItemDrop(int item){
         break;
     }
 }
+
+std::string Enemy::GetIntro()
+{
+	return "A distant noise coming closer...";
+}

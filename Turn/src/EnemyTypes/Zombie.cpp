@@ -32,3 +32,8 @@ int Zombie::ReturnRiskAttackDamage() {
 int Zombie::ReturnHealAmount() {
 	return 2 + rand() % 40;
 }
+
+std::string Zombie::GetIntro()
+{
+	return "\"Brains,\" it moans...";
+}

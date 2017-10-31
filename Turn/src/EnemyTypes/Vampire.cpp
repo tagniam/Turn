@@ -32,3 +32,8 @@ int Vampire::ReturnRiskAttackDamage() {
 int Vampire::ReturnHealAmount() {
 	return 8 + rand() % 15;
 }
+
+std::string Vampire::GetIntro()
+{
+	return "A dark presence...";
+}

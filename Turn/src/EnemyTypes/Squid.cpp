@@ -32,3 +32,8 @@ int Squid::ReturnRiskAttackDamage() {
 int Squid::ReturnHealAmount() {
     return 1+rand()%11;
 }
+
+std::string Squid::GetIntro()
+{
+	return "Because two arms attacking you just wasn't enough.";
+}

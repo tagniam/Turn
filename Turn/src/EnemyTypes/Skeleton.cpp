@@ -41,3 +41,8 @@ int Skeleton::ReturnRiskAttackDamage() {
 int Skeleton::ReturnHealAmount() {
 	return 1 + rand() % 15;
 }
+
+std::string Skeleton::GetIntro()
+{
+	return "Clack, clack, clack...";	
+}

@@ -35,3 +35,9 @@ int Cerberus::ReturnRiskAttackDamage() {
 int Cerberus::ReturnHealAmount() {
 	return 5 + rand() % 6;
 }
+
+
+std::string Cerberus::GetIntro()
+{
+	return "Something is growling behind you...";
+}

@@ -32,3 +32,8 @@ int Werewolf::ReturnRiskAttackDamage() {
 int Werewolf::ReturnHealAmount() {
 	return 4 + rand() % 15;
 }
+
+std::string Werewolf::GetIntro()
+{
+	return "Smells like wet dog.";
+}

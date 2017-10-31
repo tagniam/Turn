@@ -229,6 +229,8 @@ void Game::SetEnemy(){
             break;
     }
     // Simply prints that the enemy's class was encountered.
+	cout << _Enemy->GetIntro() << endl;
+	Sleep(SLEEP_MS);
 	ColourPrint(_Enemy->GetName(), Console::DarkGrey);
     cout << " encountered!" << endl << endl;
     Sleep(SLEEP_MS);
