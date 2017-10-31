@@ -20,7 +20,7 @@ Enemy::Enemy(){
     ExperienceAmount = 0;
 }
 
-int Enemy::Attack(){
+int Enemy::Action(){
     // Returns damage hit for the player. Uses random number to select enemy's move.
 
   int selector = rand()%9;

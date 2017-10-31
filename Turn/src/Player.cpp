@@ -74,7 +74,7 @@ void Player::SetPlayerData(){
 	}
 }
 
-int Player::Attack(){
+int Player::Action(){
     // Returns the amount of attack points the player gives.
     // Also the main battle screen.
 

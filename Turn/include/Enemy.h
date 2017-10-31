@@ -29,7 +29,7 @@ class Enemy : public Entity {
     public:
         Enemy();
 
-        int Attack();
+        int Action();
         void DisplayHUD();
 
 		std::vector<int> GetDrops();
