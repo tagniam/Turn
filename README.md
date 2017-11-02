@@ -2,7 +2,7 @@
 Turn is a basic turn-based RPG game written in C++. 
 
 ## History
-I wrote this game almost 5 years ago, and uploading it to GitHub was my first experience with open source. Now, I want to give back to the community for [Hacktoberfest 2017](https://hacktoberfest.digitalocean.com/) and encourage everyone, regardless of programming skills or knowledge, to contribute! :)  
+I wrote this game almost 5 years ago, and uploading it to GitHub was my first experience with open source. During [Hacktoberfest 2017](https://hacktoberfest.digitalocean.com/), I wanted to give back to the community and encouraged everyone, regardless of programming skills, to contribute. Thank you to all the amazing contributors and see you next year!
 
 ## Screenshots
 
