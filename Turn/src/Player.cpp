@@ -390,7 +390,7 @@ int Player::GenericAttack(){
         cout << " attacks! She deals ";
 	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
-    if (damage>0) weaponstrength-= 2+rand()%5;
+    if (damage>0) WeakenWeapon(2);
     return damage;
 }
 
@@ -402,8 +402,19 @@ int Player::RiskAttack(){
 	ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
 
-    if (damage>0) weaponstrength-= 4+rand()%5;
+    if (damage>0) WeakenWeapon(4);
     return damage;
+
+}
+
+void Player::WeakenWeapon(int impact){
+	if (impact >= 0) weaponstrength -= impact + rand() % 5;
+	else weaponstrength -= rand() % 5;
+	
+	if (weaponstrength < 0)
+	{
+		weaponstrength = 0;
+	}
 }
 
 int Player::BowAndArrow(){
