@@ -39,7 +39,7 @@ class Player : public Entity, public SoundMaker {
         int UseBomb();
         void DeductDamage(int&);
         int ReturnBowDamage();
-		void WeakenWeapon();
+		void WeakenWeapon(int impact);
 
         int Flee();
 

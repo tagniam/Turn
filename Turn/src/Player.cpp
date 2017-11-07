@@ -415,8 +415,6 @@ void Player::WeakenWeapon(int impact){
 	{
 		weaponstrength = 0;
 	}
-
-	return;
 }
 
 int Player::BowAndArrow(){
