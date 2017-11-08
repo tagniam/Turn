@@ -6,7 +6,7 @@
 class Slimeball : public Enemy {
 public:
     Slimeball();
-
+    std::string GetIntro();
     EnemyType GetType() override;
 private:
     int ReturnDamage();
