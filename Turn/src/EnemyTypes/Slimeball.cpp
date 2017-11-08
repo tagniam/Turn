@@ -18,6 +18,11 @@ int Slimeball::ReturnDamage()
     return 1 + acidSplash + rand() % 10;
 }
 
+std::string Slimeball::GetIntro()
+{
+	return "Gurgle, gurgle, glub, glub...";
+}
+
 int Slimeball::ReturnRiskAttackDamage()
 {
     int selector = rand() % 6;
