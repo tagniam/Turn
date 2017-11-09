@@ -18,5 +18,6 @@
 #include "Cerberus.h"
 #include "Skeleton.h"
 #include "SmallRat.h"
+#include "Slimeball.h"
 
 #endif // ENEMYTYPES_H_INCLUDED
