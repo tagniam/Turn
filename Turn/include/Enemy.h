@@ -21,6 +21,7 @@ enum EnemyType
     etSkeleton,
     etSmallRat,
     etMurloc,
+    etSlimeball,
     etNumEnemyTypes
 };
 

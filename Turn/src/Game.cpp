@@ -161,7 +161,12 @@ void Game::SetEnemy(){
     // The abstract class Enemy is morphed with one of its child classes.
 
     EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
-    switch(selector){
+    switch(selector)
+    {
+        case etSlimeball:
+	    // Enemy is a slimeball.
+	    _Enemy = new Slimeball;
+            break;
         case etCrab:
             // Enemy is a crab.
             _Enemy = new Crab;
