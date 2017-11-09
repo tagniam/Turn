@@ -163,14 +163,14 @@ void Game::SetEnemy(){
     EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
     switch(selector)
     {
+        case etSlimeball:
+	    // Enemy is a slimeball.
+	    _Enemy = new Slimeball;
+            break;
         case etCrab:
             // Enemy is a crab.
             _Enemy = new Crab;
             break;
-        case etSlimeball:
-	    // Enemy is a slimeball.
-	    _Enemy = new Slimeball;
-            break; 
         case etGiantCrab:
             // Enemy is a giant crab.
             _Enemy = new GiantCrab;
