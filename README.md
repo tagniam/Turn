@@ -65,9 +65,9 @@ Turn is a turn-based RPG game. Create your character and start playing. For play
 #### Linux
 ```shell
 $ git clone https://github.com/tagniam/Turn.git
-$ mkdir build
-$ cd build
-$ cmake ..
+$ cd Turn/
+$ ./configure
+$ cd build/
 $ make
 ```
 ## Contributing
