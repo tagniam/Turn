@@ -10,7 +10,7 @@ I wrote this game almost 5 years ago, and uploading it to GitHub was my first ex
 ![Menu screen](screenshots/menu.png)
 
 ## How To Play
-See the [wiki] for instructions.
+See the [wiki](https://github.com/tagniam/Turn/wiki) for instructions.
 
 ## Getting Started
 ### Prerequisites
