@@ -19,5 +19,8 @@
 #include "Skeleton.h"
 #include "SmallRat.h"
 #include "Slimeball.h"
+#include "Bat.h"
+#include "GiantBat.h"
+#include "GiantSpider.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

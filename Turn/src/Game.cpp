@@ -227,6 +227,18 @@ void Game::SetEnemy(){
 			// Enemy is a Small Rat
 			_Enemy = new SmallRat;
 			break;
+		case etBat:
+			// Enemy is a Bat 
+			_Enemy = new Bat;
+			break;
+		case etGiantBat:
+			// Enemy is a GiantBat 
+			_Enemy = new GiantBat;
+			break;
+		case etGiantSpider:
+			// Enemy is a GiantSpider 
+			_Enemy = new GiantSpider;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.

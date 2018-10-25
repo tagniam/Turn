@@ -22,6 +22,9 @@ enum EnemyType
     etSmallRat,
     etMurloc,
     etSlimeball,
+	etBat,
+	etGiantBat,
+	etGiantSpider,
     etNumEnemyTypes
 };
 
@@ -44,7 +47,7 @@ class Enemy : public Entity {
         int RiskAttack();
 
         int ReturnItemDrop(int);
-        
+
         int ExperienceAmount;
         int CoinsDrop;
 };
