@@ -2,9 +2,9 @@
 //#include <conio.h>
 #include <vector>
 
-#include "../include/Common.h"
-#include "../include/Gambling.h"
-#include "../include/Player.h"
+#include "Turn/Common.h"
+#include "Turn/Gambling.h"
+#include "Turn/Player.h"
 
 using namespace std;
 using namespace Common;

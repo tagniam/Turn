@@ -4,12 +4,12 @@
 #include <string>
 #include <limits>
 
-#include "../include/Game.h"
-#include "../include/Common.h"
-#include "../include/Console.h"
+#include "Turn/Game.h"
+#include "Turn/Common.h"
+#include "Turn/Console.h"
 
-#include "../include/PlayerTypes/PlayerTypes.h"
-#include "../include/EnemyTypes/EnemyTypes.h"
+#include "Turn/PlayerTypes/PlayerTypes.h"
+#include "Turn/EnemyTypes/EnemyTypes.h"
 
 
 using namespace std;

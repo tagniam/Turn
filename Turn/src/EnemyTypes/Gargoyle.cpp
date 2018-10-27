@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Gargoyle.h"
+#include "Turn/EnemyTypes/Gargoyle.h"
 
 Gargoyle::Gargoyle() {
 	name = "Gargoyle";

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../include/Console.h"
+#include "Turn/Console.h"
 
 // Common functions and data to share across all files.
 namespace Common {

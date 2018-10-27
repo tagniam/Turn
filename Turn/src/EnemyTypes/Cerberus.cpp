@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Cerberus.h"
+#include "Turn/EnemyTypes/Cerberus.h"
 
 Cerberus::Cerberus() {
 	name = "Cerberus";

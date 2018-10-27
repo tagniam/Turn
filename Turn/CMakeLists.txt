@@ -1,19 +1,10 @@
 # Source Files
-file(GLOB_RECURSE SOURCES 
-	"src/*.cpp"
-	)
-file(GLOB_RECURSE HEADERS
-	"src/*.h"
-	"include/*.h"
-	)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+add_executable(Turn ${SOURCES} ${HEADERS})
 
 # Include Directories
-include_directories(
-	"include/"
-	"src/"
-	)
-	
-add_executable(Turn ${SOURCES} ${HEADERS})
+target_include_directories(Turn PRIVATE "include")
 
 # Link WinMM required for PlaySound
 if (WIN32)
@@ -21,5 +12,6 @@ if (WIN32)
 endif (WIN32)
 
 if (UNIX)
+	find_package(SDL2 REQUIRED)
 	target_link_libraries(Turn SDL2 SDL2_mixer pthread)
 endif (UNIX)

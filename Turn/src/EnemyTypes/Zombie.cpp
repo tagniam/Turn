@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Zombie.h"
+#include "Turn/EnemyTypes/Zombie.h"
 
 Zombie::Zombie() {
 	name = "Zombie";

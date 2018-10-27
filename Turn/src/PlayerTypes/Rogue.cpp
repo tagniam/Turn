@@ -1,4 +1,4 @@
-#include "../../include/PlayerTypes/Rogue.h"
+#include "Turn/PlayerTypes/Rogue.h"
 
 
 Rogue::Rogue(void)

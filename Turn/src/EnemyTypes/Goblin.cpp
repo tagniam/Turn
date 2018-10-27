@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Goblin.h"
+#include "Turn/EnemyTypes/Goblin.h"
 
 Goblin::Goblin() {
 	name = "Goblin";

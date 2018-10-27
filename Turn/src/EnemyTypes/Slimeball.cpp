@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Slimeball.h"
+#include "Turn/EnemyTypes/Slimeball.h"
 
 Slimeball::Slimeball()
 {

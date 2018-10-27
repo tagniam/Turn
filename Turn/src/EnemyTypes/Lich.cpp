@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Lich.h"
+#include "Turn/EnemyTypes/Lich.h"
 
 Lich::Lich() {
 	name = "Lich";

@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "../include/Common.h"
-#include "../include/Store.h"
-#include "../include/StoreGreetings.h"
-#include "../include/ItemTypes.h"
+#include "Turn/Common.h"
+#include "Turn/Store.h"
+#include "Turn/StoreGreetings.h"
+#include "Turn/ItemTypes.h"
 
 
 using namespace std;

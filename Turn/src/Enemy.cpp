@@ -2,9 +2,9 @@
 #include <vector>
 #include <cstdlib>
 #include <string>
-#include "../include/Common.h"
-#include "../include/Enemy.h"
-#include "../include/Console.h"
+#include "Turn/Common.h"
+#include "Turn/Enemy.h"
+#include "Turn/Console.h"
 
 using namespace std;
 using namespace Common;

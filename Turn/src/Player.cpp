@@ -3,10 +3,10 @@
 #include <cmath>
 #include <string>
 
-#include "../include/Common.h"
-#include "../include/Player.h"
-#include "../include/Console.h"
-#include "../include/ItemTypes.h"
+#include "Turn/Common.h"
+#include "Turn/Player.h"
+#include "Turn/Console.h"
+#include "Turn/ItemTypes.h"
 
 using namespace std;
 using namespace Common;

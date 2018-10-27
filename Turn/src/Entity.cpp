@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../include/Entity.h"
-#include "../include/Common.h"
-#include "../include/Console.h"
+#include "Turn/Entity.h"
+#include "Turn/Common.h"
+#include "Turn/Console.h"
 
 using namespace std;
 using namespace Common;

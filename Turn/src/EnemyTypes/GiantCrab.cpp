@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/GiantCrab.h"
+#include "Turn/EnemyTypes/GiantCrab.h"
 
 GiantCrab::GiantCrab() {
     name = "Giant Crab";

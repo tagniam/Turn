@@ -1,4 +1,4 @@
-#include "../../include/PlayerTypes/Debugger.h"
+#include "Turn/PlayerTypes/Debugger.h"
 
 int Debugger::ReturnDamage(){
     return 100;

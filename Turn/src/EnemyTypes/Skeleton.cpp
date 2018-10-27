@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Skeleton.h"
+#include "Turn/EnemyTypes/Skeleton.h"
 
 Skeleton::Skeleton() {
 	name = "Skeleton";

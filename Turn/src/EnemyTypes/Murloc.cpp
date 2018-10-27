@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Murloc.h"
+#include "Turn/EnemyTypes/Murloc.h"
 
 Murloc::Murloc() {
 	name = "Murloc";

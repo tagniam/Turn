@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Squid.h"
+#include "Turn/EnemyTypes/Squid.h"
 
 Squid::Squid() {
     name = "Squid";

@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/GiantSquid.h"
+#include "Turn/EnemyTypes/GiantSquid.h"
 
 
 GiantSquid::GiantSquid() {

@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/SmallRat.h"
+#include "Turn/EnemyTypes/SmallRat.h"
 
 SmallRat::SmallRat() {
 	name = "Small Rat";

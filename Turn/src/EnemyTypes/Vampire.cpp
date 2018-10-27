@@ -1,4 +1,4 @@
-#include "../../include/EnemyTypes/Vampire.h"
+#include "Turn/EnemyTypes/Vampire.h"
 
 Vampire::Vampire() {
 	name = "Vampire";

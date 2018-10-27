@@ -3,7 +3,7 @@
 #include <chrono>
 #include <thread>
 
-#include "../include/Common.h"
+#include "Turn/Common.h"
 using namespace std;
 
 void Common::ClearScreen(){
