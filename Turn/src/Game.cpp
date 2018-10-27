@@ -56,13 +56,13 @@ char Game::InitializePlayerGender() {
     char gender;
     do {
         ClearScreen();
-        cout << "What is your gender (M or F)?"
+        cout << "What is your gender (M, F or O)?"
             << endl << endl
             << "> ";
 
         cin >> gender;
         gender = toupper(gender);
-    } while (gender != 'M' && gender != 'F');
+    } while (gender != 'M' && gender != 'F' && gender != 'O');
 
     return gender;
 }
