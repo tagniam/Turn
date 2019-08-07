@@ -31,6 +31,7 @@ void Store::StoreFront(Player* _Player) {
 		_Player->DisplayInventory();
 		cout << endl << " Jeremy's Tools Store" << endl;
 		cout << " \"" << random_greeting() << "\"" << endl << endl;
+		//cout << this->getJeremysCoin()<< endl<<endl; //display the coin that Jeremy has. 
 		cout << " ----ITEM----------------COST------ " << endl << endl;
 		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
 		cout << " 2) Bomb\t\t " << bombCost << endl;
@@ -40,6 +41,8 @@ void Store::StoreFront(Player* _Player) {
 		cout << " ---------------------------------- " << endl << endl;
 		cout << " What do you want to buy today?" << endl << endl << " ";
 		choice = input();
+		cout<< "Do you have anything to sell?"<< endl<< endl<<" ";
+
 		cout << endl;
 		switch (choice)
 		{
@@ -102,4 +105,9 @@ void Store::StoreFront(Player* _Player) {
 			Sleep(SLEEP_MS);
 		}
 	} while (choice);
+}
+Store::SellingItems(Player* _Player){
+
+
+
 }
