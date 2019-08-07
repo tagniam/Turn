@@ -15,8 +15,8 @@ class Player : public Entity, public SoundMaker {
         int Action();
 	void UseItem();
         void AddToInventory(std::vector<int>);
-	void AddStoreItemToInventory(int);
-
+	    void AddStoreItemToInventory(int);
+        int SellItem(int); 
         void DisplayHUD(Enemy*);
         void ReplenishHealth();
 
@@ -28,6 +28,10 @@ class Player : public Entity, public SoundMaker {
 
         void DisplayInventory();
         int GetCoins();
+        int getArrows(); 
+        int getPotions(); 
+        int getBombs();
+        int getWhetStones();  
 
     private:
         int GenericAttack();
@@ -57,7 +61,8 @@ class Player : public Entity, public SoundMaker {
         int potions;
         int bombs;
         int weaponstrength;
-        int coins;
+        int coins=200;
+        int junk; //junk to be implimented in the future. 
 };
 
 #endif // PLAYER_H

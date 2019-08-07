@@ -87,12 +87,13 @@ int Player::Action(){
     // Gives player a list of moves to choose from.
 	cout << "Choose your move:" << endl
 		<< "1) Attack" << endl
-		<< "2) Risk Attack" << endl
-		<< "3) Bow and Arrow" << endl
-		<< "4) Heal" << endl << endl
-		<< "5) Use Bomb" << endl
-		<< "6) Use Potion" << endl
-		<< "7) Use Whetstone" << endl
+		<< "2) Dance With the Monster"<<endl
+		<< "3) Risk Attack" << endl
+		<< "4) Bow and Arrow" << endl
+		<< "5) Heal" << endl << endl
+		<< "6) Use Bomb" << endl
+		<< "7) Use Potion" << endl
+		<< "8) Use Whetstone" << endl
 		<< "0) Get me out of here!" << endl << endl;
 
 	while (true) {
@@ -247,7 +248,45 @@ void Player::AddToInventory(vector<int> drops){
 
 	cout << endl;
 }
+int Player::SellItem(int type){
 
+	switch(type){
+
+		case ITEMTYPE::ARROWS: 
+			arrows -= 5;  
+		    break; 
+		case ITEMTYPE::BOMB:
+			--bombs; 
+			break; 
+		case ITEMTYPE::POTION:
+			--potions;
+			break;  
+		case ITEMTYPE::WHETSTONE: 
+			--whetstones;
+			break;  
+	}
+
+
+}
+
+int Player::getArrows(){
+
+	return arrows; 
+}
+
+int Player::getPotions(){
+
+	return potions; 
+}
+
+int Player::getBombs(){
+
+	return bombs; 
+}
+
+int Player::getWhetStones(){
+	return whetstones; 
+}
 void Player::AddStoreItemToInventory(int type) {
 	// Adds items bought to total items.
 	switch (type)

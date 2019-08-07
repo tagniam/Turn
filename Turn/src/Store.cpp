@@ -31,7 +31,7 @@ void Store::StoreFront(Player* _Player) {
 		_Player->DisplayInventory();
 		cout << endl << " Jeremy's Tools Store" << endl;
 		cout << " \"" << random_greeting() << "\"" << endl << endl;
-		//cout << this->getJeremysCoin()<< endl<<endl; //display the coin that Jeremy has. 
+		cout << "\""<< "Jeremy's Wealth" <<this->getJeremysCoin()<<"\""<<endl<<endl; //display the coin that Jeremy has. 
 		cout << " ----ITEM----------------COST------ " << endl << endl;
 		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
 		cout << " 2) Bomb\t\t " << bombCost << endl;
@@ -39,11 +39,18 @@ void Store::StoreFront(Player* _Player) {
 		cout << " 4) Whetstone\t\t " << whetstoneCost << endl << endl;
 		cout << " 0) Exit" << endl << endl;
 		cout << " ---------------------------------- " << endl << endl;
-		cout << " What do you want to buy today?" << endl << endl << " ";
+		
+
+		cout << " Are you here to buy or to sell?" << endl << endl << " ";
+
+		string Decision=" "; 
+		cin>>Decision; 
+		//if(Decision=="Buy"||"buy"){
 		choice = input();
 		cout<< "Do you have anything to sell?"<< endl<< endl<<" ";
 
 		cout << endl;
+
 		switch (choice)
 		{
 		case ITEMTYPE::ARROWS:
@@ -104,10 +111,59 @@ void Store::StoreFront(Player* _Player) {
 			cout << invalidChoice << endl;
 			Sleep(SLEEP_MS);
 		}
-	} while (choice);
-}
-Store::SellingItems(Player* _Player){
+	} while (choice); }
+/*
+	//Sell things
+	//else if(Decision!="Buy"||"buy")
+		switch(choice){
+
+			case ITEMTYPE::ARROWS:
+				if(_Player->getArrows()>0){
+
+
+					}
+				break; 
+			case ITEMTYPE::BOMB: 
+				if(_Player->getBombs()>0){
+
+
+				}
+
+				break; 
+			case ITEMTYPE::WHETSTONE:
+				if(_Player->getWhetStones()>0){
+
+
+				}
+				break;
+			case ITEMTYPE::POTION:
+
+				if(_Player->getPotions()>0){
+
+
+				} 
+				break; }
+		
+*/
+
+		
+					
+
+
+				
+
+				
 
 
 
-}
+
+
+
+
+ /*
+ Unimplimented selling items method
+void Store::SellingItems(Player* _Player){
+
+
+
+} */ 
