@@ -1,5 +1,5 @@
 #include "../include/Console.h"
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <Windows.h>
 #include <conio.h>
 #else
@@ -7,24 +7,24 @@
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
-#endif // _WINDOWS
+#endif // _WIN32
 
 Console::Console() {
-#if defined(_WINDOWS)
+#ifdef _WIN32
 	m_hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 #endif
 }
 
 void Console::ClearScreen() {
-#ifdef _WINDOWS
+#ifdef _WIN32
 	system("cls");
 #else
 	system("clear");
-#endif // _WINDOWS
+#endif // _WIN32
 }
 
 char Console::GetChar() const {
-#ifdef _WINDOWS
+#ifdef _WIN32
 	return _getch();
 #else
 	// The following code attempts to manually reproduce the same behaviour as the
@@ -47,11 +47,11 @@ char Console::GetChar() const {
 
 	// Return the character that was read
 	return ch;
-#endif // _WINDOWS
+#endif // _WIN32
 }
 
 void Console::SetColour(EColour colour) {
-#ifdef _WINDOWS
+#ifdef _WIN32
 	enum WindowsAttributes
 	{
 		GREY = 7,
@@ -68,7 +68,7 @@ void Console::SetColour(EColour colour) {
 		DARK_GREY,		// EColour::DarkGrey
 		RED,			// EColour::Red
 		GREEN,			// EColour::Green
-		
+
 		RED_BACKGROUND,	// EColour::Background_Red
 		GREY_BACKGROUND,// EColour::Background_Grey
 	};
@@ -85,7 +85,7 @@ void Console::SetColour(EColour colour) {
 		"\033[0m\033[47m",	// EColour::Background_Grey
 	};
 	printf("%s", colourEscapeCodes[colour]);
-#endif // _WINDOWS
+#endif // _WIN32
 }
 
 Console& Console::GetInstance() {
