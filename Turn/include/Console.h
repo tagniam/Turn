@@ -2,9 +2,9 @@
 #ifndef CONSOLE_H_INCLUDED
 #define CONSOLE_H_INCLUDED
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <Windows.h>
-#endif // _WINDOWS
+#endif // _WIN32
 
 class Console {
 public:
@@ -36,9 +36,9 @@ private:
 	// Copy constructor private and unimplemented for this singleton
 	Console(Console&) = delete;
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 	HANDLE m_hConsoleHandle;
-#endif // _WINDOWS
+#endif // _WIN32
 };
 
 #endif // CONSOLE_H_INCLUDED

@@ -1,6 +1,6 @@
 #include "../include/Sound.h"
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <Windows.h>
 #include <MMSystem.h>
 #else
@@ -21,7 +21,7 @@
 PlatformSoundHelper SoundMaker::ms_SoundHelper;
 
 PlatformSoundHelper::PlatformSoundHelper() {
-#ifndef _WINDOWS
+#ifndef _WIN32
 	m_resourceMutex.lock();
 	SDL_Init(SDL_INIT_AUDIO);
 	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024);
@@ -30,7 +30,7 @@ PlatformSoundHelper::PlatformSoundHelper() {
 }
 
 PlatformSoundHelper::~PlatformSoundHelper() {
-#ifndef _WINDOWS
+#ifndef _WIN32
 	m_resourceMutex.lock();
 	Mix_CloseAudio();
 	SDL_Quit();
@@ -39,7 +39,7 @@ PlatformSoundHelper::~PlatformSoundHelper() {
 }
 
 void PlatformSoundHelper::PlaySoundFile(std::string const& filename) {
-#ifdef _WINDOWS
+#ifdef _WIN32
 	PlaySound(filename.c_str(), NULL, SND_ASYNC);
 #else
 	// It would be possible to pre-cache the sounds for SDL_mixer, however instead
@@ -84,7 +84,8 @@ SoundMaker::SoundMaker():mInfo(),
 	attackFileNames.push_back(FileName + ATTACKFILENAME3);
 	attackFileNames.push_back(FileName + ATTACKFILENAMECRIT);
 }
-void SoundMaker::PlayPrimaryAttack(int damageDealt) 
+
+void SoundMaker::PlayPrimaryAttack(int damageDealt)
 {
 	//
 	// play attack sound based on damage delt. 0 is miss, top is
@@ -101,10 +102,12 @@ void SoundMaker::PlayPrimaryAttack(int damageDealt)
 	}
 	PlaySoundFile(attackFileNames[index]);
 }
+
 void SoundMaker::PlaySecondaryAttack(void)
 {
 	PlaySoundFile(altAttackFileName.c_str());
 }
+
 void SoundMaker::PlayHeal(void) {
 	PlaySoundFile(healFileName.c_str());
 }
