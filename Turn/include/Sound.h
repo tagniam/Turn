@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <utility>
-#ifndef _WINDOWS
+#ifndef _WIN32
 #include <mutex>
 #endif
 
@@ -37,7 +37,7 @@ public:
 
 	void PlaySoundFile(std::string const& filename);
 private:
-#ifndef _WINDOWS
+#ifndef _WIN32
 	std::mutex m_resourceMutex;
 #endif
 };
