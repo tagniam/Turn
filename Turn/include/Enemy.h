@@ -10,6 +10,7 @@ enum EnemyType
     etGiantCrab,
     etSquid,
     etGiantSquid,
+    etMimic,
     etLich,
     etZombie,
     etPutnafer,
