@@ -183,6 +183,10 @@ void Game::SetEnemy(){
             // Enemy is a giant squid.
             _Enemy = new GiantSquid;
             break;
+		case etMimic:
+			// Enemy is a Mimic
+			_Enemy = new Mimic;
+			break;
 		case etLich:
 			// Enemy is a Lich
 			_Enemy = new Lich;

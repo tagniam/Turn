@@ -7,6 +7,7 @@
 #include "GiantCrab.h"
 #include "Squid.h"
 #include "GiantSquid.h"
+#include "Mimic.h"
 #include "Lich.h"
 #include "Murloc.h"
 #include "Vampire.h"
