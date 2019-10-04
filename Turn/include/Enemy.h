@@ -23,6 +23,7 @@ enum EnemyType
     etSmallRat,
     etMurloc,
     etSlimeball,
+    etRatKing,
     etNumEnemyTypes
 };
 
