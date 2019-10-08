@@ -1,19 +1,17 @@
-# Source Files
-file(GLOB_RECURSE SOURCES 
-	"src/*.cpp"
-	)
-file(GLOB_RECURSE HEADERS
-	"src/*.h"
-	"include/*.h"
-	)
+# Fina all source files
+include(src/sourcelist.cmake)
+
+add_executable(Turn)
 
 # Include Directories
-include_directories(
+target_include_directories(Turn PRIVATE
 	"include/"
-	"src/"
 	)
-	
-add_executable(Turn ${SOURCES} ${HEADERS})
+
+# Bind source files to target
+target_sources(Turn PRIVATE
+	${SOURCES}
+	)
 
 # Link WinMM required for PlaySound
 if (WIN32)
