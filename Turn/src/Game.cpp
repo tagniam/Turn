@@ -227,6 +227,10 @@ void Game::SetEnemy(){
 			// Enemy is a Rat
 			_Enemy = new Skeleton;
 			break;
+		case etSmallDragon:
+			// Enemy is a Small Dragon
+			_Enemy = new SmallDragon;
+			break;
 		case etSmallRat:
 			// Enemy is a Small Rat
 			_Enemy = new SmallRat;
