@@ -224,8 +224,12 @@ void Game::SetEnemy(){
 			_Enemy = new Cerberus;
 			break;
 		case etSkeleton:
-			// Enemy is a Rat
+			// Enemy is a Skeleton
 			_Enemy = new Skeleton;
+			break;
+		case etSmallDragon:
+			// Enemy is a Small Dragon
+			_Enemy = new SmallDragon;
 			break;
 		case etSmallRat:
 			// Enemy is a Small Rat
