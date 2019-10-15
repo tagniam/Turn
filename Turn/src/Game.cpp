@@ -239,6 +239,9 @@ void Game::SetEnemy(){
             // Enemy is a Rat King
             _Enemy = new RatKing;
             break;
+		case etZabra:
+			_Enemy = new Zabra;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
