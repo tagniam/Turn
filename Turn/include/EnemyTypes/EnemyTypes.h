@@ -22,5 +22,6 @@
 #include "SmallRat.h"
 #include "Slimeball.h"
 #include "RatKing.h"
+#include "Zabra.h"
 
 #endif // ENEMYTYPES_H_INCLUDED
