@@ -4,7 +4,7 @@
 #include "../Enemy.h"
 
 
-class gremlin : public Enemy 
+class Gremlin : public Enemy 
 {
 public:
 	Gremlin();
