@@ -243,7 +243,7 @@ void Game::SetEnemy(){
 			_Enemy = new Zabra;
 			break;
 		case etGremlin:
-		//Enemy is a Gremlin
+			//Enemy is a Gremlin
 			_Enemy = new Gremlin;
 			break;
         default:

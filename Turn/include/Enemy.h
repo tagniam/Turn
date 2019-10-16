@@ -26,7 +26,7 @@ enum EnemyType
     etSlimeball,
     etRatKing,
     etZabra,
-    etNumEnemyTypes,   
+    etNumEnemyTypes,
 	etGremlin
 };
 

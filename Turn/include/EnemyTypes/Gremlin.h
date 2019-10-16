@@ -8,9 +8,9 @@ class Gremlin : public Enemy
 {
 public:
 	Gremlin();
-	
-    EnemyType GetType() override;
+	EnemyType GetType() override;
 	std::string GetIntro();
+	
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();
