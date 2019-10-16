@@ -27,7 +27,7 @@ enum EnemyType
     etRatKing,
     etZabra,
     etNumEnemyTypes,
-	etGremlin
+    etGremlin
 };
 
 
