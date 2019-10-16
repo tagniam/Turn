@@ -242,6 +242,10 @@ void Game::SetEnemy(){
 		case etZabra:
 			_Enemy = new Zabra;
 			break;
+		case etGremlin:
+			//Enemy is a Gremlin
+			_Enemy = new Gremlin;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
