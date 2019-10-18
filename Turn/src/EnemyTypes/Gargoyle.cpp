@@ -32,3 +32,8 @@ int Gargoyle::ReturnRiskAttackDamage() {
 int Gargoyle::ReturnHealAmount() {
 	return 6 + rand() % 15;
 }
+
+std::string Gargoyle::GetIntro()
+{
+	return "A silhouette of wings and horns swoops towards you...";
+}

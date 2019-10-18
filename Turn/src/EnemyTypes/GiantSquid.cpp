@@ -33,3 +33,8 @@ int GiantSquid::ReturnRiskAttackDamage() {
 int GiantSquid::ReturnHealAmount() {
     return 5+rand()%7; // 5 -11
 }
+
+std::string GiantSquid::GetIntro()
+{
+	return "With a thunderous splash...";
+}

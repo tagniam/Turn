@@ -33,3 +33,8 @@ int GiantCrab::ReturnRiskAttackDamage() {
 int GiantCrab::ReturnHealAmount() {
     return 5+rand()%7; // 5 - 11
 }
+
+std::string GiantCrab::GetIntro()
+{
+	return "A great claw begins to close around you...";
+}
