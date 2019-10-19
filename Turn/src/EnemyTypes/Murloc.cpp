@@ -32,3 +32,8 @@ int Murloc::ReturnRiskAttackDamage() {
 int Murloc::ReturnHealAmount() {
 	return 5 + rand() % 35;
 }
+
+std::string Murloc::GetIntro()
+{
+	return "The sound of wet footsteps approaches...";
+}

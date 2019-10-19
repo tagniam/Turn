@@ -9,6 +9,7 @@ public:
     GiantCrab();
 
     EnemyType GetType() override;
+    std::string GetIntro();
 private:
     int ReturnDamage();
     int ReturnRiskAttackDamage();

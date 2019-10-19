@@ -32,3 +32,8 @@ int Lich::ReturnRiskAttackDamage() {
 int Lich::ReturnHealAmount() {
 	return 5 + rand() % 25;
 }
+
+std::string Lich::GetIntro()
+{
+	return "A cold chill enters the room...";
+}
