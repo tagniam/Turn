@@ -20,11 +20,14 @@ enum EnemyType
     etGargoyle,
     etCerberus,
     etSkeleton,
+    etSmallDragon,
     etSmallRat,
     etMurloc,
     etSlimeball,
     etRatKing,
-    etNumEnemyTypes
+    etZabra,
+    etNumEnemyTypes,
+    etGremlin
 };
 
 

@@ -32,3 +32,8 @@ int Crab::ReturnRiskAttackDamage() {
 int Crab::ReturnHealAmount() {
     return 1+rand()%11;
 }
+
+std::string Crab::GetIntro()
+{
+	return "A small shape scuttles from the shadows...";
+}

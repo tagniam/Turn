@@ -18,8 +18,11 @@
 #include "Zombie.h"
 #include "Cerberus.h"
 #include "Skeleton.h"
+#include "SmallDragon.h"
 #include "SmallRat.h"
 #include "Slimeball.h"
 #include "RatKing.h"
+#include "Zabra.h"
+#include "Gremlin.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

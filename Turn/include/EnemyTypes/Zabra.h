@@ -1,19 +1,21 @@
-#ifndef GIANTCRAB_H
-#define GIANTCRAB_H
+#ifndef ZBRA_H
+#define ZBRA_H
 
-#include "Crab.h"
+#include "../Enemy.h"
 
 
-class GiantCrab : public Crab {
+class Zabra : public Enemy 
+{
 public:
-    GiantCrab();
+    Zabra();
 
     EnemyType GetType() override;
     std::string GetIntro();
+    
 private:
     int ReturnDamage();
     int ReturnRiskAttackDamage();
     int ReturnHealAmount();
 };
 
-#endif // GIANTCRAB_H
+#endif // ZBRA_H

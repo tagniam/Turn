@@ -1,20 +1,20 @@
-#ifndef GARGOYLE_H
-#define GARGOYLE_H
+#ifndef GREMLIN_H
+#define GREMLIN_H
 
 #include "../Enemy.h"
 
 
-class Gargoyle : public Enemy 
+class Gremlin : public Enemy 
 {
 public:
-	Gargoyle();
-
-    EnemyType GetType() override;
+	Gremlin();
+	EnemyType GetType() override;
 	std::string GetIntro();
+	
 private:
 	int ReturnDamage();
 	int ReturnRiskAttackDamage();
 	int ReturnHealAmount();
 };
 
-#endif // GARGOYLE_H
+#endif // GREMLIN_H

@@ -224,8 +224,12 @@ void Game::SetEnemy(){
 			_Enemy = new Cerberus;
 			break;
 		case etSkeleton:
-			// Enemy is a Rat
+			// Enemy is a Skeleton
 			_Enemy = new Skeleton;
+			break;
+		case etSmallDragon:
+			// Enemy is a Small Dragon
+			_Enemy = new SmallDragon;
 			break;
 		case etSmallRat:
 			// Enemy is a Small Rat
@@ -235,6 +239,13 @@ void Game::SetEnemy(){
             // Enemy is a Rat King
             _Enemy = new RatKing;
             break;
+		case etZabra:
+			_Enemy = new Zabra;
+			break;
+		case etGremlin:
+			//Enemy is a Gremlin
+			_Enemy = new Gremlin;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.

@@ -32,3 +32,8 @@ int Goblin::ReturnRiskAttackDamage() {
 int Goblin::ReturnHealAmount() {
 	return 3 + rand() % 10;
 }
+
+std::string Goblin::GetIntro()
+{
+	return "You hear cackles of laughter in the distance...";
+}
