@@ -24,5 +24,6 @@
 #include "RatKing.h"
 #include "Zabra.h"
 #include "Gremlin.h"
+#include "TimidGhost.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

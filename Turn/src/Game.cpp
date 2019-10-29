@@ -164,8 +164,8 @@ void Game::SetEnemy(){
     switch(selector)
     {
         case etSlimeball:
-	    // Enemy is a slimeball.
-	    _Enemy = new Slimeball;
+	    	// Enemy is a slimeball.
+	    	_Enemy = new Slimeball;
             break;
         case etCrab:
             // Enemy is a crab.
@@ -246,12 +246,16 @@ void Game::SetEnemy(){
 			//Enemy is a Gremlin
 			_Enemy = new Gremlin;
 			break;
+		case etTimidGhost:
+			_Enemy = new TimidGhost;
+			break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
             _Enemy = new Crab;
             break;
     }
+
     // Simply prints that the enemy's class was encountered.
 	cout << _Enemy->GetIntro() << endl;
 	Sleep(SLEEP_MS);
