@@ -28,6 +28,7 @@ set (SOURCES ${SOURCES}
     src/EnemyTypes/SmallDragon.cpp
     src/EnemyTypes/SmallRat.cpp
     src/EnemyTypes/Squid.cpp
+    src/EnemyTypes/TimidGhost.cpp
     src/EnemyTypes/Vampire.cpp
     src/EnemyTypes/Werewolf.cpp
     src/EnemyTypes/Zabra.cpp
