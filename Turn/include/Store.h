@@ -8,4 +8,4 @@ class Store {
         void StoreFront(Player*);
 };
 
-#endif // STORE_H
+#endif 
