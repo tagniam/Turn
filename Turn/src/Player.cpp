@@ -175,6 +175,7 @@ void Player::UseItem() {
 
 		// Displays the inventory.
 		DisplayInventory();
+		
 
 		// Gives player a list of moves to choose from.
 		cout << "Choose which item use:" << endl
@@ -366,6 +367,7 @@ void Player::DisplayInventory(){
 
     PrintDivider('*', '-', " INVENTORY ");
     PrintXPBar("Level ", level, "", "", experience, "/100 xp");
+    PrintClass();
     PrintDivider('+', '-', "");
     PrintInventoryItem("Arrows: [", arrows, "]");
     PrintInventoryItem("Potions: [", potions, "]");
@@ -543,4 +545,38 @@ void Player::PrintDivider(char edge, char filler, string centerText)
 
 	// Print the line
 	cout << edge << frontFiller << centerText << rearFiller << edge << endl;
+}
+void Player::PrintClass() {           //print the player class in inventory format
+	int freespace = 35;               //freespace is the amount of blank space in the beginning, backspace is the amount of blankspace after class name print
+	int backspace = 0;
+	std::cout << "| ";                //begin
+	switch (player_type) {            // get class type and ouput the class name, class type variable is used (declaration located in player.h)
+
+	case 1:                           //following comments are applied to all cases
+		std::cout << "Warrior";       //output class name
+		backspace = freespace - 10;   //get the amount of blank filler needed
+		break;
+	case 2:
+		std::cout << "Rogue";
+		backspace = freespace - 8;
+		break;
+	case 3:
+		std::cout << "Healer";
+		backspace = freespace - 9;
+		break;
+	case 4:
+		std::cout << "Debugger";
+		backspace = freespace -11;
+		break;
+	case 5:
+		std::cout << "Saitama";
+		backspace = freespace - 10;
+		break;
+	default:                       //default makes it warrior in accordance to character creation
+		std::cout << "Warrior";      
+		backspace = freespace - 10;  
+		break;
+	}
+	string rear(backspace, ' ');     //create blank string for filler
+	std::cout << rear << "|\n";      //output the filler and end
 }

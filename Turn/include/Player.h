@@ -46,6 +46,7 @@ class Player : public Entity, public SoundMaker {
         void PrintInventoryItem(std::string, int, std::string);
         void PrintXPBar(std::string, int, std::string, std::string, int, std::string);
         void PrintDivider(char, char, std::string);
+        void PrintClass();
 
 
 	int player_type;
