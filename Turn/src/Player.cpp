@@ -175,6 +175,7 @@ void Player::UseItem() {
 
 		// Displays the inventory.
 		DisplayInventory();
+		
 
 		// Gives player a list of moves to choose from.
 		cout << "Choose which item use:" << endl
@@ -366,6 +367,7 @@ void Player::DisplayInventory(){
 
     PrintDivider('*', '-', " INVENTORY ");
     PrintXPBar("Level ", level, "", "", experience, "/100 xp");
+    PrintClass();
     PrintDivider('+', '-', "");
     PrintInventoryItem("Arrows: [", arrows, "]");
     PrintInventoryItem("Potions: [", potions, "]");
