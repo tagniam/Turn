@@ -249,6 +249,9 @@ void Game::SetEnemy(){
 		case etTimidGhost:
 			_Enemy = new TimidGhost;
 			break;
+	    case etDemon:
+		    _Enemy = new Demon;
+		    break;
         default:
             // If the above cases do not match the selector for any reason,
             // the enemy defaults on the crab class.
