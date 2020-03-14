@@ -247,9 +247,11 @@ void Game::SetEnemy(){
 			_Enemy = new Gremlin;
 			break;
 		case etTimidGhost:
+		    //enemy is a TimidGhost
 			_Enemy = new TimidGhost;
 			break;
 	    case etDemon:
+		    //enymy is a Demon
 		    _Enemy = new Demon;
 		    break;
         default:
