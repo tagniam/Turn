@@ -25,5 +25,6 @@
 #include "Zabra.h"
 #include "Gremlin.h"
 #include "TimidGhost.h"
+#include "Demon.h"
 
 #endif // ENEMYTYPES_H_INCLUDED
