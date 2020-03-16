@@ -28,6 +28,7 @@ enum EnemyType
     etZabra,
     etTimidGhost,
     etGremlin,
+	etDemon,
     etNumEnemyTypes
 };
 
