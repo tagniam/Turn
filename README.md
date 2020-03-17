@@ -18,14 +18,13 @@ Clone this project by running `git clone https://github.com/tagniam/Turn.git` in
 
 ### Building & Running
 #### Windows
-* To build project files with CMake, simply run [CMake](https://cmake.org/) on the root CMakeLists.txt. `CMake-gui` is recommended for an easy way to select project options.
 * Run CMake on the `Turn` directory to generate a `.sln` solution file for Visual Studio. You can find a tutorial [here](https://cmake.org/runningcmake/).
 * Run Visual Studio and open the generated `.sln` solution file.
-* Build the prject by clicking `Build` -> `Build Solution`.
+* Build the project by clicking `Build` -> `Build Solution`.
 * Start the game by clicking the green Run button in the toolbar.
 
 #### Mac/Linux
-* In your terminal, make sure you are in the root folder of the project.
+* In your terminal, make sure you are in the `Turn` directory.
 * Run the following commands:
 
     ```shell
