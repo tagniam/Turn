@@ -1,4 +1,11 @@
-# Fina all source files
+cmake_minimum_required (VERSION 3.12)
+project (Turn)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+set(CMAKE_CXX_EXTENSIONS Off)
+
+# Find all source files
 include(src/sourcelist.cmake)
 
 add_executable(Turn)
