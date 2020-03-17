@@ -3,8 +3,6 @@ compiler: gcc
 before_install:
     - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev libsdl2-dev libsdl2-mixer-dev
 before_script:
-    - mkdir build
-    - cd build
-    - cmake ..
+    - cmake .
 script:
     - make

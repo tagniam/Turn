@@ -213,3 +213,19 @@ ModelManifest.xm
 
 # Glitching Visual Studio
 *.VC.opendb
+
+# Ignore CMake files
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Ignore game executable
+/Turn
