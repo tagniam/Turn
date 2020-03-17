@@ -227,5 +227,6 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-# Ignore game executable
-/Turn
+# Ignore game files
+Turn
+data.txt

@@ -30,7 +30,6 @@ Clone this project by running `git clone https://github.com/tagniam/Turn.git` in
 
     ```shell
     $ cmake .
-    $ cd Turn/
     $ make
     ```
 * Start the game by running `./Turn`.
