@@ -9,6 +9,8 @@ I wrote this game almost 5 years ago, and uploading it to GitHub was my first ex
 ![Battle screen](screenshots/battle.png)
 ![Menu screen](screenshots/menu.png)
 
+## GIFs
+
 ## How To Play
 See the [wiki](https://github.com/tagniam/Turn/wiki) for instructions.
 
