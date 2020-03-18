@@ -11,9 +11,9 @@ I wrote this game almost 5 years ago, and uploading it to GitHub was my first ex
 
 ## GIFs
 
-![battle gameplay](screenshots/battle-gameplay-gif.gif)
-![store gameplay](screenshots/store-gameplay-gif.gif)
-![gambling gameplay](screenshots/gambling-gameplay-gif.gif)
+![battle gameplay](screenshots/battle-gameplay-gif2.gif)
+![store gameplay](screenshots/store-gameplay-gif2.gif)
+![gambling gameplay](screenshots/gambling-gameplay-gif2.gif)
 
 ## How To Play
 See the [wiki](https://github.com/tagniam/Turn/wiki) for instructions.
