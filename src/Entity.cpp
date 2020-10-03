@@ -45,13 +45,13 @@ void Entity::DisplayHealthBar(){
 		healthBar += " ";
 
 	for (size_t i = 0; i < healthBar.length(); i++) {
-		string currentChar = ""; 
+		string currentChar = "";
 		currentChar += healthBar.at(i);
 		if ((i + 1) * 10 <= (size_t)health * 2) {
 			ColourPrint(currentChar, Console::Background_Red);
 		}
 		else {
-			ColourPrint(currentChar, Console::Background_Grey);
+			ColourPrint(currentChar, Console::Background_DarkGrey);
 		}
 	}
 }
