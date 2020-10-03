@@ -48,9 +48,8 @@ public:
 	void PlayPrimaryAttack(int damageDealt);
 	void PlaySecondaryAttack(void); // int damageDealt);
 	void PlayHeal(void);
-	void PlayBomb(void);
 	void PlaySharpen(void);
-void PlayBomb(void);
+	void PlayBomb(void);
 	void SetSoundInfo(SoundInfo &info) { mInfo = info; }
 private:
 
