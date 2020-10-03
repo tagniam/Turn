@@ -48,6 +48,7 @@ public:
 	void PlayPrimaryAttack(int damageDealt);
 	void PlaySecondaryAttack(void); // int damageDealt);
 	void PlayHeal(void);
+	void PlaySharpen(void);
 	void SetSoundInfo(SoundInfo &info) { mInfo = info; }
 private:
 
@@ -57,6 +58,7 @@ private:
 	std::vector<std::string> attackFileNames;
 	std::string altAttackFileName;
 	std::string healFileName;
+	std::string whetstoneFileName;
 
 	static PlatformSoundHelper ms_SoundHelper;
 };

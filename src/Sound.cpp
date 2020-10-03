@@ -17,6 +17,7 @@
 //  https://freesound.org/people/loudernoises/sounds/334169/ attack2
 //  https://freesound.org/people/Ali_6868/sounds/384915/ arrow
 //  https://freesound.org/people/KeshaFilm/sounds/471834/ heal
+//  https://freesound.org/people/GameDevC/sounds/422832/ whetstone
 
 PlatformSoundHelper SoundMaker::ms_SoundHelper;
 
@@ -68,7 +69,8 @@ void PlatformSoundHelper::PlaySoundFile(std::string const& filename) {
 
 SoundMaker::SoundMaker():mInfo(),
 						altAttackFileName("sounds/arrow.wav"),
-						healFileName("sounds/heal.wav")
+						healFileName("sounds/heal.wav"),
+						whetstoneFileName("sounds/whetstone.wav")
 {
 	//
 	// Initialize file name array to names of files for attacks
@@ -110,6 +112,10 @@ void SoundMaker::PlaySecondaryAttack(void)
 
 void SoundMaker::PlayHeal(void) {
 	PlaySoundFile(healFileName.c_str());
+}
+
+void SoundMaker::PlaySharpen(void) {
+	PlaySoundFile(whetstoneFileName.c_str());
 }
 
 void SoundMaker::PlaySoundFile(std::string const& filename){
