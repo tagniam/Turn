@@ -37,7 +37,7 @@ Clone this project by running `git clone https://github.com/tagniam/Turn.git` in
 See the game manual located in the [wiki](https://github.com/tagniam/Turn/wiki).
 
 ## Contributing
-* Before working on an issue, make sure you comment on it to claim it. This prevents two people working on the same issue at the same time.
+* Please read over the [Code of Conduct](https://github.com/tagniam/Turn/blob/master/CODE_OF_CONDUCT.md) before contributing!
 
 ## License
 * This project is licensed under the MIT License - see the LICENSE file for details.

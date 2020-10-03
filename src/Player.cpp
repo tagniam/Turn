@@ -153,6 +153,7 @@ int Player::Action(){
 			// Does not execute if there are no whetstones in inventory.
 			// No damage is done to the enemy.
 			if (whetstones > 0) {
+				PlaySharpen();
 				UseWhetstone();
 				return 0;
 			} else {
