@@ -60,7 +60,7 @@ private:
 	std::string altAttackFileName;
 	std::string healFileName;
 	std::string whetstoneFileName;
-  std::string bombFileName;
+  	std::string bombFileName;
 
 	static PlatformSoundHelper ms_SoundHelper;
 };
