@@ -494,7 +494,7 @@ int Player::Flee(){
 
 void Player::PrintInventoryItem(string preText, int itemCount, string postText)
 {
-	int countLength = 0, countCopy = itemCount;
+	size_t countLength = 0, countCopy = itemCount;
 	// Calculate length of itemCount
 	do {
 		countLength++;
@@ -502,7 +502,7 @@ void Player::PrintInventoryItem(string preText, int itemCount, string postText)
 	} while (countCopy);
 
 	// Subtract space used in line (4 spaces for front and back dash/space combos, length of start and end text, length of itemCount) from the total available width
-	int freeSpace = 35 - 4 - preText.length() - postText.length() - countLength;
+	size_t freeSpace = 35 - 4 - preText.length() - postText.length() - countLength;
 
 	// Create a string with the appropriate number of spaces to make the line meet required width
 	string spaces(freeSpace, ' ');
@@ -513,7 +513,7 @@ void Player::PrintInventoryItem(string preText, int itemCount, string postText)
 
 void Player::PrintXPBar(string preText1, int level, string postText1, string preText2, int experience, string postText2)
 {
-	int countLength = 0, levelCopy = level, experienceCopy = experience;
+	size_t countLength = 0, levelCopy = level, experienceCopy = experience;
 	// Calculate length of level and experience
 	do {
 		countLength++;
@@ -525,7 +525,7 @@ void Player::PrintXPBar(string preText1, int level, string postText1, string pre
 	} while (experienceCopy);
 
 	// Subtract space used in line (4 spaces for front and back dash/space combos, length of start and end text, length of level and experience) from the total available width
-	int freeSpace = 35 - 4 - preText1.length() - postText1.length() - preText2.length() - postText2.length()- countLength;
+	size_t freeSpace = 35 - 4 - preText1.length() - postText1.length() - preText2.length() - postText2.length() - countLength;
 
 	// Create a string with the appropriate number of spaces to make the line meet required width
 	string spaces(freeSpace, ' ');
@@ -539,9 +539,9 @@ void Player::PrintDivider(char edge, char filler, string centerText)
 	int countLength = 0;
 
 	// Subtract space used in line (2 spaces for edge symbols, length of centerText) from the total available width
-	int freeSpace = 35 - 2 - centerText.length();
-	int frontSpace = freeSpace/2;
-	int rearSpace = freeSpace - frontSpace;
+	size_t freeSpace = 35 - 2 - centerText.length();
+	size_t frontSpace = freeSpace/2;
+	size_t rearSpace = freeSpace - frontSpace;
 
 	// Create a the front and rear filler string
 	string frontFiller(frontSpace, filler);

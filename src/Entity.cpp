@@ -41,7 +41,7 @@ void Entity::TakeDamage(int damage) {
 void Entity::DisplayHealthBar(){
 	string healthBar = "        " + to_string(health);
 
-	for (int i = healthBar.length(); i < 20; i++)
+	for (size_t i = healthBar.length(); i < 20; i++)
 		healthBar += " ";
 
 	for (size_t i = 0; i < healthBar.length(); i++) {
