@@ -3,8 +3,8 @@ Turn is a turn-based terminal RPG game written in C++. Contributions are encoura
 
 ## Screenshots
 
-![Battle screen](screenshots/battle.png)
-![Menu screen](screenshots/menu.png)
+![Battle screen](screenshots/battle.gif)
+![Menu screen](screenshots/store.gif)
 
 ## Getting Started
 ### Prerequisites
