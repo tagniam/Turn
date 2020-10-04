@@ -16,6 +16,7 @@ public:
 
 		Background_Red,
 		Background_Grey,
+		Background_DarkGrey,
 
 		// Aliases for easy changing of defaults
 		Default = Grey,

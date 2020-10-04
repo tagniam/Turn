@@ -61,16 +61,18 @@ void Console::SetColour(EColour colour) {
 
 		RED_BACKGROUND = 207,
 		GREY_BACKGROUND = 127,
+		DARKGREY_BACKGROUND = 8,
 	};
 	int colourMap[] =
 	{
-		GREY,			// EColour::Grey
-		DARK_GREY,		// EColour::DarkGrey
-		RED,			// EColour::Red
-		GREEN,			// EColour::Green
+		GREY,			     // EColour::Grey
+		DARK_GREY,		     // EColour::DarkGrey
+		RED,			     // EColour::Red
+		GREEN,			     // EColour::Green
 
-		RED_BACKGROUND,	// EColour::Background_Red
-		GREY_BACKGROUND,// EColour::Background_Grey
+		RED_BACKGROUND,	     // EColour::Background_Red
+		GREY_BACKGROUND,     // EColour::Background_Grey
+		DARKGREY_BACKGROUND, // EColour::Background_DarkGrey
 	};
 	SetConsoleTextAttribute(m_hConsoleHandle, colourMap[colour]);
 #else
@@ -83,6 +85,7 @@ void Console::SetColour(EColour colour) {
 
 		"\033[0m\033[41m",	// EColour::Background_Red
 		"\033[0m\033[47m",	// EColour::Background_Grey
+		"\033[0m\033[100m",	// EColour::Background_DarkGrey
 	};
 	printf("%s", colourEscapeCodes[colour]);
 #endif // _WIN32
