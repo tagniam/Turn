@@ -132,8 +132,10 @@ int Player::Action(){
 		case 5:
 			// Player throws a bomb.
 			// Does not execute if there are no bombs in the inventory.
-			if (bombs > 0)
+			if (bombs > 0) {
+			    	PlayBomb();
 				return UseBomb();
+			}
 			else {
 				cout << "No bombs in the inventory!" << endl;
 				return SKIP_TURN;
