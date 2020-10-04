@@ -19,6 +19,7 @@
 //  https://freesound.org/people/KeshaFilm/sounds/471834/ heal
 //  https://freesound.org/people/GameDevC/sounds/422832/ whetstone
 //  https://freesound.org/people/Taira%20Komori/sounds/215595/ bomb
+//  https://freesound.org/people/Jamius/sounds/41529/ potion
 
 PlatformSoundHelper SoundMaker::ms_SoundHelper;
 
@@ -72,7 +73,8 @@ SoundMaker::SoundMaker():mInfo(),
 						altAttackFileName("sounds/arrow.wav"),
 						healFileName("sounds/heal.wav"),
 						whetstoneFileName("sounds/whetstone.wav"),
-            bombFileName("sounds/bomb.wav")
+						potionFileName("sounds/potion.wav"),
+						bombFileName("sounds/bomb.wav")
 {
 	//
 	// Initialize file name array to names of files for attacks
@@ -118,8 +120,13 @@ void SoundMaker::PlayHeal(void) {
 void SoundMaker::PlaySharpen(void) {
 	PlaySoundFile(whetstoneFileName.c_str());
 }
+
 void SoundMaker::PlayBomb(void) {
 	PlaySoundFile(bombFileName.c_str());
+}
+
+void SoundMaker::PlayPotion(void) {
+	PlaySoundFile(potionFileName.c_str());
 }
 
 void SoundMaker::PlaySoundFile(std::string const& filename){
