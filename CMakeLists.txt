@@ -20,6 +20,12 @@ target_sources(Turn PRIVATE
 	${SOURCES}
 	)
 
+# Add warnings
+target_compile_options(Turn PRIVATE
+					   $<$<CXX_COMPILER_ID:MSVC>:/W3>
+					   $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic>
+					   )
+
 # Link WinMM required for PlaySound
 if (WIN32)
 	target_link_libraries(Turn winmm.lib)
