@@ -30,7 +30,7 @@ if (UNIX)
 endif (UNIX)
 
 add_custom_command(
-	TARGET Turn PRE_BUILD
+    TARGET Turn PRE_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-			${CMAKE_SOURCE_DIR}/sounds/ $<TARGET_FILE_DIR:Turn>/sounds/
+	        ${CMAKE_SOURCE_DIR}/sounds/ $<TARGET_FILE_DIR:Turn>/sounds/
 )
