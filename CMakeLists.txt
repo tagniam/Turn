@@ -23,7 +23,7 @@ target_sources(Turn PRIVATE
 # Add warnings
 target_compile_options(Turn PRIVATE
 					   $<$<CXX_COMPILER_ID:MSVC>:/W3 /EHsc>
-					   $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic>
+					   $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall -Wextra -Wpedantic>
 					   )
 
 # Link WinMM required for PlaySound
