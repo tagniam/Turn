@@ -9,11 +9,11 @@ public:
     GiantSquid();
 
     EnemyType GetType() override;
-    std::string GetIntro();
+    std::string GetIntro() override;
 private:
-    int ReturnDamage();
-    int ReturnRiskAttackDamage();
-    int ReturnHealAmount();
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // GIANTSQUID_H
