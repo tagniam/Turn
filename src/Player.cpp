@@ -144,6 +144,7 @@ int Player::Action(){
 			// Player drinks a potion.
 			// Does not execute if there are no potions in the inventory.
 			if (potions > 0) {
+				PlayPotion();
 				UsePotion();
 				return 0;
 			}else {
