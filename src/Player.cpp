@@ -8,8 +8,11 @@
 #include "../include/Console.h"
 #include "../include/ItemTypes.h"
 
+#include "nlohmann/json.hpp"
+
 using namespace std;
 using namespace Common;
+using json = nlohmann::json;
 
 #define SKIP_TURN -2
 
@@ -25,23 +28,30 @@ Player::Player(void)
 
 void Player::SaveGame(){
 
-	ofstream WriteData;
-	WriteData.open("data.txt");
+	fstream WriteData;
+	WriteData.open("data.json");
 	if (WriteData.is_open()) {
-        	WriteData << player_type << endl 
-			<< name << endl
-            << gender << endl
-			<< level << endl
-			<< experience << endl
-			<< health << endl
-			<< arrows << endl
-			<< bombs << endl
-			<< potions << endl
-			<< whetstones << endl
-			<< weaponstrength << endl
-			<< coins;
-    		WriteData.close();
-	} else {
+		json SaveData = {
+			{"player_type",player_type},
+			{"name",name},
+			{"gender",gender},
+			{"level",level},
+			{"experience",experience},
+			{"health",health},
+			{"arrows",arrows},
+			{"bombs",bombs},
+			{"potions",potions},
+			{"whetstones",whetstones},
+			{"weaponstrength",weaponstrength},
+			{"coins",coins},
+
+		};
+		WriteData << SaveData.dump(4) << endl;
+		WriteData.close();
+
+
+	}
+	else {
 		cout << "Error opening savegame data (data.txt)." << endl;
 	}
 }
@@ -51,27 +61,35 @@ void Player::SaveGame(){
 void Player::SetPlayerData(){
     // Primarily initializes default values at the beginning of the game.
 
-	ifstream ReadData;
-	ReadData.clear();
-	ReadData.open("data.txt");
-	if (ReadData.is_open())	{
-		ReadData >> player_type;
-    ReadData.ignore();       // Ignore rest of line ready for getline
-    getline(ReadData, name);
-    ReadData >> gender;
-    ReadData >> level;
-    ReadData >> experience;
-		ReadData >> health;
-		ReadData >> arrows;
-		ReadData >> bombs;
-		ReadData >> potions;
-		ReadData >> whetstones;
-		ReadData >> weaponstrength;
-		ReadData >> coins;
+	std::ifstream ReadData("data.json");
+	if (ReadData && ReadData.peek() != EOF)
+	{
+		json SaveDataJson = json::parse(ReadData);
+		if (SaveDataJson.size() != 12)
+		{
+			cout << "savegame data length mismatch (data.json)." << endl;
+			return;
+		}
+		player_type = SaveDataJson.at("player_type").get<int>()>0? SaveDataJson.at("player_type").get<int>():1;
+		name = SaveDataJson.at("name").get<std::string>();
+		gender = SaveDataJson.at("gender").get<char>();
+		level = SaveDataJson.at("level").get<int>()>0? SaveDataJson.at("level").get<int>():1;
+		health = SaveDataJson.at("health").get<int>()>=0? SaveDataJson.at("health").get<int>():0;
+		experience = SaveDataJson.at("experience").get<int>()>=0? SaveDataJson.at("experience").get<int>():0;
+		arrows = SaveDataJson.at("arrows").get<int>()>=0? SaveDataJson.at("arrows").get<int>():0;
+		bombs = SaveDataJson.at("bombs").get<int>()>=0? SaveDataJson.at("bombs").get<int>():0;
+		potions = SaveDataJson.at("potions").get<int>()>=0? SaveDataJson.at("potions").get<int>():0;
+		whetstones = SaveDataJson.at("whetstones").get<int>()>=0? SaveDataJson.at("whetstones").get<int>():0;
+		weaponstrength = SaveDataJson.at("weaponstrength").get<int>()>=0? SaveDataJson.at("whetstones").get<int>():0;
+		coins = SaveDataJson.at("coins").get<int>()>=0? SaveDataJson.at("coins").get<int>():0;
 		ReadData.close();
- 	} else {
+	}
+	else
+	{
 		cout << "Error opening savegame data (data.txt)." << endl;
 	}
+
+
 }
 
 int Player::Action(){

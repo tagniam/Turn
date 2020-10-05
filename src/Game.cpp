@@ -12,6 +12,9 @@
 #include "../include/EnemyTypes/EnemyTypes.h"
 
 
+#include "nlohmann/json.hpp"
+using json = nlohmann::json;
+
 using namespace std;
 using namespace Common;
 
@@ -108,7 +111,7 @@ void Game::SetPlayerClass(int player_class) {
 	}
 }
 
-void Game::SetPlayerData(){
+void Game::SetPlayerData() {
 	/* Data initialized in order of:
 	* class code
 	* name
@@ -123,37 +126,41 @@ void Game::SetPlayerData(){
 	* coins
 	*/
 
-	ifstream ReadData;
-	ReadData.open("data.txt");
-
+	std::ifstream ReadData("data.json");
 	// Runs if user has never played the game before or data is not found.
-	if (!ReadData) {
+	if (!ReadData || ReadData.peek() == EOF) {
 		ReadData.close();
 		ofstream WriteData;
-		WriteData.open("data.txt");
+		WriteData.open("data.json");
+		if (WriteData.is_open()) {
+			json SaveData = {
+				{"player_type",InitializePlayerClass()},
+				{"name", InitializePlayerName()},
+				{"gender",InitializePlayerGender()},
+				{"level",1},
+				{"experience",0},
+				{"health",100},
+				{"arrows",10},
+				{"bombs",1},
+				{"potions",1},
+				{"whetstones",1},
+				{"weaponstrength",100},
+				{"coins",0},
 
-		WriteData << InitializePlayerClass() << endl
-			<< InitializePlayerName() << endl
-            << InitializePlayerGender() << endl
-			<< 1 << endl
-			<< 0 << endl
-			<< 100 << endl
-			<< 10 << endl
-			<< 1 << endl
-			<< 1 << endl
-			<< 1 << endl
-			<< 100 << endl
-			<< 0;
-		WriteData.close();
+			};
+			WriteData << SaveData.dump(4) << endl;
+			WriteData.close();
+		}
 	}
-
-	else {
-		// Initializes player type from class code given in data.txt
-		int player_class;
-		ReadData >> player_class;
-		SetPlayerClass(player_class);
-		ReadData.close();
-	}
+		else {
+			// Initializes player type from class code given in data.txt
+			int player_class;
+			json SaveData = json::parse(ReadData);
+			player_class = SaveData.at("player_type").get<int>();
+			SetPlayerClass(player_class);
+			ReadData.close();
+		}
+	
 }
 
 void Game::SetEnemy(){
