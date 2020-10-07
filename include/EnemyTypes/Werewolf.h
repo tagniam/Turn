@@ -4,18 +4,18 @@
 #include "../Enemy.h"
 
 
-class Werewolf : public Enemy 
+class Werewolf : public Enemy
 {
 public:
 	Werewolf();
 
     EnemyType GetType() override;
-	std::string GetIntro();
+	std::string GetIntro() override;
 
 private:
-	int ReturnDamage();
-	int ReturnRiskAttackDamage();
-	int ReturnHealAmount();
+	int ReturnDamage() override;
+	int ReturnRiskAttackDamage() override;
+	int ReturnHealAmount() override;
 };
 
 #endif // WEREWOLF_H

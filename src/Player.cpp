@@ -13,9 +13,9 @@ using namespace Common;
 
 #define SKIP_TURN -2
 
-Player::Player(void) 
+Player::Player(void)
 {
-	// Initialize default sounds, attackRange should be 
+	// Initialize default sounds, attackRange should be
 	// the result range of the ReturnDamage method in the child class
 	// Child constructor should call SetSoundInfo with appropriate stuff
 	SoundInfo info;
@@ -28,7 +28,7 @@ void Player::SaveGame(){
 	ofstream WriteData;
 	WriteData.open("data.txt");
 	if (WriteData.is_open()) {
-        	WriteData << player_type << endl 
+        	WriteData << player_type << endl
 			<< name << endl
             << gender << endl
 			<< level << endl
@@ -179,7 +179,7 @@ void Player::UseItem() {
 
 		// Displays the inventory.
 		DisplayInventory();
-		
+
 
 		// Gives player a list of moves to choose from.
 		cout << "Choose which item use:" << endl
@@ -394,7 +394,7 @@ int Player::GenericAttack(){
         cout << " attacks! He deals ";
     else
         cout << " attacks! She deals ";
-	ColourPrint(to_string(damage), Console::Red);
+    ColourPrint(to_string(damage), Console::Red);
     cout << " damage points!" << endl;
     if (damage>0) WeakenWeapon(2);
     return damage;
@@ -416,7 +416,7 @@ int Player::RiskAttack(){
 void Player::WeakenWeapon(int impact){
 	if (impact >= 0) weaponstrength -= impact + rand() % 5;
 	else weaponstrength -= rand() % 5;
-	
+
 	if (weaponstrength < 0)
 	{
 		weaponstrength = 0;
@@ -430,7 +430,7 @@ int Player::BowAndArrow(){
         cout << " shoots his bow! He deals ";
     else
         cout << " shoots her bow! She deals ";
-	Console::GetInstance().SetColour(Console::EColour::Red);
+    Console::GetInstance().SetColour(Console::EColour::Red);
     cout << damage;
 	Console::GetInstance().SetColour(Console::EColour::Default);
     cout << " damage points!" << endl;
@@ -536,8 +536,6 @@ void Player::PrintXPBar(string preText1, int level, string postText1, string pre
 
 void Player::PrintDivider(char edge, char filler, string centerText)
 {
-	int countLength = 0;
-
 	// Subtract space used in line (2 spaces for edge symbols, length of centerText) from the total available width
 	size_t freeSpace = 35 - 2 - centerText.length();
 	size_t frontSpace = freeSpace/2;
@@ -577,8 +575,8 @@ void Player::PrintClass() {           //print the player class in inventory form
 		backspace = freespace - 10;
 		break;
 	default:                       //default makes it warrior in accordance to character creation
-		std::cout << "Warrior";      
-		backspace = freespace - 10;  
+		std::cout << "Warrior";
+		backspace = freespace - 10;
 		break;
 	}
 	string rear(backspace, ' ');     //create blank string for filler

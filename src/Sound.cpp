@@ -73,8 +73,8 @@ SoundMaker::SoundMaker():mInfo(),
 						altAttackFileName("sounds/arrow.wav"),
 						healFileName("sounds/heal.wav"),
 						whetstoneFileName("sounds/whetstone.wav"),
-						potionFileName("sounds/potion.wav"),
-						bombFileName("sounds/bomb.wav")
+						bombFileName("sounds/bomb.wav"),
+						potionFileName("sounds/potion.wav")
 {
 	//
 	// Initialize file name array to names of files for attacks
