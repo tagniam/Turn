@@ -1,5 +1,5 @@
 # Turn: Hacktober 'n' Slash [![Build Status](https://travis-ci.org/tagniam/Turn.svg?branch=master)](https://travis-ci.org/tagniam/Turn)
-Turn is a turn-based terminal RPG game written in C++. Contributions are encouraged, especially during [Hactkoberfest](https://hacktoberfest.digitalocean.com/)!
+Turn is a turn-based terminal RPG game written in C++. Contributions are encouraged, especially during [Hacktoberfest](https://hacktoberfest.digitalocean.com/)!
 
 ## Screenshots
 
