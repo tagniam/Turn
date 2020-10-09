@@ -6,6 +6,9 @@
 class Store {
     public:
         void StoreFront(Player*);
+    private:
+        void SellItem(Player*, int);
+        void BuyItem(Player*, int);
 };
 
 #endif // STORE_H
