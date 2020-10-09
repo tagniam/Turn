@@ -16,6 +16,7 @@ class Player : public Entity, public SoundMaker {
 	void UseItem();
         void AddToInventory(std::vector<int>);
 	void AddStoreItemToInventory(int);
+        bool RemoveStoreItemFromInventory(int);
 
         void DisplayHUD(Enemy*);
         void ReplenishHealth();

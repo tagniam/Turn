@@ -272,6 +272,44 @@ void Player::AddStoreItemToInventory(int type) {
 	}
 }
 
+bool Player::RemoveStoreItemFromInventory(int type) {
+	// Removes sold items from the inventory.
+	switch (type)
+	{
+	case ITEMTYPE::ARROWS:
+		if (arrows >= 5)
+		{
+			arrows -= 5;
+			return true;
+		}
+		break;
+	case ITEMTYPE::BOMB:
+		if (bombs > 0)
+		{
+			--bombs;
+			return true;
+		}
+		break;
+	case ITEMTYPE::POTION:
+		if (potions > 0)
+		{
+			--potions;
+			return true;
+		}
+		break;
+	case ITEMTYPE::WHETSTONE:
+		if (whetstones > 0)
+		{
+			--whetstones;
+			return true;
+		}
+		break;
+	}
+	
+	// Invalid action (insufficient items)
+	return false;
+}
+
 void Player::DisplayHUD(Enemy *_Enemy){
     // Displays player's name and health bar. Enemy object is used to print name on the same line as player name for aesthetics.
 
