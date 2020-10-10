@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/GiantCrab.h"
 
 GiantCrab::GiantCrab() {
     name = "Giant Crab";
     ExperienceAmount = 100;
-    CoinsDrop = rand()%100;
+    CoinsDrop = Common::RandomInt(0, 99);
 }
 
 EnemyType GiantCrab::GetType() {
@@ -12,11 +13,11 @@ EnemyType GiantCrab::GetType() {
 
 
 int GiantCrab::ReturnDamage() {
-    return 7+rand()%8; // 7 - 14
+    return Common::RandomInt(7, 14);
 }
 
 int GiantCrab::ReturnRiskAttackDamage() {
-    int selector = rand()%6;
+    int selector = Common::RandomInt(0, 5);
     switch(selector){
         case 0: case 1: case 2: case 3:
             return 0;
@@ -31,7 +32,7 @@ int GiantCrab::ReturnRiskAttackDamage() {
 }
 
 int GiantCrab::ReturnHealAmount() {
-    return 5+rand()%7; // 5 - 11
+    return Common::RandomInt(5, 11);
 }
 
 std::string GiantCrab::GetIntro()

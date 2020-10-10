@@ -1,10 +1,11 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/RatKing.h"
 
 RatKing::RatKing() {
     name = "Rat King";
-    amountOfRats_ = 3 + rand() % 12;
+    amountOfRats_ = Common::RandomInt(3, 14);
     ExperienceAmount = amountOfRats_ * 15;
-    CoinsDrop = amountOfRats_ * (3 + rand() % 28);
+    CoinsDrop = amountOfRats_ * Common::RandomInt(3, 30);
 }
 
 EnemyType RatKing::GetType() {
@@ -12,11 +13,11 @@ EnemyType RatKing::GetType() {
 }
 
 int RatKing::ReturnDamage() {
-    return amountOfRats_ * (2 + rand() % 5);
+    return amountOfRats_ * Common::RandomInt(2, 6);
 }
 
 int RatKing::ReturnRiskAttackDamage() {
-    int selector = rand() % 10;
+    int selector = Common::RandomInt(0, 9);
     switch (selector){
     case 0: case 1: case 2: case 3: case 4: case 5:
         return 0;
@@ -37,7 +38,7 @@ int RatKing::ReturnRiskAttackDamage() {
 }
 
 int RatKing::ReturnHealAmount() {
-    return amountOfRats_ * (3 + rand() % 15);
+    return amountOfRats_ * Common::RandomInt(3, 17);
 }
 
 std::string RatKing::GetIntro()
