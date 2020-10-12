@@ -19,11 +19,11 @@ Clone this project by running `git clone https://github.com/tagniam/Turn.git` in
 ### Building & Running
 #### Windows
 * In your terminal, make sure you are in the `Turn` directory.
-* For the right generator see [Visual Studio Generators](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#visual-studio-generators)
+* For the right generator see [Visual Studio Generators](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#visual-studio-generators).
 * To build with Visual Studio 16 2019 run the following commands:
 
     ```shell
-    $ cmake -S . -B build -G "Visual Studio 15 2017"
+    $ cmake -S . -B build -G "Visual Studio 16 2019"
     $ cmake --build build
     ```
 * Start the game by running `build\Turn.exe`.
@@ -33,7 +33,7 @@ Alternative: Generate solution with CMake and build with Visual Studio
 * Run CMake on the `Turn` directory to generate a `.sln` solution file for Visual Studio. You can find a tutorial [here](https://cmake.org/runningcmake/).
 
     ```shell
-    $ cmake -S . -B build -G "Visual Studio 15 2017"
+    $ cmake -S . -B build -G "Visual Studio 16 2019"
     ```
 
 * Run Visual Studio and open the generated `.sln` solution file.
