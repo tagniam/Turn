@@ -18,11 +18,18 @@ int RatKing::ReturnDamage() {
 
 int RatKing::ReturnRiskAttackDamage() {
     int selector = Common::RandomInt(0, 9);
-    switch (selector){
-    case 0: case 1: case 2: case 3: case 4: case 5:
+    switch (selector) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
         return 0;
         break;
-     case 6: case 7: case 8:
+    case 6:
+    case 7:
+    case 8:
         return amountOfRats_ * 7;
         break;
     case 9:
@@ -41,7 +48,6 @@ int RatKing::ReturnHealAmount() {
     return amountOfRats_ * Common::RandomInt(3, 17);
 }
 
-std::string RatKing::GetIntro()
-{
+std::string RatKing::GetIntro() {
     return "Clumsy yet scary ball of rats approaches...";
 }

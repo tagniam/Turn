@@ -4,14 +4,13 @@
 #include "../Enemy.h"
 
 
-class Murloc : public Enemy
-{
-public:
+class Murloc : public Enemy {
+  public:
     Murloc();
 
     EnemyType GetType() override;
     std::string GetIntro() override;
-private:
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;

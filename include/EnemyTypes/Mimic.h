@@ -3,16 +3,15 @@
 
 #include "../Enemy.h"
 
-class Mimic : public Enemy
-{
-public:
+class Mimic : public Enemy {
+  public:
 
     Mimic();
 
     EnemyType GetType() override;
     std::string GetIntro() override;
 
-private:
+  private:
 
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;

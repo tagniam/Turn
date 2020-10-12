@@ -4,12 +4,11 @@
 #include "../Player.h"
 
 
-class Saitama : public Player
-{
-    private:
-        int ReturnDamage();
-        int ReturnRiskAttackDamage();
-        int ReturnHealAmount();
+class Saitama : public Player {
+  private:
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // SAITAMA_H

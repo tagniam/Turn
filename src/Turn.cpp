@@ -12,9 +12,9 @@
 
 /// Continue commenting code at Player.GenericAttack().
 
-int main(){
+int main() {
     Game _Game;
     // Goes to main menu. Nice.
     _Game.MainMenu();
-	return 0;
+    return 0;
 }

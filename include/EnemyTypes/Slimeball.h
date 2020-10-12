@@ -4,11 +4,11 @@
 #include "../Enemy.h"
 
 class Slimeball : public Enemy {
-public:
+  public:
     Slimeball();
     std::string GetIntro() override;
     EnemyType GetType() override;
-private:
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;

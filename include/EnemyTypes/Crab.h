@@ -5,12 +5,12 @@
 
 
 class Crab : public Enemy {
-public:
+  public:
     Crab();
 
     EnemyType GetType() override;
     std::string GetIntro() override;
-private:
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;
