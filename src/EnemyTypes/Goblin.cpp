@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Goblin.h"
 
 Goblin::Goblin() {
 	name = "Goblin";
 	ExperienceAmount = 100;
-	CoinsDrop = 50 + rand() % 100;
+	CoinsDrop = Common::RandomInt(50, 149);
 }
 
 EnemyType Goblin::GetType() {
@@ -11,11 +12,11 @@ EnemyType Goblin::GetType() {
 }
 
 int Goblin::ReturnDamage() {
-	return 5 + rand() % 20;
+	return Common::RandomInt(5, 24);
 }
 
 int Goblin::ReturnRiskAttackDamage() {
-	int selector = rand() % 6;
+	int selector = Common::RandomInt(0, 5);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 2;
@@ -30,7 +31,7 @@ int Goblin::ReturnRiskAttackDamage() {
 }
 
 int Goblin::ReturnHealAmount() {
-	return 3 + rand() % 10;
+	return Common::RandomInt(3, 12);
 }
 
 std::string Goblin::GetIntro()

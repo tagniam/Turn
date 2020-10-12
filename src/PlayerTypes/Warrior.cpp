@@ -1,3 +1,4 @@
+#include "../../include/Common.h"
 #include "../../include/PlayerTypes/Warrior.h"
 
 Warrior::Warrior(void)
@@ -8,11 +9,11 @@ Warrior::Warrior(void)
 }
 
 int Warrior::ReturnDamage(){
-    return rand()%21;
+    return Common::RandomInt(0, 20);
 }
 
 int Warrior::ReturnRiskAttackDamage(){
-    int selector = rand()%6;
+    int selector = Common::RandomInt(0, 5);
     switch(selector){
         case 0: case 1: case 2: case 3:
             return 0;
@@ -27,5 +28,5 @@ int Warrior::ReturnRiskAttackDamage(){
 }
 
 int Warrior::ReturnHealAmount(){
-    return 1+rand()%10; // 1 - 10
+    return Common::RandomInt(1, 10);
 }

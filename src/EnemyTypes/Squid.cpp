@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Squid.h"
 
 Squid::Squid() {
     name = "Squid";
     ExperienceAmount = 20;
-    CoinsDrop = rand()%50;
+    CoinsDrop = Common::RandomInt(0, 49);
 }
 
 EnemyType Squid::GetType() {
@@ -11,11 +12,11 @@ EnemyType Squid::GetType() {
 }
 
 int Squid::ReturnDamage() {
-    return 1+rand()%10;
+    return Common::RandomInt(1, 10);
 }
 
 int Squid::ReturnRiskAttackDamage() {
-    int selector= rand()%6;
+    int selector= Common::RandomInt(0, 5);
     switch(selector){
         case 0: case 1: case 2: case 3:
             return 2;
@@ -30,7 +31,7 @@ int Squid::ReturnRiskAttackDamage() {
 }
 
 int Squid::ReturnHealAmount() {
-    return 1+rand()%11;
+    return Common::RandomInt(1, 11);
 }
 
 std::string Squid::GetIntro()

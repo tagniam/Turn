@@ -414,8 +414,8 @@ int Player::RiskAttack(){
 }
 
 void Player::WeakenWeapon(int impact){
-	if (impact >= 0) weaponstrength -= impact + rand() % 5;
-	else weaponstrength -= rand() % 5;
+	if (impact >= 0) weaponstrength -= impact + Common::RandomInt(0, 4);
+	else weaponstrength -= Common::RandomInt(0, 4);
 
 	if (weaponstrength < 0)
 	{
@@ -483,7 +483,7 @@ int Player::ReturnBowDamage(){
     if (arrows < 1)
         return 0;
     arrows--;
-    return 10+rand()%6; // 10 - 15
+    return Common::RandomInt(10, 15);
 }
 
 int Player::Flee(){

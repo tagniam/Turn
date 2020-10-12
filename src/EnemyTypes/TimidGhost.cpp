@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/TimidGhost.h"
 
 TimidGhost::TimidGhost() {
 	name = "Timid Ghost";
-	ExperienceAmount = 10 + rand() % 10;
-	CoinsDrop = 1 + rand() % 5;
+	ExperienceAmount = Common::RandomInt(10, 19);
+	CoinsDrop = Common::RandomInt(1, 5);
 }
 
 EnemyType TimidGhost::GetType() {
@@ -11,8 +12,8 @@ EnemyType TimidGhost::GetType() {
 }
 
 int TimidGhost::ReturnDamage() {
-	int damage = rand() % 3;
-	int chance = rand() % 2; // 50% chance
+	int damage = Common::RandomInt(0, 2);
+	int chance = Common::RandomInt(0, 1); // 50% chance
 	if (chance == 0) {
 		// TimidGhost musters courage
 		damage += 5;
@@ -21,7 +22,7 @@ int TimidGhost::ReturnDamage() {
 }
 
 int TimidGhost::ReturnRiskAttackDamage() {
-	int chance = rand() % 5;
+	int chance = Common::RandomInt(0, 4);
 	if (chance == 0) {
 		return 10; // 20% chance
 	}
@@ -35,7 +36,7 @@ int TimidGhost::ReturnHealAmount() {
 }
 
 std::string TimidGhost::GetIntro() {
-	int choice = rand() % 2;
+	int choice = Common::RandomInt(0, 1);
 	if (choice == 0) {
 		return "The room is brightly lit from all sides, but a shadow creeps up behind you...";
 	}

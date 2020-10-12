@@ -1,5 +1,5 @@
+#include "../../include/Common.h"
 #include "../../include/PlayerTypes/Rogue.h"
-
 
 Rogue::Rogue(void)
 {
@@ -9,11 +9,11 @@ Rogue::Rogue(void)
 }
 
 int Rogue::ReturnDamage(){
-    return 7+rand()%6; // 7 - 12
+    return Common::RandomInt(7, 12);
 }
 
 int Rogue::ReturnRiskAttackDamage(){
-    int selector = rand()%2;
+    int selector = Common::RandomInt(0, 1);
     switch(selector){
         case 0:
             return 1;
@@ -28,5 +28,5 @@ int Rogue::ReturnRiskAttackDamage(){
 }
 
 int Rogue::ReturnHealAmount(){
-    return 6+rand()%7; // 6 - 12
+    return Common::RandomInt(6, 12);
 }

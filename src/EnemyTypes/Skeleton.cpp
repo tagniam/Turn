@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Skeleton.h"
 
 Skeleton::Skeleton() {
 	name = "Skeleton";
 	ExperienceAmount = 25;
-	CoinsDrop = 3 + rand() % 48;
+	CoinsDrop = Common::RandomInt(3, 50);
 }
 
 EnemyType Skeleton::GetType() {
@@ -11,13 +12,13 @@ EnemyType Skeleton::GetType() {
 }
 
 int Skeleton::ReturnDamage() {
-	return 3 + rand() % 5;
+	return Common::RandomInt(3, 7);
 }
 
 int Skeleton::ReturnRiskAttackDamage() {
-	int selector = rand() % 10;
+	int selector = Common::RandomInt(0, 9);
 	switch (selector){
-	case 0: 
+	case 0:
 		return 0;
 		break;
 	case 1: case 2: case 3:
@@ -26,7 +27,7 @@ int Skeleton::ReturnRiskAttackDamage() {
 	case 4: case 5: case 6: case 7: case 8:
 		return 3;
 		break;
-	case 9: 
+	case 9:
 		return 5;
 		break;
 	case 10:
@@ -39,10 +40,10 @@ int Skeleton::ReturnRiskAttackDamage() {
 }
 
 int Skeleton::ReturnHealAmount() {
-	return 1 + rand() % 15;
+	return Common::RandomInt(1, 15);
 }
 
 std::string Skeleton::GetIntro()
 {
-	return "Clack, clack, clack...";	
+	return "Clack, clack, clack...";
 }

@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Gargoyle.h"
 
 Gargoyle::Gargoyle() {
 	name = "Gargoyle";
 	ExperienceAmount = 100;
-	CoinsDrop = 50 + rand() % 100;
+	CoinsDrop = Common::RandomInt(50, 149);
 }
 
 EnemyType Gargoyle::GetType() {
@@ -11,11 +12,11 @@ EnemyType Gargoyle::GetType() {
 }
 
 int Gargoyle::ReturnDamage() {
-	return 5 + rand() % 20;
+	return Common::RandomInt(5, 24);
 }
 
 int Gargoyle::ReturnRiskAttackDamage() {
-	int selector = rand() % 6;
+	int selector = Common::RandomInt(0, 5);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 2;
@@ -30,7 +31,7 @@ int Gargoyle::ReturnRiskAttackDamage() {
 }
 
 int Gargoyle::ReturnHealAmount() {
-	return 6 + rand() % 15;
+	return Common::RandomInt(6, 20);
 }
 
 std::string Gargoyle::GetIntro()
