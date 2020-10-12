@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Zombie.h"
 
 Zombie::Zombie() {
 	name = "Zombie";
 	ExperienceAmount = 90;
-	CoinsDrop = 40 + rand() % 25;
+	CoinsDrop = Common::RandomInt(40, 64);
 }
 
 EnemyType Zombie::GetType() {
@@ -11,11 +12,11 @@ EnemyType Zombie::GetType() {
 }
 
 int Zombie::ReturnDamage() {
-	return 20 + rand() % 10;
+	return Common::RandomInt(20, 29);
 }
 
 int Zombie::ReturnRiskAttackDamage() {
-	int selector = rand() % 7;
+	int selector = Common::RandomInt(0, 6);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 2;
@@ -30,7 +31,7 @@ int Zombie::ReturnRiskAttackDamage() {
 }
 
 int Zombie::ReturnHealAmount() {
-	return 2 + rand() % 40;
+	return Common::RandomInt(2, 41);
 }
 
 std::string Zombie::GetIntro()

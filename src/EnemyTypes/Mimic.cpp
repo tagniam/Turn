@@ -1,10 +1,11 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Mimic.h"
 
 Mimic::Mimic()
 {
     name = "Mimic";
     ExperienceAmount = 10;
-    CoinsDrop = 150 + rand() % 51;
+    CoinsDrop = Common::RandomInt(150, 200);
 }
 
 EnemyType Mimic::GetType()
@@ -14,12 +15,12 @@ EnemyType Mimic::GetType()
 
 int Mimic::ReturnDamage()
 {
-    return 3 + rand() % 7;
+    return Common::RandomInt(3, 9);
 }
 
 int Mimic::ReturnRiskAttackDamage()
 {
-    int selector = rand() % 2;
+    int selector = Common::RandomInt(0, 1);
     switch (selector)
     {
     case 0:
@@ -34,9 +35,9 @@ int Mimic::ReturnRiskAttackDamage()
     }
 }
 
-int Mimic::ReturnHealAmount() 
+int Mimic::ReturnHealAmount()
 {
-    return 2 + rand() % 9;
+    return Common::RandomInt(2, 10);
 }
 
 std::string Mimic::GetIntro()

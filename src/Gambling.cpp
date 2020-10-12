@@ -21,13 +21,13 @@ void Gambling::Gamble(Player *_Player){
     // Generates random values for the local variables declared in the class.
     GenerateValues();
 
-    // check if the player has enough money to play 
-    if (_Player->GetCoins() < CoinsDeduction) { 
-        // the player does not have enough money 
+    // check if the player has enough money to play
+    if (_Player->GetCoins() < CoinsDeduction) {
+        // the player does not have enough money
         cout << "You need at least " << CoinsDeduction << " coins to gamble." << endl;
 	Sleep(SLEEP_MS);
-        return; 
-    } 
+        return;
+    }
 
     // Player's die. Equal to a random number between 1 and 9.
     int Die=ReturnShakenDie();
@@ -71,7 +71,7 @@ void Gambling::Gamble(Player *_Player){
         cout << "1) Reveal Die" << endl;
         cout << "2) Shake Die" << endl;
         cout << "3) Pass" << endl << "\n";
-        
+
         choice = input();
         switch (choice){
         case 1:
@@ -108,9 +108,9 @@ void Gambling::GenerateValues(){
     // Generates values for the variables used in the gamble.
 
     // Generates a number between 1 and 9, the number that  the player's die must be equal to or greater than.
-    DieRequirement=1+rand()%9;
+    DieRequirement = Common::RandomInt(1, 9);
     // The amount of items won if the player win the gamble.
-    ItemNumber=1+rand()%4;
+    ItemNumber = Common::RandomInt(1, 4);
     // The amount of experience lost if the player loses the gamble.
     CoinsDeduction=100;
     // Initializes Item equal to a random char to indicate the item won.
@@ -119,12 +119,12 @@ void Gambling::GenerateValues(){
 
 int Gambling::ReturnShakenDie(){
     // Returns a random integer between 1 and 9.
-    return 1+rand()%9;
+    return Common::RandomInt(1, 9);
 }
 
 char Gambling::ReturnItem(){
     // Generates a random char with a random integer selector, indicating the item won in the gamble.
-  int selector=rand()%4;
+  int selector=Common::RandomInt(0, 3);
     switch(selector){
     case 0:
         // Arrows are the item.
@@ -154,7 +154,7 @@ void Gambling::WinGamble(Player *_Player){
 	for (int i = 0; i < NUM_ITEMS; i++) {
 		drops.push_back((Item == i) ? ItemNumber : 0);
 	}
-	
+
 
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.

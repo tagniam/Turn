@@ -160,7 +160,7 @@ void Game::SetEnemy(){
     // Generates a random integer to determine class of the enemy.
     // The abstract class Enemy is morphed with one of its child classes.
 
-    EnemyType selector = EnemyType(rand()%etNumEnemyTypes);
+    EnemyType selector = EnemyType(Common::RandomInt(0, etNumEnemyTypes - 1));
     switch(selector)
     {
         case etSlimeball:
@@ -330,8 +330,6 @@ void Game::Intermission(){
 void Game::StartGame(){
     // Starts the game by initializing values for a new game.
 
-    // Seeds the random number generator for pseudo-random numbers.
-    srand((unsigned int)time(NULL));
     IsPlaying=true;
 
     // SetPlayerData() initializes the variables in this end.

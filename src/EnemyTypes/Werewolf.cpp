@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Werewolf.h"
 
 Werewolf::Werewolf() {
 	name = "Werewolf";
 	ExperienceAmount = 100;
-	CoinsDrop = 50 + rand() % 100;
+	CoinsDrop = Common::RandomInt(50, 149);
 }
 
 EnemyType Werewolf::GetType() {
@@ -11,11 +12,11 @@ EnemyType Werewolf::GetType() {
 }
 
 int Werewolf::ReturnDamage() {
-	return 5 + rand() % 20;
+	return Common::RandomInt(5, 24);
 }
 
 int Werewolf::ReturnRiskAttackDamage() {
-	int selector = rand() % 6;
+	int selector = Common::RandomInt(0, 5);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 2;
@@ -30,7 +31,7 @@ int Werewolf::ReturnRiskAttackDamage() {
 }
 
 int Werewolf::ReturnHealAmount() {
-	return 4 + rand() % 15;
+	return Common::RandomInt(4, 18);
 }
 
 std::string Werewolf::GetIntro()

@@ -14,6 +14,8 @@ namespace Common {
 
 	void Sleep(int ms);
 
+	int RandomInt(int min, int max);
+
     // Indicates if the game is still going.
     extern bool IsPlaying;
     extern const int SLEEP_MS;

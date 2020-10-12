@@ -23,7 +23,7 @@ Enemy::Enemy(){
 int Enemy::Action(){
     // Returns damage hit for the player. Uses random number to select enemy's move.
 
-  int selector = rand()%9;
+  int selector = Common::RandomInt(0, 8);
     switch(selector){
         case 0: case 1:
             // 2/9 chance of risk attacking.
@@ -98,11 +98,11 @@ int Enemy::RiskAttack(){
 }
 
 int Enemy::ReturnItemDrop(int item){
-    int ArrowSelector = rand()%6;
-    int WhetstoneSelector = rand()%2;
-    int PotionSelector = rand()%10;
+    int ArrowSelector = Common::RandomInt(0, 5);
+    int WhetstoneSelector = Common::RandomInt(0, 1);
+    int PotionSelector = Common::RandomInt(0, 9);
 
-	/* 
+	/*
 	0	Arrows
 	1	Bombs
 	2	Potions
@@ -125,7 +125,7 @@ int Enemy::ReturnItemDrop(int item){
 			return 2;
 		else
 			return 0;
-	
+
     case 3:
         if (WhetstoneSelector==1)
             return 1;

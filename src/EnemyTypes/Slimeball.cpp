@@ -1,10 +1,11 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Slimeball.h"
 
 Slimeball::Slimeball()
 {
     name = "Slimeball";
     ExperienceAmount = 25;
-    CoinsDrop = rand() % 50;
+    CoinsDrop = Common::RandomInt(0, 49);
 }
 
 EnemyType Slimeball::GetType()
@@ -15,7 +16,7 @@ EnemyType Slimeball::GetType()
 int Slimeball::ReturnDamage()
 {
     auto acidSplash = 2;
-    return 1 + acidSplash + rand() % 10;
+    return 1 + acidSplash + Common::RandomInt(0, 9);
 }
 
 std::string Slimeball::GetIntro()
@@ -25,7 +26,7 @@ std::string Slimeball::GetIntro()
 
 int Slimeball::ReturnRiskAttackDamage()
 {
-    int selector = rand() % 6;
+    int selector = Common::RandomInt(0, 5);
     switch(selector){
         case 0:
         case 1:
@@ -45,5 +46,5 @@ int Slimeball::ReturnRiskAttackDamage()
 
 int Slimeball::ReturnHealAmount()
 {
-    return 1 + rand() % 11;
+    return Common::RandomInt(1, 11);
 }

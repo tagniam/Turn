@@ -1,3 +1,4 @@
+#include "../include/Common.h"
 #include "../include/Sound.h"
 
 #ifdef _WIN32
@@ -100,7 +101,7 @@ void SoundMaker::PlayPrimaryAttack(int damageDealt)
 	int index = 0;
 	if (damageDealt > 0  && damageDealt < mInfo.attackRange.second)
 	{
-		index = 1+rand()%3;
+		index = Common::RandomInt(1, 3);
 	}
 	else if (damageDealt >= mInfo.attackRange.second)
 	{

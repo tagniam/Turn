@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/SmallDragon.h"
 
 SmallDragon::SmallDragon() {
 	name = "Small Dragon";
 	ExperienceAmount = 135;
-	CoinsDrop = 50 + rand() % 30;
+	CoinsDrop = Common::RandomInt(50, 79);
 }
 
 EnemyType SmallDragon::GetType() {
@@ -11,11 +12,11 @@ EnemyType SmallDragon::GetType() {
 }
 
 int SmallDragon::ReturnDamage() {
-	return 15 + rand() % 15;
+	return Common::RandomInt(15, 29);
 }
 
 int SmallDragon::ReturnRiskAttackDamage() {
-	int selector = rand() % 6;
+	int selector = Common::RandomInt(0, 5);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 5;
@@ -30,7 +31,7 @@ int SmallDragon::ReturnRiskAttackDamage() {
 }
 
 int SmallDragon::ReturnHealAmount() {
-	return 15 + rand() % 10;
+	return Common::RandomInt(15, 24);
 }
 
 std::string SmallDragon::GetIntro() {

@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Cerberus.h"
 
 Cerberus::Cerberus() {
 	name = "Cerberus";
 	ExperienceAmount = 120;
-	CoinsDrop = 40 + rand() % 21;
+	CoinsDrop = Common::RandomInt(40, 60);
 }
 
 EnemyType Cerberus::GetType() {
@@ -11,11 +12,11 @@ EnemyType Cerberus::GetType() {
 }
 
 int Cerberus::ReturnDamage() {
-	return 15 + rand() % 11;
+	return Common::RandomInt(15, 25);
 }
 
 int Cerberus::ReturnRiskAttackDamage() {
-	int selector = rand() % 7;
+	int selector = Common::RandomInt(0, 6);
 	switch (selector) {
 	case 0: case 1: case 2: case 3:
 		return 2;
@@ -33,7 +34,7 @@ int Cerberus::ReturnRiskAttackDamage() {
 }
 
 int Cerberus::ReturnHealAmount() {
-	return 5 + rand() % 6;
+	return Common::RandomInt(5, 10);
 }
 
 

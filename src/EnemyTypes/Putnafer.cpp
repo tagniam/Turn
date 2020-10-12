@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Putnafer.h"
 
 Putnafer::Putnafer() {
 	name = "Putnafer";
 	ExperienceAmount = 150;
-	CoinsDrop = 90 + rand() % 20;
+	CoinsDrop = Common::RandomInt(90, 109);
 }
 
 EnemyType Putnafer::GetType() {
@@ -11,11 +12,11 @@ EnemyType Putnafer::GetType() {
 }
 
 int Putnafer::ReturnDamage() {
-	return 10 + rand() % 22;
+	return Common::RandomInt(10, 31);
 }
 
 int Putnafer::ReturnRiskAttackDamage() {
-	int selector = rand() % 6;
+	int selector = Common::RandomInt(0, 5);
 	switch (selector) {
 	case 0: case 1: case 2:
 		return 5;
@@ -33,7 +34,7 @@ int Putnafer::ReturnRiskAttackDamage() {
 }
 
 int Putnafer::ReturnHealAmount() {
-	return 2 + rand() % 12;
+	return Common::RandomInt(2, 13);
 }
 
 std::string Putnafer::GetIntro()
