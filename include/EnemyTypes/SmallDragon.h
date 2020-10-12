@@ -5,16 +5,16 @@
 
 
 class SmallDragon : public Enemy {
-public:
-	SmallDragon();
+  public:
+    SmallDragon();
 
-	EnemyType GetType() override;
-	std::string GetIntro() override;
+    EnemyType GetType() override;
+    std::string GetIntro() override;
 
-private:
-	int ReturnDamage() override;
-	int ReturnRiskAttackDamage() override;
-	int ReturnHealAmount() override;
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // SMALLDRAGON_H

@@ -4,8 +4,7 @@
 #include <vector>
 #include "Entity.h"
 
-enum EnemyType
-{
+enum EnemyType {
     etCrab,
     etGiantCrab,
     etSquid,
@@ -28,32 +27,32 @@ enum EnemyType
     etZabra,
     etTimidGhost,
     etGremlin,
-	etDemon,
+    etDemon,
     etNumEnemyTypes
 };
 
 
 class Enemy : public Entity {
-    public:
-        Enemy();
+  public:
+    Enemy();
 
-        int Action();
-        void DisplayHUD();
+    int Action();
+    void DisplayHUD();
 
-		std::vector<int> GetDrops();
-        int ReturnExperience();
+    std::vector<int> GetDrops();
+    int ReturnExperience();
 
-        virtual EnemyType GetType() = 0;
-		virtual std::string GetIntro();
+    virtual EnemyType GetType() = 0;
+    virtual std::string GetIntro();
 
-    protected:
-        int GenericAttack();
-        int RiskAttack();
+  protected:
+    int GenericAttack();
+    int RiskAttack();
 
-        int ReturnItemDrop(int);
-        
-        int ExperienceAmount;
-        int CoinsDrop;
+    int ReturnItemDrop(int);
+
+    int ExperienceAmount;
+    int CoinsDrop;
 };
 
 #endif // ENEMY_H

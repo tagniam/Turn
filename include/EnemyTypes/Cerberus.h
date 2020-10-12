@@ -4,18 +4,17 @@
 #include "../Enemy.h"
 
 
-class Cerberus : public Enemy
-{
-public:
-	Cerberus();
+class Cerberus : public Enemy {
+  public:
+    Cerberus();
 
-	EnemyType GetType() override;
-	std::string GetIntro() override;
+    EnemyType GetType() override;
+    std::string GetIntro() override;
 
-private:
-	int ReturnDamage() override;
-	int ReturnRiskAttackDamage() override;
-	int ReturnHealAmount() override;
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // CERBERUS_H

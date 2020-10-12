@@ -4,15 +4,14 @@
 #include "../Enemy.h"
 
 
-class Zabra : public Enemy
-{
-public:
+class Zabra : public Enemy {
+  public:
     Zabra();
 
     EnemyType GetType() override;
     std::string GetIntro() override;
 
-private:
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;

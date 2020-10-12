@@ -18,10 +18,14 @@ int Demon::ReturnDamage() {
 int Demon::ReturnRiskAttackDamage() {
     int selector = Common::RandomInt(0, 5);
     switch (selector) {
-    case 0: case 1: case 2: case 3: case 4:
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
         return 1;
         break;
-     case 5:
+    case 5:
         return 25;
         break;
     default:
@@ -34,7 +38,6 @@ int Demon::ReturnHealAmount() {
     return Common::RandomInt(1, 15);
 }
 
-std::string Demon::GetIntro()
-{
+std::string Demon::GetIntro() {
     return "A hellish roar is heard. . . ";
 }
