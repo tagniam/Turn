@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 
 #include "../include/Common.h"
@@ -9,48 +10,33 @@
 using namespace std;
 using namespace Common;
 
-const unsigned short arrowsCost = 200;
-const unsigned short bombCost = 100;
-const unsigned short potionCost = 150;
-const unsigned short whetstoneCost = 20;
-
 // Messages
-const string notEnoughItemsMessage = " Insufficient Items !";
-const string lowCoinsMessage = " Insufficient Coins !";
-const string invalidChoice = " Invalid Choice !";
+const char notEnoughItemsMessage[] = " Insufficient Items !";
+const char lowCoinsMessage[] = " Insufficient Coins !";
+const char invalidChoice[] = " Invalid Choice !";
 
 void Store::StoreFront(Player* _Player) {
 	// Displays store menu and allows player to buy/sell items.
 
-	unsigned short choice = 0;
-
-	bool buyItems = false;
 	bool isValidChoice = false;
 
 	do
 	{
-		ClearScreen();
-		cout << endl << endl;
-		_Player->DisplayInventory();
-		cout << endl << " Jeremy's Tools Store" << endl;
-		cout << " \"" << random_greeting() << "\"" << endl << endl;
-		cout << " ---------------------------------- " << endl << endl;
-		cout << " 1) Buy" << endl;
-		cout << " 2) Sell" << endl << endl;
-		cout << " 0) Exit" << endl << endl;
-		cout << " ---------------------------------- " << endl << endl;
-		cout << " What would you like to do today? " << endl << endl << " ";
-		choice = input();
+		// Display the store's main menu
+		DisplayStoreMainMenu(_Player);
+
+		// Input choice
+		unsigned short choice = input();
 		cout << endl;
 
 		isValidChoice = true;
 		switch (choice)
 		{
 		case 1: // Buy
-			buyItems = true;
+			BuyFront(_Player);
 			break;
 		case 2: // Sell
-			buyItems = false;
+			SellFront(_Player);
 			break;
 		case 0: // Exit
 			break;
@@ -61,163 +47,132 @@ void Store::StoreFront(Player* _Player) {
 			break;
 		}
 	} while (!isValidChoice);
+}
 
-	// Allow player to buy/sell items as long as the player does not want to exit the store
-	while (choice != 0)
-	{
+void Store::BuyFront(Player* _Player) {
+	// Displays the buy front
+
+	const static catalogue_t stock_items = {
+		{ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
+		{ITEMTYPE::POTION, {"Potion", 1, 150}},
+		{ITEMTYPE::BOMB, {"Bomb", 1, 100}},
+		{ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
+	};
+
+	while (true) {
 		ClearScreen();
-		cout << endl << endl;
+		cout << "\n\n";
 		_Player->DisplayInventory();
-		cout << endl << " Jeremy's Tools Store" << endl << endl;
-		cout << " ----ITEM----------------COST------ " << endl << endl;
-		cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
-		cout << " 2) Bomb\t\t " << bombCost << endl;
-		cout << " 3) Potion\t\t " << potionCost << endl;
-		cout << " 4) Whetstone\t\t " << whetstoneCost << endl << endl;
-		cout << " 0) Exit" << endl << endl;
-		cout << " ---------------------------------- " << endl << endl;
-		if (buyItems)
-		{
-			cout << " What do you want to buy today?" << endl << endl << " ";
-		}
-		else
-		{
-			cout << " What do you want to sell today?" << endl << endl << " ";
-		}
-		choice = input();
-		cout << endl;
+		DisplayStock(stock_items);
+		cout << " What do you want to buy today?\n\n ";
 
-		switch (choice)
-		{
-		case ITEMTYPE::ARROWS:
-		case ITEMTYPE::BOMB:
-		case ITEMTYPE::POTION:
-		case ITEMTYPE::WHETSTONE:
-			if (buyItems)
-			{
-				BuyItem(_Player, choice);
-			}
-			else
-			{
-				SellItem(_Player, choice);
-			}
-			Sleep(SLEEP_MS);
-		case 0: // Exit
+		int choice = input();
+		if (choice == 0 /* exit */) {
 			break;
-		default:
-			cout << invalidChoice << endl;
-			Sleep(SLEEP_MS);
 		}
+
+		const auto& item = stock_items.find(static_cast<ITEMTYPE>(choice));
+		if (item != std::end(stock_items)) {
+			BuyItem(_Player, static_cast<ITEMTYPE>(choice), item->second);
+		} 
+		else {
+			cout << invalidChoice << '\n';
+		}
+		Sleep(SLEEP_MS);
 	}
 }
 
-void Store::SellItem(Player* _Player, int _Item) {
+void Store::SellFront(Player* _Player) {
+	// Displays the sell front
+
+	const static catalogue_t stock_items = {
+		{ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
+		{ITEMTYPE::POTION, {"Potion", 1, 150}},
+		{ITEMTYPE::BOMB, {"Bomb", 1, 100}},
+		{ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
+	};
+
+	while (true) {
+		ClearScreen();
+		cout << "\n\n";
+		_Player->DisplayInventory();
+		DisplayStock(stock_items);
+		cout << " What do you want to sell today?\n\n ";
+
+		int choice = input();
+		if (choice == 0 /* exit */) {
+			break;
+		}
+
+		const auto& item = stock_items.find(static_cast<ITEMTYPE>(choice));
+		if (item != std::end(stock_items)) {
+			SellItem(_Player, static_cast<ITEMTYPE>(choice), item->second);
+		} 
+		else {
+			cout << invalidChoice << '\n';
+		}
+		Sleep(SLEEP_MS);
+	}
+}
+
+void Store::BuyItem(Player* _Player, ITEMTYPE _Item, ItemInfo _ItemInfo) {
+	// Buys a specific item, if possible
+
+	auto price = _ItemInfo.amount * _ItemInfo.piece_price;
+	if (_Player->GetCoins() >= price) {
+		cout << "Bought " << _ItemInfo.amount << ' ' << _ItemInfo.item_name + " !\n";
+		_Player->AddStoreItemToInventory(_Item, _ItemInfo.amount);
+		_Player->LoseCoins(price);
+	}
+	else {
+		cout << lowCoinsMessage << '\n';
+	}
+}
+
+void Store::SellItem(Player* _Player, ITEMTYPE _Item, ItemInfo _ItemInfo) {
 	// Sells a specific item from a player.
 
-	switch (_Item)
-	{
-	case ITEMTYPE::ARROWS:
-		if (_Player->RemoveStoreItemFromInventory(ITEMTYPE::ARROWS))
-		{
-			cout << " Arrows sold !" << endl;
-			_Player->AddCoins(arrowsCost);
-		}
-		else
-		{
-			cout << notEnoughItemsMessage << endl;
-		}
-		break;
-	case ITEMTYPE::BOMB:
-		if (_Player->RemoveStoreItemFromInventory(ITEMTYPE::BOMB))
-		{
-			cout << " Bomb sold !" << endl;
-			_Player->AddCoins(bombCost);
-		}
-		else
-		{
-			cout << notEnoughItemsMessage << endl;
-		}
-		break;
-	case ITEMTYPE::POTION:
-		if (_Player->RemoveStoreItemFromInventory(ITEMTYPE::POTION))
-		{
-			cout << " Potion sold !" << endl;
-			_Player->AddCoins(potionCost);
-		}
-		else
-		{
-			cout << notEnoughItemsMessage << endl;
-		}
-		break;
-	case ITEMTYPE::WHETSTONE:
-		if (_Player->RemoveStoreItemFromInventory(ITEMTYPE::WHETSTONE))
-		{
-
-			cout << " Whetstone sold !" << endl;
-			_Player->AddCoins(whetstoneCost);
-		}
-		else
-		{
-			cout << notEnoughItemsMessage << endl;
-		}
-		break;
+	if (_Player->RemoveStoreItemFromInventory(_Item, _ItemInfo.amount)) {
+		cout << "Sold " << _ItemInfo.amount << ' ' << _ItemInfo.item_name << " !\n";
+		_Player->AddCoins(_ItemInfo.piece_price * _ItemInfo.amount);
+	}
+	else {
+		cout << notEnoughItemsMessage << '\n';
 	}
 }
 
-void Store::BuyItem(Player* _Player, int _Item) {
-	// Buys a specific item from the store.
+void Store::DisplayStock(const catalogue_t& _Catalog) const {
+	// Displays Jeremy's Tools Store's stock
 
-	unsigned short coins = _Player->GetCoins();
-
-	switch (_Item)
-	{
-	case ITEMTYPE::ARROWS:
-		if (coins < arrowsCost)
-		{
-			cout << lowCoinsMessage << endl;
+	cout << endl << " Jeremy's Tools Store\n\n";
+	cout << " ----ITEM----------------COST------ \n\n";
+	int item_idx = 1;
+	for (const auto& item: _Catalog) {
+		cout << ' ' + to_string(item_idx++) << ") ";
+		if (item.second.amount > 1) {
+			cout << item.second.item_name << " x " << item.second.amount << "\t\t"
+				 << item.second.piece_price * item.second.amount << '\n';
 		}
-		else
-		{
-			cout << " 5 Arrows purchased ! " << endl;
-			_Player->AddStoreItemToInventory(ITEMTYPE::ARROWS);
-			_Player->LoseCoins(arrowsCost);
+		else {
+			cout << item.second.item_name << "\t\t" << item.second.piece_price << '\n';
 		}
-		break;
-	case ITEMTYPE::BOMB:
-		if (coins < bombCost)
-		{
-			cout << lowCoinsMessage << endl;
-		}
-		else
-		{
-			cout << " Bomb purchased !" << endl;
-			_Player->AddStoreItemToInventory(ITEMTYPE::BOMB);
-			_Player->LoseCoins(bombCost);
-		}
-		break;
-	case ITEMTYPE::POTION:
-		if (coins < potionCost)
-		{
-			cout << lowCoinsMessage << endl;
-		}
-		else
-		{
-			cout << " Potion purchased !" << endl;
-			_Player->AddStoreItemToInventory(ITEMTYPE::POTION);
-			_Player->LoseCoins(potionCost);
-		}
-		break;
-	case ITEMTYPE::WHETSTONE:
-		if (coins < whetstoneCost)
-		{
-			cout << lowCoinsMessage << endl;
-		}
-		else
-		{
-			cout << " Whetstone purchased !" << endl;
-			_Player->AddStoreItemToInventory(ITEMTYPE::WHETSTONE);
-			_Player->LoseCoins(whetstoneCost);
-		}
-		break;
 	}
+	cout << endl << " 0) Exit\n\n";
+	cout << " ---------------------------------- \n\n";
+}
+
+void Store::DisplayStoreMainMenu(Player* _Player) const {
+	// Displays Jeremy's Tools Store's main menu
+
+	ClearScreen();
+	cout << endl << endl;
+	_Player->DisplayInventory();
+	cout << endl << " Jeremy's Tools Store\n";
+	cout << " \"" << random_greeting() << "\"\n\n";
+	cout << " ---------------------------------- \n\n";
+	cout << " 1) Buy\n";
+	cout << " 2) Sell\n\n";
+	cout << " 0) Exit\n\n";
+	cout << " ---------------------------------- \n\n";
+	cout << " What would you like to do today? \n\n ";
 }

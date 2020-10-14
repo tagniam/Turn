@@ -253,54 +253,54 @@ void Player::AddToInventory(vector<int> drops){
 	cout << endl;
 }
 
-void Player::AddStoreItemToInventory(int type) {
+void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
 	// Adds items bought to total items.
 	switch (type)
 	{
 	case ITEMTYPE::ARROWS:
-		arrows += 5;
+		arrows += amount;
 		break;
 	case ITEMTYPE::BOMB:
-		++bombs;
+		bombs += amount;
 		break;
 	case ITEMTYPE::POTION:
-		++potions;
+		potions += amount;
 		break;
 	case ITEMTYPE::WHETSTONE:
-		++whetstones;
+		whetstones += amount;
 		break;
 	}
 }
 
-bool Player::RemoveStoreItemFromInventory(int type) {
+bool Player::RemoveStoreItemFromInventory(ITEMTYPE type, int amount) {
 	// Removes sold items from the inventory.
 	switch (type)
 	{
 	case ITEMTYPE::ARROWS:
-		if (arrows >= 5)
+		if (arrows >= amount)
 		{
-			arrows -= 5;
+			arrows -= amount;
 			return true;
 		}
 		break;
 	case ITEMTYPE::BOMB:
-		if (bombs > 0)
+		if (bombs >= amount)
 		{
-			--bombs;
+			bombs -= amount;
 			return true;
 		}
 		break;
 	case ITEMTYPE::POTION:
-		if (potions > 0)
+		if (potions >= amount)
 		{
-			--potions;
+			potions -= amount;
 			return true;
 		}
 		break;
 	case ITEMTYPE::WHETSTONE:
-		if (whetstones > 0)
+		if (whetstones >= amount)
 		{
-			--whetstones;
+			whetstones -= amount;
 			return true;
 		}
 		break;

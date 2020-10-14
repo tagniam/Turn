@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "ItemTypes.h"
 #include "Entity.h"
 #include "Enemy.h"
 #include "Sound.h"
@@ -8,15 +9,15 @@
 class Player : public Entity, public SoundMaker {
     // Contains the functions needed to construct the player's character.
     public:
-		Player(void);
+        Player(void);
         void SaveGame();
 
         void SetPlayerData();
         int Action();
 	void UseItem();
         void AddToInventory(std::vector<int>);
-	void AddStoreItemToInventory(int);
-        bool RemoveStoreItemFromInventory(int);
+	void AddStoreItemToInventory(ITEMTYPE, int);
+        bool RemoveStoreItemFromInventory(ITEMTYPE, int);
 
         void DisplayHUD(Enemy*);
         void ReplenishHealth();
@@ -40,7 +41,7 @@ class Player : public Entity, public SoundMaker {
         int UseBomb();
         void DeductDamage(int&);
         int ReturnBowDamage();
-		void WeakenWeapon(int impact);
+        void WeakenWeapon(int impact);
 
         int Flee();
 
