@@ -5,12 +5,12 @@
 
 
 class Warrior : public Player {
-	public:
-		Warrior(void);
-    private:
-        int ReturnDamage();
-        int ReturnRiskAttackDamage();
-        int ReturnHealAmount();
+  public:
+    Warrior(void);
+  private:
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // WARRIOR_H

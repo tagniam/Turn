@@ -5,12 +5,12 @@
 
 
 class Demon : public Enemy {
-public:
+  public:
     Demon();
 
     EnemyType GetType() override;
     std::string GetIntro() override;
-private:
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;

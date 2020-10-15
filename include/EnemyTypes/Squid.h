@@ -5,12 +5,12 @@
 
 
 class Squid : public Enemy {
-public:
+  public:
     Squid();
 
     EnemyType GetType() override;
-	std::string GetIntro() override;
-private:
+    std::string GetIntro() override;
+  private:
     int ReturnDamage() override;
     int ReturnRiskAttackDamage() override;
     int ReturnHealAmount() override;

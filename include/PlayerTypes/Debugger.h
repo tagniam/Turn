@@ -5,10 +5,10 @@
 
 
 class Debugger : public Player {
-    private:
-        int ReturnDamage();
-        int ReturnRiskAttackDamage();
-        int ReturnHealAmount();
+  private:
+    int ReturnDamage();
+    int ReturnRiskAttackDamage();
+    int ReturnHealAmount();
 };
 
 #endif // DEBUGGER_H

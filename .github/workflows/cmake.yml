@@ -1,0 +1,48 @@
+name: CMake
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get update -qq && sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev libsdl2-dev libsdl2-mixer-dev
+
+    - name: Configure CMake
+      # Use a bash shell so we can use the same syntax for environment variable
+      # access regardless of the host operating system
+      shell: bash
+      run: cmake -S . -B ${{runner.workspace}}/build -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Build
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cmake --build ${{runner.workspace}}/build  --config $BUILD_TYPE
+    - uses: actions/upload-artifact@v1
+      # upload artifact
+      with:
+        name: Turn-linux
+        path: ${{runner.workspace}}/build/Turn
+      
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configure CMake
+      shell: powershell
+      run: cmake -S . -B ${{runner.workspace}}/build
+    - name: Build
+      shell: powershell
+      run: cmake --build ${{runner.workspace}}/build  --config $BUILD_TYPE
+    - uses: actions/upload-artifact@v1
+      # upload artifact
+      with:
+        name: Turn-win.exe
+        path: ${{runner.workspace}}/build/Debug/Turn.exe

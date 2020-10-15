@@ -7,38 +7,38 @@
 #endif // _WIN32
 
 class Console {
-public:
-	enum EColour {
-		Grey = 0,
-		DarkGrey,
-		Red,
-		Green,
+  public:
+    enum EColour {
+        Grey = 0,
+        DarkGrey,
+        Red,
+        Green,
 
-		Background_Red,
-		Background_Grey,
-		Background_DarkGrey,
+        Background_Red,
+        Background_Grey,
+        Background_DarkGrey,
 
-		// Aliases for easy changing of defaults
-		Default = Grey,
-		DefaultBackgroun = Background_Grey,
-	};
+        // Aliases for easy changing of defaults
+        Default = Grey,
+        DefaultBackgroun = Background_Grey,
+    };
 
-	void ClearScreen();
+    void ClearScreen();
 
-	char GetChar() const;
+    char GetChar() const;
 
-	void SetColour(EColour colour);
+    void SetColour(EColour colour);
 
-	static Console& GetInstance();
-private:
-	// Private constructor for the singleton
-	Console();
+    static Console& GetInstance();
+  private:
+    // Private constructor for the singleton
+    Console();
 
-	// Copy constructor private and unimplemented for this singleton
-	Console(Console&) = delete;
+    // Copy constructor private and unimplemented for this singleton
+    Console(Console&) = delete;
 
 #ifdef _WIN32
-	HANDLE m_hConsoleHandle;
+    HANDLE m_hConsoleHandle;
 #endif // _WIN32
 };
 
