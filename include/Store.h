@@ -12,13 +12,23 @@ struct ItemInfo {
     int piece_price;
 };
 
+struct ItemHash {
+    std::size_t operator()(ITEMTYPE it) const {
+        return static_cast<std::size_t>(it);
+    }
+};
+
 class Store {
-    using catalogue_t = std::unordered_map<ITEMTYPE, ItemInfo>;
+    using catalogue_t = std::unordered_map<ITEMTYPE, ItemInfo, ItemHash>;
 
   public:
+    Store() noexcept;
     void StoreFront(Player*);
 
   private:
+    catalogue_t buy_stock;
+    catalogue_t sell_stock;
+
     void BuyFront(Player*);
     void SellFront(Player*);
 

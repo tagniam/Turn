@@ -15,6 +15,21 @@ const string notEnoughItemsMessage = " Insufficient Items !";
 const string lowCoinsMessage = " Insufficient Coins !";
 const string invalidChoice = " Invalid Choice !";
 
+Store::Store() noexcept {
+    buy_stock = {
+        {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
+        {ITEMTYPE::POTION, {"Potion", 1, 150}},
+        {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
+        {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
+    };
+    sell_stock = {
+        {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
+        {ITEMTYPE::POTION, {"Potion", 1, 150}},
+        {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
+        {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
+    };
+}
+
 void Store::StoreFront(Player* _Player) {
     // Displays store menu and allows player to buy/sell items.
     bool isValidChoice = false;
@@ -45,24 +60,18 @@ void Store::StoreFront(Player* _Player) {
 
 void Store::BuyFront(Player* _Player) {
     // Displays the buy front
-    const static catalogue_t stock_items = {
-        {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
-        {ITEMTYPE::POTION, {"Potion", 1, 150}},
-        {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
-        {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
-    };
     while (true) {
         ClearScreen();
         cout << "\n\n";
         _Player->DisplayInventory();
-        DisplayStock(stock_items);
+        DisplayStock(buy_stock);
         cout << " What do you want to buy today?\n\n ";
         int choice = input();
         if (choice == 0 /* exit */) {
             break;
         }
-        const auto& item = stock_items.find(static_cast<ITEMTYPE>(choice));
-        if (item != std::end(stock_items)) {
+        const auto& item = buy_stock.find(static_cast<ITEMTYPE>(choice));
+        if (item != std::end(buy_stock)) {
             BuyItem(_Player, static_cast<ITEMTYPE>(choice), item->second);
         } else {
             cout << invalidChoice << '\n';
@@ -73,24 +82,18 @@ void Store::BuyFront(Player* _Player) {
 
 void Store::SellFront(Player* _Player) {
     // Displays the sell front
-    const static catalogue_t stock_items = {
-        {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
-        {ITEMTYPE::POTION, {"Potion", 1, 150}},
-        {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
-        {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
-    };
     while (true) {
         ClearScreen();
         cout << "\n\n";
         _Player->DisplayInventory();
-        DisplayStock(stock_items);
+        DisplayStock(sell_stock);
         cout << " What do you want to sell today?\n\n ";
         int choice = input();
         if (choice == 0 /* exit */) {
             break;
         }
-        const auto& item = stock_items.find(static_cast<ITEMTYPE>(choice));
-        if (item != std::end(stock_items)) {
+        const auto& item = sell_stock.find(static_cast<ITEMTYPE>(choice));
+        if (item != std::end(sell_stock)) {
             SellItem(_Player, static_cast<ITEMTYPE>(choice), item->second);
         } else {
             cout << invalidChoice << '\n';
