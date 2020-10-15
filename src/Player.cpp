@@ -236,63 +236,56 @@ void Player::AddToInventory(vector<int> drops) {
 }
 
 void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
-	// Adds items bought to total items.
-	switch (type)
-	{
-	case ITEMTYPE::ARROWS:
-		arrows += amount;
-		break;
-	case ITEMTYPE::BOMB:
-		bombs += amount;
-		break;
-	case ITEMTYPE::POTION:
-		potions += amount;
-		break;
-	case ITEMTYPE::WHETSTONE:
-		whetstones += amount;
-		break;
-	}
+    // Adds items bought to total items.
+    switch (type) {
+    case ITEMTYPE::ARROWS:
+        arrows += amount;
+        break;
+    case ITEMTYPE::BOMB:
+        bombs += amount;
+        break;
+    case ITEMTYPE::POTION:
+        potions += amount;
+        break;
+    case ITEMTYPE::WHETSTONE:
+        whetstones += amount;
+        break;
+    }
 }
 
 bool Player::RemoveStoreItemFromInventory(ITEMTYPE type, int amount) {
-	// Removes sold items from the inventory.
-	switch (type)
-	{
-	case ITEMTYPE::ARROWS:
-		if (arrows >= amount)
-		{
-			arrows -= amount;
-			return true;
-		}
-		break;
-	case ITEMTYPE::BOMB:
-		if (bombs >= amount)
-		{
-			bombs -= amount;
-			return true;
-		}
-		break;
-	case ITEMTYPE::POTION:
-		if (potions >= amount)
-		{
-			potions -= amount;
-			return true;
-		}
-		break;
-	case ITEMTYPE::WHETSTONE:
-		if (whetstones >= amount)
-		{
-			whetstones -= amount;
-			return true;
-		}
-		break;
-	}
-	
-	// Invalid action (insufficient items)
-	return false;
+    // Removes sold items from the inventory.
+    switch (type) {
+    case ITEMTYPE::ARROWS:
+        if (arrows >= amount) {
+            arrows -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::BOMB:
+        if (bombs >= amount) {
+            bombs -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::POTION:
+        if (potions >= amount) {
+            potions -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::WHETSTONE:
+        if (whetstones >= amount) {
+            whetstones -= amount;
+            return true;
+        }
+        break;
+    }
+    // Invalid action (insufficient items)
+    return false;
 }
 
-void Player::DisplayHUD(Enemy *_Enemy){
+void Player::DisplayHUD(Enemy *_Enemy) {
     // Displays player's name and health bar. Enemy object is used to print name on the same line as player name for aesthetics.
     // Prints player's name.
     cout << endl;

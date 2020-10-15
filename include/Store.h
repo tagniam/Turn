@@ -15,10 +15,10 @@ struct ItemInfo {
 class Store {
     using catalogue_t = std::unordered_map<ITEMTYPE, ItemInfo>;
 
-public:
+  public:
     void StoreFront(Player*);
 
-private:
+  private:
     void BuyFront(Player*);
     void SellFront(Player*);
 
