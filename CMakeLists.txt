@@ -20,6 +20,12 @@ target_sources(Turn PRIVATE
 	${SOURCES}
 	)
 
+# Add warnings
+target_compile_options(Turn PRIVATE
+					   $<$<CXX_COMPILER_ID:MSVC>:/W3 /EHsc>
+					   $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall -Wextra -Wpedantic>
+					   )
+
 # Link WinMM required for PlaySound
 if (WIN32)
 	target_link_libraries(Turn winmm.lib)
@@ -28,3 +34,9 @@ endif (WIN32)
 if (UNIX)
 	target_link_libraries(Turn SDL2 SDL2_mixer pthread)
 endif (UNIX)
+
+add_custom_command(
+    TARGET Turn PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+	        ${CMAKE_SOURCE_DIR}/sounds/ $<TARGET_FILE_DIR:Turn>/sounds/
+)

@@ -50,6 +50,7 @@ public:
 	void PlayHeal(void);
 	void PlaySharpen(void);
 	void PlayBomb(void);
+	void PlayPotion(void);
 	void SetSoundInfo(SoundInfo &info) { mInfo = info; }
 private:
 
@@ -61,6 +62,7 @@ private:
 	std::string healFileName;
 	std::string whetstoneFileName;
   	std::string bombFileName;
+	std::string potionFileName;
 
 	static PlatformSoundHelper ms_SoundHelper;
 };

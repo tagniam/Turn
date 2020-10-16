@@ -5,16 +5,16 @@
 
 
 class Skeleton : public Enemy {
-public:
-	Skeleton();
+  public:
+    Skeleton();
 
-	EnemyType GetType() override;
-	std::string GetIntro();
+    EnemyType GetType() override;
+    std::string GetIntro() override;
 
-private:
-	int ReturnDamage();
-	int ReturnRiskAttackDamage();
-	int ReturnHealAmount();
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // SKELETON_H

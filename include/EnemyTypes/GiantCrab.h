@@ -5,15 +5,15 @@
 
 
 class GiantCrab : public Crab {
-public:
+  public:
     GiantCrab();
 
     EnemyType GetType() override;
-    std::string GetIntro();
-private:
-    int ReturnDamage();
-    int ReturnRiskAttackDamage();
-    int ReturnHealAmount();
+    std::string GetIntro() override;
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // GIANTCRAB_H

@@ -4,15 +4,15 @@
 #include "../Enemy.h"
 
 class RatKing : public Enemy {
-public:
+  public:
     RatKing();
 
     EnemyType GetType() override;
-    std::string GetIntro();
-private:
-    int ReturnDamage();
-    int ReturnRiskAttackDamage();
-    int ReturnHealAmount();
+    std::string GetIntro() override;
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 
     int amountOfRats_;
 };

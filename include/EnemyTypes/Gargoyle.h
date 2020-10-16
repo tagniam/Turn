@@ -4,17 +4,16 @@
 #include "../Enemy.h"
 
 
-class Gargoyle : public Enemy 
-{
-public:
-	Gargoyle();
+class Gargoyle : public Enemy {
+  public:
+    Gargoyle();
 
     EnemyType GetType() override;
-	std::string GetIntro();
-private:
-	int ReturnDamage();
-	int ReturnRiskAttackDamage();
-	int ReturnHealAmount();
+    std::string GetIntro() override;
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // GARGOYLE_H

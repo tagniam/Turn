@@ -1,9 +1,10 @@
+#include "../../include/Common.h"
 #include "../../include/EnemyTypes/Demon.h"
 
 Demon::Demon() {
     name = "Demon";
     ExperienceAmount = 25;
-    CoinsDrop = rand() % 35;
+    CoinsDrop = Common::RandomInt(0, 34);
 }
 
 EnemyType Demon::GetType() {
@@ -11,16 +12,20 @@ EnemyType Demon::GetType() {
 }
 
 int Demon::ReturnDamage() {
-    return 5 + rand() % 12; //5-16
+    return Common::RandomInt(5, 16);
 }
 
 int Demon::ReturnRiskAttackDamage() {
-    int selector = rand() % 6;
+    int selector = Common::RandomInt(0, 5);
     switch (selector) {
-    case 0: case 1: case 2: case 3: case 4:
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
         return 1;
         break;
-     case 5:
+    case 5:
         return 25;
         break;
     default:
@@ -30,10 +35,9 @@ int Demon::ReturnRiskAttackDamage() {
 }
 
 int Demon::ReturnHealAmount() {
-    return 1 + rand() % 15;
+    return Common::RandomInt(1, 15);
 }
 
-std::string Demon::GetIntro()
-{
+std::string Demon::GetIntro() {
     return "A hellish roar is heard. . . ";
 }

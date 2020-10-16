@@ -4,14 +4,14 @@
 #include "../Enemy.h"
 
 class Slimeball : public Enemy {
-public:
+  public:
     Slimeball();
-    std::string GetIntro();
+    std::string GetIntro() override;
     EnemyType GetType() override;
-private:
-    int ReturnDamage();
-    int ReturnRiskAttackDamage();
-    int ReturnHealAmount();
+  private:
+    int ReturnDamage() override;
+    int ReturnRiskAttackDamage() override;
+    int ReturnHealAmount() override;
 };
 
 #endif // SLIMEBALL_H
