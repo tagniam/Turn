@@ -109,11 +109,13 @@ void Game::SetPlayerData() {
     /* Data initialized in order of:
     * class code
     * name
+    * gender
     * level
     * experience
     * health
     * arrows
     * bombs
+    * molotovs
     * potions
     * whetstones
     * weaponstrength
@@ -133,6 +135,7 @@ void Game::SetPlayerData() {
                   << 0 << endl
                   << 100 << endl
                   << 10 << endl
+                  << 1 << endl
                   << 1 << endl
                   << 1 << endl
                   << 1 << endl
@@ -339,6 +342,9 @@ void Game::Battle() {
     ClearScreen();
     // Uses random integers to determine class of the enemy.
     SetEnemy();
+    // Used for status effect damage, which must be placed outside of the loop
+    // for multi-turn damage to work.
+    int extradamageturns = 3;
     // Loops the actual battle while playing.
     while(IsPlaying) {
         ClearScreen();
@@ -348,11 +354,34 @@ void Game::Battle() {
         _Player->DisplayHUD(_Enemy);
         _Enemy->DisplayHUD();
         int damagePlayer = _Player->Action();
+        int extradamagePlayer = _Player->ReturnExtraMolotovDamage();
         // Player's turn to attack Enemy or choose other action.
-        if (damagePlayer != SKIP_TURN) {
+        if (damagePlayer != SKIP_TURN && damagePlayer != 100) {
             _Enemy->TakeDamage(damagePlayer);
             // Pauses console and ignores user input for SLEEP_MS milliseconds.
             Sleep(SLEEP_MS);
+        }
+        // Player turn is over, enemy's status effect damage is calculated
+        if (0 < extradamageturns && extradamageturns <= 2) {
+            extradamageturns--;
+            _Enemy->TakeDamage(extradamagePlayer);
+            Console::GetInstance().SetColour(Console::EColour::Red);
+            cout << extradamagePlayer;
+            Console::GetInstance().SetColour(Console::EColour::Default);
+            cout << " damage points from burn!" << endl;
+        }
+        // Check if enemy has had molotov thrown at him before or now
+        // Deal damage if molotov has been thrown and set extradamageturns=2
+        if (damagePlayer == 100) {
+            damagePlayer = Common::RandomInt(30, 40);
+            _Enemy->TakeDamage(damagePlayer);
+            Console::GetInstance().SetColour(Console::EColour::Red);
+            cout << damagePlayer;
+            Console::GetInstance().SetColour(Console::EColour::Default);
+            cout << " damage points!" << endl;
+            extradamageturns = 2;
+            cout << extradamageturns;
+            cout << " turns of extra burn damage" << endl;
         }
         // Leaves battle if player chooses to.
         if (!IsPlaying) {
@@ -445,6 +474,8 @@ void Game::DisplayMenu(MenuType menuType) {
              << "Flee: Run away from battle" << endl << endl
              << "-- Items --" << endl
              << "Bombs: Deals 50HP to your opponent with no chance of missing" << endl
+             << "Molotovs: Deals 30-40HP to your opponent and an additional 5-10" <<endl
+             << "damage for the next 2 turns" << endl
              << "Arrows: Deals 10-15HP to your opponent with no chance of missing" << endl
              << "Potion: Replenishes your HP to 100" << endl
              << "Whetstone: Restores your weapon's sharpness." << endl << endl

@@ -6,6 +6,7 @@ enum ITEMTYPE
 {
 	ARROWS = 1,
 	BOMB,
+	MOLOTOV,
 	POTION,
 	WHETSTONE
 };

@@ -11,6 +11,7 @@ using namespace Common;
 
 const unsigned short arrowsCost = 200;
 const unsigned short bombCost = 100;
+const unsigned short molotovCost = 75;
 const unsigned short potionCost = 150;
 const unsigned short whetstoneCost = 20;
 
@@ -31,8 +32,9 @@ void Store::StoreFront(Player* _Player) {
         cout << " ----ITEM----------------COST------ " << endl << endl;
         cout << " 1) Arrows x 5\t\t " << arrowsCost << endl;
         cout << " 2) Bomb\t\t " << bombCost << endl;
-        cout << " 3) Potion\t\t " << potionCost << endl;
-        cout << " 4) Whetstone\t\t " << whetstoneCost << endl << endl;
+        cout << " 3) Molotov\t\t " << molotovCost << endl;
+        cout << " 4) Potion\t\t " << potionCost << endl;
+        cout << " 5) Whetstone\t\t " << whetstoneCost << endl << endl;
         cout << " 0) Exit" << endl << endl;
         cout << " ---------------------------------- " << endl << endl;
         cout << " What do you want to buy today?" << endl << endl << " ";
@@ -56,6 +58,16 @@ void Store::StoreFront(Player* _Player) {
                 cout << " Bomb purchased !" << endl;
                 _Player->AddStoreItemToInventory(ITEMTYPE::BOMB);
                 _Player->LoseCoins(bombCost);
+            }
+            Sleep(SLEEP_MS);
+            break;
+        case ITEMTYPE::MOLOTOV:
+            if (coins < molotovCost) {
+                cout << lowCoinsMessage << endl;
+            } else {
+                cout << " Molotov purchased !" << endl;
+                _Player->AddStoreItemToInventory(ITEMTYPE::MOLOTOV);
+                _Player->LoseCoins(molotovCost);
             }
             Sleep(SLEEP_MS);
             break;

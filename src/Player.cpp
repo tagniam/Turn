@@ -34,6 +34,7 @@ void Player::SaveGame() {
                   << health << endl
                   << arrows << endl
                   << bombs << endl
+                  << molotovs << endl
                   << potions << endl
                   << whetstones << endl
                   << weaponstrength << endl
@@ -43,8 +44,6 @@ void Player::SaveGame() {
         cout << "Error opening savegame data (data.txt)." << endl;
     }
 }
-
-
 
 void Player::SetPlayerData() {
     // Primarily initializes default values at the beginning of the game.
@@ -61,6 +60,7 @@ void Player::SetPlayerData() {
         ReadData >> health;
         ReadData >> arrows;
         ReadData >> bombs;
+        ReadData >> molotovs;
         ReadData >> potions;
         ReadData >> whetstones;
         ReadData >> weaponstrength;
@@ -86,6 +86,7 @@ int Player::Action() {
          << "5) Use Bomb" << endl
          << "6) Use Potion" << endl
          << "7) Use Whetstone" << endl
+         << "8) Use Molotov" << endl
          << "0) Get me out of here!" << endl << endl;
     while (true) {
         choice = input();
@@ -152,6 +153,16 @@ int Player::Action() {
                 cout << "No whetstones in the inventory!" << endl;
                 return SKIP_TURN;
             }
+        case 8:
+            // Player throws a bomb.
+            // Does not execute if there are no molotovs in the inventory.
+            if (molotovs > 0) {
+                // PlayMolotov();
+                return UseMolotov();
+            } else {
+                cout << "No molotovs in the inventory!" << endl;
+                return SKIP_TURN;
+            }
         default:
             // Generically attacks by default if player's choice does not equal above cases.
             return GenericAttack();
@@ -213,8 +224,9 @@ void Player::AddToInventory(vector<int> drops) {
     arrows += drops.at(0);
     bombs += drops.at(1);
     potions += drops.at(2);
-    whetstones += drops.at(3);
+    whetstones += drops.at(4);
     coins += drops.at(4);
+    molotovs += drops.at(5);
     // Prints number of items received.
     cout << "You have gained: " << endl;
     if (drops[0] > 0) {
@@ -232,6 +244,9 @@ void Player::AddToInventory(vector<int> drops) {
     if (drops[4] > 0) {
         cout << "[" << drops.at(4) << "] coins" << endl;
     }
+    if (drops[5] > 0) {
+        cout << "[" << drops.at(5) << "] molotovs" << endl;
+    }
     cout << endl;
 }
 
@@ -243,6 +258,9 @@ void Player::AddStoreItemToInventory(int type) {
         break;
     case ITEMTYPE::BOMB:
         ++bombs;
+        break;
+    case ITEMTYPE::MOLOTOV:
+        ++molotovs;
         break;
     case ITEMTYPE::POTION:
         ++potions;
@@ -257,7 +275,7 @@ void Player::DisplayHUD(Enemy *_Enemy) {
     // Displays player's name and health bar. Enemy object is used to print name on the same line as player name for aesthetics.
     // Prints player's name.
     cout << endl;
-    ColourPrint(name, Console::DarkGrey);
+    ColourPrint(name, Console::Grey);
     // Tabs to make room for enemy's name.
     if (name.length() > 5) {
         cout << "\t\t\t";
@@ -350,6 +368,7 @@ void Player::DisplayInventory() {
     PrintInventoryItem("Arrows: [", arrows, "]");
     PrintInventoryItem("Potions: [", potions, "]");
     PrintInventoryItem("Bombs: [", bombs, "]");
+    PrintInventoryItem("Molotovs: [", molotovs, "]");
     PrintInventoryItem("Whetstones: [", whetstones, "]");
     PrintInventoryItem("Weapon strength: [", weaponstrength, "%]");
     PrintInventoryItem("Wealth: [", coins, "] coins");
@@ -443,6 +462,13 @@ int Player::UseBomb() {
     return 50;
 }
 
+int Player::UseMolotov() {
+    int damage = ReturnMolotovDamage();
+    ColourPrint(name, Console::DarkGrey);
+    cout << " throws a molotov! It deals ";
+    return damage;
+}
+
 void Player::DeductDamage(int& damage) {
     if (weaponstrength<=75&&weaponstrength>50) {
         damage-=1;
@@ -466,6 +492,18 @@ int Player::ReturnBowDamage() {
     }
     arrows--;
     return Common::RandomInt(10, 15);
+}
+
+int Player::ReturnMolotovDamage() {
+    if (molotovs < 1) {
+        return 0;
+    }
+    molotovs--;
+    return 100;
+}
+
+int Player::ReturnExtraMolotovDamage() {
+    return Common::RandomInt(5, 10);
 }
 
 int Player::Flee() {

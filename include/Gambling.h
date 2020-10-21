@@ -28,6 +28,7 @@ class Gambling {
         //      1 -> Bombs
         //      2 -> Potions
         //      3 -> Whetstones
+        //      4 -> Molotovs
         int Item;
 };
 
