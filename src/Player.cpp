@@ -250,25 +250,63 @@ void Player::AddToInventory(vector<int> drops) {
     cout << endl;
 }
 
-void Player::AddStoreItemToInventory(int type) {
+void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
     // Adds items bought to total items.
     switch (type) {
     case ITEMTYPE::ARROWS:
-        arrows += 5;
+        arrows += amount;
         break;
     case ITEMTYPE::BOMB:
-        ++bombs;
+        bombs += amount;
         break;
     case ITEMTYPE::MOLOTOV:
         ++molotovs;
         break;
     case ITEMTYPE::POTION:
-        ++potions;
+        potions += amount;
         break;
     case ITEMTYPE::WHETSTONE:
-        ++whetstones;
+        whetstones += amount;
         break;
     }
+}
+
+bool Player::RemoveStoreItemFromInventory(ITEMTYPE type, int amount) {
+    // Removes sold items from the inventory.
+    switch (type) {
+    case ITEMTYPE::ARROWS:
+        if (arrows >= amount) {
+            arrows -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::BOMB:
+        if (bombs >= amount) {
+            bombs -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::MOLOTOV:
+        if (molotovs >= amount) {
+            molotovs -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::POTION:
+        if (potions >= amount) {
+            potions -= amount;
+            return true;
+        }
+        break;
+    case ITEMTYPE::WHETSTONE:
+        if (whetstones >= amount) {
+            whetstones -= amount;
+            return true;
+        }
+        break;
+    }
+    // Invalid action (insufficient items)
+    return false;
 }
 
 void Player::DisplayHUD(Enemy *_Enemy) {
