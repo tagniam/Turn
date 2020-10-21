@@ -224,7 +224,7 @@ void Player::AddToInventory(vector<int> drops) {
     arrows += drops.at(0);
     bombs += drops.at(1);
     potions += drops.at(2);
-    whetstones += drops.at(4);
+    whetstones += drops.at(3);
     coins += drops.at(4);
     molotovs += drops.at(5);
     // Prints number of items received.
@@ -537,6 +537,8 @@ int Player::ReturnMolotovDamage() {
         return 0;
     }
     molotovs--;
+    // Return 100 so that Game() can determine if this is molotov damage
+    // and then set the extradamageturns to 2.
     return 100;
 }
 

@@ -49,12 +49,12 @@ void Store::StoreFront(Player* _Player) {
         case 2: // Sell
             SellFront(_Player);
             break;
-            case 0: // Exit
+        case 0: // Exit
             break;
-            default:
-                cout << invalidChoice << endl;
-                isValidChoice = false;
-                Sleep(SLEEP_MS);
+        default:
+            cout << invalidChoice << endl;
+            isValidChoice = false;
+            Sleep(SLEEP_MS);
             break;
         }
     } while (!isValidChoice);
@@ -135,7 +135,7 @@ void Store::DisplayStock(const catalogue_t& _Catalog) const {
         cout << ' ' + to_string(item_idx++) << ") ";
         if (item.second.amount > 1) {
             cout << item.second.item_name << " x " << item.second.amount << "\t\t"
-                 << item.second.piece_price * item.second.amount << '\n';
+                << item.second.piece_price * item.second.amount << '\n';
         } else {
             cout << item.second.item_name << "\t\t" << item.second.piece_price << '\n';
         }
