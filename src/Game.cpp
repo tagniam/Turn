@@ -116,7 +116,7 @@ void Game::SetPlayerData() {
     * bombs
     * potions
     * whetstones
-    * weaponstrength
+    * weaponsharpness
     * coins
     */
     ifstream ReadData;
@@ -449,7 +449,7 @@ void Game::DisplayMenu(MenuType menuType) {
              << "Potion: Replenishes your HP to 100" << endl
              << "Whetstone: Restores your weapon's sharpness." << endl << endl
              << "Good luck and have fun!" << endl << endl
-             << "0) Quit" << endl << endl << "> ";
+             << "0) Back" << endl << endl << "> ";
         break;
     default:
         break;
