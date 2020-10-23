@@ -59,7 +59,7 @@ class Player : public Entity, public SoundMaker {
     int arrows;
     int potions;
     int bombs;
-    int weaponstrength;
+    int weaponsharpness;
     int coins;
 };
 

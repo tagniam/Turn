@@ -36,7 +36,7 @@ void Player::SaveGame() {
                   << bombs << endl
                   << potions << endl
                   << whetstones << endl
-                  << weaponstrength << endl
+                  << weaponsharpness << endl
                   << coins;
         WriteData.close();
     } else {
@@ -63,7 +63,7 @@ void Player::SetPlayerData() {
         ReadData >> bombs;
         ReadData >> potions;
         ReadData >> whetstones;
-        ReadData >> weaponstrength;
+        ReadData >> weaponsharpness;
         ReadData >> coins;
         ReadData.close();
     } else {
@@ -370,9 +370,9 @@ void Player::LoseCoins(int c) {
 }
 
 void Player::DisplayInventory() {
-    // Checks valid weapon strength.
-    if (weaponstrength < 0) {
-        weaponstrength = 0;
+    // Checks valid weapon sharpness.
+    if (weaponsharpness < 0) {
+        weaponsharpness = 0;
     }
     // Simply prints the player's inventory.
     PrintDivider('*', '-', " INVENTORY ");
@@ -383,7 +383,7 @@ void Player::DisplayInventory() {
     PrintInventoryItem("Potions: [", potions, "]");
     PrintInventoryItem("Bombs: [", bombs, "]");
     PrintInventoryItem("Whetstones: [", whetstones, "]");
-    PrintInventoryItem("Weapon strength: [", weaponstrength, "%]");
+    PrintInventoryItem("Weapon sharpness: [", weaponsharpness, "%]");
     PrintInventoryItem("Wealth: [", coins, "] coins");
     PrintDivider('*', '-', "");
 }
@@ -424,12 +424,12 @@ int Player::RiskAttack() {
 
 void Player::WeakenWeapon(int impact) {
     if (impact >= 0) {
-        weaponstrength -= impact + Common::RandomInt(0, 4);
+        weaponsharpness -= impact + Common::RandomInt(0, 4);
     } else {
-        weaponstrength -= Common::RandomInt(0, 4);
+        weaponsharpness -= Common::RandomInt(0, 4);
     }
-    if (weaponstrength < 0) {
-        weaponstrength = 0;
+    if (weaponsharpness < 0) {
+        weaponsharpness = 0;
     }
 }
 
@@ -449,7 +449,7 @@ int Player::BowAndArrow() {
 }
 
 void Player::UseWhetstone() {
-    weaponstrength=100;
+    weaponsharpness=100;
     ColourPrint(name, Console::DarkGrey);
     if (gender == 'M') {
         cout << " sharpened his weapon!" << endl;
@@ -476,15 +476,15 @@ int Player::UseBomb() {
 }
 
 void Player::DeductDamage(int& damage) {
-    if (weaponstrength<=75&&weaponstrength>50) {
+    if (weaponsharpness<=75&&weaponsharpness>50) {
         damage-=1;
-    } else if (weaponstrength<=50&&weaponstrength>30) {
+    } else if (weaponsharpness<=50&&weaponsharpness>30) {
         damage-=4;
-    } else if (weaponstrength<=30&&weaponstrength>20) {
+    } else if (weaponsharpness<=30&&weaponsharpness>20) {
         damage-=5;
-    } else if (weaponstrength<=20&&weaponstrength>10) {
+    } else if (weaponsharpness<=20&&weaponsharpness>10) {
         damage-=6;
-    } else if (weaponstrength<=10) {
+    } else if (weaponsharpness<=10) {
         damage-=7;
     }
     if (damage<0) {
