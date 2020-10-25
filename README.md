@@ -18,7 +18,7 @@ Clone this project by running `git clone https://github.com/tagniam/Turn.git` in
 
 ### Building & Running
 #### Windows
-* In your terminal, make sure you are in the `Turn` directory.
+* In your Command Prompt or Powershell, make sure you are in the `Turn` directory.
 * For the right generator see [Visual Studio Generators](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#visual-studio-generators).
 * To build with Visual Studio 16 2019 run the following commands:
 
