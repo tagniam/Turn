@@ -7,7 +7,8 @@ enum ITEMTYPE
 	ARROWS = 1,
 	BOMB,
 	POTION,
-	WHETSTONE
+	WHETSTONE,
+	COIN
 };
 
 #endif

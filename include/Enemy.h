@@ -1,8 +1,9 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <vector>
+#include <map>
 #include "Entity.h"
+#include "ItemTypes.h"
 
 enum EnemyType {
     etCrab,
@@ -39,7 +40,7 @@ class Enemy : public Entity {
     int Action();
     void DisplayHUD();
 
-    std::vector<int> GetDrops();
+    std::map<ITEMTYPE, int> GetDrops();
     int ReturnExperience();
 
     virtual EnemyType GetType() = 0;

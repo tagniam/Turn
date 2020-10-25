@@ -1,10 +1,11 @@
 #include <iostream>
 //#include <conio.h>
-#include <vector>
+#include <map>
 
 #include "../include/Common.h"
 #include "../include/Gambling.h"
 #include "../include/Player.h"
+#include "../include/ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -138,9 +139,9 @@ void Gambling::WinGamble(Player *_Player) {
     // Executes the events when the gamble is won.
     // Uses the Player object to give player items won.
     cout << "You win the bet!" << endl;
-    vector<int> drops;
+    map<ITEMTYPE, int> drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back((Item == i) ? ItemNumber : 0);
+        drops.insert(make_pair(static_cast<ITEMTYPE>(i + 1), (Item == i) ? ItemNumber : 0));
     }
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.

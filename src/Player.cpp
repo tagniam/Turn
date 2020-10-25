@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <map>
 
 #include "../include/Common.h"
 #include "../include/Player.h"
@@ -207,30 +208,30 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(vector<int> drops) {
+void Player::AddToInventory(const map<ITEMTYPE, int> & drops) {
     // Adds items to inventory and prints out what the player received.
     // Adds items received to total items.
-    arrows += drops.at(0);
-    bombs += drops.at(1);
-    potions += drops.at(2);
-    whetstones += drops.at(3);
-    coins += drops.at(4);
+    arrows += drops.at(ITEMTYPE::ARROWS);
+    bombs += drops.at(ITEMTYPE::BOMB);
+    potions += drops.at(ITEMTYPE::POTION);
+    whetstones += drops.at(ITEMTYPE::WHETSTONE);
+    coins += drops.at(ITEMTYPE::COIN);
     // Prints number of items received.
     cout << "You have gained: " << endl;
-    if (drops[0] > 0) {
-        cout << "[" << drops.at(0) << "] arrows" << endl;
+    if (drops.at(ITEMTYPE::ARROWS) > 0) {
+        cout << "[" << drops.at(ITEMTYPE::ARROWS) << "] arrows" << endl;
     }
-    if (drops[1] > 0) {
-        cout << "[" << drops.at(1) << "] bombs" << endl;
+    if (drops.at(ITEMTYPE::BOMB) > 0) {
+        cout << "[" << drops.at(ITEMTYPE::BOMB) << "] bombs" << endl;
     }
-    if (drops[2] > 0) {
-        cout << "[" << drops.at(2) << "] potions" << endl;
+    if (drops.at(ITEMTYPE::POTION) > 0) {
+        cout << "[" << drops.at(ITEMTYPE::POTION) << "] potions" << endl;
     }
-    if (drops[3] > 0) {
-        cout << "[" << drops.at(3) << "] whetstones" << endl;
+    if (drops.at(ITEMTYPE::WHETSTONE) > 0) {
+        cout << "[" << drops.at(ITEMTYPE::WHETSTONE) << "] whetstones" << endl;
     }
-    if (drops[4] > 0) {
-        cout << "[" << drops.at(4) << "] coins" << endl;
+    if (drops.at(ITEMTYPE::COIN) > 0) {
+        cout << "[" << drops.at(ITEMTYPE::COIN) << "] coins" << endl;
     }
     cout << endl;
 }

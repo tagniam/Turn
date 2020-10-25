@@ -1,10 +1,11 @@
 #include <iostream>
-#include <vector>
 #include <cstdlib>
 #include <string>
+#include <map>
 #include "../include/Common.h"
 #include "../include/Enemy.h"
 #include "../include/Console.h"
+#include "../include/ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -57,11 +58,11 @@ void Enemy::DisplayHUD() {
 
 
 
-vector<int> Enemy::GetDrops() {
+map<ITEMTYPE, int> Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    vector<int> drops;
+    map<ITEMTYPE, int> drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back(ReturnItemDrop(i));
+        drops.insert(make_pair(static_cast<ITEMTYPE>(i + 1), ReturnItemDrop(i)));
     }
     return drops;
 }

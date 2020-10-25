@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <map>
+
 #include "ItemTypes.h"
 #include "Entity.h"
 #include "Enemy.h"
@@ -15,7 +17,7 @@ class Player : public Entity, public SoundMaker {
     void SetPlayerData();
     int Action();
     void UseItem();
-    void AddToInventory(std::vector<int>);
+    void AddToInventory(const std::map<ITEMTYPE, int> &);
     void AddStoreItemToInventory(ITEMTYPE, int);
     bool RemoveStoreItemFromInventory(ITEMTYPE, int);
 
