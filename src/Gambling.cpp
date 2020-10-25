@@ -64,7 +64,7 @@ void Gambling::Gamble(Player *_Player) {
         cout << "PENALTY: [" << CoinsDeduction << "] coins" << endl << endl;
         cout << "1) Reveal Die" << endl;
         cout << "2) Shake Die" << endl;
-        cout << "3) Pass" << endl << "\n";
+        cout << "0) Pass" << endl << "\n";
         choice = input();
         switch (choice) {
         case 1:
@@ -76,7 +76,7 @@ void Gambling::Gamble(Player *_Player) {
             // Generates another random number for the die, simulating the real life die shake.
             Die=ReturnShakenDie();
             break;
-        case 3:
+        case 0:
             // Returns to Intermission().
             return;
         default:

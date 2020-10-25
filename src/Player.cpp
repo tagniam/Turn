@@ -394,7 +394,7 @@ void Player::LoseCoins(int c) {
 }
 
 void Player::DisplayInventory() {
-    // Checks valid weapon strength.
+    // Checks valid weapon sharpness
     if (weaponsharpness < 0) {
         weaponsharpness = 0;
     }
@@ -408,7 +408,7 @@ void Player::DisplayInventory() {
     PrintInventoryItem("Bombs: [", bombs, "]");
     PrintInventoryItem("Molotovs: [", molotovs, "]");
     PrintInventoryItem("Whetstones: [", whetstones, "]");
-    PrintInventoryItem("Weapon strength: [", weaponsharpness, "%]");
+    PrintInventoryItem("Weapon sharpness: [", weaponsharpness, "%]");
     PrintInventoryItem("Wealth: [", coins, "] coins");
     PrintDivider('*', '-', "");
 }
