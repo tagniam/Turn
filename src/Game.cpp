@@ -342,9 +342,6 @@ void Game::Battle() {
     ClearScreen();
     // Uses random integers to determine class of the enemy.
     SetEnemy();
-    // Used for status effect damage, which must be placed outside of the loop
-    // for multi-turn damage to work.
-    int extradamageturns = 3;
     // Loops the actual battle while playing.
     while(IsPlaying) {
         ClearScreen();
@@ -362,26 +359,17 @@ void Game::Battle() {
             Sleep(SLEEP_MS);
         }
         // Player turn is over, enemy's status effect damage is calculated
-        if (0 < extradamageturns && extradamageturns <= 2) {
-            extradamageturns--;
+        if (0 < _Player->extradamageturns && _Player->extradamageturns <= 2) {
+            _Player->extradamageturns--;
             _Enemy->TakeDamage(extradamagePlayer);
-            Console::GetInstance().SetColour(Console::EColour::Red);
-            cout << extradamagePlayer;
-            Console::GetInstance().SetColour(Console::EColour::Default);
-            cout << " damage points from burn!" << endl;
+            _Player->ReturnDialog(extradamagePlayer, "damage points from burn");
         }
         // Check if enemy has had molotov thrown at him before or now
-        // Deal damage if molotov has been thrown and set extradamageturns=2
         if (damagePlayer == 100) {
-            damagePlayer = Common::RandomInt(30, 40);
-            _Enemy->TakeDamage(damagePlayer);
-            Console::GetInstance().SetColour(Console::EColour::Red);
-            cout << damagePlayer;
-            Console::GetInstance().SetColour(Console::EColour::Default);
-            cout << " damage points!" << endl;
-            extradamageturns = 2;
-            cout << extradamageturns;
-            cout << " turns of extra burn damage" << endl;
+            _Enemy->TakeDamage(Common::RandomInt(30, 40));
+            _Player->ReturnDialog(damagePlayer, "damage points");
+            _Player->extradamageturns = 2;
+            _Player->ReturnDialog(_Player->extradamageturns, "turns of extra burn damage");
         }
         // Leaves battle if player chooses to.
         if (!IsPlaying) {

@@ -545,6 +545,13 @@ int Player::ReturnMolotovDamage() {
 int Player::ReturnExtraMolotovDamage() {
     return Common::RandomInt(5, 10);
 }
+void ReturnDialog(int damageDialog, string dialog) {
+    Console::GetInstance().SetColour(Console::EColour::Red);
+    cout << damageDialog;
+    Console::GetInstance().SetColour(Console::EColour::Default);
+    cout << dialog << endl;
+    Sleep(SLEEP_MS);
+}
 
 int Player::Flee() {
     ColourPrint(name, Console::DarkGrey);

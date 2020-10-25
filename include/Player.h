@@ -31,7 +31,10 @@ class Player : public Entity, public SoundMaker {
     void DisplayInventory();
     int GetCoins();
 
+    // Used for status effect damage,
     int ReturnExtraMolotovDamage();
+    int extradamageturns = 3;
+    void ReturnDialog(int, std::string);
 
   private:
     int GenericAttack();
