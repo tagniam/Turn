@@ -3,6 +3,7 @@
 #include <cmath>
 #include <string>
 #include <unordered_map>
+#include <stdexcept>
 
 #include "../include/Common.h"
 #include "../include/Player.h"

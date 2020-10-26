@@ -141,7 +141,8 @@ void Gambling::WinGamble(Player *_Player) {
     cout << "You win the bet!" << endl;
     unordered_map<ITEMTYPE, int> drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.insert(make_pair(static_cast<ITEMTYPE>(i + 1), (Item == i) ? ItemNumber : 0));
+        ITEMTYPE itemType = static_cast<ITEMTYPE>(i + 1);
+        drops[itemType] = (Item == i) ? ItemNumber : 0;
     }
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.
