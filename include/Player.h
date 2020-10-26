@@ -17,7 +17,7 @@ class Player : public Entity, public SoundMaker {
     void SetPlayerData();
     int Action();
     void UseItem();
-    void AddToInventory(const std::unordered_map<ITEMTYPE, int> &);
+    void AddToInventory(const std::unordered_map<ITEMTYPE, int, ItemTypeHash> &);
     void AddStoreItemToInventory(ITEMTYPE, int);
     bool RemoveStoreItemFromInventory(ITEMTYPE, int);
 
@@ -34,7 +34,7 @@ class Player : public Entity, public SoundMaker {
     int GetCoins();
 
   private:
-    static int GetInventory(const std::unordered_map<ITEMTYPE, int> &, ITEMTYPE);
+    static int GetInventory(const std::unordered_map<ITEMTYPE, int, ItemTypeHash> &, ITEMTYPE);
     int GenericAttack();
     int RiskAttack();
     int BowAndArrow();

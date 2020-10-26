@@ -40,7 +40,7 @@ class Enemy : public Entity {
     int Action();
     void DisplayHUD();
 
-    std::unordered_map<ITEMTYPE, int> GetDrops();
+    std::unordered_map<ITEMTYPE, int, ItemTypeHash> GetDrops();
     int ReturnExperience();
 
     virtual EnemyType GetType() = 0;

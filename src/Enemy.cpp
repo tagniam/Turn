@@ -58,9 +58,9 @@ void Enemy::DisplayHUD() {
 
 
 
-unordered_map<ITEMTYPE, int> Enemy::GetDrops() {
+unordered_map<ITEMTYPE, int, ItemTypeHash> Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    unordered_map<ITEMTYPE, int> drops;
+    unordered_map<ITEMTYPE, int, ItemTypeHash> drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
         ITEMTYPE itemType = static_cast<ITEMTYPE>(i + 1);
         drops[itemType] =  ReturnItemDrop(i);

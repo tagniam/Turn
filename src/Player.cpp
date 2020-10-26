@@ -209,7 +209,7 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(const unordered_map<ITEMTYPE, int> & drops) {
+void Player::AddToInventory(const unordered_map<ITEMTYPE, int, ItemTypeHash> & drops) {
     // Adds items to inventory and prints out what the player received.
     // Adds items received to total items.
     arrows += GetInventory(drops, ITEMTYPE::ARROWS);
@@ -593,7 +593,7 @@ void Player::PrintClass() {           //print the player class in inventory form
     std::cout << rear << "|\n";      //output the filler and end
 }
 
-int Player::GetInventory(const std::unordered_map<ITEMTYPE, int>& drop, ITEMTYPE i) {
+int Player::GetInventory(const std::unordered_map<ITEMTYPE, int, ItemTypeHash>& drop, ITEMTYPE i) {
     try {
         return drop.at(i);
     } catch (const std::out_of_range&) {
