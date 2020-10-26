@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <map>
+#include <unordered_map>
 
 #include "ItemTypes.h"
 #include "Entity.h"
@@ -17,7 +17,7 @@ class Player : public Entity, public SoundMaker {
     void SetPlayerData();
     int Action();
     void UseItem();
-    void AddToInventory(const std::map<ITEMTYPE, int> &);
+    void AddToInventory(const std::unordered_map<ITEMTYPE, int> &);
     void AddStoreItemToInventory(ITEMTYPE, int);
     bool RemoveStoreItemFromInventory(ITEMTYPE, int);
 
@@ -34,6 +34,7 @@ class Player : public Entity, public SoundMaker {
     int GetCoins();
 
   private:
+    static int GetInventory(const std::unordered_map<ITEMTYPE, int> &, ITEMTYPE);
     int GenericAttack();
     int RiskAttack();
     int BowAndArrow();

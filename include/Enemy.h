@@ -1,7 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <map>
+#include <unordered_map>
 #include "Entity.h"
 #include "ItemTypes.h"
 
@@ -40,7 +40,7 @@ class Enemy : public Entity {
     int Action();
     void DisplayHUD();
 
-    std::map<ITEMTYPE, int> GetDrops();
+    std::unordered_map<ITEMTYPE, int> GetDrops();
     int ReturnExperience();
 
     virtual EnemyType GetType() = 0;

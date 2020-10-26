@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <map>
+#include <unordered_map>
 
 #include "../include/Common.h"
 #include "../include/Player.h"
@@ -208,30 +208,30 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(const map<ITEMTYPE, int> & drops) {
+void Player::AddToInventory(const unordered_map<ITEMTYPE, int> & drops) {
     // Adds items to inventory and prints out what the player received.
     // Adds items received to total items.
-    arrows += drops.at(ITEMTYPE::ARROWS);
-    bombs += drops.at(ITEMTYPE::BOMB);
-    potions += drops.at(ITEMTYPE::POTION);
-    whetstones += drops.at(ITEMTYPE::WHETSTONE);
-    coins += drops.at(ITEMTYPE::COIN);
+    arrows += GetInventory(drops, ITEMTYPE::ARROWS);
+    bombs += GetInventory(drops, ITEMTYPE::BOMB);
+    potions += GetInventory(drops, ITEMTYPE::POTION);
+    whetstones += GetInventory(drops, ITEMTYPE::WHETSTONE);
+    coins += GetInventory(drops, ITEMTYPE::COIN);
     // Prints number of items received.
     cout << "You have gained: " << endl;
-    if (drops.at(ITEMTYPE::ARROWS) > 0) {
-        cout << "[" << drops.at(ITEMTYPE::ARROWS) << "] arrows" << endl;
+    if (GetInventory(drops, ITEMTYPE::ARROWS) > 0) {
+        cout << "[" << GetInventory(drops, ITEMTYPE::ARROWS) << "] arrows" << endl;
     }
-    if (drops.at(ITEMTYPE::BOMB) > 0) {
-        cout << "[" << drops.at(ITEMTYPE::BOMB) << "] bombs" << endl;
+    if (GetInventory(drops, ITEMTYPE::BOMB) > 0) {
+        cout << "[" << GetInventory(drops, ITEMTYPE::BOMB) << "] bombs" << endl;
     }
-    if (drops.at(ITEMTYPE::POTION) > 0) {
-        cout << "[" << drops.at(ITEMTYPE::POTION) << "] potions" << endl;
+    if (GetInventory(drops, ITEMTYPE::POTION) > 0) {
+        cout << "[" << GetInventory(drops, ITEMTYPE::POTION) << "] potions" << endl;
     }
-    if (drops.at(ITEMTYPE::WHETSTONE) > 0) {
-        cout << "[" << drops.at(ITEMTYPE::WHETSTONE) << "] whetstones" << endl;
+    if (GetInventory(drops, ITEMTYPE::WHETSTONE) > 0) {
+        cout << "[" << GetInventory(drops, ITEMTYPE::WHETSTONE) << "] whetstones" << endl;
     }
-    if (drops.at(ITEMTYPE::COIN) > 0) {
-        cout << "[" << drops.at(ITEMTYPE::COIN) << "] coins" << endl;
+    if (GetInventory(drops, ITEMTYPE::COIN) > 0) {
+        cout << "[" << GetInventory(drops, ITEMTYPE::COIN) << "] coins" << endl;
     }
     cout << endl;
 }
@@ -250,6 +250,9 @@ void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
         break;
     case ITEMTYPE::WHETSTONE:
         whetstones += amount;
+        break;
+    case ITEMTYPE::COIN:
+        AddCoins(amount);
         break;
     }
 }
@@ -281,6 +284,9 @@ bool Player::RemoveStoreItemFromInventory(ITEMTYPE type, int amount) {
             return true;
         }
         break;
+    case ITEMTYPE::COIN:
+        LoseCoins(amount);
+        return true;
     }
     // Invalid action (insufficient items)
     return false;
@@ -584,4 +590,12 @@ void Player::PrintClass() {           //print the player class in inventory form
     }
     string rear(backspace, ' ');     //create blank string for filler
     std::cout << rear << "|\n";      //output the filler and end
+}
+
+int Player::GetInventory(const std::unordered_map<ITEMTYPE, int>& drop, ITEMTYPE i) {
+    try {
+        return drop.at(i);
+    } catch (const std::out_of_range&) {
+        return 0;
+    }
 }

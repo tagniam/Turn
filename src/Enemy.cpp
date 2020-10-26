@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include "../include/Common.h"
 #include "../include/Enemy.h"
 #include "../include/Console.h"
@@ -58,9 +58,9 @@ void Enemy::DisplayHUD() {
 
 
 
-map<ITEMTYPE, int> Enemy::GetDrops() {
+unordered_map<ITEMTYPE, int> Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    map<ITEMTYPE, int> drops;
+    unordered_map<ITEMTYPE, int> drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
         drops.insert(make_pair(static_cast<ITEMTYPE>(i + 1), ReturnItemDrop(i)));
     }
