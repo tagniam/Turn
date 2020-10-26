@@ -1,6 +1,5 @@
 #include <iostream>
 //#include <conio.h>
-#include <unordered_map>
 
 #include "../include/Common.h"
 #include "../include/Gambling.h"
@@ -139,7 +138,7 @@ void Gambling::WinGamble(Player *_Player) {
     // Executes the events when the gamble is won.
     // Uses the Player object to give player items won.
     cout << "You win the bet!" << endl;
-    unordered_map<ITEMTYPE, int, ItemTypeHash> drops;
+    ItemMap_t drops;
     for (int i = 0; i < NUM_ITEMS; i++) {
         ITEMTYPE itemType = static_cast<ITEMTYPE>(i + 1);
         drops[itemType] = (Item == i) ? ItemNumber : 0;

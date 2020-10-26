@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <unordered_map>
 #include <stdexcept>
 
 #include "../include/Common.h"
@@ -209,7 +208,7 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(const unordered_map<ITEMTYPE, int, ItemTypeHash> & drops) {
+void Player::AddToInventory(const ItemMap_t & drops) {
     // Adds items to inventory and prints out what the player received.
     // Adds items received to total items.
     arrows += GetInventory(drops, ITEMTYPE::ARROWS);
@@ -593,7 +592,7 @@ void Player::PrintClass() {           //print the player class in inventory form
     std::cout << rear << "|\n";      //output the filler and end
 }
 
-int Player::GetInventory(const std::unordered_map<ITEMTYPE, int, ItemTypeHash>& drop, ITEMTYPE i) {
+int Player::GetInventory(const ItemMap_t & drop, ITEMTYPE i) {
     try {
         return drop.at(i);
     } catch (const std::out_of_range&) {
