@@ -28,7 +28,8 @@ enum EnemyType {
     etTimidGhost,
     etGremlin,
     etDemon,
-    etNumEnemyTypes
+    etNumEnemyTypes,
+    etWizard
 };
 
 
