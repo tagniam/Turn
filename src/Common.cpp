@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <chrono>
 #include <thread>
 #include <random>
@@ -41,6 +42,23 @@ int Common::RandomInt(int min, int max) {
     static std::mt19937 rng(std::random_device{}());
     std::uniform_int_distribution<int> dist(min, max);
     return dist(rng);
+}
+
+template <typename T>
+T Common::RandomEvent(int denominator, std::vector<int> numerators, std::vector<T> outcomes) {
+    std::vector <int> events;
+    for (auto it : numerators)
+    // for (std::vector <int>::iterator it = numerators.begin(); it != numerators.end(); it++)
+    {
+        for (int i = 0; i < it; i++)
+        {
+            events.push_back(it);
+        }
+    }
+
+    int rIndex = Common::RandomInt(0, denominator);
+    int outIndex = events.at(rIndex);
+    return outcomes.at(outIndex);
 }
 
 bool Common::IsPlaying;

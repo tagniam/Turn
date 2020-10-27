@@ -2,6 +2,7 @@
 #define COMMON_H_INCLUDED
 
 #include <string>
+#include <vector>
 
 #include "../include/Console.h"
 
@@ -15,6 +16,9 @@ namespace Common {
     void Sleep(int ms);
 
     int RandomInt(int min, int max);
+
+    template <typename T>
+    T RandomEvent(int denominator, std::vector<int> numerators, std::vector<T> outcomes);
 
     // Indicates if the game is still going.
     extern bool IsPlaying;
