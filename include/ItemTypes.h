@@ -2,7 +2,7 @@
 #ifndef ITEMTYPES_H_INCLUDED
 #define ITEMTYPES_H_INCLUDED
 
-#include <unordered_map>
+#include <map>
 
 enum ITEMTYPE
 {
@@ -13,13 +13,6 @@ enum ITEMTYPE
 	COIN
 };
 
-struct ItemTypeHash {
-    template<typename T>
-    std::size_t operator()(T t) const {
-        return static_cast<std::size_t>(t);
-    }
-};
-
-using ItemMap_t = std::unordered_map<ITEMTYPE, int, ItemTypeHash>;
+using ItemMap_t = std::map<ITEMTYPE, int>;
 
 #endif

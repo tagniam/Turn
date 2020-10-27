@@ -49,8 +49,6 @@ class Enemy : public Entity {
     int GenericAttack();
     int RiskAttack();
 
-    int ReturnItemDrop(int);
-
     int ExperienceAmount;
     int CoinsDrop;
 };

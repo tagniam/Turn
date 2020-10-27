@@ -60,9 +60,44 @@ void Enemy::DisplayHUD() {
 ItemMap_t Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
     ItemMap_t drops;
+    int ArrowSelector = Common::RandomInt(0, 5);
+    int WhetstoneSelector = Common::RandomInt(0, 1);
+    int PotionSelector = Common::RandomInt(0, 9);
+
     for (int i = 0; i < NUM_ITEMS; i++) {
         ITEMTYPE itemType = static_cast<ITEMTYPE>(i + 1);
-        drops[itemType] =  ReturnItemDrop(i);
+        int item = 0;
+        switch (itemType) {
+            case ITEMTYPE::ARROWS:
+                if (ArrowSelector <= 1) {
+                    item = 0;
+                } else if (ArrowSelector == 2 || ArrowSelector == 3) {
+                    item = 3;
+                } else {
+                    item = 5;
+                }
+                break;
+            case ITEMTYPE::BOMB:
+            case ITEMTYPE::POTION:
+                if (PotionSelector == 0) {
+                    item = 1;
+                } else if (PotionSelector == 1) {
+                    item = 2;
+                } else {
+                    item = 0;
+                }
+                break;
+            case ITEMTYPE::WHETSTONE:
+                if (WhetstoneSelector == 1) {
+                    item = 1;
+                } else {
+                    item = 0;
+                }
+                break;
+            case ITEMTYPE::COIN:
+                item = CoinsDrop;
+        }
+        drops[itemType] = item;
     }
     return drops;
 }
@@ -93,49 +128,6 @@ int Enemy::RiskAttack() {
     ColourPrint(to_string(damage), Console::Red);
     cout << " damage!" << endl << endl;
     return damage;
-}
-
-int Enemy::ReturnItemDrop(int item) {
-    int ArrowSelector = Common::RandomInt(0, 5);
-    int WhetstoneSelector = Common::RandomInt(0, 1);
-    int PotionSelector = Common::RandomInt(0, 9);
-    /*
-    0	Arrows
-    1	Bombs
-    2	Potions
-    3	Whetstones
-    4	Coins
-    */
-    switch(item) {
-    case 0:	// Arrows
-        if (ArrowSelector<=1) {
-            return 0;
-        } else if (ArrowSelector==2||ArrowSelector==3) {
-            return 3;
-        } else {
-            return 5;
-        }
-    case 1:
-    case 2:
-        if (PotionSelector == 0) {
-            return 1;
-        } else if (PotionSelector == 1) {
-            return 2;
-        } else {
-            return 0;
-        }
-    case 3:
-        if (WhetstoneSelector==1) {
-            return 1;
-        } else {
-            return 0;
-        }
-    case 4:
-        return CoinsDrop;
-    default:
-        return 0;
-        break;
-    }
 }
 
 std::string Enemy::GetIntro() {

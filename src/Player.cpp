@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <stdexcept>
 
 #include "../include/Common.h"
 #include "../include/Player.h"
@@ -211,27 +210,27 @@ void Player::UseItem() {
 void Player::AddToInventory(const ItemMap_t & drops) {
     // Adds items to inventory and prints out what the player received.
     // Adds items received to total items.
-    arrows += GetInventory(drops, ITEMTYPE::ARROWS);
-    bombs += GetInventory(drops, ITEMTYPE::BOMB);
-    potions += GetInventory(drops, ITEMTYPE::POTION);
-    whetstones += GetInventory(drops, ITEMTYPE::WHETSTONE);
-    coins += GetInventory(drops, ITEMTYPE::COIN);
     // Prints number of items received.
     cout << "You have gained: " << endl;
-    if (GetInventory(drops, ITEMTYPE::ARROWS) > 0) {
-        cout << "[" << GetInventory(drops, ITEMTYPE::ARROWS) << "] arrows" << endl;
+    if (drops.count(ITEMTYPE::ARROWS) > 0) {
+        arrows += drops.at(ITEMTYPE::ARROWS);
+        cout << "[" << drops.at(ITEMTYPE::ARROWS) << "] arrows" << endl;
     }
-    if (GetInventory(drops, ITEMTYPE::BOMB) > 0) {
-        cout << "[" << GetInventory(drops, ITEMTYPE::BOMB) << "] bombs" << endl;
+    if (drops.count(ITEMTYPE::BOMB) > 0) {
+        bombs += drops.at(ITEMTYPE::BOMB);
+        cout << "[" << drops.at(ITEMTYPE::BOMB) << "] bombs" << endl;
     }
-    if (GetInventory(drops, ITEMTYPE::POTION) > 0) {
-        cout << "[" << GetInventory(drops, ITEMTYPE::POTION) << "] potions" << endl;
+    if (drops.count(ITEMTYPE::POTION) > 0) {
+        potions += drops.at(ITEMTYPE::POTION);
+        cout << "[" << drops.at(ITEMTYPE::POTION) << "] potions" << endl;
     }
-    if (GetInventory(drops, ITEMTYPE::WHETSTONE) > 0) {
-        cout << "[" << GetInventory(drops, ITEMTYPE::WHETSTONE) << "] whetstones" << endl;
+    if (drops.count(ITEMTYPE::WHETSTONE) > 0) {
+        whetstones += drops.at(ITEMTYPE::WHETSTONE);
+        cout << "[" << drops.at(ITEMTYPE::WHETSTONE) << "] whetstones" << endl;
     }
-    if (GetInventory(drops, ITEMTYPE::COIN) > 0) {
-        cout << "[" << GetInventory(drops, ITEMTYPE::COIN) << "] coins" << endl;
+    if (drops.count(ITEMTYPE::COIN) > 0) {
+        coins += drops.at(ITEMTYPE::COIN);
+        cout << "[" << drops.at(ITEMTYPE::COIN) << "] coins" << endl;
     }
     cout << endl;
 }
@@ -590,12 +589,4 @@ void Player::PrintClass() {           //print the player class in inventory form
     }
     string rear(backspace, ' ');     //create blank string for filler
     std::cout << rear << "|\n";      //output the filler and end
-}
-
-int Player::GetInventory(const ItemMap_t & drop, ITEMTYPE i) {
-    try {
-        return drop.at(i);
-    } catch (const std::out_of_range&) {
-        return 0;
-    }
 }

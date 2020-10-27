@@ -32,7 +32,6 @@ class Player : public Entity, public SoundMaker {
     int GetCoins();
 
   private:
-    static int GetInventory(const ItemMap_t &, ITEMTYPE);
     int GenericAttack();
     int RiskAttack();
     int BowAndArrow();
