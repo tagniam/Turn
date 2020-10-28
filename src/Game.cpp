@@ -353,23 +353,24 @@ void Game::Battle() {
         int damagePlayer = _Player->Action();
         int extradamagePlayer = _Player->ReturnExtraMolotovDamage();
         // Player's turn to attack Enemy or choose other action.
-        if (damagePlayer != SKIP_TURN && damagePlayer != 100) {
+        if (damagePlayer != SKIP_TURN && damagePlayer != -3) {
             _Enemy->TakeDamage(damagePlayer);
             // Pauses console and ignores user input for SLEEP_MS milliseconds.
             Sleep(SLEEP_MS);
         }
         // Player turn is over, enemy's status effect damage is calculated
-        if (0 < _Player->extradamageturns && _Player->extradamageturns <= 2) {
+        if (0 < _Player->extradamageturns && _Player->extradamageturns <= 2 && damagePlayer != -1) {
             _Player->extradamageturns--;
             _Enemy->TakeDamage(extradamagePlayer);
-            _Player->ReturnDialog(extradamagePlayer, "damage points from burn");
+            _Player->ReturnDialog(extradamagePlayer, " damage points from burn dealt");
         }
         // Check if enemy has had molotov thrown at him before or now
-        if (damagePlayer == 100) {
-            _Enemy->TakeDamage(Common::RandomInt(30, 40));
-            _Player->ReturnDialog(damagePlayer, "damage points");
+        if (damagePlayer == -3) {
+            damagePlayer = Common::RandomInt(30, 40);
+            _Enemy->TakeDamage(damagePlayer);
+            _Player->ReturnDialog(damagePlayer, " regular damage points dealt");
             _Player->extradamageturns = 2;
-            _Player->ReturnDialog(_Player->extradamageturns, "turns of extra burn damage");
+            _Player->ReturnDialog(_Player->extradamageturns, " turns of extra burn damage");
         }
         // Leaves battle if player chooses to.
         if (!IsPlaying) {
@@ -384,6 +385,8 @@ void Game::Battle() {
             _Player->AddExperience(_Enemy->ReturnExperience());
             // Replenishes player's health for the next round.
             _Player->ReplenishHealth();
+            // Reset remaining molotov damage, and prevent it from overlapping into the next battle.
+            _Player->extradamageturns = 3;
             // If player wants to battle again, it breaks the loop and uses tail recursion to play again.
             if (PlayAgain()) {
                 break;

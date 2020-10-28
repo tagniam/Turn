@@ -537,15 +537,15 @@ int Player::ReturnMolotovDamage() {
         return 0;
     }
     molotovs--;
-    // Return 100 so that Game() can determine if this is molotov damage
+    // Return -3 so that Game() can determine if this is molotov damage
     // and then set the extradamageturns to 2.
-    return 100;
+    return -3;
 }
 
 int Player::ReturnExtraMolotovDamage() {
     return Common::RandomInt(5, 10);
 }
-void ReturnDialog(int damageDialog, string dialog) {
+void Player::ReturnDialog(int damageDialog, string dialog) {
     Console::GetInstance().SetColour(Console::EColour::Red);
     cout << damageDialog;
     Console::GetInstance().SetColour(Console::EColour::Default);
