@@ -18,7 +18,7 @@ namespace Common {
     int RandomInt(int min, int max);
 
     template <typename T>
-    T RandomEvent(int denominator, std::vector<int> numerators, std::vector<T> outcomes);
+    T RandomEvent(std::vector<int> weights, std::vector<T> outcomes);
 
     // Indicates if the game is still going.
     extern bool IsPlaying;

@@ -45,17 +45,20 @@ int Common::RandomInt(int min, int max) {
 }
 
 template <typename T>
-T Common::RandomEvent(int denominator, std::vector<int> numerators, std::vector<T> outcomes) {
+T Common::RandomEvent(std::vector<int> weights, std::vector<T> outcomes) {
     std::vector <int> events;
-    for (auto it : numerators)
+    int k = 0;
+    for (auto it : weights)
     // for (std::vector <int>::iterator it = numerators.begin(); it != numerators.end(); it++)
     {
         for (int i = 0; i < it; i++)
         {
-            events.push_back(it);
+            events.push_back(k);
         }
+        k++;
     }
 
+    int denominator = std::accumulate(weights.begin(), weights.end(), 0)
     int rIndex = Common::RandomInt(0, denominator);
     int outIndex = events.at(rIndex);
     return outcomes.at(outIndex);
