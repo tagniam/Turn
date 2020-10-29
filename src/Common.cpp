@@ -44,26 +44,6 @@ int Common::RandomInt(int min, int max) {
     return dist(rng);
 }
 
-template <typename T>
-T Common::RandomEvent(std::vector<int> weights, std::vector<T> outcomes) {
-    std::vector <int> events;
-    int k = 0;
-    for (auto it : weights)
-    // for (std::vector <int>::iterator it = numerators.begin(); it != numerators.end(); it++)
-    {
-        for (int i = 0; i < it; i++)
-        {
-            events.push_back(k);
-        }
-        k++;
-    }
-
-    int denominator = std::accumulate(weights.begin(), weights.end(), 0)
-    int rIndex = Common::RandomInt(0, denominator);
-    int outIndex = events.at(rIndex);
-    return outcomes.at(outIndex);
-}
-
 bool Common::IsPlaying;
 
 const int Common::SLEEP_MS = 800;
