@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <numeric>
 #include <iostream>
 
 #include "../include/Console.h"
