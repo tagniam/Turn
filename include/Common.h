@@ -21,21 +21,17 @@ namespace Common {
 
     template <typename T>
     T RandomEvent(std::vector<int> weights, std::vector<T> outcomes) {
-        std::vector <int> events;
-        int k = 0;
-        for (auto it : weights)
-        {
-            for (int i = 0; i < it; i++)
-            {
-                events.push_back(k);
+        std::vector <int> indices;
+        int index = 0; // The possible indices for the outcomes vector
+        for (int weight : weights) {
+            for (int i = 0; i < weight; i++) {
+                indices.push_back(index);
             }
-            k++;
+            index++;
         }
 
-        int denominator = std::accumulate(weights.begin(), weights.end(), 0);
-        int rIndex = Common::RandomInt(0, denominator-1);
-        int outIndex = events.at(rIndex);
-        return outcomes.at(outIndex);
+        int randomIndex = indices.at(RandomInt(0, indices.size()-1));
+        return outcomes.at(randomIndex);
     }
 
     // Indicates if the game is still going.
