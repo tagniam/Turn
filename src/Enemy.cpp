@@ -104,6 +104,7 @@ int Enemy::ReturnItemDrop(int item) {
     2	Potions
     3	Whetstones
     4	Coins
+    5	Molotovs
     */
     switch(item) {
     case 0:	// Arrows
@@ -131,6 +132,7 @@ int Enemy::ReturnItemDrop(int item) {
         }
     case 4:
         return CoinsDrop;
+    case 5:
     default:
         return 0;
         break;

@@ -19,12 +19,14 @@ Store::Store() noexcept {
     buy_stock = {
         {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
         {ITEMTYPE::POTION, {"Potion", 1, 150}},
+        {ITEMTYPE::MOLOTOV, {"Molotov", 1, 75}},
         {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
         {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
     };
     sell_stock = {
         {ITEMTYPE::WHETSTONE, {"Whetstone", 1, 20}},
         {ITEMTYPE::POTION, {"Potion", 1, 150}},
+        {ITEMTYPE::MOLOTOV, {"Molotov", 1, 75}},
         {ITEMTYPE::BOMB, {"Bomb", 1, 100}},
         {ITEMTYPE::ARROWS, {"Arrows", 5, 40}}
     };
@@ -133,7 +135,7 @@ void Store::DisplayStock(const catalogue_t& _Catalog) const {
         cout << ' ' + to_string(item_idx++) << ") ";
         if (item.second.amount > 1) {
             cout << item.second.item_name << " x " << item.second.amount << "\t\t"
-                 << item.second.piece_price * item.second.amount << '\n';
+                << item.second.piece_price * item.second.amount << '\n';
         } else {
             cout << item.second.item_name << "\t\t" << item.second.piece_price << '\n';
         }

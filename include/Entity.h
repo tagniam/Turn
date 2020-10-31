@@ -9,6 +9,7 @@ public:
 	std::string GetName();
 	virtual int Action() = 0;
 	void TakeDamage(int);
+	void TakeExtraDamage(int);
 	bool IsDead();
 
 protected:

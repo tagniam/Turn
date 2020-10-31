@@ -36,6 +36,16 @@ void Entity::TakeDamage(int damage) {
     health -= damage;
 }
 
+void Entity::TakeExtraDamage(int damage) {
+    // Doesn't subtract damage points if player chooses to quit
+    if (damage == -1) {
+        IsPlaying = false;
+        return;
+    }
+    // Simply subtracts the damage player deals to the enemy.
+    health -= damage;
+}
+
 void Entity::DisplayHealthBar() {
     string healthBar = "        " + to_string(health);
     for (size_t i = healthBar.length(); i < 20; i++) {

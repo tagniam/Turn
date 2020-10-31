@@ -7,7 +7,7 @@
 #include "Sound.h"
 
 class Player : public Entity, public SoundMaker {
-    // Contains the functions needed to construct the player's character.
+  // Contains the functions needed to construct the player's character.
   public:
     Player(void);
     void SaveGame();
@@ -31,6 +31,11 @@ class Player : public Entity, public SoundMaker {
     void DisplayInventory();
     int GetCoins();
 
+    // Used for status effect damage,
+    int ReturnExtraMolotovDamage();
+    int extradamageturns = 3;
+    void ReturnDialog(int, std::string);
+
   private:
     int GenericAttack();
     int RiskAttack();
@@ -39,8 +44,11 @@ class Player : public Entity, public SoundMaker {
     void UseWhetstone();
     void UsePotion();
     int UseBomb();
+    int UseMolotov();
+
     void DeductDamage(int&);
     int ReturnBowDamage();
+    int ReturnMolotovDamage();
     void WeakenWeapon(int impact);
 
     int Flee();
@@ -59,6 +67,7 @@ class Player : public Entity, public SoundMaker {
     int arrows;
     int potions;
     int bombs;
+    int molotovs;
     int weaponsharpness;
     int coins;
 };

@@ -230,3 +230,6 @@ _deps
 # Ignore game files
 Turn
 data.txt
+
+# Ignore tags
+tags

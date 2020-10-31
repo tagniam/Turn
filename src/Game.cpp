@@ -109,11 +109,13 @@ void Game::SetPlayerData() {
     /* Data initialized in order of:
     * class code
     * name
+    * gender
     * level
     * experience
     * health
     * arrows
     * bombs
+    * molotovs
     * potions
     * whetstones
     * weaponsharpness
@@ -133,6 +135,7 @@ void Game::SetPlayerData() {
                   << 0 << endl
                   << 100 << endl
                   << 10 << endl
+                  << 1 << endl
                   << 1 << endl
                   << 1 << endl
                   << 1 << endl
@@ -352,11 +355,26 @@ void Game::Battle() {
         _Player->DisplayHUD(_Enemy);
         _Enemy->DisplayHUD();
         int damagePlayer = _Player->Action();
+        int extradamagePlayer = _Player->ReturnExtraMolotovDamage();
         // Player's turn to attack Enemy or choose other action.
-        if (damagePlayer != SKIP_TURN) {
+        if (damagePlayer != SKIP_TURN && damagePlayer != -3) {
             _Enemy->TakeDamage(damagePlayer);
             // Pauses console and ignores user input for SLEEP_MS milliseconds.
             Sleep(SLEEP_MS);
+        }
+        // Player turn is over, enemy's status effect damage is calculated
+        if (0 < _Player->extradamageturns && _Player->extradamageturns <= 2 && damagePlayer != -1) {
+            _Player->extradamageturns--;
+            _Enemy->TakeDamage(extradamagePlayer);
+            _Player->ReturnDialog(extradamagePlayer, " damage points from burn dealt");
+        }
+        // Check if enemy has had molotov thrown at him before or now
+        if (damagePlayer == -3) {
+            damagePlayer = Common::RandomInt(30, 40);
+            _Enemy->TakeDamage(damagePlayer);
+            _Player->ReturnDialog(damagePlayer, " regular damage points dealt");
+            _Player->extradamageturns = 2;
+            _Player->ReturnDialog(_Player->extradamageturns, " turns of extra burn damage");
         }
         // Leaves battle if player chooses to.
         if (!IsPlaying) {
@@ -371,6 +389,8 @@ void Game::Battle() {
             _Player->AddExperience(_Enemy->ReturnExperience());
             // Replenishes player's health for the next round.
             _Player->ReplenishHealth();
+            // Reset remaining molotov damage, and prevent it from overlapping into the next battle.
+            _Player->extradamageturns = 3;
             // If player wants to battle again, it breaks the loop and uses tail recursion to play again.
             if (PlayAgain()) {
                 break;
@@ -449,6 +469,8 @@ void Game::DisplayMenu(MenuType menuType) {
              << "Flee: Run away from battle" << endl << endl
              << "-- Items --" << endl
              << "Bombs: Deals 50HP to your opponent with no chance of missing" << endl
+             << "Molotovs: Deals 30-40HP to your opponent and an additional 5-10" <<endl
+             << "damage for the next 2 turns" << endl
              << "Arrows: Deals 10-15HP to your opponent with no chance of missing" << endl
              << "Potion: Replenishes your HP to 100" << endl
              << "Whetstone: Restores your weapon's sharpness." << endl << endl

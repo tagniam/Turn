@@ -52,6 +52,9 @@ void Gambling::Gamble(Player *_Player) {
         case 3:
             cout << "whetstones" << endl;
             break;
+        case 4:
+            cout << "molotovs" << endl;
+            break;
         default:
             // No default, since ReturnItem(), which GenerateValue() calls, already has one.
             // Technically impossible for char Item to be other than b, p, w, a.
@@ -84,7 +87,7 @@ void Gambling::Gamble(Player *_Player) {
     cout << "You rolled a " << Die << "." << endl;
     Sleep(SLEEP_MS);
     // Evaluates whether or not you won the bet.
-    if (Die>=DieRequirement)
+    if (Die >= DieRequirement)
         // Passes in Player object to give player the items won.
     {
         WinGamble(_Player);
@@ -114,7 +117,7 @@ int Gambling::ReturnShakenDie() {
 
 char Gambling::ReturnItem() {
     // Generates a random char with a random integer selector, indicating the item won in the gamble.
-    int selector=Common::RandomInt(0, 3);
+    int selector=Common::RandomInt(0, 4);
     switch(selector) {
     case 0:
         // Arrows are the item.
@@ -128,6 +131,9 @@ char Gambling::ReturnItem() {
     case 3:
         // Whetstones are the item.
         return 3;
+    case 4:
+        // Molotovs are the item.
+        return 4;
     default:
         // By default, arrows are the item if the random integer does not equal any of the above cases.
         return 0;
