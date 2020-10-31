@@ -1,4 +1,5 @@
 #include <fstream>
+#include <sstream>
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -7,9 +8,15 @@
 #include "../include/Player.h"
 #include "../include/Console.h"
 #include "../include/ItemTypes.h"
+#include "../include/rapidjson/document.h"
+#include "../include/rapidjson/stringbuffer.h"
+#include "../include/rapidjson/prettywriter.h"
+#include "../include/rapidjson/reader.h"
+#include "../include/rapidjson/filereadstream.h"
 
 using namespace std;
 using namespace Common;
+using namespace rapidjson;
 
 #define SKIP_TURN -2
 
@@ -23,6 +30,45 @@ Player::Player(void) {
 }
 
 void Player::SaveGame() {
+    StringBuffer s;
+    PrettyWriter<StringBuffer> writer(s);
+
+    string g(1, gender);
+
+    writer.StartObject();
+    writer.Key("Player Type");
+    writer.Int(player_type);
+    writer.Key("Name");
+    writer.String(name.c_str());
+    writer.Key("Gender");
+    writer.String(g.c_str());
+    writer.Key("Level");
+    writer.Int(level);
+    writer.Key("Experience");
+    writer.Int(experience);
+    writer.Key("Health");
+    writer.Int(health);
+    writer.Key("Arrows");
+    writer.Int(arrows);
+    writer.Key("Bombs");
+    writer.Int(bombs);
+    writer.Key("Potions");
+    writer.Int(potions);
+    writer.Key("Whetstones");
+    writer.Int(whetstones);
+    writer.Key("Weapon Sharpness");
+    writer.Int(weaponsharpness);
+    writer.Key("Coins");
+    writer.Int(coins);
+    writer.EndObject();
+    
+    ofstream WriteD;
+    WriteD.open("data.json");
+    if (WriteD.is_open()) {
+        WriteD << s.GetString() << endl;
+    } else {
+        cout << "Error opening savegame data (data.json)." << endl;
+    }
     ofstream WriteData;
     WriteData.open("data.txt");
     if (WriteData.is_open()) {
@@ -44,31 +90,61 @@ void Player::SaveGame() {
     }
 }
 
-
-
 void Player::SetPlayerData() {
     // Primarily initializes default values at the beginning of the game.
-    ifstream ReadData;
-    ReadData.clear();
-    ReadData.open("data.txt");
-    if (ReadData.is_open())	{
-        ReadData >> player_type;
-        ReadData.ignore();       // Ignore rest of line ready for getline
-        getline(ReadData, name);
-        ReadData >> gender;
-        ReadData >> level;
-        ReadData >> experience;
-        ReadData >> health;
-        ReadData >> arrows;
-        ReadData >> bombs;
-        ReadData >> potions;
-        ReadData >> whetstones;
-        ReadData >> weaponsharpness;
-        ReadData >> coins;
-        ReadData.close();
+    FILE* pFile = fopen("data.json", "rb");
+    if (pFile) {
+        char buffer[65536];
+        FileReadStream is(pFile, buffer, sizeof(buffer));
+        Document playerData;
+        playerData.ParseStream<0, UTF8<>, FileReadStream>(is);
+        if (playerData.HasParseError())
+        {
+            cout << "Parse unsuccessful" << endl;
+        }
+        else
+        {
+            cout << "Parse successful" << endl;
+        }
+
+        assert(playerData.IsObject());
+
+        player_type = playerData["Player Type"].GetInt();
+        cout << "Player type gotten" << endl;
+        name = playerData["Name"].GetString();
+        gender = *(playerData["Gender"].GetString());
+        level = playerData["Level"].GetInt();
+        experience = playerData["Experience"].GetInt();
+        health = playerData["Health"].GetInt();
+        arrows = playerData["Arrows"].GetInt();
+        bombs = playerData["Bombs"].GetInt();
+        potions = playerData["Potions"].GetInt();
+        whetstones = playerData["Whetstones"].GetInt();
+        weaponsharpness = playerData["Weapon Sharpness"].GetInt();
+        coins = playerData["Coins"].GetInt();
     } else {
-        cout << "Error opening savegame data (data.txt)." << endl;
+        cout << "Error opening savegame data (data.json)." << endl;
     }
+
+    // ReadData.open("data.txt");
+    // if (ReadData.is_open())	{
+    //     ReadData >> player_type;
+    //     ReadData.ignore();       // Ignore rest of line ready for getline
+    //     getline(ReadData, name);
+    //     ReadData >> gender;
+    //     ReadData >> level;
+    //     ReadData >> experience;
+    //     ReadData >> health;
+    //     ReadData >> arrows;
+    //     ReadData >> bombs;
+    //     ReadData >> potions;
+    //     ReadData >> whetstones;
+    //     ReadData >> weaponsharpness;
+    //     ReadData >> coins;
+    //     ReadData.close();
+    // } else {
+    //     cout << "Error opening savegame data (data.txt)." << endl;
+    // }
 }
 
 int Player::Action() {
