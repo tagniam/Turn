@@ -16,22 +16,9 @@ int Demon::ReturnDamage() {
 }
 
 int Demon::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 5);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-        return 1;
-        break;
-    case 5:
-        return 25;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {5, 1, 1};
+    std::vector <int> outcomes = {1, 25, 0};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Demon::ReturnHealAmount() {

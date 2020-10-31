@@ -16,22 +16,9 @@ int Lich::ReturnDamage() {
 }
 
 int Lich::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 5);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-        return 2;
-        break;
-    case 4:
-    case 5:
-        return 30;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {4, 2};
+    std::vector <int> outcomes = {2, 30};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Lich::ReturnHealAmount() {

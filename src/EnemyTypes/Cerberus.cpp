@@ -16,25 +16,9 @@ int Cerberus::ReturnDamage() {
 }
 
 int Cerberus::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 6);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-        return 2;
-        break;
-    case 4:
-    case 5:
-        return 25;
-        break;
-    case 7:
-        return 30;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {4, 2, 1};
+    std::vector <int> outcomes = {2, 25, 30};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Cerberus::ReturnHealAmount() {

@@ -16,23 +16,9 @@ int Zombie::ReturnDamage() {
 }
 
 int Zombie::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 6);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-        return 2;
-        break;
-    case 4:
-    case 5:
-    case 6:
-        return 30;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {4, 3};
+    std::vector <int> outcomes = {2, 30};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Zombie::ReturnHealAmount() {

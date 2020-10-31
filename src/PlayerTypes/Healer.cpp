@@ -12,18 +12,9 @@ int Healer::ReturnDamage() {
 }
 
 int Healer::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 1);
-    switch(selector) {
-    case 0:
-        return 5;
-        break;
-    case 1:
-        return 10;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {1, 1};
+    std::vector <int> outcomes = {5, 10};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Healer::ReturnHealAmount() {

@@ -20,31 +20,23 @@ Enemy::Enemy() {
 
 int Enemy::Action() {
     // Returns damage hit for the player. Uses random number to select enemy's move.
-    int selector = Common::RandomInt(0, 8);
+    std::vector <int> weights = {2, 2, 5};
+    std::vector <int> selections = {0, 1, 2};
+    int selector = Common::RandomEvent(weights, selections);
     switch(selector) {
-    case 0:
-    case 1:
-        // 2/9 chance of risk attacking.
-        return RiskAttack();
-        break;
-    case 2:
-    case 3:
-        // 2/9 chance of healing.
-        Heal();
-        return 0;
-        break;
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-        // 5/9 chance of generically attacking.
-        return GenericAttack();
-        break;
-    default:
-        // Returns 0 damage in case selector goes wrong.
-        return 0;
-        break;
+        case 0:
+            return RiskAttack();
+            break;
+        case 1:
+            // If Heal() returned 0, this switch can be removed
+            Heal();
+            return 0;
+            break;
+        case 2:
+            return GenericAttack();
+            break;
+        default:
+            return 0;
     }
 }
 
@@ -115,7 +107,7 @@ int Enemy::ReturnItemDrop(int item) {
         } else {
             return 5;
         }
-    case 1:
+    case 1: // Shouldn't this be bombs?
     case 2:
         if (PotionSelector == 0) {
             return 1;

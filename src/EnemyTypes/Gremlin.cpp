@@ -28,41 +28,8 @@ int Gremlin::ReturnHealAmount() {
 
 // similar to rolling a d20  : 0 is equal to rolling a d20 in D&D 1, 19 is equal to rolling a 20
 int Gremlin::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 19);
-    switch (selector) {
-    case 0:
-        return 0;
-        break;
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-        return 2;
-        break;
-    case 10:
-        return Common::RandomInt(5, 9);
-        break;
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-    case 16:
-    case 17:
-    case 18:
-        return Common::RandomInt(8, 12);
-        break;
-    case 19:
-        return 20;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {1, 9, 1, 8, 1};
+    std::vector <int> outcomes = {0, 2, Common::RandomInt(5,9), 
+                                Common::RandomInt(8, 12), 20};
+    return Common::RandomEvent(weights, outcomes);
 }
-
