@@ -27,5 +27,6 @@
 #include "TimidGhost.h"
 #include "Demon.h"
 #include "Cockatrice.h"
+#include "Dragon.h"
 
 #endif // ENEMYTYPES_H_INCLUDED

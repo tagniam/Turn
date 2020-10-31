@@ -244,6 +244,10 @@ void Game::SetEnemy() {
         //enymy is a Demon
         _Enemy = new Demon;
         break;
+    case etDragon:
+        //enemy is a Dragon
+        _Enemy = new Dragon;
+        break;
     default:
         // If the above cases do not match the selector for any reason,
         // the enemy defaults on the crab class.

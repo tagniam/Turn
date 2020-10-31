@@ -34,6 +34,7 @@ set (SOURCES ${SOURCES}
     src/EnemyTypes/Zabra.cpp
     src/EnemyTypes/Zombie.cpp
     src/EnemyTypes/Demon.cpp
+    src/EnemyTypes/Dragon.cpp
 
     src/PlayerTypes/Debugger.cpp
     src/PlayerTypes/Healer.cpp
