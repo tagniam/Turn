@@ -15,7 +15,7 @@ class Player : public Entity, public SoundMaker {
     void SetPlayerData();
     int Action();
     void UseItem();
-    void AddToInventory(std::vector<int>);
+    void AddToInventory(std::pair<std::string, int>);
     void AddStoreItemToInventory(ITEMTYPE, int);
     bool RemoveStoreItemFromInventory(ITEMTYPE, int);
 
