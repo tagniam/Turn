@@ -235,34 +235,6 @@ void Player::AddToInventory(pair<string, int> drop) {
     cout << endl;
 }
 
-// void Player::AddToInventory(pair<string, int> drop) {
-//     // Adds items to inventory and prints out what the player received.
-//     // Adds items received to total items.
-//     arrows += drops.at(0);
-//     bombs += drops.at(1);
-//     potions += drops.at(2);
-//     whetstones += drops.at(3);
-//     coins += drops.at(4);
-//     // Prints number of items received.
-//     cout << "You have gained: " << endl;
-//     if (drops[0] > 0) {
-//         cout << "[" << drops.at(0) << "] arrows" << endl;
-//     }
-//     if (drops[1] > 0) {
-//         cout << "[" << drops.at(1) << "] bombs" << endl;
-//     }
-//     if (drops[2] > 0) {
-//         cout << "[" << drops.at(2) << "] potions" << endl;
-//     }
-//     if (drops[3] > 0) {
-//         cout << "[" << drops.at(3) << "] whetstones" << endl;
-//     }
-//     if (drops[4] > 0) {
-//         cout << "[" << drops.at(4) << "] coins" << endl;
-//     }
-//     cout << endl;
-// }
-
 void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
     // Adds items bought to total items.
     switch (type) {
