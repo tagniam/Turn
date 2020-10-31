@@ -10,7 +10,7 @@
 
 #include "../include/PlayerTypes/PlayerTypes.h"
 #include "../include/EnemyTypes/EnemyTypes.h"
-
+#include "../include/ItemTypes.h"
 
 using namespace std;
 using namespace Common;
@@ -362,7 +362,10 @@ void Game::Battle() {
         // Executes when the enemy's health is 0 or below.
         if (_Enemy->IsDead()) {
             // Adds drops to player's inventory from defeated enemy.
-            _Player->AddToInventory(_Enemy->GetDrops());
+            vector< pair <string, int> > drops = _Enemy->GetDrops();
+            for (auto drop : drops) {
+                _Player->AddToInventory(drop);
+            }
             // Adds points to player's experience.
             _Player->AddExperience(_Enemy->ReturnExperience());
             // Replenishes player's health for the next round.

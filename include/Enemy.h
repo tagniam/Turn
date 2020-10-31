@@ -40,7 +40,7 @@ class Enemy : public Entity {
     int Action();
     void DisplayHUD();
 
-    std::vector<int> GetDrops();
+    std::vector< std::pair<std::string, int> > GetDrops();
     int ReturnExperience();
 
     virtual EnemyType GetType() = 0;

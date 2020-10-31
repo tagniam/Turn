@@ -207,33 +207,61 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(vector<int> drops) {
-    // Adds items to inventory and prints out what the player received.
-    // Adds items received to total items.
-    arrows += drops.at(0);
-    bombs += drops.at(1);
-    potions += drops.at(2);
-    whetstones += drops.at(3);
-    coins += drops.at(4);
-    // Prints number of items received.
+void Player::AddToInventory(pair<string, int> drop) {
+    if (drop.second == 0) {
+        return;
+    }
     cout << "You have gained: " << endl;
-    if (drops[0] > 0) {
-        cout << "[" << drops.at(0) << "] arrows" << endl;
+    if (drop.first == "arrows") {
+        arrows += drop.second;
+        cout << "[" << drop.second << "] arrows" << endl;
     }
-    if (drops[1] > 0) {
-        cout << "[" << drops.at(1) << "] bombs" << endl;
+    if (drop.first == "bombs") {
+        bombs += drop.second;
+        cout << "[" << drop.second << "] bombs" << endl;
     }
-    if (drops[2] > 0) {
-        cout << "[" << drops.at(2) << "] potions" << endl;
+    if (drop.first == "potions") {
+        potions += drop.second;
+        cout << "[" << drop.second << "] potions" << endl;
     }
-    if (drops[3] > 0) {
-        cout << "[" << drops.at(3) << "] whetstones" << endl;
+    if (drop.first == "whetstones") {
+        whetstones += drop.second;
+        cout << "[" << drop.second << "] whetstones" << endl;
     }
-    if (drops[4] > 0) {
-        cout << "[" << drops.at(4) << "] coins" << endl;
+    if (drop.first == "coins") {
+        coins += drop.second;
+        cout << "[" << drop.second << "] coins" << endl;
     }
     cout << endl;
 }
+
+// void Player::AddToInventory(pair<string, int> drop) {
+//     // Adds items to inventory and prints out what the player received.
+//     // Adds items received to total items.
+//     arrows += drops.at(0);
+//     bombs += drops.at(1);
+//     potions += drops.at(2);
+//     whetstones += drops.at(3);
+//     coins += drops.at(4);
+//     // Prints number of items received.
+//     cout << "You have gained: " << endl;
+//     if (drops[0] > 0) {
+//         cout << "[" << drops.at(0) << "] arrows" << endl;
+//     }
+//     if (drops[1] > 0) {
+//         cout << "[" << drops.at(1) << "] bombs" << endl;
+//     }
+//     if (drops[2] > 0) {
+//         cout << "[" << drops.at(2) << "] potions" << endl;
+//     }
+//     if (drops[3] > 0) {
+//         cout << "[" << drops.at(3) << "] whetstones" << endl;
+//     }
+//     if (drops[4] > 0) {
+//         cout << "[" << drops.at(4) << "] coins" << endl;
+//     }
+//     cout << endl;
+// }
 
 void Player::AddStoreItemToInventory(ITEMTYPE type, int amount) {
     // Adds items bought to total items.

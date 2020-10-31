@@ -57,11 +57,12 @@ void Enemy::DisplayHUD() {
 
 
 
-vector<int> Enemy::GetDrops() {
+vector <pair <string, int> > Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    vector<int> drops;
-    for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back(ReturnItemDrop(i));
+    vector <pair <string, int> > drops;
+    vector <string> items = {"arrows", "bombs", "potions", "whetstones", "coins"};
+    for (int item = 0; item < NUM_ITEMS; item++) {
+        drops.push_back(make_pair(items.at(item), ReturnItemDrop(item)));
     }
     return drops;
 }
@@ -109,7 +110,7 @@ int Enemy::ReturnItemDrop(int item) {
     case 0:	// Arrows
         if (ArrowSelector<=1) {
             return 0;
-        } else if (ArrowSelector==2||ArrowSelector==3) {
+        } else if (ArrowSelector<=3) { // This is equivalent and simpler
             return 3;
         } else {
             return 5;
