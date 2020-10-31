@@ -17,31 +17,10 @@ int RatKing::ReturnDamage() {
 }
 
 int RatKing::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 9);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-        return 0;
-        break;
-    case 6:
-    case 7:
-    case 8:
-        return amountOfRats_ * 7;
-        break;
-    case 9:
-        return amountOfRats_ * 5;
-        break;
-    case 10:
-        return amountOfRats_ * 10;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {6, 3, 1, 1};
+    std::vector <int> outcomes = {0, amountOfRats_ * 7,
+                                amountOfRats_ * 5, amountOfRats_ * 10};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int RatKing::ReturnHealAmount() {

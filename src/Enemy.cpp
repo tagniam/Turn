@@ -20,31 +20,23 @@ Enemy::Enemy() {
 
 int Enemy::Action() {
     // Returns damage hit for the player. Uses random number to select enemy's move.
-    int selector = Common::RandomInt(0, 8);
+    std::vector <int> weights = {2, 2, 5};
+    std::vector <int> selections = {0, 1, 2};
+    int selector = Common::RandomEvent(weights, selections);
     switch(selector) {
-    case 0:
-    case 1:
-        // 2/9 chance of risk attacking.
-        return RiskAttack();
-        break;
-    case 2:
-    case 3:
-        // 2/9 chance of healing.
-        Heal();
-        return 0;
-        break;
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-        // 5/9 chance of generically attacking.
-        return GenericAttack();
-        break;
-    default:
-        // Returns 0 damage in case selector goes wrong.
-        return 0;
-        break;
+        case 0:
+            return RiskAttack();
+            break;
+        case 1:
+            // If Heal() returned 0, this switch can be removed
+            Heal();
+            return 0;
+            break;
+        case 2:
+            return GenericAttack();
+            break;
+        default:
+            return 0;
     }
 }
 
@@ -57,11 +49,12 @@ void Enemy::DisplayHUD() {
 
 
 
-vector<int> Enemy::GetDrops() {
+vector <pair <string, int> > Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    vector<int> drops;
-    for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back(ReturnItemDrop(i));
+    vector <pair <string, int> > drops;
+    vector <string> items = {"arrows", "bombs", "potions", "whetstones", "coins"};
+    for (int item = 0; item < NUM_ITEMS; item++) {
+        drops.push_back(make_pair(items.at(item), ReturnItemDrop(item)));
     }
     return drops;
 }
@@ -109,12 +102,12 @@ int Enemy::ReturnItemDrop(int item) {
     case 0:	// Arrows
         if (ArrowSelector<=1) {
             return 0;
-        } else if (ArrowSelector==2||ArrowSelector==3) {
+        } else if (ArrowSelector<=3) { // This is equivalent and simpler
             return 3;
         } else {
             return 5;
         }
-    case 1:
+    case 1: // Shouldn't this be bombs?
     case 2:
         if (PotionSelector == 0) {
             return 1;

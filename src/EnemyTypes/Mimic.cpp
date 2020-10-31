@@ -16,18 +16,9 @@ int Mimic::ReturnDamage() {
 }
 
 int Mimic::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 1);
-    switch (selector) {
-    case 0:
-        return 13;
-        break;
-    case 1:
-        return 2;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {1, 1};
+    std::vector <int> outcomes = {13, 2};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int Mimic::ReturnHealAmount() {

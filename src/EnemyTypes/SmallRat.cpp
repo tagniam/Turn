@@ -16,31 +16,9 @@ int SmallRat::ReturnDamage() {
 }
 
 int SmallRat::ReturnRiskAttackDamage() {
-    int selector = Common::RandomInt(0, 9);
-    switch (selector) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-        return 0;
-        break;
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-        return 2;
-        break;
-    case 9:
-        return 5;
-        break;
-    case 10:
-        return 10;
-        break;
-    default:
-        return 0;
-        break;
-    }
+    std::vector <int> weights = {4, 5, 1, 1};
+    std::vector <int> outcomes = {0, 2, 5, 10};
+    return Common::RandomEvent(weights, outcomes);
 }
 
 int SmallRat::ReturnHealAmount() {
