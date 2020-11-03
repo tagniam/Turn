@@ -4,7 +4,8 @@
 
 enum ITEMTYPE
 {
-	ARROWS = 1,
+	COINS = 0,
+	ARROWS,
 	BOMB,
 	POTION,
 	WHETSTONE

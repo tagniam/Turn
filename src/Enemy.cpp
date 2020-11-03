@@ -57,11 +57,13 @@ void Enemy::DisplayHUD() {
 
 
 
-vector<int> Enemy::GetDrops() {
+vector <pair <ITEMTYPE, int> > Enemy::GetDrops() {
     // Returns the number of items dropped when the enemy is defeated depending on the item won.
-    vector<int> drops;
-    for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back(ReturnItemDrop(i));
+    vector <pair <ITEMTYPE, int> > drops;
+    vector <ITEMTYPE> items = {ITEMTYPE::ARROWS, ITEMTYPE::BOMB,
+                    ITEMTYPE::POTION, ITEMTYPE::WHETSTONE, ITEMTYPE::COINS};
+    for (ITEMTYPE item : items) {
+        drops.push_back(make_pair(items.at(item), ReturnItemDrop(item)));
     }
     return drops;
 }
@@ -94,7 +96,7 @@ int Enemy::RiskAttack() {
     return damage;
 }
 
-int Enemy::ReturnItemDrop(int item) {
+int Enemy::ReturnItemDrop(ITEMTYPE item) {
     int ArrowSelector = Common::RandomInt(0, 5);
     int WhetstoneSelector = Common::RandomInt(0, 1);
     int PotionSelector = Common::RandomInt(0, 9);
@@ -106,16 +108,16 @@ int Enemy::ReturnItemDrop(int item) {
     4	Coins
     */
     switch(item) {
-    case 0:	// Arrows
+    case 1:	// Arrows
         if (ArrowSelector<=1) {
             return 0;
-        } else if (ArrowSelector==2||ArrowSelector==3) {
+        } else if (ArrowSelector<=3) { // This is equivalent and simpler
             return 3;
         } else {
             return 5;
         }
-    case 1:
     case 2:
+    case 3:
         if (PotionSelector == 0) {
             return 1;
         } else if (PotionSelector == 1) {
@@ -123,13 +125,13 @@ int Enemy::ReturnItemDrop(int item) {
         } else {
             return 0;
         }
-    case 3:
+    case 4:
         if (WhetstoneSelector==1) {
             return 1;
         } else {
             return 0;
         }
-    case 4:
+    case 0:
         return CoinsDrop;
     default:
         return 0;

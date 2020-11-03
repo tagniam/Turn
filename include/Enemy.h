@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Entity.h"
+#include "ItemTypes.h"
 
 enum EnemyType {
     etCrab,
@@ -41,7 +42,7 @@ class Enemy : public Entity {
     int Action();
     void DisplayHUD();
 
-    std::vector<int> GetDrops();
+    std::vector< std::pair<ITEMTYPE, int> > GetDrops();
     int ReturnExperience();
 
     virtual EnemyType GetType() = 0;
@@ -51,7 +52,7 @@ class Enemy : public Entity {
     int GenericAttack();
     int RiskAttack();
 
-    int ReturnItemDrop(int);
+    int ReturnItemDrop(ITEMTYPE);
 
     int ExperienceAmount;
     int CoinsDrop;

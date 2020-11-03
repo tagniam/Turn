@@ -39,24 +39,7 @@ void Gambling::Gamble(Player *_Player) {
         // Prints the amount of items received if gamble is won.
         cout << "PRIZE: [" << ItemNumber << "] ";
         // Prints the item name according to the char Item.
-        switch(Item) {
-        case 0:
-            cout << "arrows" << endl;
-            break;
-        case 1:
-            cout << "bombs" << endl;
-            break;
-        case 2:
-            cout << "potions" << endl;
-            break;
-        case 3:
-            cout << "whetstones" << endl;
-            break;
-        default:
-            // No default, since ReturnItem(), which GenerateValue() calls, already has one.
-            // Technically impossible for char Item to be other than b, p, w, a.
-            break;
-        }
+        cout << Item;
         // Prints Coins deduction if you lose the gamble.
         cout << "PENALTY: [" << CoinsDeduction << "] coins" << endl << endl;
         cout << "1) Reveal Die" << endl;
@@ -112,25 +95,25 @@ int Gambling::ReturnShakenDie() {
     return Common::RandomInt(1, 9);
 }
 
-char Gambling::ReturnItem() {
+ITEMTYPE Gambling::ReturnItem() {
     // Generates a random char with a random integer selector, indicating the item won in the gamble.
     int selector=Common::RandomInt(0, 3);
     switch(selector) {
     case 0:
         // Arrows are the item.
-        return 0;
+        return ITEMTYPE::ARROWS;
     case 1:
         // Bombs are the item.
-        return 1;
+        return ITEMTYPE::BOMB;
     case 2:
         // Potions are the item.
-        return 2;
+        return ITEMTYPE::POTION;
     case 3:
         // Whetstones are the item.
-        return 3;
+        return ITEMTYPE::WHETSTONE;
     default:
         // By default, arrows are the item if the random integer does not equal any of the above cases.
-        return 0;
+        return ITEMTYPE::ARROWS;
     }
 }
 
@@ -138,15 +121,13 @@ void Gambling::WinGamble(Player *_Player) {
     // Executes the events when the gamble is won.
     // Uses the Player object to give player items won.
     cout << "You win the bet!" << endl;
-    vector<int> drops;
-    for (int i = 0; i < NUM_ITEMS; i++) {
-        drops.push_back((Item == i) ? ItemNumber : 0);
-    }
+    pair<ITEMTYPE, int> drop;
+    drop = make_pair(Item, ItemNumber);
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.
     // The place of ItemNumber in the arguments is to specify which item was won.
     // More clarification and information in the _Player->AddToInventory(int, int, int ,int) function.
-    _Player->AddToInventory(drops);
+    _Player->AddToInventory(drop);
     // Used to pause the console to let the player see what they won.
     /// Must use something more efficient.
     system("PAUSE");
