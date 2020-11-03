@@ -207,28 +207,28 @@ void Player::UseItem() {
     }
 }
 
-void Player::AddToInventory(pair<string, int> drop) {
+void Player::AddToInventory(pair<ITEMTYPE, int> drop) {
     if (drop.second == 0) {
         return;
     }
     cout << "You have gained: " << endl;
-    if (drop.first == "arrows") {
+    if (drop.first == ITEMTYPE::ARROWS) {
         arrows += drop.second;
         cout << "[" << drop.second << "] arrows" << endl;
     }
-    if (drop.first == "bombs") {
+    if (drop.first == ITEMTYPE::BOMB) {
         bombs += drop.second;
         cout << "[" << drop.second << "] bombs" << endl;
     }
-    if (drop.first == "potions") {
+    if (drop.first == ITEMTYPE::POTION) {
         potions += drop.second;
         cout << "[" << drop.second << "] potions" << endl;
     }
-    if (drop.first == "whetstones") {
+    if (drop.first == ITEMTYPE::WHETSTONE) {
         whetstones += drop.second;
         cout << "[" << drop.second << "] whetstones" << endl;
     }
-    if (drop.first == "coins") {
+    if (drop.first == ITEMTYPE::COINS) {
         coins += drop.second;
         cout << "[" << drop.second << "] coins" << endl;
     }

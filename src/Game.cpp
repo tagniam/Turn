@@ -362,7 +362,7 @@ void Game::Battle() {
         // Executes when the enemy's health is 0 or below.
         if (_Enemy->IsDead()) {
             // Adds drops to player's inventory from defeated enemy.
-            vector< pair <string, int> > drops = _Enemy->GetDrops();
+            vector< pair <ITEMTYPE, int> > drops = _Enemy->GetDrops();
             for (auto drop : drops) {
                 _Player->AddToInventory(drop);
             }

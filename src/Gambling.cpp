@@ -95,25 +95,25 @@ int Gambling::ReturnShakenDie() {
     return Common::RandomInt(1, 9);
 }
 
-string Gambling::ReturnItem() {
+ITEMTYPE Gambling::ReturnItem() {
     // Generates a random char with a random integer selector, indicating the item won in the gamble.
     int selector=Common::RandomInt(0, 3);
     switch(selector) {
     case 0:
         // Arrows are the item.
-        return "arrows";
+        return ITEMTYPE::ARROWS;
     case 1:
         // Bombs are the item.
-        return "bombs";
+        return ITEMTYPE::BOMB;
     case 2:
         // Potions are the item.
-        return "potions";
+        return ITEMTYPE::POTION;
     case 3:
         // Whetstones are the item.
-        return "whetstones";
+        return ITEMTYPE::WHETSTONE;
     default:
         // By default, arrows are the item if the random integer does not equal any of the above cases.
-        return "arrows";
+        return ITEMTYPE::ARROWS;
     }
 }
 
@@ -121,7 +121,7 @@ void Gambling::WinGamble(Player *_Player) {
     // Executes the events when the gamble is won.
     // Uses the Player object to give player items won.
     cout << "You win the bet!" << endl;
-    pair<string, int> drop;
+    pair<ITEMTYPE, int> drop;
     drop = make_pair(Item, ItemNumber);
     // Evaluates local class variable Item to see what item was won.
     // ItemNumber is passed in to AddToInventory() to provide the number of items won.

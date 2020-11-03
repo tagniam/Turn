@@ -11,7 +11,7 @@ class Gambling {
     private:
         void GenerateValues();
         int ReturnShakenDie();
-        std::string ReturnItem();
+        ITEMTYPE ReturnItem();
         void WinGamble(Player*);
         void LoseGamble(Player*);
 
@@ -28,7 +28,7 @@ class Gambling {
         //      1 -> Bombs
         //      2 -> Potions
         //      3 -> Whetstones
-        std::string Item;
+        ITEMTYPE Item;
 };
 
 #endif // GAMBLING_H
